@@ -1,0 +1,1638 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>سياسة حوكمة البيانات | جامعة نايف العربية للعلوم الأمنية</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    /* NAUSS Brand Identity */
+    --primary: #2e6066;
+    --primary-dark: #1f4347;
+    --primary-light: #3d7d84;
+    --primary-soft: #e8f0f1;
+
+    --secondary: #c6aa76;
+    --secondary-light: #d8c192;
+    --secondary-dark: #a88c58;
+    --secondary-soft: #f7f1e4;
+
+    /* Support Accents */
+    --support-blue: #385676;
+    --support-burgundy: #895b60;
+    --support-taupe: #8a7e78;
+
+    /* Neutrals */
+    --ink: #1a2628;
+    --text: #2d3638;
+    --text-muted: #6b7578;
+    --border: #e1dcd0;
+    --border-soft: #f0ebe0;
+    --bg: #fbfaf6;
+    --bg-alt: #f6f2e8;
+    --white: #ffffff;
+    --danger: #895b60;
+
+    /* Design tokens */
+    --radius-sm: 6px;
+    --radius-md: 10px;
+    --radius-lg: 14px;
+    --shadow-sm: 0 1px 3px rgba(46, 96, 102, 0.06);
+    --shadow-md: 0 4px 14px rgba(46, 96, 102, 0.08);
+    --shadow-lg: 0 10px 30px rgba(46, 96, 102, 0.12);
+    --transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Cairo', 'Segoe UI', Tahoma, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.85;
+    font-size: 16px;
+    direction: rtl;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  .page {
+    max-width: 960px;
+    margin: 0 auto;
+    background: var(--white);
+    box-shadow: var(--shadow-lg);
+    overflow: hidden;
+  }
+
+  /* ========== TOP NAVIGATION ========== */
+  .topnav {
+    background: var(--white);
+    border-bottom: 1px solid var(--border);
+    padding: 18px 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    backdrop-filter: blur(10px);
+    background: rgba(255, 255, 255, 0.96);
+  }
+  .topnav-logo {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .topnav-logo img {
+    height: 48px;
+    width: auto;
+  }
+  .topnav-title {
+    font-size: 13px;
+    color: var(--primary);
+    font-weight: 700;
+    line-height: 1.3;
+  }
+  .topnav-title .sub {
+    display: block;
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--text-muted);
+    margin-top: 2px;
+  }
+  .topnav-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 9px 18px;
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 600;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: var(--transition);
+    border: 1px solid transparent;
+    text-decoration: none;
+  }
+  .btn-primary {
+    background: var(--primary);
+    color: var(--white);
+  }
+  .btn-primary:hover {
+    background: var(--primary-dark);
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-md);
+  }
+  .btn-ghost {
+    background: transparent;
+    color: var(--primary);
+    border-color: var(--border);
+  }
+  .btn-ghost:hover {
+    background: var(--primary-soft);
+    border-color: var(--primary);
+  }
+  .btn svg { width: 16px; height: 16px; }
+
+  /* ========== COVER ========== */
+  .cover {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+    color: var(--white);
+    padding: 70px 60px 50px;
+    position: relative;
+    min-height: 580px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow: hidden;
+  }
+  .cover::before {
+    content: '';
+    position: absolute;
+    top: -120px;
+    left: -120px;
+    width: 360px;
+    height: 360px;
+    border: 2px solid var(--secondary);
+    opacity: 0.18;
+    transform: rotate(45deg);
+    border-radius: 20px;
+  }
+  .cover::after {
+    content: '';
+    position: absolute;
+    bottom: -140px;
+    right: -140px;
+    width: 460px;
+    height: 460px;
+    border: 1px solid var(--secondary);
+    border-radius: 50%;
+    opacity: 0.14;
+  }
+  .cover-decor {
+    position: absolute;
+    top: 40%;
+    left: 10%;
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    background: radial-gradient(circle, var(--secondary) 0%, transparent 70%);
+    opacity: 0.08;
+    pointer-events: none;
+  }
+
+  .cover-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 28px;
+    border-bottom: 2px solid var(--secondary);
+    position: relative;
+    z-index: 2;
+  }
+  .cover-brand {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  .cover-brand img {
+    height: 64px;
+    width: auto;
+    filter: brightness(0) invert(1);
+  }
+  .cover-brand-text { line-height: 1.5; }
+  .cover-brand-text .ar {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--white);
+  }
+  .cover-brand-text .en {
+    font-size: 11px;
+    letter-spacing: 0.8px;
+    direction: ltr;
+    text-align: left;
+    color: var(--secondary-light);
+    margin-top: 2px;
+  }
+  .doc-badge {
+    background: var(--secondary);
+    color: var(--primary-dark);
+    padding: 8px 18px;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    border-radius: var(--radius-sm);
+  }
+  .cover-body {
+    text-align: center;
+    padding: 50px 0;
+    position: relative;
+    z-index: 2;
+  }
+  .cover-kicker {
+    font-size: 13px;
+    letter-spacing: 6px;
+    color: var(--secondary-light);
+    margin-bottom: 20px;
+    font-weight: 600;
+  }
+  .cover-title {
+    font-size: 54px;
+    font-weight: 900;
+    line-height: 1.2;
+    margin-bottom: 16px;
+    letter-spacing: -0.5px;
+  }
+  .cover-subtitle {
+    font-size: 22px;
+    font-weight: 300;
+    color: var(--secondary-light);
+    direction: ltr;
+    font-family: 'Amiri', serif;
+    font-style: italic;
+  }
+  .cover-meta {
+    position: relative;
+    z-index: 2;
+    border-top: 1px solid rgba(198, 170, 118, 0.4);
+    padding-top: 28px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+  }
+  .cover-meta-item { text-align: center; }
+  .cover-meta-item .label {
+    font-size: 10px;
+    letter-spacing: 2.5px;
+    color: var(--secondary);
+    margin-bottom: 8px;
+    font-weight: 700;
+  }
+  .cover-meta-item .value {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--white);
+  }
+
+  /* ========== CONTROL BLOCK ========== */
+  .control-block {
+    padding: 50px 60px;
+    background: var(--bg-alt);
+    border-bottom: 3px solid var(--secondary);
+  }
+  .control-block h2 {
+    font-size: 20px;
+    color: var(--primary);
+    margin-bottom: 24px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--border);
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .control-block h2::before {
+    content: '';
+    width: 4px;
+    height: 22px;
+    background: var(--secondary);
+    border-radius: 2px;
+  }
+  .control-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px 28px;
+    margin-bottom: 30px;
+  }
+  .control-grid .field {
+    display: flex;
+    gap: 10px;
+    font-size: 14px;
+    padding: 10px 14px;
+    background: var(--white);
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border-soft);
+  }
+  .control-grid .field strong {
+    color: var(--primary);
+    min-width: 130px;
+    font-weight: 700;
+  }
+
+  .version-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+    background: var(--white);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+  }
+  .version-table th {
+    background: var(--primary);
+    color: var(--white);
+    padding: 12px;
+    font-weight: 600;
+    text-align: right;
+    font-size: 12px;
+  }
+  .version-table td {
+    padding: 12px;
+    border-bottom: 1px solid var(--border-soft);
+  }
+  .version-table tbody tr:nth-child(even) { background: var(--bg); }
+
+  /* ========== MAIN CONTENT ========== */
+  .content { padding: 60px; }
+  section {
+    margin-bottom: 56px;
+    page-break-inside: avoid;
+    scroll-margin-top: 100px;
+  }
+  h1.section-title {
+    font-size: 28px;
+    color: var(--primary);
+    margin-bottom: 26px;
+    padding-bottom: 14px;
+    border-bottom: 3px solid var(--secondary);
+    font-weight: 800;
+    position: relative;
+  }
+  h1.section-title::before {
+    content: '';
+    position: absolute;
+    bottom: -3px;
+    right: 0;
+    width: 70px;
+    height: 3px;
+    background: var(--primary);
+  }
+  h2 {
+    font-size: 20px;
+    color: var(--primary);
+    margin-top: 30px;
+    margin-bottom: 14px;
+    font-weight: 700;
+  }
+  h3 {
+    font-size: 17px;
+    color: var(--primary-light);
+    margin-top: 22px;
+    margin-bottom: 10px;
+    font-weight: 700;
+  }
+  p { margin-bottom: 14px; text-align: justify; }
+  ul, ol { margin-right: 26px; margin-bottom: 16px; }
+  li { margin-bottom: 8px; }
+  ul li::marker { color: var(--secondary); }
+  strong { color: var(--primary); font-weight: 700; }
+
+  /* ========== TOC ========== */
+  .toc {
+    background: linear-gradient(135deg, var(--bg-alt) 0%, var(--secondary-soft) 100%);
+    padding: 40px;
+    border-right: 4px solid var(--secondary);
+    margin-bottom: 50px;
+    border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  }
+  .toc h2 {
+    margin-top: 0;
+    font-size: 22px;
+    margin-bottom: 20px;
+    color: var(--primary);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .toc h2 svg {
+    width: 22px;
+    height: 22px;
+    color: var(--secondary-dark);
+  }
+  .toc ol {
+    list-style: none;
+    margin-right: 0;
+    counter-reset: toc-counter;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 28px;
+  }
+  .toc ol li {
+    counter-increment: toc-counter;
+    padding: 10px 0;
+    border-bottom: 1px dotted var(--border);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    transition: var(--transition);
+  }
+  .toc ol li:hover {
+    padding-right: 6px;
+  }
+  .toc ol li::before {
+    content: counter(toc-counter, decimal-leading-zero);
+    color: var(--secondary-dark);
+    font-weight: 800;
+    font-size: 13px;
+    min-width: 28px;
+  }
+  .toc a {
+    color: var(--primary);
+    text-decoration: none;
+    flex-grow: 1;
+    transition: var(--transition);
+    font-weight: 500;
+    font-size: 14.5px;
+  }
+  .toc a:hover { color: var(--secondary-dark); }
+
+  /* ========== DEFINITIONS TABLE ========== */
+  .def-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 22px 0;
+    font-size: 14px;
+    background: var(--white);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+  }
+  .def-table th {
+    background: var(--primary);
+    color: var(--white);
+    padding: 14px 16px;
+    text-align: right;
+    font-weight: 600;
+  }
+  .def-table td {
+    padding: 14px 16px;
+    border-bottom: 1px solid var(--border-soft);
+    vertical-align: top;
+  }
+  .def-table td:first-child {
+    background: var(--secondary-soft);
+    color: var(--primary);
+    font-weight: 700;
+    min-width: 200px;
+    border-right: 3px solid var(--secondary);
+  }
+  .def-table tbody tr:last-child td { border-bottom: none; }
+  .def-table tbody tr:hover td:not(:first-child) { background: var(--bg); }
+
+  /* ========== PRINCIPLES ========== */
+  .principles {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+    margin: 26px 0;
+  }
+  .principle-card {
+    padding: 22px;
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-right: 4px solid var(--secondary);
+    border-radius: 0 var(--radius-md) var(--radius-md) 0;
+    transition: var(--transition);
+    position: relative;
+  }
+  .principle-card:hover {
+    box-shadow: var(--shadow-md);
+    border-right-color: var(--primary);
+    transform: translateY(-2px);
+  }
+  .principle-card .num {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    background: var(--primary);
+    color: var(--secondary);
+    border-radius: 50%;
+    font-weight: 800;
+    font-size: 14px;
+    margin-left: 12px;
+    vertical-align: middle;
+  }
+  .principle-card .title {
+    font-weight: 700;
+    color: var(--primary);
+    font-size: 16px;
+    display: inline-block;
+    vertical-align: middle;
+  }
+  .principle-card .desc {
+    font-size: 13.5px;
+    color: var(--text-muted);
+    margin-top: 12px;
+    line-height: 1.7;
+  }
+
+  /* ========== ROLE BOXES ========== */
+  .role-box {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-right: 4px solid var(--secondary);
+    padding: 26px 28px;
+    margin: 22px 0;
+    border-radius: 0 var(--radius-md) var(--radius-md) 0;
+    transition: var(--transition);
+  }
+  .role-box:hover {
+    box-shadow: var(--shadow-md);
+    border-right-color: var(--primary);
+  }
+  .role-box h3 {
+    margin-top: 0;
+    color: var(--primary);
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-weight: 800;
+  }
+  .role-box h3::before {
+    content: '';
+    display: inline-block;
+    width: 6px;
+    height: 22px;
+    background: var(--secondary);
+    border-radius: 2px;
+  }
+  .role-meta {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 10px 16px;
+    margin: 16px 0;
+    padding: 16px;
+    background: var(--bg-alt);
+    border-radius: var(--radius-sm);
+    font-size: 14px;
+  }
+  .role-meta .label {
+    color: var(--primary);
+    font-weight: 700;
+  }
+  .role-box ul { margin-top: 10px; }
+
+  /* ========== RACI TABLE ========== */
+  .raci-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12.5px;
+    margin: 22px 0;
+    background: var(--white);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+  }
+  .raci-table th {
+    background: var(--primary);
+    color: var(--white);
+    padding: 12px 8px;
+    text-align: center;
+    font-weight: 600;
+    border: 1px solid var(--primary-dark);
+  }
+  .raci-table th:first-child {
+    text-align: right;
+    min-width: 240px;
+  }
+  .raci-table td {
+    padding: 11px 8px;
+    border: 1px solid var(--border-soft);
+    text-align: center;
+  }
+  .raci-table td:first-child {
+    text-align: right;
+    background: var(--bg-alt);
+    font-weight: 500;
+    color: var(--primary);
+  }
+  .raci-table .r {
+    background: rgba(46, 96, 102, 0.12);
+    color: var(--primary-dark);
+    font-weight: 800;
+  }
+  .raci-table .a {
+    background: rgba(198, 170, 118, 0.22);
+    color: var(--secondary-dark);
+    font-weight: 800;
+  }
+  .raci-table .c {
+    background: rgba(56, 86, 118, 0.12);
+    color: var(--support-blue);
+    font-weight: 800;
+  }
+  .raci-table .i {
+    background: rgba(138, 126, 120, 0.14);
+    color: var(--support-taupe);
+    font-weight: 800;
+  }
+
+  .raci-legend {
+    display: flex;
+    gap: 10px;
+    margin-top: 14px;
+    font-size: 12px;
+    flex-wrap: wrap;
+  }
+  .raci-legend span {
+    padding: 6px 14px;
+    font-weight: 700;
+    border-radius: var(--radius-sm);
+  }
+  .raci-legend .r { background: rgba(46, 96, 102, 0.12); color: var(--primary-dark); }
+  .raci-legend .a { background: rgba(198, 170, 118, 0.22); color: var(--secondary-dark); }
+  .raci-legend .c { background: rgba(56, 86, 118, 0.12); color: var(--support-blue); }
+  .raci-legend .i { background: rgba(138, 126, 120, 0.14); color: var(--support-taupe); }
+
+  /* ========== CALLOUT ========== */
+  .callout {
+    padding: 20px 24px;
+    margin: 22px 0;
+    border-right: 4px solid var(--primary);
+    background: var(--primary-soft);
+    font-size: 14.5px;
+    line-height: 1.75;
+    border-radius: 0 var(--radius-md) var(--radius-md) 0;
+    display: flex;
+    gap: 14px;
+  }
+  .callout-icon {
+    flex-shrink: 0;
+    width: 24px;
+    height: 24px;
+    color: var(--primary);
+    margin-top: 2px;
+  }
+  .callout-content { flex: 1; }
+  .callout strong {
+    display: block;
+    margin-bottom: 6px;
+    color: var(--primary);
+    font-size: 15px;
+    font-weight: 700;
+  }
+  .callout.warning {
+    border-right-color: var(--danger);
+    background: rgba(137, 91, 96, 0.08);
+  }
+  .callout.warning strong { color: var(--danger); }
+  .callout.warning .callout-icon { color: var(--danger); }
+
+  /* ========== SIGNATURE HIERARCHY ========== */
+  .signature-hierarchy {
+    margin-top: 60px;
+    padding: 50px 40px;
+    background: var(--bg-alt);
+    border: 2px solid var(--secondary);
+    border-radius: var(--radius-lg);
+    position: relative;
+  }
+  .sig-level { width: 100%; }
+  .sig-level-label {
+    text-align: center;
+    font-size: 12px;
+    letter-spacing: 4px;
+    color: var(--secondary-dark);
+    margin-bottom: 30px;
+    text-transform: uppercase;
+    font-weight: 800;
+  }
+  .sig-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    max-width: 100%;
+  }
+  .sig-row-single {
+    grid-template-columns: 1fr;
+    max-width: 60%;
+    margin: 0 auto;
+  }
+  .sig-box {
+    text-align: center;
+    padding: 20px 0;
+  }
+  .sig-box .line {
+    border-bottom: 2px solid var(--primary);
+    margin: 60px 20px 14px;
+  }
+  .sig-box .name {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--primary);
+  }
+  .sig-box .role {
+    font-size: 13px;
+    color: var(--text-muted);
+    margin-top: 6px;
+  }
+  .sig-level-approve { margin-top: 10px; }
+  .sig-box-final {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-top: 3px solid var(--secondary);
+    padding: 30px 20px;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
+  }
+  .sig-box-final .line {
+    border-bottom: 2px solid var(--primary);
+    margin: 70px 30px 14px;
+  }
+  .sig-box-final .name {
+    font-size: 17px;
+    color: var(--primary);
+  }
+  .sig-divider {
+    text-align: center;
+    margin: 35px 0 25px;
+    position: relative;
+    height: 32px;
+  }
+  .sig-divider::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: var(--secondary);
+    transform: translateX(-50%);
+  }
+  .sig-divider-text {
+    position: relative;
+    background: var(--bg-alt);
+    color: var(--secondary-dark);
+    font-size: 11px;
+    letter-spacing: 3px;
+    padding: 0 18px;
+    z-index: 2;
+    line-height: 32px;
+    font-weight: 800;
+  }
+
+  /* ========== FOOTER ========== */
+  footer {
+    background: var(--primary);
+    color: rgba(255,255,255,0.85);
+    padding: 36px 60px;
+    font-size: 13px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 3px solid var(--secondary);
+    flex-wrap: wrap;
+    gap: 14px;
+  }
+  footer .brand-mark {
+    color: var(--secondary);
+    font-weight: 800;
+    letter-spacing: 1.5px;
+  }
+  footer .footer-logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  footer .footer-logo img {
+    height: 36px;
+    filter: brightness(0) invert(1);
+    opacity: 0.9;
+  }
+
+  /* ========== SCROLL TO TOP ========== */
+  .scroll-top {
+    position: fixed;
+    bottom: 30px;
+    left: 30px;
+    width: 48px;
+    height: 48px;
+    background: var(--primary);
+    color: var(--white);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: var(--shadow-lg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: var(--transition);
+    z-index: 99;
+  }
+  .scroll-top.show {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .scroll-top:hover {
+    background: var(--primary-dark);
+    transform: translateY(-3px);
+  }
+  .scroll-top svg { width: 20px; height: 20px; }
+
+  /* ========== PRINT ========== */
+  @media print {
+    body { background: #fff; font-size: 12pt; }
+    .page { box-shadow: none; max-width: 100%; }
+    .topnav, .scroll-top { display: none; }
+    .cover { page-break-after: always; min-height: 100vh; }
+    .control-block { page-break-after: always; }
+    section { page-break-inside: avoid; }
+    h1.section-title { page-break-after: avoid; }
+    .toc { page-break-after: always; }
+  }
+
+  /* ========== RESPONSIVE ========== */
+  @media (max-width: 900px) {
+    .topnav { padding: 14px 24px; }
+    .topnav-title { display: none; }
+    .cover { padding: 40px 24px; }
+    .cover-title { font-size: 36px; }
+    .cover-meta { grid-template-columns: 1fr 1fr; gap: 14px; }
+    .content { padding: 36px 24px; }
+    .control-block { padding: 30px 24px; }
+    .control-grid { grid-template-columns: 1fr; }
+    .principles { grid-template-columns: 1fr; }
+    .toc { padding: 28px; }
+    .toc ol { grid-template-columns: 1fr; }
+    .sig-row { grid-template-columns: 1fr; gap: 30px; }
+    .sig-row-single { max-width: 100%; }
+    .signature-hierarchy { padding: 30px 20px; }
+    footer { flex-direction: column; padding: 24px; text-align: center; }
+    .raci-table { font-size: 10.5px; }
+    .cover-header { flex-direction: column; gap: 16px; align-items: flex-start; }
+  }
+
+  @media (max-width: 480px) {
+    .btn span { display: none; }
+    .btn { padding: 9px 12px; }
+    .cover-title { font-size: 28px; }
+    .cover-subtitle { font-size: 18px; }
+  }
+
+  /* ========== ANIMATIONS ========== */
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  section { animation: fadeInUp 0.5s ease both; }
+  .principle-card, .role-box { animation: fadeInUp 0.5s ease both; }
+</style>
+</head>
+<body>
+<div class="page">
+
+<!-- ============ TOP NAVIGATION ============ -->
+<nav class="topnav">
+  <div class="topnav-logo">
+    <img src="https://nauss.edu.sa/Style%20Library/ar-sa/Styles/images/home/Logo.svg" alt="NAUSS Logo" onerror="this.style.display='none'">
+    <div class="topnav-title">
+      سياسة حوكمة البيانات
+      <span class="sub">NAUSS-DGP-2026 · v1.2</span>
+    </div>
+  </div>
+  <div class="topnav-actions">
+    <button class="btn btn-ghost" onclick="window.print()">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="6 9 6 2 18 2 18 9"></polyline>
+        <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
+        <rect x="6" y="14" width="12" height="8"></rect>
+      </svg>
+      <span>طباعة</span>
+    </button>
+    <a href="#s1" class="btn btn-primary">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="17" y1="10" x2="3" y2="10"></line>
+        <line x1="21" y1="6" x2="3" y2="6"></line>
+        <line x1="21" y1="14" x2="3" y2="14"></line>
+        <line x1="17" y1="18" x2="3" y2="18"></line>
+      </svg>
+      <span>المحتويات</span>
+    </a>
+  </div>
+</nav>
+
+<!-- ============ COVER ============ -->
+<div class="cover">
+  <div class="cover-decor"></div>
+  <div class="cover-header">
+    <div class="cover-brand">
+      <img src="https://nauss.edu.sa/Style%20Library/ar-sa/Styles/images/home/Logo.svg" alt="NAUSS" onerror="this.style.display='none'">
+      <div class="cover-brand-text">
+        <div class="ar">جامعة نايف العربية للعلوم الأمنية</div>
+        <div class="en">Naif Arab University for Security Sciences</div>
+      </div>
+    </div>
+    <div class="doc-badge">POLICY · 2026</div>
+  </div>
+
+  <div class="cover-body">
+    <div class="cover-kicker">إدارة تقنية المعلومات</div>
+    <div class="cover-title">سياسة حوكمة البيانات</div>
+    <div class="cover-subtitle">Data Governance Policy</div>
+  </div>
+
+  <div class="cover-meta">
+    <div class="cover-meta-item">
+      <div class="label">DOCUMENT</div>
+      <div class="value">NAUSS-DGP-2026</div>
+    </div>
+    <div class="cover-meta-item">
+      <div class="label">VERSION</div>
+      <div class="value">v1.2 — مسودّة</div>
+    </div>
+    <div class="cover-meta-item">
+      <div class="label">CLASSIFICATION</div>
+      <div class="value">عام</div>
+    </div>
+    <div class="cover-meta-item">
+      <div class="label">OWNER</div>
+      <div class="value">إدارة تقنية المعلومات</div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ DOCUMENT CONTROL ============ -->
+<div class="control-block">
+  <h2>ضبط الوثيقة</h2>
+  <div class="control-grid">
+    <div class="field"><strong>اسم الوثيقة:</strong><span>سياسة حوكمة البيانات</span></div>
+    <div class="field"><strong>الرقم المرجعي:</strong><span>NAUSS-DGP-2026-001</span></div>
+    <div class="field"><strong>المُعِدّ:</strong><span>إدارة تقنية المعلومات</span></div>
+    <div class="field"><strong>جهة الاعتماد:</strong><span>لجنة التحوّل الرقمي</span></div>
+    <div class="field"><strong>المُعتمِد:</strong><span>معالي رئيس الجامعة</span></div>
+    <div class="field"><strong>تاريخ الاعتماد:</strong><span>—</span></div>
+    <div class="field"><strong>تاريخ السريان:</strong><span>فور الاعتماد</span></div>
+    <div class="field"><strong>دورية المراجعة:</strong><span>سنوياً (أو عند الحاجة)</span></div>
+  </div>
+</div>
+
+<!-- ============ CONTENT ============ -->
+<div class="content">
+
+<!-- TOC -->
+<nav class="toc">
+  <h2>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <line x1="8" y1="6" x2="21" y2="6"></line>
+      <line x1="8" y1="12" x2="21" y2="12"></line>
+      <line x1="8" y1="18" x2="21" y2="18"></line>
+      <line x1="3" y1="6" x2="3.01" y2="6"></line>
+      <line x1="3" y1="12" x2="3.01" y2="12"></line>
+      <line x1="3" y1="18" x2="3.01" y2="18"></line>
+    </svg>
+    المحتويات
+  </h2>
+  <ol>
+    <li><a href="#s1">المقدّمة والغرض</a></li>
+    <li><a href="#s2">النطاق والسريان</a></li>
+    <li><a href="#s3">المرجعيات النظامية</a></li>
+    <li><a href="#s4">التعريفات</a></li>
+    <li><a href="#s5">المبادئ الحاكمة</a></li>
+    <li><a href="#s6">الهيكل الحوكمي للبيانات</a></li>
+    <li><a href="#s7">نطاقات إدارة البيانات</a></li>
+    <li><a href="#s8">مصفوفة الأدوار والمسؤوليات (RACI)</a></li>
+    <li><a href="#s9">الالتزامات العامة</a></li>
+    <li><a href="#s10">آلية التطبيق والمتابعة</a></li>
+    <li><a href="#s11">المخالفات والتصعيد</a></li>
+    <li><a href="#s12">المراجعة والتحديث</a></li>
+    <li><a href="#s13">الاعتماد والسريان</a></li>
+  </ol>
+</nav>
+
+<!-- 1. Introduction -->
+<section id="s1">
+  <h1 class="section-title">١. المقدّمة والغرض</h1>
+  <p>تُعدّ البيانات من أهم الأصول الاستراتيجية لجامعة نايف العربية للعلوم الأمنية، إذ تُشكّل ركيزة جوهرية لاتخاذ القرار المبني على الأدلة، وتمكين الخدمات التعليمية والبحثية والإدارية، ودعم مبادرات التحوّل الرقمي، وتفعيل تطبيقات الذكاء الاصطناعي وفق الإطار التوجيهي المعتمد في الجامعة.</p>
+
+  <p>وانطلاقاً من التزام الجامعة بأعلى المعايير المؤسسية، وامتثالاً للمتطلبات النظامية الصادرة عن الجهات التشريعية في المملكة العربية السعودية — وعلى رأسها ضوابط مكتب إدارة البيانات الوطني، ونظام حماية البيانات الشخصية، وضوابط الهيئة الوطنية للأمن السيبراني — تأتي هذه السياسة لترسم الإطار المؤسسي الشامل لحوكمة البيانات في الجامعة.</p>
+
+  <h2>أهداف السياسة</h2>
+  <p>تهدف هذه السياسة إلى تحقيق ما يلي:</p>
+  <ul>
+    <li>إرساء إطار مؤسسي موحّد لحوكمة البيانات يُغطّي كافة مراحل دورة حياتها.</li>
+    <li>تعريف الأدوار والمسؤوليات المتعلقة بالبيانات لجميع الأطراف ذات العلاقة.</li>
+    <li>ضمان امتثال الجامعة للمرجعيات النظامية الوطنية وأفضل الممارسات الدولية.</li>
+    <li>حماية خصوصية البيانات الشخصية وصون سرّيتها.</li>
+    <li>تعزيز جودة البيانات ودقّتها واكتمالها وتوافرها في الوقت المناسب.</li>
+    <li>تمكين المشاركة الآمنة والفعّالة للبيانات بين الوحدات الإدارية والأكاديمية.</li>
+    <li>تعظيم القيمة المؤسسية المستمدّة من البيانات، ودعم تحقيق الأهداف الاستراتيجية للجامعة.</li>
+    <li>تهيئة البيئة اللازمة لتبنّي تقنيات الذكاء الاصطناعي والتحليلات المتقدّمة.</li>
+  </ul>
+</section>
+
+<!-- 2. Scope -->
+<section id="s2">
+  <h1 class="section-title">٢. النطاق والسريان</h1>
+  <p>تسري هذه السياسة على جميع البيانات التي تُنتجها الجامعة أو تمتلكها أو تعالجها أو تحتفظ بها أو تتبادلها مع أطراف خارجية، بغضّ النظر عن شكلها أو وسيط تخزينها، وتشمل — على سبيل المثال لا الحصر — ما يلي:</p>
+  <ul>
+    <li>البيانات الإدارية والتشغيلية للجامعة.</li>
+    <li>البيانات المالية والمحاسبية.</li>
+    <li>بيانات المنسوبين (أعضاء هيئة التدريس، الموظفين، المتعاقدين).</li>
+    <li>بيانات المتدربين والدارسين والخريجين.</li>
+    <li>البيانات الأكاديمية والتعليمية (البرامج، المقرّرات، الدرجات).</li>
+    <li>البيانات البحثية، مع مراعاة أنّها تخضع لضوابط إضافية صادرة عن عمادة البحث العلمي ولجنة أخلاقيات البحث.</li>
+    <li>البيانات الوصفية (Metadata) والبيانات المرجعية والرئيسية.</li>
+    <li>البيانات التشغيلية للأنظمة التقنية وسجلّات الأحداث.</li>
+  </ul>
+
+  <p>وتنطبق السياسة على جميع الأطراف التالية:</p>
+  <ul>
+    <li>جميع منسوبي الجامعة من أعضاء هيئة التدريس والموظفين والمتدربين.</li>
+    <li>المتعاقدين والاستشاريين والمورّدين العاملين مع الجامعة.</li>
+    <li>الأطراف الخارجية التي تصل إلى بيانات الجامعة بموجب اتفاقيات أو علاقات تعاون.</li>
+    <li>جميع الأنظمة والتطبيقات والبنى التحتية التقنية المستضيفة لبيانات الجامعة، سواء داخل مقرّها أو لدى مزوّدي الخدمات السحابية.</li>
+  </ul>
+
+  <div class="callout">
+    <svg class="callout-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="12" cy="12" r="10"></circle>
+      <line x1="12" y1="16" x2="12" y2="12"></line>
+      <line x1="12" y1="8" x2="12.01" y2="8"></line>
+    </svg>
+    <div class="callout-content">
+      <strong>ملاحظة بشأن البيانات البحثية</strong>
+      تخضع البيانات البحثية لهذه السياسة بوصفها الإطار العام، كما تخضع بصورة تكميلية لسياسات وأخلاقيات البحث العلمي المعتمدة في الجامعة. وفي حال وجود تعارض ظاهر، تُحال المسألة إلى لجنة التحوّل الرقمي للبتّ فيها بالتنسيق مع عمادة البحث العلمي.
+    </div>
+  </div>
+</section>
+
+<!-- 3. Normative References -->
+<section id="s3">
+  <h1 class="section-title">٣. المرجعيات النظامية</h1>
+  <p>استُنِدت هذه السياسة إلى جملة من المرجعيات النظامية والمعيارية، تشمل:</p>
+
+  <h2>٣.١ المرجعيات الوطنية</h2>
+  <ul>
+    <li><strong>ضوابط إدارة البيانات وحماية البيانات الشخصية:</strong> الصادرة عن مكتب إدارة البيانات الوطني (NDMO) التابع لهيئة البيانات والذكاء الاصطناعي (سدايا).</li>
+    <li><strong>نظام حماية البيانات الشخصية (PDPL):</strong> الصادر بالمرسوم الملكي ذي الصلة ولائحته التنفيذية.</li>
+    <li><strong>الضوابط الأساسية للأمن السيبراني (ECC-2:2024):</strong> الصادرة عن الهيئة الوطنية للأمن السيبراني.</li>
+    <li><strong>ضوابط حماية البيانات:</strong> الصادرة عن الهيئة الوطنية للأمن السيبراني.</li>
+    <li><strong>المبادئ الأخلاقية للذكاء الاصطناعي:</strong> الصادرة عن سدايا.</li>
+    <li><strong>ضوابط الحوسبة السحابية:</strong> الصادرة عن الجهات التنظيمية ذات العلاقة.</li>
+  </ul>
+
+  <h2>٣.٢ المرجعيات المؤسسية</h2>
+  <ul>
+    <li>استراتيجية جامعة نايف العربية للعلوم الأمنية.</li>
+    <li>الإطار التوجيهي للذكاء الاصطناعي في الجامعة (2026–2029).</li>
+    <li>السياسات المعتمدة في الجامعة.</li>
+    <li>اللوائح والأنظمة الداخلية للجامعة.</li>
+  </ul>
+
+  <h2>٣.٣ المرجعيات والمعايير الدولية (استرشادية)</h2>
+  <ul>
+    <li>إطار DAMA-DMBOK لإدارة البيانات.</li>
+    <li>معيار ISO/IEC 38505 لحوكمة البيانات.</li>
+    <li>معيار ISO/IEC 27001 لأمن المعلومات.</li>
+    <li>إطار COBIT لحوكمة تقنية المعلومات.</li>
+  </ul>
+
+  <div class="callout">
+    <svg class="callout-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
+      <path d="M2 17l10 5 10-5"></path>
+      <path d="M2 12l10 5 10-5"></path>
+    </svg>
+    <div class="callout-content">
+      <strong>أولوية التطبيق</strong>
+      في حال وجود تعارض بين هذه السياسة وأي مرجعية وطنية مُلزمة، تسود المرجعية الوطنية، وتُعدَّل السياسة فوراً لتتوافق معها.
+    </div>
+  </div>
+</section>
+
+<!-- 4. Definitions -->
+<section id="s4">
+  <h1 class="section-title">٤. التعريفات</h1>
+  <p>يُقصد بالمصطلحات الواردة في هذه السياسة المعاني الموضّحة أمام كلٍّ منها:</p>
+
+  <table class="def-table">
+    <thead>
+      <tr>
+        <th>المصطلح</th>
+        <th>التعريف</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>البيانات</td><td>كل ما يمكن تسجيله أو تخزينه أو معالجته في شكل رقمي أو ورقي، ويُمثّل حقائق أو وقائع أو ملاحظات عن الجامعة أو أنشطتها أو منسوبيها أو المتعاملين معها.</td></tr>
+      <tr><td>البيانات الشخصية</td><td>كل بيان — مهما كان مصدره أو شكله — من شأنه أن يؤدي إلى معرفة الفرد على وجه التحديد، بحسب تعريف نظام حماية البيانات الشخصية.</td></tr>
+      <tr><td>البيانات الشخصية الحسّاسة</td><td>كل بيان شخصي يتعلّق بالأصل العرقي أو الديانة أو القناعات الفكرية أو السياسية أو البيانات الصحّية أو الوراثية أو الجنائية أو الاعتمادية، وغيرها وفقاً للنظام.</td></tr>
+      <tr><td>الأصل المعلوماتي</td><td>أي مجموعة بيانات لها قيمة للجامعة، كقاعدة بيانات أو تقرير أو مستند أو نموذج تحليلي.</td></tr>
+      <tr><td>مالك البيانات (Data Owner)</td><td>المسؤول الأعلى في الجهة المُنتِجة للبيانات داخل الجامعة (عميد أو مدير إدارة)، وهو صاحب الصلاحية النهائية في اتخاذ القرارات المتعلقة ببياناته.</td></tr>
+      <tr><td>مُشرف البيانات (Data Steward)</td><td>الموظف المُعيَّن من قبل مالك البيانات لإدارة البيانات تشغيلياً نيابةً عنه، ومتابعة جودتها والإبلاغ عن مخاطرها.</td></tr>
+      <tr><td>حافظ البيانات (Data Custodian)</td><td>الجهة الفنية المسؤولة عن تخزين البيانات وحمايتها ونسخها احتياطياً، وتتمثّل في إدارة تقنية المعلومات.</td></tr>
+      <tr><td>مستخدم البيانات (Data User)</td><td>أي شخص مُخوَّل بالوصول إلى البيانات لأداء مهامه الوظيفية.</td></tr>
+      <tr><td>مسؤول حماية البيانات الشخصية (DPO)</td><td>الشخص المُعيَّن وفقاً لمتطلبات نظام حماية البيانات الشخصية للإشراف على الامتثال لمتطلبات حماية البيانات الشخصية.</td></tr>
+      <tr><td>رئيس وحدة حوكمة وإدارة البيانات (CDO)</td><td>القيادي المسؤول عن وحدة حوكمة وإدارة البيانات في الجامعة، ويتولّى قيادة مبادرات الحوكمة والتنفيذ على المستوى المؤسسي.</td></tr>
+      <tr><td>تصنيف البيانات</td><td>عملية تحديد مستوى حسّاسية البيانات وتأثيرها في حال الإفصاح أو الفقد أو التغيير غير المصرّح به، وفق مستويات معتمدة.</td></tr>
+      <tr><td>دورة حياة البيانات</td><td>المراحل التي تمرّ بها البيانات من الإنشاء أو الاكتساب، مروراً بالتخزين والاستخدام والمشاركة، وانتهاءً بالأرشفة أو الإتلاف.</td></tr>
+      <tr><td>جودة البيانات</td><td>مدى ملاءمة البيانات للاستخدام المقصود، وتقاس بأبعاد تشمل الدقّة والاكتمال والاتساق والتوقيت والتفرّد.</td></tr>
+      <tr><td>البيانات الوصفية (Metadata)</td><td>البيانات التي تصف بيانات أخرى، كمصدرها وتاريخ إنشائها وبنيتها ومالكها.</td></tr>
+      <tr><td>البيانات المرجعية (Reference Data)</td><td>البيانات الثابتة نسبياً التي تُستخدم لتصنيف بيانات أخرى، مثل قوائم الدول أو العملات.</td></tr>
+      <tr><td>البيانات الرئيسية (Master Data)</td><td>البيانات الأساسية المشتركة بين الأنظمة، كبيانات الطلبة الرئيسية وبيانات الموظفين الأساسية.</td></tr>
+      <tr><td>الحادثة الأمنية للبيانات</td><td>أي واقعة تمسّ سرّية البيانات أو سلامتها أو توفّرها، بما يخالف السياسات المعتمدة.</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- 5. Principles -->
+<section id="s5">
+  <h1 class="section-title">٥. المبادئ الحاكمة</h1>
+  <p>تقوم حوكمة البيانات في الجامعة على ثمانية مبادئ جوهرية تُوجّه كل قرار وإجراء مرتبط بالبيانات:</p>
+
+  <div class="principles">
+    <div class="principle-card">
+      <span class="num">١</span><span class="title">البيانات أصل مؤسسي</span>
+      <div class="desc">تُعامَل البيانات بوصفها أصلاً استراتيجياً للجامعة، لا ملكاً فردياً لإدارة أو شخص، وتُدار وفق إطار مؤسسي موحّد.</div>
+    </div>
+    <div class="principle-card">
+      <span class="num">٢</span><span class="title">ملكية واحدة محدّدة</span>
+      <div class="desc">لكل مجموعة بيانات مالك واحد محدّد، مسؤول عن سلامتها وجودتها وصلاحيات الوصول إليها.</div>
+    </div>
+    <div class="principle-card">
+      <span class="num">٣</span><span class="title">التصنيف قبل الاستخدام</span>
+      <div class="desc">تُصنَّف البيانات وفق مستويات الحسّاسية المعتمدة قبل معالجتها أو مشاركتها، ولا يُعامَل بيانٌ دون تصنيف.</div>
+    </div>
+    <div class="principle-card">
+      <span class="num">٤</span><span class="title">الحاجة إلى المعرفة</span>
+      <div class="desc">يُمنح الوصول إلى البيانات على أساس ما يتطلّبه أداء المهام الوظيفية فقط، دون توسّع غير مبرّر.</div>
+    </div>
+    <div class="principle-card">
+      <span class="num">٥</span><span class="title">الجودة مسؤولية المُنتِج</span>
+      <div class="desc">جودة البيانات مسؤولية أساسية على الجهة المُنتِجة لها، مع دعم فنّي من وحدة حوكمة وإدارة البيانات.</div>
+    </div>
+    <div class="principle-card">
+      <span class="num">٦</span><span class="title">الحماية مسؤولية الجميع</span>
+      <div class="desc">حماية البيانات واجب على كل منسوب يتعامل معها، بصرف النظر عن موقعه الوظيفي أو طبيعة مهامه.</div>
+    </div>
+    <div class="principle-card">
+      <span class="num">٧</span><span class="title">الشفافية والمساءلة</span>
+      <div class="desc">تُوثَّق قرارات البيانات بشكل يُتيح مراجعتها وتتبّعها، وتترتّب المساءلة على الإخلال بها.</div>
+    </div>
+    <div class="principle-card">
+      <span class="num">٨</span><span class="title">الامتثال النظامي</span>
+      <div class="desc">يلتزم كل تعامل مع البيانات بالمرجعيات النظامية الوطنية بوصفها الحدّ الأدنى، لا الحدّ الأعلى.</div>
+    </div>
+  </div>
+</section>
+
+<!-- 6. Governance Structure -->
+<section id="s6">
+  <h1 class="section-title">٦. الهيكل الحوكمي للبيانات</h1>
+  <p>يقوم الهيكل الحوكمي للبيانات في الجامعة على ثلاثة مستويات متكاملة: مستوى استراتيجي تُمثّله لجنة التحوّل الرقمي، ومستوى تنفيذي تُمثّله اللجنة التنفيذية لحوكمة البيانات ووحدة حوكمة وإدارة البيانات، ومستوى تشغيلي يُمثّله مُلّاك البيانات ومُشرفوها على مستوى الإدارات.</p>
+
+  <div class="role-box">
+    <h3>٦.١ لجنة التحوّل الرقمي (المستوى الاستراتيجي)</h3>
+    <div class="role-meta">
+      <span class="label">الرئاسة:</span><span>معالي رئيس الجامعة</span>
+      <span class="label">التبعية:</span><span>معالي رئيس الجامعة مباشرة</span>
+      <span class="label">دورية الاجتماع:</span><span>ربع سنوي (أربعة اجتماعات سنوياً) ويجوز عقد اجتماعات استثنائية عند الحاجة</span>
+      <span class="label">المُقرِّر:</span><span>رئيس وحدة حوكمة وإدارة البيانات</span>
+    </div>
+
+    <p>تتولّى لجنة التحوّل الرقمي في الجامعة ممارسة المهامّ الاستراتيجية المتعلقة بحوكمة البيانات المنصوص عليها في هذه السياسة، إلى جانب اختصاصاتها الأصلية في قيادة مبادرات التحوّل الرقمي.</p>
+
+    <p><strong>التشكيل:</strong></p>
+    <ul>
+      <li>معالي رئيس الجامعة (رئيساً).</li>
+      <li>وكلاء الجامعة (أعضاء).</li>
+      <li>عمداء العمادات الرئيسية المنتجة للبيانات (القبول والتسجيل، البحث العلمي، شؤون أعضاء هيئة التدريس، الدراسات العليا، وغيرها حسب الحاجة).</li>
+      <li>مدير إدارة تقنية المعلومات (عضواً).</li>
+      <li>مدير إدارة الأمن السيبراني (عضواً).</li>
+      <li>مدير إدارة الشؤون المالية (عضواً).</li>
+      <li>مدير إدارة الموارد البشرية (عضواً).</li>
+      <li>مدير مكتب الدراسات والخدمات الاستشارية (عضواً).</li>
+      <li>مدير الاستراتيجية والتحوّل (عضواً).</li>
+      <li>مسؤول حماية البيانات الشخصية (عضواً).</li>
+      <li>رئيس وحدة حوكمة وإدارة البيانات (عضواً ومقرّراً).</li>
+    </ul>
+
+    <p><strong>الاختصاصات في شأن حوكمة البيانات:</strong></p>
+    <ul>
+      <li>اعتماد سياسات البيانات والاستراتيجيات ذات العلاقة، والتوصية بتعديلها.</li>
+      <li>إقرار الأولويات السنوية لمبادرات حوكمة البيانات.</li>
+      <li>اعتماد ميزانية وحدة حوكمة وإدارة البيانات السنوية.</li>
+      <li>استعراض مؤشرات الأداء الرئيسية المتعلقة بالبيانات.</li>
+      <li>البتّ في الحالات التصعيدية والنزاعات المتعلقة بالبيانات بين الإدارات.</li>
+      <li>اعتماد مبادرات مشاركة البيانات مع الجهات الخارجية ذات الأثر المؤسسي.</li>
+      <li>الإشراف على الامتثال للمرجعيات النظامية الوطنية في مجال البيانات.</li>
+    </ul>
+  </div>
+
+  <div class="role-box">
+    <h3>٦.٢ اللجنة التنفيذية لحوكمة البيانات (المستوى التنفيذي)</h3>
+    <div class="role-meta">
+      <span class="label">الرئاسة:</span><span>مدير إدارة تقنية المعلومات أو من ينيبه</span>
+      <span class="label">دورية الاجتماع:</span><span>شهرياً</span>
+      <span class="label">المُقرِّر:</span><span>مدير إدارة تقنية المعلومات</span>
+    </div>
+
+    <p><strong>التشكيل المقترح:</strong></p>
+    <ul>
+      <li>مدير إدارة تقنية المعلومات (رئيساً).</li>
+      <li>رئيس وحدة حوكمة وإدارة البيانات (نائباً للرئيس ومقرّراً).</li>
+      <li>ممثّلون عن الإدارات المالكة للبيانات الرئيسية (بمستوى مشرف بيانات أو أعلى).</li>
+      <li>ممثّل عن إدارة الأمن السيبراني.</li>
+      <li>مسؤول حماية البيانات الشخصية.</li>
+    </ul>
+
+    <p><strong>الاختصاصات:</strong></p>
+    <ul>
+      <li>متابعة التنفيذ اليومي للسياسات والمبادرات.</li>
+      <li>حلّ الإشكالات التشغيلية بين الإدارات المالكة للبيانات.</li>
+      <li>اعتماد التعديلات الإجرائية غير الجوهرية.</li>
+      <li>مراجعة حوادث البيانات الأسبوعية أو الشهرية.</li>
+      <li>إعداد التقارير الدورية لرفعها إلى لجنة التحوّل الرقمي.</li>
+      <li>رفع التوصيات إلى لجنة التحوّل الرقمي بشأن المسائل الجوهرية.</li>
+    </ul>
+  </div>
+
+  <div class="role-box">
+    <h3>٦.٣ وحدة حوكمة وإدارة البيانات</h3>
+    <div class="role-meta">
+      <span class="label">التبعية الإدارية:</span><span>إدارة تقنية المعلومات</span>
+      <span class="label">طبيعة الدور:</span><span>تنفيذية تنسيقية متخصّصة</span>
+    </div>
+
+    <p><strong>المسؤوليات الرئيسية:</strong></p>
+    <ul>
+      <li>تنفيذ السياسات والإجراءات المعتمدة في مجال حوكمة البيانات.</li>
+      <li>بناء وتشغيل البنية التقنية لإدارة البيانات (منصّات التحليل، الفهرسة، الجودة).</li>
+      <li>إنتاج التقارير التحليلية ولوحات المؤشرات للقيادة العليا.</li>
+      <li>تصميم البرامج التدريبية ورفع الوعي بين المنسوبين.</li>
+      <li>إعداد البيانات ونتائج التدقيق استجابةً لمتطلبات الجهات الرقابية.</li>
+      <li>التنسيق مع الجهات الوطنية (سدايا، NDMO، الهيئة الوطنية للأمن السيبراني) في ما يخصّ البيانات.</li>
+      <li>دعم مُلّاك البيانات ومُشرفيها فنّياً ومنهجياً.</li>
+      <li>القيام بأعمال سكرتارية لجنة التحوّل الرقمي (في شأن البيانات) واللجنة التنفيذية لحوكمة البيانات.</li>
+    </ul>
+  </div>
+
+  <div class="role-box">
+    <h3>٦.٤ مُلّاك البيانات (Data Owners)</h3>
+    <div class="role-meta">
+      <span class="label">التعريف:</span><span>المسؤول الأعلى في الجهة المُنتِجة للبيانات (عميد/مدير إدارة)</span>
+      <span class="label">التعيين:</span><span>بحكم المنصب، بقرار من لجنة التحوّل الرقمي</span>
+    </div>
+
+    <p><strong>المسؤوليات:</strong></p>
+    <ul>
+      <li>اعتماد تصنيف البيانات الخاضعة لملكيته.</li>
+      <li>اعتماد طلبات الوصول إلى بياناته من الأطراف الداخلية والخارجية.</li>
+      <li>ضمان جودة البيانات التي تُنتجها جهته.</li>
+      <li>تعيين مُشرف بيانات أو أكثر ضمن جهته.</li>
+      <li>الإبلاغ الفوري عن أي حادثة تمسّ بياناته.</li>
+      <li>تمثيل جهته في اللجنة التنفيذية لحوكمة البيانات أو تسمية من يمثّله.</li>
+      <li>اعتماد سياسات الاحتفاظ والإتلاف لبياناته.</li>
+    </ul>
+
+    <p><strong>أمثلة على مُلّاك البيانات في الجامعة:</strong></p>
+    <ul>
+      <li>عميد القبول والتسجيل → بيانات الطلاب والبرامج.</li>
+      <li>مدير إدارة الموارد البشرية → بيانات المنسوبين.</li>
+      <li>مدير إدارة الشؤون المالية → البيانات المالية والمحاسبية.</li>
+      <li>عميد البحث العلمي → البيانات البحثية والمشاريع.</li>
+      <li>عميد شؤون أعضاء هيئة التدريس → بيانات أعضاء هيئة التدريس.</li>
+    </ul>
+  </div>
+
+  <div class="role-box">
+    <h3>٦.٥ مُشرفو البيانات (Data Stewards)</h3>
+    <div class="role-meta">
+      <span class="label">التعريف:</span><span>موظف تنفيذي مُعيَّن من مالك البيانات ضمن الجهة المالكة</span>
+    </div>
+
+    <p><strong>المسؤوليات:</strong></p>
+    <ul>
+      <li>الإدارة اليومية للبيانات نيابةً عن المالك.</li>
+      <li>مراقبة جودة البيانات وتنفيذ إجراءات التحسين.</li>
+      <li>مراجعة صلاحيات الوصول دورياً والتوصية بتعديلها.</li>
+      <li>التنسيق المباشر مع وحدة حوكمة وإدارة البيانات في المسائل الفنية.</li>
+      <li>توعية زملائه داخل الجهة المالكة بمتطلبات السياسة.</li>
+      <li>إعداد تقارير دورية لمالك البيانات عن الحالة.</li>
+    </ul>
+  </div>
+
+  <div class="role-box">
+    <h3>٦.٦ حافظو البيانات (Data Custodians)</h3>
+    <div class="role-meta">
+      <span class="label">التعريف:</span><span>الجهات الفنية المسؤولة عن التخزين والحماية التقنية</span>
+      <span class="label">الجهة:</span><span>إدارة تقنية المعلومات (أقسام البنية التحتية والأمن)</span>
+    </div>
+
+    <p><strong>المسؤوليات:</strong></p>
+    <ul>
+      <li>توفير البنية التحتية التقنية الآمنة لتخزين البيانات.</li>
+      <li>تنفيذ النسخ الاحتياطية وخطط التعافي من الكوارث.</li>
+      <li>تطبيق الضوابط التقنية الأمنية (التشفير، التحكم في الوصول، تسجيل الأحداث).</li>
+      <li>رصد المؤشرات التقنية والتنبيه للحالات غير الطبيعية.</li>
+      <li>تنفيذ طلبات الوصول بعد اعتمادها من مالك البيانات.</li>
+    </ul>
+  </div>
+
+  <div class="role-box">
+    <h3>٦.٧ مسؤول حماية البيانات الشخصية (DPO)</h3>
+    <div class="role-meta">
+      <span class="label">التعريف:</span><span>الشخص المُعيَّن وفقاً لمتطلبات نظام حماية البيانات الشخصية</span>
+      <span class="label">الاستقلالية:</span><span>استقلالية وظيفية عند ممارسة مهامه المتعلقة بالامتثال</span>
+    </div>
+
+    <p><strong>المسؤوليات:</strong></p>
+    <ul>
+      <li>الإشراف على امتثال الجامعة لمتطلبات نظام حماية البيانات الشخصية ولائحته التنفيذية.</li>
+      <li>تلقّي طلبات أصحاب البيانات (حق الوصول، التصحيح، الحذف، وغيرها) والردّ عليها ضمن المدد النظامية.</li>
+      <li>إجراء تقييم أثر حماية البيانات (DPIA) للمبادرات ذات الأثر العالي على البيانات الشخصية.</li>
+      <li>الإبلاغ عن الحوادث المتعلقة بالبيانات الشخصية إلى الجهات المختصّة وفق المدد النظامية.</li>
+      <li>رفع تقارير دورية إلى لجنة التحوّل الرقمي.</li>
+      <li>التواصل مع الجهة المختصّة (هيئة البيانات والذكاء الاصطناعي) بوصفه نقطة الاتصال الرسمية.</li>
+    </ul>
+  </div>
+
+  <div class="role-box">
+    <h3>٦.٨ مستخدمو البيانات</h3>
+    <div class="role-meta">
+      <span class="label">التعريف:</span><span>جميع المنسوبين والمتعاقدين الذين يصلون إلى بيانات الجامعة</span>
+    </div>
+
+    <p><strong>الالتزامات:</strong></p>
+    <ul>
+      <li>الالتزام التام بأحكام هذه السياسة وبقية سياسات البيانات والأمن السيبراني.</li>
+      <li>عدم إساءة استخدام البيانات أو الإفصاح عنها خارج النطاق المصرّح به.</li>
+      <li>حماية بيانات الدخول وعدم مشاركتها مع أي طرف.</li>
+      <li>الإبلاغ الفوري عن أي حادثة أو اشتباه.</li>
+      <li>استكمال التدريبات الإلزامية المتعلقة بحماية البيانات.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- 7. Domains -->
+<section id="s7">
+  <h1 class="section-title">٧. نطاقات إدارة البيانات</h1>
+  <p>تعتمد الجامعة الإطار الوطني لإدارة البيانات الصادر عن مكتب إدارة البيانات الوطني (NDMO) بوصفه المرجعية الرئيسية لنطاقات إدارة البيانات. ويشمل هذا الإطار جملة من النطاقات المتكاملة التي يُنفَّذ تطبيقها في الجامعة بصورة تدريجية وفق أولويات معتمدة من لجنة التحوّل الرقمي.</p>
+
+  <h2>المرحلة الأولى (السنة الأولى): النطاقات الأولوية</h2>
+  <ul>
+    <li>حوكمة البيانات (Data Governance).</li>
+    <li>تصنيف البيانات (Data Classification).</li>
+    <li>حماية البيانات الشخصية (Personal Data Protection).</li>
+    <li>جودة البيانات (Data Quality) — المستوى الأساس.</li>
+    <li>كتالوج البيانات والبيانات الوصفية (Data Catalog & Metadata).</li>
+  </ul>
+
+  <h2>المرحلة الثانية (السنة الثانية): نطاقات التوسّع</h2>
+  <ul>
+    <li>هندسة البيانات والنمذجة (Data Architecture & Modeling).</li>
+    <li>البيانات المرجعية والرئيسية (Reference & Master Data Management).</li>
+    <li>ذكاء الأعمال والتحليلات (Business Intelligence & Analytics).</li>
+    <li>مشاركة البيانات والتشغيل البيني (Data Sharing & Interoperability).</li>
+    <li>عمليات البيانات (Data Operations).</li>
+  </ul>
+
+  <h2>المرحلة الثالثة (السنة الثالثة): النطاقات المتقدمة</h2>
+  <ul>
+    <li>البيانات المفتوحة (Open Data).</li>
+    <li>تحقيق قيمة البيانات (Data Value Realization).</li>
+    <li>إدارة الوثائق والمحتوى (Document & Content Management).</li>
+    <li>حرية المعلومات (Freedom of Information) — بحسب الانطباق.</li>
+  </ul>
+
+  <div class="callout">
+    <svg class="callout-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="12" cy="12" r="10"></circle>
+      <line x1="12" y1="16" x2="12" y2="12"></line>
+      <line x1="12" y1="8" x2="12.01" y2="8"></line>
+    </svg>
+    <div class="callout-content">
+      <strong>ملاحظة</strong>
+      تُعدّ قائمة النطاقات أعلاه توجيهية وفق المرجعية الوطنية. تعتمد لجنة التحوّل الرقمي خطة سنوية تُحدّد النطاقات الأولوية بناءً على نضج الجامعة ومتطلبات الجهات التنظيمية.
+    </div>
+  </div>
+</section>
+
+<!-- 8. RACI -->
+<section id="s8">
+  <h1 class="section-title">٨. مصفوفة الأدوار والمسؤوليات (RACI)</h1>
+  <p>تُوضّح المصفوفة أدناه توزيع المسؤوليات الرئيسية على الأدوار المختلفة في منظومة حوكمة البيانات. وتُستخدم الرموز التالية:</p>
+
+  <div class="raci-legend">
+    <span class="r">R — مسؤول التنفيذ (Responsible)</span>
+    <span class="a">A — صاحب الصلاحية النهائية (Accountable)</span>
+    <span class="c">C — يُستشار (Consulted)</span>
+    <span class="i">I — يُعلَم (Informed)</span>
+  </div>
+
+  <table class="raci-table">
+    <thead>
+      <tr>
+        <th>المهمّة / القرار</th>
+        <th>لجنة التحوّل الرقمي</th>
+        <th>CDO</th>
+        <th>مالك البيانات</th>
+        <th>مُشرف البيانات</th>
+        <th>حافظ البيانات</th>
+        <th>DPO</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>اعتماد السياسات والاستراتيجيات</td><td class="a">A</td><td class="r">R</td><td class="c">C</td><td class="i">I</td><td class="i">I</td><td class="c">C</td></tr>
+      <tr><td>تصنيف البيانات</td><td class="i">I</td><td class="c">C</td><td class="a">A</td><td class="r">R</td><td class="i">I</td><td class="c">C</td></tr>
+      <tr><td>اعتماد طلبات الوصول</td><td class="i">I</td><td class="i">I</td><td class="a">A</td><td class="r">R</td><td class="r">R</td><td class="c">C</td></tr>
+      <tr><td>تنفيذ ضوابط الحماية التقنية</td><td class="i">I</td><td class="a">A</td><td class="c">C</td><td class="i">I</td><td class="r">R</td><td class="c">C</td></tr>
+      <tr><td>رصد جودة البيانات وتحسينها</td><td class="i">I</td><td class="c">C</td><td class="a">A</td><td class="r">R</td><td class="i">I</td><td class="i">I</td></tr>
+      <tr><td>الإبلاغ عن حوادث البيانات</td><td class="i">I</td><td class="c">C</td><td class="r">R</td><td class="r">R</td><td class="r">R</td><td class="a">A</td></tr>
+      <tr><td>الاستجابة لطلبات أصحاب البيانات</td><td class="i">I</td><td class="c">C</td><td class="c">C</td><td class="r">R</td><td class="c">C</td><td class="a">A</td></tr>
+      <tr><td>مشاركة البيانات مع أطراف خارجية</td><td class="a">A</td><td class="r">R</td><td class="c">C</td><td class="i">I</td><td class="i">I</td><td class="c">C</td></tr>
+      <tr><td>التدريب ورفع الوعي</td><td class="i">I</td><td class="a">A</td><td class="c">C</td><td class="r">R</td><td class="i">I</td><td class="c">C</td></tr>
+      <tr><td>المراجعة الدورية للسياسة</td><td class="a">A</td><td class="r">R</td><td class="c">C</td><td class="i">I</td><td class="i">I</td><td class="c">C</td></tr>
+      <tr><td>إجراء تقييم أثر حماية البيانات (DPIA)</td><td class="i">I</td><td class="c">C</td><td class="c">C</td><td class="i">I</td><td class="c">C</td><td class="a">A</td></tr>
+      <tr><td>الاحتفاظ بالبيانات وإتلافها</td><td class="i">I</td><td class="c">C</td><td class="a">A</td><td class="r">R</td><td class="r">R</td><td class="c">C</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- 9. General Obligations -->
+<section id="s9">
+  <h1 class="section-title">٩. الالتزامات العامة</h1>
+
+  <h2>٩.١ التزامات جميع المنسوبين</h2>
+  <ul>
+    <li>الاطّلاع على هذه السياسة والإقرار بالالتزام بها.</li>
+    <li>استكمال التدريب الإلزامي المتعلق بحماية البيانات خلال مدة لا تتجاوز ٩٠ يوماً من الالتحاق بالعمل، وتجديد التدريب سنوياً.</li>
+    <li>التعامل مع البيانات وفق مستوى تصنيفها المعتمد.</li>
+    <li>المحافظة على سرّية بيانات الجامعة، بما في ذلك بعد انتهاء العلاقة الوظيفية.</li>
+    <li>الإبلاغ الفوري عن أي حادثة أو مخاطرة عبر القناة المعتمدة.</li>
+    <li>عدم استخدام البيانات لأغراض شخصية أو لأي غرض خارج نطاق العمل المُكلَّف به.</li>
+  </ul>
+
+  <h2>٩.٢ التزامات الإدارات والعمادات</h2>
+  <ul>
+    <li>تعيين مُشرف بيانات أو أكثر، وإبلاغ وحدة حوكمة وإدارة البيانات بذلك رسمياً.</li>
+    <li>الحفاظ على سجلٍّ محدَّث لأصول البيانات الخاضعة لملكيتها.</li>
+    <li>التعاون مع وحدة حوكمة وإدارة البيانات في عمليات التدقيق والمسح والتقييم.</li>
+    <li>دمج متطلبات حوكمة البيانات في الإجراءات والمشاريع الجديدة منذ مراحلها الأولى.</li>
+    <li>ضمان التزام الأنظمة والتطبيقات التي تستخدمها بمتطلبات هذه السياسة.</li>
+  </ul>
+
+  <h2>٩.٣ التزامات الأطراف الخارجية</h2>
+  <ul>
+    <li>التوقيع على اتفاقيات عدم الإفصاح (NDA) ومعالجة البيانات (DPA) قبل أي تعامل مع بيانات الجامعة.</li>
+    <li>الالتزام بمستويات تصنيف البيانات الممنوحة لهم ومعايير الحماية المحدّدة.</li>
+    <li>عدم نقل بيانات الجامعة خارج المملكة العربية السعودية دون موافقة مسبقة من لجنة التحوّل الرقمي، والالتزام بمتطلبات النقل المنصوص عليها في نظام حماية البيانات الشخصية.</li>
+    <li>إعادة جميع البيانات أو إتلافها عند انتهاء العلاقة التعاقدية، مع تقديم ما يُثبت ذلك.</li>
+  </ul>
+</section>
+
+<!-- 10. Implementation -->
+<section id="s10">
+  <h1 class="section-title">١٠. آلية التطبيق والمتابعة</h1>
+
+  <h2>١٠.١ خطة التنفيذ</h2>
+  <p>تعتمد لجنة التحوّل الرقمي خطة تنفيذ سنوية تشمل المبادرات والأولويات والمخرجات، وتُحدَّث هذه الخطة دورياً بناءً على تقارير المتابعة والمتغيّرات التنظيمية.</p>
+
+  <h2>١٠.٢ مؤشرات الأداء الرئيسية</h2>
+  <p>تُقاس فاعلية تطبيق السياسة من خلال مؤشرات أداء رئيسية، تشمل على سبيل الاسترشاد:</p>
+  <ul>
+    <li>نسبة الأصول المعلوماتية المُفهرَسة والمصنّفة.</li>
+    <li>نسبة مُلّاك البيانات المُعيَّنين رسمياً عبر الإدارات.</li>
+    <li>نسبة المنسوبين الحاصلين على التدريب الإلزامي.</li>
+    <li>زمن الاستجابة لطلبات أصحاب البيانات الشخصية.</li>
+    <li>عدد حوادث البيانات وطبيعتها ومتوسط زمن الاحتواء.</li>
+    <li>نسبة الالتزام بمعايير جودة البيانات في الأنظمة المحورية.</li>
+    <li>نتائج عمليات التدقيق الداخلية والخارجية.</li>
+  </ul>
+
+  <h2>١٠.٣ التقارير الدورية</h2>
+  <ul>
+    <li>تقرير شهري من وحدة حوكمة وإدارة البيانات إلى اللجنة التنفيذية.</li>
+    <li>تقرير ربع سنوي إلى لجنة التحوّل الرقمي.</li>
+    <li>تقرير سنوي شامل يُرفع إلى معالي الرئيس.</li>
+  </ul>
+
+  <h2>١٠.٤ آلية التصعيد</h2>
+  <p>تُصعَّد المسائل التشغيلية أوّلاً إلى مُشرف البيانات، ثم إلى مالك البيانات، ثم إلى وحدة حوكمة وإدارة البيانات، ثم إلى اللجنة التنفيذية، ثم إلى لجنة التحوّل الرقمي، وفق مسار تدرّجي معتمد. الحالات العاجلة ذات الأثر العالي تُرفع مباشرة إلى رئيس اللجنة التنفيذية أو إلى رئاسة لجنة التحوّل الرقمي حسب الانطباق.</p>
+</section>
+
+<!-- 11. Violations -->
+<section id="s11">
+  <h1 class="section-title">١١. المخالفات والتصعيد</h1>
+  <p>تُعدّ مخالفة هذه السياسة إخلالاً بالالتزامات الوظيفية، ويُحال من يثبت مخالفته إلى الجهة المختصّة في الجامعة للنظر في شأنه وفق اللوائح الداخلية والأنظمة ذات العلاقة، دون الإخلال بأي عقوبات منصوص عليها في الأنظمة الوطنية — ولا سيما نظام حماية البيانات الشخصية ولائحته التنفيذية — عند انطباقها.</p>
+
+  <p>وتُصنَّف المخالفات بصفة عامة ضمن ثلاثة مستويات:</p>
+  <ul>
+    <li><strong>مخالفات بسيطة:</strong> إخلال إجرائي محدود الأثر، يُعالَج بالتوعية والإرشاد.</li>
+    <li><strong>مخالفات متوسطة:</strong> إخلال ينتج عنه أثر محدود على البيانات أو الامتثال، يُعالَج وفق اللوائح الداخلية.</li>
+    <li><strong>مخالفات جسيمة:</strong> إخلال ينتج عنه تسرّب بيانات أو إفصاح غير مصرّح به أو ضرر مؤسسي، يُحال إلى الجهة المختصّة.</li>
+  </ul>
+
+  <div class="callout warning">
+    <svg class="callout-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
+      <line x1="12" y1="9" x2="12" y2="13"></line>
+      <line x1="12" y1="17" x2="12.01" y2="17"></line>
+    </svg>
+    <div class="callout-content">
+      <strong>تنبيه</strong>
+      يُعدّ أي انتهاك متعمّد لخصوصية البيانات الشخصية خاضعاً لأحكام نظام حماية البيانات الشخصية ولائحته التنفيذية، بما في ذلك العقوبات الجنائية والإدارية المنصوص عليها.
+    </div>
+  </div>
+</section>
+
+<!-- 12. Review -->
+<section id="s12">
+  <h1 class="section-title">١٢. المراجعة والتحديث</h1>
+  <p>تُراجَع هذه السياسة بصفة دورية وفق الأحكام التالية:</p>
+  <ul>
+    <li><strong>المراجعة الدورية:</strong> سنوياً على الأقل.</li>
+    <li><strong>المراجعة الطارئة:</strong> عند صدور تعديل في المرجعيات النظامية الوطنية، أو عند وقوع حادثة جسيمة، أو بناءً على توصية من لجنة التحوّل الرقمي.</li>
+    <li><strong>المسؤول عن المراجعة:</strong> رئيس وحدة حوكمة وإدارة البيانات، بالتنسيق مع اللجنة التنفيذية.</li>
+    <li><strong>جهة الاعتماد:</strong> لجنة التحوّل الرقمي برئاسة معالي الرئيس.</li>
+  </ul>
+
+  <p>وتُوثَّق جميع التعديلات في إصدارات لاحقة من هذه الوثيقة.</p>
+</section>
+
+<!-- 13. Approval -->
+<section id="s13">
+  <h1 class="section-title">١٣. الاعتماد والسريان</h1>
+  <p>تُعدّ هذه السياسة سارية المفعول فور اعتمادها من معالي رئيس الجامعة، وتُنشَر على القنوات الرسمية للجامعة، وتُبلَّغ جميع الإدارات والعمادات بها رسمياً. ويُعدّ الاطّلاع على هذه السياسة التزاماً مؤسسياً على جميع المنسوبين.</p>
+
+  <div class="signature-hierarchy">
+    <div class="sig-level sig-level-prep">
+      <div class="sig-level-label">الإعداد والمراجعة</div>
+      <div class="sig-row">
+        <div class="sig-box">
+          <div class="line"></div>
+          <div class="name">د. ياسر الجهني</div>
+          <div class="role">مدير إدارة تقنية المعلومات</div>
+        </div>
+        <div class="sig-box">
+          <div class="line"></div>
+          <div class="name">د. ماجد السلمي</div>
+          <div class="role">مدير الإدارة القانونية</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sig-divider">
+      <span class="sig-divider-text">رفع للاعتماد</span>
+    </div>
+
+    <div class="sig-level sig-level-approve">
+      <div class="sig-level-label">الاعتماد النهائي</div>
+      <div class="sig-row sig-row-single">
+        <div class="sig-box sig-box-final">
+          <div class="line"></div>
+          <div class="name">معالي رئيس الجامعة</div>
+          <div class="role">جامعة نايف العربية للعلوم الأمنية</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</div><!-- /.content -->
+
+<footer>
+  <div class="footer-logo">
+    <img src="https://nauss.edu.sa/Style%20Library/ar-sa/Styles/images/home/Logo.svg" alt="NAUSS" onerror="this.style.display='none'">
+    <span><span class="brand-mark">NAUSS</span> · جامعة نايف العربية للعلوم الأمنية</span>
+  </div>
+  <div>Document: NAUSS-DGP-2026-001 · Classification: عام · Version 1.2 (مسودّة)</div>
+</footer>
+
+</div><!-- /.page -->
+
+<!-- Scroll to top button -->
+<button class="scroll-top" id="scrollTop" aria-label="العودة للأعلى">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+    <polyline points="18 15 12 9 6 15"></polyline>
+  </svg>
+</button>
+
+<script>
+  // Scroll to top button
+  const scrollBtn = document.getElementById('scrollTop');
+  window.addEventListener('scroll', () => {
+    if (window.pageYOffset > 400) {
+      scrollBtn.classList.add('show');
+    } else {
+      scrollBtn.classList.remove('show');
+    }
+  });
+  scrollBtn.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+</script>
+
+</body>
+</html>
