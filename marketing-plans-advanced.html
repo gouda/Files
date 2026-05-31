@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>خطط الحملات المتقدمة — العاصمة الإدارية</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0e1116; --panel:#161b22; --panel-2:#1c232d;
+    --ink:#e8edf2; --muted:#9aa7b4;
+    --gold:#d4af37; --gold-soft:#f0d878; --teal:#2dd4bf;
+    --line:#2a323d; --green:#34d399; --rose:#fb7185;
+    --shadow:0 18px 50px -20px rgba(0,0,0,.7);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{
+    font-family:'Tajawal',sans-serif;
+    background:
+      radial-gradient(900px 500px at 100% -5%, rgba(212,175,55,.10), transparent 60%),
+      radial-gradient(800px 500px at -10% 110%, rgba(45,212,191,.08), transparent 60%),
+      var(--bg);
+    color:var(--ink); line-height:1.85; min-height:100vh; padding:0 0 80px;
+  }
+  .wrap{max-width:1000px;margin:0 auto;padding:0 20px}
+  header{text-align:center;padding:60px 20px 30px}
+  header .eyebrow{color:var(--gold);letter-spacing:2px;font-size:.85rem;font-weight:700;margin-bottom:14px}
+  header h1{
+    font-family:'Cairo';font-weight:900;font-size:clamp(1.9rem,5vw,3rem);line-height:1.3;
+    background:linear-gradient(120deg,#fff 30%,var(--gold-soft));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+  }
+  header p{color:var(--muted);margin-top:14px;max-width:680px;margin-inline:auto}
+
+  .focus-banner{
+    background:linear-gradient(135deg,rgba(251,113,133,.12),rgba(212,175,55,.06));
+    border:1px solid rgba(251,113,133,.3);border-radius:16px;
+    padding:18px 22px;margin:24px 0 40px;display:flex;gap:14px;align-items:flex-start;
+  }
+  .focus-banner .ico{font-size:1.5rem;flex:none}
+  .focus-banner b{color:var(--rose);font-family:'Cairo'}
+
+  .progress-card{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:22px 26px;margin-bottom:46px;box-shadow:var(--shadow);display:flex;align-items:center;gap:22px;flex-wrap:wrap}
+  .progress-card .label{font-weight:800;font-family:'Cairo';font-size:1.05rem}
+  .bar{flex:1;min-width:180px;height:14px;border-radius:20px;background:var(--panel-2);overflow:hidden;border:1px solid var(--line)}
+  .bar span{display:block;height:100%;width:0;border-radius:20px;background:linear-gradient(90deg,var(--teal),var(--gold));transition:width .5s ease}
+  .pct{font-family:'Cairo';font-weight:900;font-size:1.4rem;color:var(--gold)}
+
+  .plan{background:var(--panel);border:1px solid var(--line);border-radius:20px;margin-bottom:30px;overflow:hidden;box-shadow:var(--shadow)}
+  .plan.priority{border-color:rgba(251,113,133,.45);box-shadow:0 0 0 1px rgba(251,113,133,.15),var(--shadow)}
+  .plan-head{display:flex;align-items:center;gap:16px;padding:24px 26px;background:linear-gradient(135deg,var(--panel-2),transparent);border-bottom:1px solid var(--line)}
+  .plan-num{flex:none;width:46px;height:46px;border-radius:13px;display:grid;place-items:center;font-family:'Cairo';font-weight:900;font-size:1.2rem;background:linear-gradient(135deg,var(--gold),#9c7d1e);color:#1a1206;box-shadow:0 6px 18px -6px rgba(212,175,55,.6)}
+  .plan.priority .plan-num{background:linear-gradient(135deg,var(--rose),#be123c);color:#fff;box-shadow:0 6px 18px -6px rgba(251,113,133,.6)}
+  .plan-head h2{font-family:'Cairo';font-weight:800;font-size:1.25rem;flex:1}
+  .plan-head .tag{font-size:.72rem;font-weight:700;color:var(--teal);border:1px solid rgba(45,212,191,.4);padding:4px 11px;border-radius:30px;background:rgba(45,212,191,.08);white-space:nowrap}
+  .plan.priority .plan-head .tag{color:var(--rose);border-color:rgba(251,113,133,.4);background:rgba(251,113,133,.08)}
+  .plan-body{padding:10px 26px 26px}
+  .desc{color:var(--muted);font-size:.95rem;margin:14px 0 6px;border-right:3px solid var(--gold);padding-right:14px}
+  .plan.priority .desc{border-color:var(--rose)}
+
+  ul.steps{list-style:none;margin-top:16px}
+  ul.steps li{display:flex;align-items:flex-start;gap:14px;padding:13px 14px;border-radius:12px;border:1px solid transparent;transition:.25s;cursor:pointer}
+  ul.steps li:hover{background:var(--panel-2);border-color:var(--line)}
+  .chk{flex:none;width:26px;height:26px;border-radius:8px;margin-top:2px;border:2px solid var(--line);background:var(--panel-2);display:grid;place-items:center;transition:.2s}
+  .chk svg{width:15px;height:15px;opacity:0;transform:scale(.4);transition:.2s}
+  li.done .chk{background:linear-gradient(135deg,var(--green),#0e9f6e);border-color:transparent}
+  li.done .chk svg{opacity:1;transform:scale(1)}
+  li.done .step-txt{color:var(--muted);text-decoration:line-through;text-decoration-color:rgba(154,167,180,.5)}
+  .step-txt{font-size:.97rem;font-weight:500}
+  .step-txt b{color:var(--gold-soft);font-weight:700}
+
+  .trick{margin-top:20px;background:linear-gradient(135deg,rgba(45,212,191,.08),transparent);border:1px solid rgba(45,212,191,.25);border-radius:14px;padding:16px 18px}
+  .trick .t-head{display:flex;align-items:center;gap:8px;font-family:'Cairo';font-weight:800;font-size:.92rem;color:var(--teal);margin-bottom:10px}
+  .trick ul{list-style:none;display:flex;flex-direction:column;gap:9px}
+  .trick li{font-size:.92rem;color:var(--ink);padding-right:20px;position:relative}
+  .trick li::before{content:"◆";position:absolute;right:0;top:1px;color:var(--teal);font-size:.7rem}
+  .trick li b{color:var(--gold-soft)}
+
+  .notes{margin-top:20px;background:var(--panel-2);border:1px dashed var(--line);border-radius:14px;padding:16px 18px}
+  .notes label{display:flex;align-items:center;gap:8px;font-family:'Cairo';font-weight:700;font-size:.9rem;color:var(--gold-soft);margin-bottom:10px}
+  .notes textarea{width:100%;min-height:74px;resize:vertical;background:var(--bg);border:1px solid var(--line);border-radius:10px;color:var(--ink);font-family:'Tajawal';font-size:.93rem;padding:12px 14px;line-height:1.7}
+  .notes textarea:focus{outline:none;border-color:var(--gold)}
+  .notes textarea::placeholder{color:#5d6b78}
+
+  .toolbar{display:flex;gap:12px;justify-content:center;margin-bottom:30px;flex-wrap:wrap}
+  .btn{font-family:'Tajawal';font-weight:700;font-size:.9rem;cursor:pointer;padding:11px 22px;border-radius:12px;border:1px solid var(--line);background:var(--panel);color:var(--ink);transition:.2s}
+  .btn:hover{border-color:var(--gold);color:var(--gold)}
+  footer{text-align:center;color:#5d6b78;font-size:.82rem;margin-top:40px}
+  .kpi{display:inline-block;background:rgba(212,175,55,.12);color:var(--gold-soft);border-radius:6px;padding:1px 8px;font-size:.82rem;font-weight:700;margin:0 2px}
+</style>
+</head>
+<body>
+<header>
+  <div class="eyebrow">نسخة متقدمة · تكتيكات تنفيذية</div>
+  <h1>خطط حملات احترافية — تكتيكات وتريكات</h1>
+  <p>مش مجرد عناوين. كل خطة فيها خطوات تنفيذية + صندوق «تريكات» بحيل بيستخدمها المحترفين في السوق المصري. ركّزنا على إحياء قاعدتك القديمة وفلترة الـ Leads قبل ما توصل لفريقك الصغير.</p>
+</header>
+
+<div class="wrap">
+  <div class="focus-banner">
+    <span class="ico">🎯</span>
+    <div><b>مظبوطة على وضعك:</b> أولوية قصوى لإحياء قاعدة البيانات القديمة (وجعك الأساسي)، وكل التكتيكات مبنية إن فريقك صغير (1–2) فلازم الـ Leads توصلهم مفلترة وجاهزة، وشغلك الأساسي على فيسبوك + ريلز + وسطاء.</div>
+  </div>
+
+  <div class="progress-card">
+    <span class="label">نسبة الإنجاز</span>
+    <div class="bar"><span id="barFill"></span></div>
+    <span class="pct" id="pctText">0%</span>
+  </div>
+
+  <div class="toolbar">
+    <button class="btn" onclick="window.print()">🖨️ طباعة / حفظ PDF</button>
+    <button class="btn" onclick="resetAll()">↺ إعادة ضبط الكل</button>
+  </div>
+
+  <div id="plansRoot"></div>
+  <footer>الحالة بتتحفظ تلقائياً في المتصفح — اقفل وارجع كمّل في أي وقت.</footer>
+</div>
+
+<script>
+const plans = [
+  {
+    priority:true,
+    tag:"الأولوية القصوى",
+    title:"إحياء قاعدة البيانات القديمة (Database Reactivation)",
+    desc:"قاعدتك القديمة دهب مدفون مش زبالة. العميل اللي سأل من سنة لسه ممكن يشتري — اتغيّرت ظروفه أو الأسعار. إحياؤها أرخص 5–7 مرات من جلب عميل جديد.",
+    steps:[
+      "تنظيف القاعدة أولاً: شيل المكرر، صحّح الأرقام، وقسّمهم لـ 3 فئات: <b>(ساخن: سأل عن سعر/معاينة) — (دافئ: تفاعل بس مكمّلش) — (بارد: قديم جداً)</b>",
+      "رسالة الإحياء الذكية على واتساب: متبعتش «عندنا عروض» — ابعت سؤال شخصي زي <b>«أستاذ محمد، لسه مهتم بوحدة في R7 ولا خلصت الموضوع؟»</b> — السؤال بيجيب رد 3 أضعاف العرض",
+      "اعمل سبب وجيه للتواصل (Reason to call): تعديل أسعار، خطة سداد جديدة، أو وحدة اتساب لتوّها — مش مجرد متابعة فاضية",
+      "حملة Custom Audience على فيسبوك: ارفع أرقام القاعدة القديمة كـ Audience واعمل لهم إعلانات مخصصة تفكّرهم بيك",
+      "استخدم القاعدة القديمة كـ Lookalike: فيسبوك هيدوّر على ناس <b>تشبه</b> عملائك القدام = جودة Leads أعلى بكتير",
+      "أي حد مردش: ابعتله بعد 3 أيام رسالة تانية بزاوية مختلفة (مرة عائد استثماري، مرة خطة سداد) — 80% من المبيعات بعد المتابعة الرابعة"
+    ],
+    trick:[
+      "<b>تريك الـ 9 صباحاً والـ 9 مساءً:</b> رسايل الواتساب أعلى فتح في المواعيد دي، تجنّب وقت الشغل الرسمي.",
+      "<b>الندرة الحقيقية:</b> «فاضل 3 وحدات بالسعر ده قبل الزيادة الأسبوع الجاي» — بس لازم تكون صح، الكذبة بتحرق سمعتك.",
+      "<b>الرسالة الصوتية:</b> بدل نص، ابعت voice note قصير بصوتك — بيكسر الحاجز وبيحس إنه بيتكلم مع بني آدم مش روبوت.",
+      "<b>وسم الخارج:</b> افصل المصريين بالخارج في سجمنت لوحده — الرسالة ليهم تركّز على «استثمار آمن في بلدك بالجنيه» والتوقيت يراعي فرق التوقيت."
+    ]
+  },
+  {
+    tag:"حماية فريقك الصغير",
+    title:"فلترة الـ Leads قبل ما توصل للسيلز (Qualification)",
+    desc:"فريقك 1–2، فوقتهم أغلى من الدهب. لازم نمنع الـ Leads الوحشة توصلهم خالص، عشان يركّزوا على اللي فعلاً ممكن يشتري.",
+    steps:[
+      "ضيف أسئلة تأهيل في الفورم نفسه: <b>الميزانية، طريقة السداد (كاش/تقسيط)، التوقيت (دلوقتي/خلال 6 شهور)</b> — ده وحده بيشيل نص الـ Leads الفاضية",
+      "اعمل Lead Scoring بسيط: نقاط لكل إجابة، واللي يعدّي حد معين بس هو اللي يروح للسيلز فوراً",
+      "بوت واتساب أو ردود تلقائية يجاوب الأسئلة الشائعة (الأسعار، الموقع) ويحجز المعاينات — يوفّر على فريقك مكالمات لا قيمة لها",
+      "قاعدة السرعة: أي Lead ساخن لازم يترد عليه خلال <b>5 دقائق</b> — فرصة التحويل بتقل 80% بعد أول ساعة",
+      "افصل الـ Leads حسب المصدر — اللي جاي من ريلز نيته أقل من اللي بحث على جوجل، فالأولوية تترتب"
+    ],
+    trick:[
+      "<b>سؤال الميزانية بذكاء:</b> بدل «ميزانيتك كام» (بتخوّف)، حطها اختيارات: «من 3–5 م / 5–8 م / أكتر» — أسهل عليه وبيفلتر تلقائياً.",
+      "<b>الفورم الطويل تكتيك مش عيب:</b> الفورم اللي فيه أسئلة أكتر بيجيب Leads أقل بس أجود بكتير — مظبوط لفريق صغير.",
+      "<b>تسجيل المكالمات:</b> سجّل مكالمات السيلز الناجحة واستخدمها تدريب — بتطلّع أنماط الاعتراضات المتكررة."
+    ]
+  },
+  {
+    tag:"الأقوى عندك",
+    title:"فيسبوك وإنستجرام — مستوى متقدم",
+    desc:"إنت شغال عليها خلاص، فالكلام هنا عن التكتيكات اللي بتفرق بين حملة بتحرق فلوس وحملة بتجيب صفقات.",
+    steps:[
+      "اشتغل بهيكل <b>CBO</b> (ميزانية على مستوى الحملة) وسيب فيسبوك يوزّع — أفضل من التحكم اليدوي في معظم الحالات",
+      "افصل حملة Leads عن حملة Retargeting عن حملة Awareness — متخلطهمش في حملة واحدة",
+      "Retargeting بطبقات: اللي شاف 50% من الفيديو ≠ اللي زار اللاندينج ≠ اللي بدأ الفورم ومكمّلش — لكل واحد رسالة",
+      "اختبر الـ Creative مش الاستهداف: في 2025 الـ Creative هو اللي بيفرق، جهّز 5+ إعلانات وسيب الخوارزمية تختار",
+      "استخدم Instant Forms بس فعّل خاصية <b>«higher intent»</b> — بتقلل الـ Leads العشوائية اللي بتدوس بالغلط",
+      "ركّب الـ Conversions API (مش بس Pixel) — بيظبط التتبع بعد قيود الخصوصية ويحسّن جودة الاستهداف"
+    ],
+    trick:[
+      "<b>تريك الفيديو UGC:</b> فيديو بموبايل شكله طبيعي (مش مونتاج فخم) بيأدي أحسن — الناس بتثق في اللي شكله حقيقي.",
+      "<b>أول 3 ثواني:</b> ابدأ بسؤال أو رقم صادم «عائد 12% سنوياً في العاصمة؟» — لو مكسبتهومش في 3 ثواني خسرتهم.",
+      "<b>الكومنتات إعلان:</b> ثبّت كومنت فيه سؤال شائع وردك عليه — بيبني ثقة وبيقلل الأسئلة المتكررة.",
+      "<b>تريك السعر المخفي:</b> «الأسعار في الخاص» بتزوّد التفاعل بس بتغضّب الناس وبتقلل الجودة — جرّب تكتب نطاق سعري وشوف الفرق."
+    ]
+  },
+  {
+    tag:"وصول مجاني",
+    title:"الريلز والمحتوى — تحويل المشاهدات لـ Leads",
+    desc:"المشكلة مش عمل ريلز، المشكلة إن المشاهدات متتحولش لعملاء. التكتيكات هنا عن التحويل مش الترند.",
+    steps:[
+      "اشتغل بصيغة <b>Hook – Value – CTA</b>: أول جملة تشد، نص يفيد، آخر جملة تطلب فعل واضح (كلمني/كومنت كلمة معينة)",
+      "تريك الكلمة المفتاحية: «اكتب <b>عاصمة</b> في الكومنت وهبعتلك الكتالوج» — بيرفع التفاعل والخوارزمية بتوزّع أكتر + بيجمّع Leads",
+      "اعمل سلسلة محتوى متكررة بهوية ثابتة: «جولة الأسبوع»، «غلطة المستثمر»، «سؤال وجواب» — التكرار بيبني متابع",
+      "أعد توجيه كل اللي تفاعلوا مع الريلز كـ Audience لإعلانات مدفوعة — الريلز يصطاد، الإعلان يقفل",
+      "محتوى تعليمي يبني سلطة: «إزاي تفرق بين المطور الجيد والوحش» — بيخليك المرجع فبيشتروا منك"
+    ],
+    trick:[
+      "<b>تريك الـ DM التلقائي:</b> أدوات زي ManyChat بتبعت الكتالوج تلقائي لأي حد يكتب كلمة معينة = Leads وانت نايم.",
+      "<b>الوش بيبيع:</b> الريلز اللي فيها وشك وصوتك بتأدي أحسن من اللي صور وحدات بس — الناس بتشتري من ناس.",
+      "<b>إعادة النشر:</b> الريل الناجح انشره تاني بعد شهر — جمهور جديد هيشوفه، ومحدش هيفتكر."
+    ]
+  },
+  {
+    tag:"عملاء عالية الجودة",
+    title:"الوسطاء والإحالات — نظام مش عشوائي",
+    desc:"شغال عليهم، بس الفرق بين وسيط بيجيبلك صفقة في الشهر ووسيط بينساك هو النظام والحافز.",
+    steps:[
+      "هيكل عمولة واضح ومكتوب: الوسيط لازم يعرف <b>بالظبط</b> هياخد كام وامتى — الغموض بيقتل الحماس",
+      "جروب واتساب/تيليجرام للوسطاء فيه أحدث الوحدات والعروض أول بأول — خليهم دايماً في الصورة",
+      "نظام إحالة للعملاء: كل عميل يجيب عميل ياخد مكافأة (خصم/مبلغ) — عميلك الراضي أقوى مسوّق ليك",
+      "كرّم الوسيط الأكثر مبيعاً شهرياً علناً في الجروب — المنافسة والتقدير بيحرّكوا أكتر من الفلوس أحياناً",
+      "وفّر لهم مواد جاهزة (صور، فيديوهات، أسعار) — كل ما سهّلت عليهم كل ما باعوا أكتر"
+    ],
+    trick:[
+      "<b>عمولة سريعة:</b> ادفع جزء من العمولة بسرعة بعد التعاقد — الوسيط اللي بياخد فلوسه بسرعة بيرجعلك بصفقات أكتر.",
+      "<b>تريك الحصرية المؤقتة:</b> «الوحدة دي حصري ليكم النهاردة بس» — بتخلق إلحاح حقيقي عند الوسطاء.",
+      "<b>وسطاء الخارج:</b> دوّر على وسطاء عندهم شبكة في الخليج — جمهور المصريين بالخارج ذهب وبيدفعوا كاش."
+    ]
+  },
+  {
+    tag:"الربح الحقيقي",
+    title:"رعاية وتحويل القاعدة (Nurturing & CRM)",
+    desc:"معظم العملاء مش هيشتروا أول مكالمة. اللي بيكسب هو اللي عنده نظام متابعة منظم بدل ما الـ Leads تتنسى وتبرد.",
+    steps:[
+      "كل Lead لازم يكون له <b>حالة</b> في الـ CRM (جديد / تم التواصل / مهتم / تفاوض / مغلق) — اللي مش متسجّل بينساه",
+      "تسلسل متابعة تلقائي: رسالة بعد يوم، بعد 3 أيام، بعد أسبوع — بزوايا مختلفة في كل مرة",
+      "أرشفة الاعتراضات: سجّل ليه كل عميل رفض (السعر؟ الموقع؟ التقسيط؟) واستخدمها تطوّر عرضك",
+      "حملة «استرجاع» كل 3 شهور لكل اللي مكمّلوش — الظروف بتتغير والسوق بيتحرك",
+      "قياس شهري: تكلفة الـ Lead، نسبة التحويل لكل مصدر، ومتوسط زمن الإغلاق — اقفل أسوأ مصدر ووسّع أحسن واحد"
+    ],
+    trick:[
+      "<b>قاعدة الـ 4 لمسات:</b> معظم البيع بيحصل بعد 4–7 تواصلات — اللي بيسيب بعد مكالمة واحدة بيدّي صفقاته لغيره.",
+      "<b>تريك المناسبات:</b> هنّي عملاءك في الأعياد من غير أي عرض — لما تحتاجهم يكونوا فاكرينك كويس.",
+      "<b>سجمنت المشترين السابقين:</b> اللي اشترى منك مرة أسهل مشتري تاني — اعرض عليهم وحدات استثمارية إضافية."
+    ]
+  }
+];
+
+const root=document.getElementById('plansRoot');
+const KEY='reMarketingAdvancedState_v1';
+let state=JSON.parse(localStorage.getItem(KEY)||'{}');
+const checkSvg='<svg viewBox="0 0 24 24" fill="none" stroke="#06281d" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>';
+
+plans.forEach((p,pi)=>{
+  const card=document.createElement('div');
+  card.className='plan'+(p.priority?' priority':'');
+  let stepsHtml='';
+  p.steps.forEach((s,si)=>{
+    const id=`p${pi}s${si}`;const done=state[id]?'done':'';
+    stepsHtml+=`<li class="${done}" data-id="${id}"><span class="chk">${checkSvg}</span><span class="step-txt">${s}</span></li>`;
+  });
+  let trickHtml='';
+  if(p.trick){
+    trickHtml='<div class="trick"><div class="t-head">💡 تريكات المحترفين</div><ul>'+p.trick.map(t=>`<li>${t}</li>`).join('')+'</ul></div>';
+  }
+  const noteVal=state['note'+pi]||'';
+  card.innerHTML=`
+    <div class="plan-head">
+      <div class="plan-num">${pi+1}</div>
+      <h2>${p.title}</h2>
+      <span class="tag">${p.tag}</span>
+    </div>
+    <div class="plan-body">
+      <p class="desc">${p.desc}</p>
+      <ul class="steps">${stepsHtml}</ul>
+      ${trickHtml}
+      <div class="notes">
+        <label>📝 المشاكل / الملاحظات لتكملة الخطة لاحقاً</label>
+        <textarea data-note="${pi}" placeholder="اكتب هنا أي عقبة أو حاجة ناقصة عشان ترجع تكمّلها...">${noteVal}</textarea>
+      </div>
+    </div>`;
+  root.appendChild(card);
+});
+
+root.querySelectorAll('li').forEach(li=>{
+  li.addEventListener('click',()=>{li.classList.toggle('done');state[li.dataset.id]=li.classList.contains('done');save();});
+});
+root.querySelectorAll('textarea').forEach(t=>{
+  t.addEventListener('input',()=>{state['note'+t.dataset.note]=t.value;save();});
+});
+function save(){localStorage.setItem(KEY,JSON.stringify(state));updateProgress();}
+function updateProgress(){
+  const all=root.querySelectorAll('li').length;const done=root.querySelectorAll('li.done').length;
+  const pct=all?Math.round(done/all*100):0;
+  document.getElementById('barFill').style.width=pct+'%';
+  document.getElementById('pctText').textContent=pct+'%';
+}
+function resetAll(){
+  if(!confirm('متأكد إنك عايز تمسح كل التشييكات والملاحظات؟'))return;
+  state={};localStorage.removeItem(KEY);
+  root.querySelectorAll('li').forEach(li=>li.classList.remove('done'));
+  root.querySelectorAll('textarea').forEach(t=>t.value='');
+  updateProgress();
+}
+updateProgress();
+</script>
+</body>
+</html>
