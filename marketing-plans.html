@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>خطط الحملات التسويقية — العاصمة الإدارية</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0e1116;
+    --panel:#161b22;
+    --panel-2:#1c232d;
+    --ink:#e8edf2;
+    --muted:#9aa7b4;
+    --gold:#d4af37;
+    --gold-soft:#f0d878;
+    --teal:#2dd4bf;
+    --line:#2a323d;
+    --green:#34d399;
+    --shadow:0 18px 50px -20px rgba(0,0,0,.7);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{
+    font-family:'Tajawal',sans-serif;
+    background:
+      radial-gradient(900px 500px at 100% -5%, rgba(212,175,55,.10), transparent 60%),
+      radial-gradient(800px 500px at -10% 110%, rgba(45,212,191,.08), transparent 60%),
+      var(--bg);
+    color:var(--ink);
+    line-height:1.8;
+    min-height:100vh;
+    padding:0 0 80px;
+  }
+  .wrap{max-width:980px;margin:0 auto;padding:0 20px}
+
+  header{
+    text-align:center;
+    padding:60px 20px 40px;
+    position:relative;
+  }
+  header .eyebrow{
+    color:var(--gold);
+    letter-spacing:2px;
+    font-size:.85rem;
+    font-weight:700;
+    margin-bottom:14px;
+  }
+  header h1{
+    font-family:'Cairo',sans-serif;
+    font-weight:900;
+    font-size:clamp(1.9rem,5vw,3rem);
+    line-height:1.3;
+    background:linear-gradient(120deg,#fff 30%,var(--gold-soft));
+    -webkit-background-clip:text;background-clip:text;
+    -webkit-text-fill-color:transparent;
+  }
+  header p{color:var(--muted);margin-top:14px;max-width:640px;margin-inline:auto}
+
+  /* progress */
+  .progress-card{
+    background:var(--panel);
+    border:1px solid var(--line);
+    border-radius:18px;
+    padding:22px 26px;
+    margin:30px 0 50px;
+    box-shadow:var(--shadow);
+    display:flex;align-items:center;gap:22px;flex-wrap:wrap;
+  }
+  .progress-card .label{font-weight:800;font-family:'Cairo';font-size:1.05rem}
+  .bar{flex:1;min-width:180px;height:14px;border-radius:20px;background:var(--panel-2);overflow:hidden;border:1px solid var(--line)}
+  .bar span{display:block;height:100%;width:0;border-radius:20px;background:linear-gradient(90deg,var(--teal),var(--gold));transition:width .5s ease}
+  .pct{font-family:'Cairo';font-weight:900;font-size:1.4rem;color:var(--gold)}
+
+  .plan{
+    background:var(--panel);
+    border:1px solid var(--line);
+    border-radius:20px;
+    margin-bottom:30px;
+    overflow:hidden;
+    box-shadow:var(--shadow);
+  }
+  .plan-head{
+    display:flex;align-items:center;gap:16px;
+    padding:24px 26px;
+    background:linear-gradient(135deg,var(--panel-2),transparent);
+    border-bottom:1px solid var(--line);
+    position:relative;
+  }
+  .plan-num{
+    flex:none;width:46px;height:46px;border-radius:13px;
+    display:grid;place-items:center;
+    font-family:'Cairo';font-weight:900;font-size:1.2rem;
+    background:linear-gradient(135deg,var(--gold),#9c7d1e);
+    color:#1a1206;
+    box-shadow:0 6px 18px -6px rgba(212,175,55,.6);
+  }
+  .plan-head h2{font-family:'Cairo';font-weight:800;font-size:1.25rem;flex:1}
+  .plan-head .tag{
+    font-size:.72rem;font-weight:700;color:var(--teal);
+    border:1px solid rgba(45,212,191,.4);
+    padding:4px 11px;border-radius:30px;background:rgba(45,212,191,.08);
+    white-space:nowrap;
+  }
+  .plan-body{padding:10px 26px 26px}
+  .desc{color:var(--muted);font-size:.95rem;margin:14px 0 6px;border-right:3px solid var(--gold);padding-right:14px}
+
+  ul.steps{list-style:none;margin-top:16px}
+  ul.steps li{
+    display:flex;align-items:flex-start;gap:14px;
+    padding:13px 14px;border-radius:12px;
+    border:1px solid transparent;
+    transition:.25s;cursor:pointer;
+  }
+  ul.steps li:hover{background:var(--panel-2);border-color:var(--line)}
+  .chk{
+    flex:none;width:26px;height:26px;border-radius:8px;margin-top:2px;
+    border:2px solid var(--line);background:var(--panel-2);
+    display:grid;place-items:center;transition:.2s;
+  }
+  .chk svg{width:15px;height:15px;opacity:0;transform:scale(.4);transition:.2s}
+  li.done .chk{background:linear-gradient(135deg,var(--green),#0e9f6e);border-color:transparent}
+  li.done .chk svg{opacity:1;transform:scale(1)}
+  li.done .step-txt{color:var(--muted);text-decoration:line-through;text-decoration-color:rgba(154,167,180,.5)}
+  .step-txt{font-size:.97rem;font-weight:500}
+
+  .notes{
+    margin-top:22px;background:var(--panel-2);
+    border:1px dashed var(--line);border-radius:14px;padding:16px 18px;
+  }
+  .notes label{display:flex;align-items:center;gap:8px;font-family:'Cairo';font-weight:700;font-size:.9rem;color:var(--gold-soft);margin-bottom:10px}
+  .notes textarea{
+    width:100%;min-height:80px;resize:vertical;
+    background:var(--bg);border:1px solid var(--line);border-radius:10px;
+    color:var(--ink);font-family:'Tajawal';font-size:.93rem;padding:12px 14px;line-height:1.7;
+  }
+  .notes textarea:focus{outline:none;border-color:var(--gold)}
+  .notes textarea::placeholder{color:#5d6b78}
+
+  .toolbar{display:flex;gap:12px;justify-content:center;margin-bottom:30px;flex-wrap:wrap}
+  .btn{
+    font-family:'Tajawal';font-weight:700;font-size:.9rem;cursor:pointer;
+    padding:11px 22px;border-radius:12px;border:1px solid var(--line);
+    background:var(--panel);color:var(--ink);transition:.2s;
+  }
+  .btn:hover{border-color:var(--gold);color:var(--gold)}
+  footer{text-align:center;color:#5d6b78;font-size:.82rem;margin-top:40px}
+</style>
+</head>
+<body>
+<header>
+  <div class="eyebrow">خطة عمل تسويقية</div>
+  <h1>حملات استقطاب مستثمري العاصمة الإدارية</h1>
+  <p>خطة شغل عملية لزيادة عدد العملاء وبناء قاعدة بيانات قوية. اعمل تشييك على كل بند خلصته، واكتب المشاكل تحت كل خطة عشان ترجع تكمّل.</p>
+</header>
+
+<div class="wrap">
+
+  <div class="progress-card">
+    <span class="label">نسبة الإنجاز</span>
+    <div class="bar"><span id="barFill"></span></div>
+    <span class="pct" id="pctText">0%</span>
+  </div>
+
+  <div class="toolbar">
+    <button class="btn" onclick="window.print()">🖨️ طباعة / حفظ PDF</button>
+    <button class="btn" onclick="resetAll()">↺ إعادة ضبط الكل</button>
+  </div>
+
+  <div id="plansRoot"></div>
+
+  <footer>الحالة بتتحفظ تلقائياً في المتصفح — تقدر تقفل الصفحة وترجع تكمّل في أي وقت.</footer>
+</div>
+
+<script>
+const plans = [
+  {
+    tag:"الأساس",
+    title:"تجهيز البنية التحتية (Landing Page + CRM)",
+    desc:"قبل أي إعلان لازم يكون عندك مكان يستقبل العملاء وينظمهم. ده اللي بيحوّل الإعلان لقاعدة بيانات فعلية بدل ما الأرقام تضيع.",
+    steps:[
+      "عمل Landing Page بسيطة وسريعة للعاصمة الإدارية بفورم (الاسم، الموبايل، الإيميل، الميزانية، نوع الوحدة)",
+      "ربط الفورم بنظام CRM (HubSpot أو Zoho أو Google Sheets منظم في البداية)",
+      "تركيب Facebook Pixel وGoogle Tag على الصفحة لتتبع الزوار وإعادة استهدافهم",
+      "تجهيز رقم واتساب بيزنس بردود تلقائية ورسالة ترحيب احترافية",
+      "تصميم كتالوج / بروشور PDF فيه المشاريع والأسعار وخطط السداد"
+    ]
+  },
+  {
+    tag:"الأقوى لجمع Leads",
+    title:"حملات فيسبوك وإنستجرام (Lead Ads)",
+    desc:"أقوى أداة في السوق المصري للعقارات. الهدف Lead Generation عشان العميل يسيب بياناته من غير ما يخرج من التطبيق.",
+    steps:[
+      "إنشاء حملات بهدف Lead Generation مع فورم داخلي في فيسبوك",
+      "استهداف الفئة العمرية 30–55 المهتمين بالعقارات والاستثمار والسفر",
+      "استهداف المصريين بالخارج (الخليج بالذات) — شريحة استثمارية قوية",
+      "تجهيز 3–5 إعلانات مختلفة (فيديو + صور) واختبار A/B بينهم",
+      "تخصيص ميزانية يومية صغيرة في البداية واختبار أفضل إعلان قبل التوسع",
+      "إعادة استهداف (Retargeting) لكل اللي تفاعلوا أو زاروا الصفحة"
+    ]
+  },
+  {
+    tag:"نية شراء عالية",
+    title:"حملات جوجل (Search + YouTube)",
+    desc:"اللي بيبحث على جوجل عن «شقق العاصمة الإدارية» ده عميل نيته الشراء عالية جداً. أغلى شوية بس جودته ممتازة.",
+    steps:[
+      "حملة Google Search على كلمات مثل: شقق العاصمة الإدارية، استثمار عقاري العاصمة، أسعار R7",
+      "حملة YouTube بفيديو قصير يعرض المشاريع والعائد الاستثماري",
+      "تجهيز إعلانات الكلمات المفتاحية باللهجة المصرية الواضحة",
+      "ربط الحملة بنفس الـ Landing Page وتتبع التحويلات (Conversions)"
+    ]
+  },
+  {
+    tag:"ثقة ومحتوى",
+    title:"المحتوى وبناء العلامة (Content & Reels)",
+    desc:"المحتوى المجاني بيبني ثقة ويخلي الناس تتابعك وتشتري منك. الريلز دلوقتي أقوى وسيلة وصول مجانية.",
+    steps:[
+      "خطة محتوى أسبوعية: جولات بالمشاريع، نصائح استثمار، مقارنة أسعار",
+      "تصوير Reels قصيرة (15–30 ثانية) بشكل أسبوعي ثابت",
+      "نشر شهادات وتجارب عملاء حقيقيين (Testimonials) لبناء الثقة",
+      "إنشاء محتوى تعليمي: «إزاي تستثمر صح في العاصمة الإدارية؟»",
+      "الرد السريع على التعليقات والرسائل وتحويلها لـ Leads"
+    ]
+  },
+  {
+    tag:"عملاء جاهزين",
+    title:"الشراكات والمعارض والإحالات",
+    desc:"مصادر عملاء عالية الجودة بتكلفة إعلانية أقل، بتعتمد على العلاقات والسمعة.",
+    steps:[
+      "المشاركة في معارض العقارات (Real Estate Expos) لجمع بيانات مباشرة",
+      "بناء شبكة وسطاء (Brokers) بنظام عمولة واضح",
+      "نظام إحالة (Referral): مكافأة لكل عميل بيجيب عميل جديد",
+      "شراكات مع شركات الاستشارات المالية والمحاسبين اللي عندهم عملاء أصحاب أموال"
+    ]
+  },
+  {
+    tag:"رعاية وتحويل",
+    title:"رعاية القاعدة (Email & WhatsApp Nurturing)",
+    desc:"مش كل عميل هيشتري على طول. الرعاية المنتظمة بتحوّل الـ Leads الباردة لصفقات بمرور الوقت.",
+    steps:[
+      "تقسيم قاعدة البيانات حسب الاهتمام والميزانية ومرحلة الشراء",
+      "حملات إيميل وواتساب دورية بالعروض والمشاريع الجديدة",
+      "متابعة دورية مع العملاء المهتمين (Follow-up) بجدول ثابت",
+      "تحليل أداء كل حملة شهرياً (تكلفة الـ Lead، نسبة التحويل) وتحسينها"
+    ]
+  }
+];
+
+const root = document.getElementById('plansRoot');
+const KEY = 'reMarketingPlansState_v1';
+let state = JSON.parse(localStorage.getItem(KEY) || '{}');
+
+const checkSvg = '<svg viewBox="0 0 24 24" fill="none" stroke="#06281d" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>';
+
+plans.forEach((p, pi) => {
+  const card = document.createElement('div');
+  card.className = 'plan';
+  let stepsHtml = '';
+  p.steps.forEach((s, si) => {
+    const id = `p${pi}s${si}`;
+    const done = state[id] ? 'done' : '';
+    stepsHtml += `<li class="${done}" data-id="${id}">
+        <span class="chk">${checkSvg}</span>
+        <span class="step-txt">${s}</span>
+      </li>`;
+  });
+  const noteVal = state['note'+pi] || '';
+  card.innerHTML = `
+    <div class="plan-head">
+      <div class="plan-num">${pi+1}</div>
+      <h2>${p.title}</h2>
+      <span class="tag">${p.tag}</span>
+    </div>
+    <div class="plan-body">
+      <p class="desc">${p.desc}</p>
+      <ul class="steps">${stepsHtml}</ul>
+      <div class="notes">
+        <label>📝 المشاكل / الملاحظات لتكملة الخطة لاحقاً</label>
+        <textarea data-note="${pi}" placeholder="اكتب هنا أي عقبة أو حاجة ناقصة عشان ترجع تكمّلها...">${noteVal}</textarea>
+      </div>
+    </div>`;
+  root.appendChild(card);
+});
+
+root.querySelectorAll('li').forEach(li => {
+  li.addEventListener('click', () => {
+    li.classList.toggle('done');
+    state[li.dataset.id] = li.classList.contains('done');
+    save();
+  });
+});
+root.querySelectorAll('textarea').forEach(t => {
+  t.addEventListener('input', () => { state['note'+t.dataset.note] = t.value; save(); });
+});
+
+function save(){ localStorage.setItem(KEY, JSON.stringify(state)); updateProgress(); }
+
+function updateProgress(){
+  const all = root.querySelectorAll('li').length;
+  const done = root.querySelectorAll('li.done').length;
+  const pct = all ? Math.round(done/all*100) : 0;
+  document.getElementById('barFill').style.width = pct+'%';
+  document.getElementById('pctText').textContent = pct+'%';
+}
+
+function resetAll(){
+  if(!confirm('متأكد إنك عايز تمسح كل التشييكات والملاحظات؟')) return;
+  state = {}; localStorage.removeItem(KEY);
+  root.querySelectorAll('li').forEach(li=>li.classList.remove('done'));
+  root.querySelectorAll('textarea').forEach(t=>t.value='');
+  updateProgress();
+}
+
+updateProgress();
+</script>
+</body>
+</html>
