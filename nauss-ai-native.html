@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Native NAUSS — الخطة الاستراتيجية</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --primary:#2e6066;
+  --primary-d:#234c51;
+  --primary-l:#3a767d;
+  --secondary:#c6aa76;
+  --secondary-l:#d8c199;
+  --support-blue:#385676;
+  --support-plum:#895b60;
+  --support-stone:#8a7e78;
+  --ink:#1f2a2c;
+  --muted:#5c6a6c;
+  --bg:#f6f8f8;
+  --surface:#ffffff;
+  --line:#e6ecec;
+  --radius:18px;
+  --radius-sm:12px;
+  --shadow-sm:0 2px 10px rgba(35,76,81,.06);
+  --shadow:0 12px 36px rgba(35,76,81,.12);
+  --shadow-lg:0 24px 60px rgba(35,76,81,.18);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Cairo',sans-serif;
+  background:var(--bg);
+  color:var(--ink);
+  line-height:1.85;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+.container{max-width:1180px;margin:0 auto;padding:0 24px}
+
+/* ---------- NAV ---------- */
+header.nav{
+  position:sticky;top:0;z-index:100;
+  background:rgba(255,255,255,.86);
+  backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--line);
+  transition:box-shadow .3s;
+}
+header.nav.scrolled{box-shadow:var(--shadow-sm)}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;height:74px}
+.nav-logo img{height:46px;display:block}
+.nav-links{display:flex;gap:6px;align-items:center}
+.nav-links a{
+  color:var(--muted);text-decoration:none;font-weight:600;font-size:.95rem;
+  padding:9px 15px;border-radius:10px;transition:.25s;white-space:nowrap;
+}
+.nav-links a:hover{color:var(--primary);background:rgba(46,96,102,.07)}
+.nav-toggle{display:none;background:none;border:none;cursor:pointer;flex-direction:column;gap:5px}
+.nav-toggle span{width:26px;height:2.5px;background:var(--primary);border-radius:3px;transition:.3s}
+
+/* ---------- HERO ---------- */
+.hero{
+  position:relative;overflow:hidden;
+  background:linear-gradient(135deg,var(--primary-d) 0%,var(--primary) 55%,var(--primary-l) 100%);
+  color:#fff;padding:120px 0 130px;text-align:center;
+}
+.hero::before,.hero::after{content:"";position:absolute;border-radius:50%;pointer-events:none}
+.hero::before{width:520px;height:520px;background:radial-gradient(circle,rgba(198,170,118,.28),transparent 70%);top:-180px;left:-120px}
+.hero::after{width:460px;height:460px;background:radial-gradient(circle,rgba(56,86,118,.4),transparent 70%);bottom:-200px;right:-100px}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px);background-size:46px 46px;mask-image:radial-gradient(circle at 50% 40%,#000,transparent 75%)}
+.hero-content{position:relative;z-index:2;max-width:900px;margin:0 auto}
+.badge{
+  display:inline-flex;align-items:center;gap:9px;
+  background:rgba(255,255,255,.12);border:1px solid rgba(198,170,118,.45);
+  color:var(--secondary-l);padding:8px 18px;border-radius:50px;
+  font-weight:700;font-size:.85rem;letter-spacing:.5px;margin-bottom:28px;
+}
+.badge .dot{width:8px;height:8px;border-radius:50%;background:var(--secondary);box-shadow:0 0 0 4px rgba(198,170,118,.25)}
+.hero h1{
+  font-size:clamp(2.4rem,6vw,4.2rem);font-weight:900;line-height:1.2;margin-bottom:18px;letter-spacing:-.5px;
+}
+.hero h1 .accent{color:var(--secondary-l)}
+.hero .lead{font-size:clamp(1.05rem,2.2vw,1.35rem);color:rgba(255,255,255,.9);font-weight:400;max-width:760px;margin:0 auto}
+.hero-cta{margin-top:38px;display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.btn{
+  display:inline-flex;align-items:center;gap:9px;font-family:inherit;font-weight:700;font-size:1rem;
+  padding:14px 30px;border-radius:50px;cursor:pointer;text-decoration:none;border:2px solid transparent;transition:.28s;
+}
+.btn-primary{background:var(--secondary);color:var(--primary-d)}
+.btn-primary:hover{background:var(--secondary-l);transform:translateY(-2px);box-shadow:0 12px 28px rgba(198,170,118,.4)}
+.btn-ghost{background:transparent;border-color:rgba(255,255,255,.4);color:#fff}
+.btn-ghost:hover{background:rgba(255,255,255,.12);transform:translateY(-2px)}
+
+/* ---------- VISION ---------- */
+.vision{margin-top:-70px;position:relative;z-index:5}
+.vision-card{
+  background:var(--surface);border-radius:var(--radius);box-shadow:var(--shadow-lg);
+  padding:48px 44px;border-top:5px solid var(--secondary);position:relative;overflow:hidden;
+}
+.vision-card::before{content:"";position:absolute;top:0;left:0;width:6px;height:100%;background:var(--secondary)}
+.vision-label{display:inline-flex;align-items:center;gap:10px;color:var(--primary);font-weight:800;font-size:1.05rem;margin-bottom:16px}
+.vision-label .ic{width:38px;height:38px;border-radius:11px;background:rgba(46,96,102,.1);display:grid;place-items:center}
+.vision-card p{font-size:clamp(1.1rem,2.3vw,1.5rem);font-weight:600;color:var(--ink);line-height:1.75}
+
+/* ---------- SECTION SHELL ---------- */
+section.pillars{padding:90px 0 30px}
+.section-head{text-align:center;max-width:720px;margin:0 auto 56px}
+.eyebrow{color:var(--secondary);font-weight:800;letter-spacing:2px;font-size:.85rem;text-transform:uppercase;margin-bottom:12px}
+.section-head h2{font-size:clamp(1.9rem,4vw,2.8rem);font-weight:900;color:var(--primary-d);margin-bottom:14px}
+.section-head p{color:var(--muted);font-size:1.08rem}
+
+/* ---------- PILLAR CARDS ---------- */
+.pillar{
+  background:var(--surface);border-radius:var(--radius);box-shadow:var(--shadow-sm);
+  border:1px solid var(--line);margin-bottom:30px;overflow:hidden;
+  transition:.35s;opacity:0;transform:translateY(36px);
+}
+.pillar.in{opacity:1;transform:none}
+.pillar:hover{box-shadow:var(--shadow);transform:translateY(-4px)}
+.pillar-top{display:flex;gap:22px;align-items:flex-start;padding:34px 36px 26px;position:relative}
+.pillar-num{
+  flex:0 0 auto;width:62px;height:62px;border-radius:16px;display:grid;place-items:center;
+  font-weight:900;font-size:1.5rem;color:#fff;position:relative;
+}
+.pillar-icon{position:absolute;inset:0;display:grid;place-items:center}
+.pillar-titles{flex:1;min-width:0}
+.pillar-kicker{font-weight:800;font-size:.82rem;letter-spacing:1px;color:var(--secondary);margin-bottom:4px}
+.pillar-titles h3{font-size:1.45rem;font-weight:800;color:var(--primary-d);line-height:1.4}
+.pillar-goal{
+  margin:0 36px 26px;background:linear-gradient(135deg,rgba(46,96,102,.05),rgba(198,170,118,.07));
+  border-right:4px solid var(--secondary);border-radius:var(--radius-sm);padding:16px 20px;
+}
+.pillar-goal .lbl{font-weight:800;color:var(--primary);font-size:.95rem}
+.pillar-goal .txt{color:var(--ink);font-weight:600}
+.pillar-body{padding:0 36px 30px}
+.pillar-body>.desc{color:var(--muted);margin-bottom:22px;font-size:1rem}
+.obj-title{display:flex;align-items:center;gap:10px;font-weight:800;color:var(--primary-d);margin-bottom:16px;font-size:1.02rem}
+.obj-title::before{content:"";width:26px;height:3px;border-radius:3px;background:var(--secondary)}
+.obj-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}
+.obj{
+  display:flex;gap:13px;background:var(--bg);border:1px solid var(--line);border-radius:var(--radius-sm);
+  padding:16px 18px;transition:.25s;
+}
+.obj:hover{background:#fff;border-color:var(--secondary-l);box-shadow:var(--shadow-sm)}
+.obj .chk{flex:0 0 auto;width:26px;height:26px;border-radius:8px;background:rgba(46,96,102,.1);display:grid;place-items:center}
+.obj .chk svg{width:15px;height:15px}
+.obj p{font-size:.95rem;color:var(--ink);line-height:1.7}
+
+/* accent variants per pillar */
+.c-primary .pillar-num{background:linear-gradient(135deg,var(--primary),var(--primary-l))}
+.c-blue .pillar-num{background:linear-gradient(135deg,var(--support-blue),#4a6f96)}
+.c-secondary .pillar-num{background:linear-gradient(135deg,#b6985f,var(--secondary))}
+.c-plum .pillar-num{background:linear-gradient(135deg,var(--support-plum),#a8767b)}
+.c-stone .pillar-num{background:linear-gradient(135deg,var(--support-stone),#a59890)}
+.c-blue .pillar-kicker{color:var(--support-blue)}
+.c-plum .pillar-kicker{color:var(--support-plum)}
+.c-stone .pillar-kicker{color:var(--support-stone)}
+
+/* ---------- FOOTER ---------- */
+footer{background:var(--primary-d);color:rgba(255,255,255,.78);padding:54px 0 30px;margin-top:70px}
+.footer-inner{display:flex;flex-wrap:wrap;gap:28px;justify-content:space-between;align-items:center}
+.footer-logo img{height:50px;filter:brightness(0) invert(1);opacity:.95}
+.footer-tag{max-width:420px;font-size:.95rem;line-height:1.7}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.12);margin-top:34px;padding-top:22px;text-align:center;font-size:.85rem;color:rgba(255,255,255,.55)}
+
+/* ---------- RESPONSIVE ---------- */
+@media(max-width:860px){
+  .nav-links{
+    position:absolute;top:74px;right:0;left:0;background:#fff;flex-direction:column;align-items:stretch;
+    padding:14px 24px;gap:4px;box-shadow:var(--shadow);transform:translateY(-12px);opacity:0;pointer-events:none;transition:.28s;
+  }
+  .nav-links.open{transform:none;opacity:1;pointer-events:auto}
+  .nav-links a{padding:13px}
+  .nav-toggle{display:flex}
+  .vision-card{padding:34px 26px}
+  .pillar-top{padding:26px 22px 20px;gap:16px}
+  .pillar-goal,.pillar-body{margin-left:22px;margin-right:22px;padding-left:0;padding-right:0}
+  .pillar-goal{padding:16px 18px}
+  .pillar-body{padding:0 0 26px}
+}
+</style>
+</head>
+<body>
+
+<header class="nav" id="nav">
+  <div class="container nav-inner">
+    <a class="nav-logo" href="#top" aria-label="NAUSS">
+      <img src="https://nauss.edu.sa/Style%20Library/ar-sa/Styles/images/home/Logo.svg" alt="جامعة نايف العربية للعلوم الأمنية">
+    </a>
+    <nav class="nav-links" id="navLinks">
+      <a href="#vision">الرؤية</a>
+      <a href="#p1">التعليم</a>
+      <a href="#p2">البحث</a>
+      <a href="#p3">التدريب</a>
+      <a href="#p4">الحرم الجامعي</a>
+      <a href="#p5">الأخلاقيات</a>
+    </nav>
+    <button class="nav-toggle" id="navToggle" aria-label="القائمة"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<section class="hero" id="top">
+  <div class="hero-grid"></div>
+  <div class="container hero-content">
+    <span class="badge"><span class="dot"></span> الخطة الاستراتيجية للتحول الذكي</span>
+    <h1>جامعة نايف العربية <span class="accent">في عصر الذكاء الاصطناعي</span></h1>
+    <p class="lead">منظومة متكاملة تدمج الذكاء الاصطناعي المسؤول والموثوق عبر التعليم والبحث والتدريب والبيئة المؤسسية، لبناء القدرات البشرية الأمنية العربية ومواجهة تحديات المستقبل.</p>
+    <div class="hero-cta">
+      <a class="btn btn-primary" href="#vision">استكشف الخطة</a>
+      <a class="btn btn-ghost" href="#p1">الركائز الخمس</a>
+    </div>
+  </div>
+</section>
+
+<div class="container">
+  <section class="vision" id="vision">
+    <div class="vision-card">
+      <div class="vision-label">
+        <span class="ic">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2e6066" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>
+        </span>
+        الرؤية
+      </div>
+      <p>أن تكون الجامعة المرجعَ العربي الرائد في التعليم والتدريب والبحث والابتكار ودعم صناعة القرار المعزَّز، في بناء القدرات البشرية الأمنية، وتطوير حلول ذكاء اصطناعي مسؤولة وموثوقة لمواجهة التحديات الأمنية المستقبلية.</p>
+    </div>
+  </section>
+</div>
+
+<section class="pillars">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">مكونات الخطة</div>
+      <h2>الركائز الخمس</h2>
+      <p>خمس ركائز مترابطة تشكّل مسار التحول نحو جامعة قائمة على الذكاء الاصطناعي المسؤول.</p>
+    </div>
+
+    <!-- PILLAR 1 -->
+    <article class="pillar c-primary" id="p1">
+      <div class="pillar-top">
+        <div class="pillar-num">
+          <span class="pillar-icon">
+            <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+          </span>
+        </div>
+        <div class="pillar-titles">
+          <div class="pillar-kicker">الركيزة الأولى</div>
+          <h3>التعليم والتجربة الطلابية</h3>
+        </div>
+      </div>
+      <div class="pillar-goal">
+        <span class="lbl">الهدف العام: </span>
+        <span class="txt">جيلٌ عربي متمكّن من قيادة المنظومة الأمنية في عصر الذكاء الاصطناعي، والتعامل مع مخاطره بفعالية.</span>
+      </div>
+      <div class="pillar-body">
+        <p class="desc">ترسّخ هذه الركيزة منظومةً تعليميةً رائدة تدمج تقنيات الذكاء الاصطناعي وتطبيقاته في جميع مكونات التجربة الأكاديمية، بما يسهم في إعداد كوادر أمنية عربية قادرة على توظيف هذه التقنيات وتطويرها على نحوٍ مسؤول وقابل للتفسير، وتمكينها من الابتكار، واستشراف التحديات المستقبلية، وصياغة الحلول الأمنية الاستراتيجية بكفاءة وفاعلية.</p>
+        <div class="obj-title">الأهداف الاستراتيجية</div>
+        <div class="obj-grid">
+          <div class="obj"><span class="chk"><svg viewBox="0 0 24 24" fill="none" stroke="#2e6066" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><p>طلابٌ قادرون على توظيف الذكاء الاصطناعي وتطبيقاته في تخصصاتهم الأمنية، ورفع إنتاجيتهم وكفاءة أدائهم المهني في قطاعاتهم، باستخدامٍ مسؤول وموثوق.</p></div>
+          <div class="obj"><span class="chk"><svg viewBox="0 0 24 24" fill="none" stroke="#2e6066" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><p>طلابٌ قادرون على إنتاج تطبيقات ذكاء اصطناعي تلبّي الاحتياجات والتحديات الأمنية، وتحافظ على السيادة الرقمية، مع ضمان قابليتها للتفسير.</p></div>
+          <div class="obj"><span class="chk"><svg viewBox="0 0 24 24" fill="none" stroke="#2e6066" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><p>منظومة تعليمية عالية الجودة تعزّز التجربة الأكاديمية للطالب، وتُثبت كفاءته الفعلية في أعقد البيئات الأمنية.</p></div>
+          <div class="obj"><span class="chk"><svg viewBox="0 0 24 24" fill="none" stroke="#2e6066" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><p>تجربة أكاديمية عالية الجودة ترتكز على منظومة الذكاء الاصطناعي لتعزيز تجربة الطالب.</p></div>
+        </div>
+      </div>
+    </article>
+
+    <!-- PILLAR 2 -->
+    <article class="pillar c-blue" id="p2">
+      <div class="pillar-top">
+        <div class="pillar-num">
+          <span class="pillar-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/><path d="M11 8v6M8 11h6"/></svg>
+          </span>
+        </div>
+        <div class="pillar-titles">
+          <div class="pillar-kicker">الركيزة الثانية</div>
+          <h3>البحث والابتكار الأمني المدعوم بالذكاء الاصطناعي</h3>
+        </div>
+      </div>
+      <div class="pillar-goal">
+        <span class="lbl">الهدف العام: </span>
+        <span class="txt">أبحاثٌ مرجعية ذات أثر أمني تدعم الاستشراف الاستراتيجي في عصر الذكاء الاصطناعي.</span>
+      </div>
+      <div class="pillar-body">
+        <p class="desc">ترسّخ هذه الركيزة مكانة الجامعة، بوصفها الجهاز العلمي لمجلس وزراء الداخلية العرب، جامعةً عربيةً رائدة في البحوث الأمنية والابتكار التطبيقي، من خلال توظيف تقنيات الذكاء الاصطناعي وتطبيقاته عبر منظومتها البحثية لدعم التحليل الأمني والاستشراف الاستراتيجي، وتسريع تحويل المخرجات البحثية إلى حلول وابتكارات أمنية سيادية قابلة للتفسير، بما يعزّز دعم القرار الأمني العربي القائم على الأدلة.</p>
+        <div class="obj-title">الأهداف الاستراتيجية</div>
+        <div class="obj-grid">
+          <div class="obj"><span class="chk"><svg viewBox="0 0 24 24" fill="none" stroke="#385676" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><p>مخرجات بحثية مبتكرة تواكب التحديات الأمنية المتسارعة وتلبّي الاحتياجات المستجدة.</p></div>
+          <div class="obj"><span class="chk"><svg viewBox="0 0 24 24" fill="none" stroke="#385676" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><p>حلول وتطبيقات تلبّي الاحتياجات الأمنية، وتضمن شفافية نماذجها وقابليتها للتفسير، وتعزّز الحفاظ على السيادة الرقمية للمنظومة الأمنية العربية.</p></div>
+          <div class="obj"><span class="chk"><svg viewBox="0 0 24 24" fill="none" stroke="#385676" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><p>دعم اتخاذ القرار بكفاءة وفعالية في عصر البيانات الضخمة والتحديات الأمنية المعقدة.</p></div>
+        </div>
+      </div>
+    </article>
+
+    <!-- PILLAR 3 -->
+    <article class="pillar c-secondary" id="p3">
+      <div class="pillar-top">
+        <div class="pillar-num">
+          <span class="pillar-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 6v6c0 5 3.5 8 8 10 4.5-2 8-5 8-10V6z"/><path d="m9 12 2 2 4-4"/></svg>
+          </span>
+        </div>
+        <div class="pillar-titles">
+          <div class="pillar-kicker">الركيزة الثالثة</div>
+          <h3>التدريب المعزَّز بالذكاء الاصطناعي</h3>
+        </div>
+      </div>
+      <div class="pillar-goal">
+        <span class="lbl">الهدف العام: </span>
+        <span class="txt">نخبٌ أمنية عربية جاهزة ميدانياً ومؤسسياً لقيادة التحول الأمني المعزَّز بالذكاء الاصطناعي، والارتقاء بجودة الحياة.</span>
+      </div>
+      <div class="pillar-body">
+        <p class="desc">ترسّخ هذه الركيزة منظومةً تدريبيةً أمنية تدمج الذكاء الاصطناعي شريكاً تكتيكياً واستراتيجياً على نحوٍ مسؤول، لتمكين كفاءات أمنية قادرة على استشراف التهديدات، واتخاذ قرارات سريعة ومدروسة، وإدارة المخاطر في مواجهة التحديات الأمنية المستقبلية.</p>
+        <div class="obj-title">الأهداف الاستراتيجية</div>
+        <div class="obj-grid">
+          <div class="obj"><span class="chk"><svg viewBox="0 0 24 24" fill="none" stroke="#b6985f" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><p>خبراء أمنيون يمتلكون المهارات والقدرات المستقبلية لتعزيز مستوى الجاهزية الأمنية في عصر الذكاء الاصطناعي.</p></div>
+          <div class="obj"><span class="chk"><svg viewBox="0 0 24 24" fill="none" stroke="#b6985f" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><p>قادة أمنيون قادرون على توظيف تطبيقات الذكاء الاصطناعي في المجالات الأمنية وفق مبادئ الاستخدام المسؤول، وقيادة التحول الذكي، واستشراف التهديدات.</p></div>
+          <div class="obj"><span class="chk"><svg viewBox="0 0 24 24" fill="none" stroke="#b6985f" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><p>تجربة تدريبية عالية الجودة ترتكز على منظومة الذكاء الاصطناعي لتعزيز تجربة المتدرب.</p></div>
+        </div>
+      </div>
+    </article>
+
+    <!-- PILLAR 4 -->
+    <article class="pillar c-plum" id="p4">
+      <div class="pillar-top">
+        <div class="pillar-num">
+          <span class="pillar-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V8l7-5 7 5v13"/><path d="M9 21v-6h6v6"/></svg>
+          </span>
+        </div>
+        <div class="pillar-titles">
+          <div class="pillar-kicker">الركيزة الرابعة</div>
+          <h3>الحرم الجامعي القائم على تقنيات الذكاء الاصطناعي</h3>
+        </div>
+      </div>
+      <div class="pillar-goal">
+        <span class="lbl">الهدف العام: </span>
+        <span class="txt">بيئة جامعية ذكية ومستدامة تحقق أعلى مستويات الكفاءة والفعالية المؤسسية.</span>
+      </div>
+      <div class="pillar-body">
+        <p class="desc">ترسّخ هذه الركيزة نموذجاً مؤسسياً متكاملاً يوظّف الذكاء الاصطناعي في العمليات التشغيلية والإدارية والخدمات المؤسسية، بما يعزّز تجربة المستفيدين، ويرفع كفاءة استخدام الموارد، ويدعم السلامة والاستدامة، ويرسّخ اتخاذ القرار المدعوم بالذكاء الاصطناعي.</p>
+        <div class="obj-title">الأهداف الاستراتيجية</div>
+        <div class="obj-grid">
+          <div class="obj"><span class="chk"><svg viewBox="0 0 24 24" fill="none" stroke="#895b60" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><p>خدمات جامعية ذكية متمحورة حول المستفيد، توفر تجربة رقمية متكاملة وعالية الجودة.</p></div>
+          <div class="obj"><span class="chk"><svg viewBox="0 0 24 24" fill="none" stroke="#895b60" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><p>قرارات مؤسسية دقيقة وفعالة، مدعومة بالبيانات الفورية والذكاء الاصطناعي.</p></div>
+          <div class="obj"><span class="chk"><svg viewBox="0 0 24 24" fill="none" stroke="#895b60" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><p>كفاءات وظيفية عالية الإنتاجية، ممكَّنة بتطبيقات الذكاء الاصطناعي.</p></div>
+          <div class="obj"><span class="chk"><svg viewBox="0 0 24 24" fill="none" stroke="#895b60" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><p>إدارة ذكية للموارد والأصول المؤسسية تعزّز الكفاءة التشغيلية والاستدامة.</p></div>
+        </div>
+      </div>
+    </article>
+
+    <!-- PILLAR 5 -->
+    <article class="pillar c-stone" id="p5">
+      <div class="pillar-top">
+        <div class="pillar-num">
+          <span class="pillar-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 4 6v6c0 5 3.5 8 8 10 4.5-2 8-5 8-10V6z"/><path d="M12 8v4M12 16h.01"/></svg>
+          </span>
+        </div>
+        <div class="pillar-titles">
+          <div class="pillar-kicker">الركيزة الخامسة</div>
+          <h3>الأخلاقيات والاستخدام المسؤول للذكاء الاصطناعي</h3>
+        </div>
+      </div>
+      <div class="pillar-goal">
+        <span class="lbl">الهدف العام: </span>
+        <span class="txt">مرجعية عربية رائدة في حوكمة الذكاء الاصطناعي وأخلاقياته.</span>
+      </div>
+      <div class="pillar-body">
+        <p class="desc">ترسّخ هذه الركيزة التزام الجامعة بتصميم تقنيات الذكاء الاصطناعي وتطبيقاته واستخدامها وفق أعلى معايير الأخلاقيات والمسؤولية والحوكمة، في التعليم والتدريب والبحوث وسائر المهام المؤسسية.</p>
+        <div class="obj-title">الأهداف الاستراتيجية</div>
+        <div class="obj-grid">
+          <div class="obj"><span class="chk"><svg viewBox="0 0 24 24" fill="none" stroke="#8a7e78" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><p>حوكمة البيانات وحمايتها بما يعزّز السيادة الرقمية.</p></div>
+          <div class="obj"><span class="chk"><svg viewBox="0 0 24 24" fill="none" stroke="#8a7e78" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><p>أطر حوكمة مؤسسية للاستخدام المسؤول لتطبيقات الذكاء الاصطناعي وفق أفضل الممارسات الإقليمية والدولية.</p></div>
+          <div class="obj"><span class="chk"><svg viewBox="0 0 24 24" fill="none" stroke="#8a7e78" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><p>منظومة مؤسسية راسخة تضمن الاستخدام المسؤول للذكاء الاصطناعي والبيانات وفق الأطر المعتمدة، بما يعزّز الشفافية والنزاهة والمساءلة في جميع الممارسات.</p></div>
+        </div>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-logo">
+        <img src="https://nauss.edu.sa/Style%20Library/ar-sa/Styles/images/home/Logo.svg" alt="جامعة نايف العربية للعلوم الأمنية">
+      </div>
+      <p class="footer-tag">AI Native NAUSS — خطة التحول نحو جامعة عربية رائدة في توظيف الذكاء الاصطناعي المسؤول والموثوق في خدمة الأمن العربي.</p>
+    </div>
+    <div class="footer-bottom">© جامعة نايف العربية للعلوم الأمنية — الخطة الاستراتيجية للذكاء الاصطناعي</div>
+  </div>
+</footer>
+
+<script>
+const nav=document.getElementById('nav');
+window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',window.scrollY>10));
+const toggle=document.getElementById('navToggle'),links=document.getElementById('navLinks');
+toggle.addEventListener('click',()=>links.classList.toggle('open'));
+links.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>links.classList.remove('open')));
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
+document.querySelectorAll('.pillar').forEach(p=>io.observe(p));
+</script>
+</body>
+</html>
