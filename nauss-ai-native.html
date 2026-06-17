@@ -158,6 +158,31 @@ section.pillars{padding:90px 0 30px}
 .c-plum .pillar-kicker{color:var(--support-plum)}
 .c-stone .pillar-kicker{color:var(--support-stone)}
 
+/* ---------- COUNCIL ---------- */
+section.council{padding:60px 0 10px}
+.council-box{
+  background:var(--surface);border:2px solid var(--secondary);border-radius:var(--radius);
+  box-shadow:var(--shadow);padding:44px 42px;position:relative;overflow:hidden;
+}
+.council-box::before{content:"";position:absolute;top:0;right:0;width:6px;height:100%;background:var(--secondary)}
+.council-head{display:flex;align-items:center;gap:18px;margin-bottom:20px}
+.council-ic{
+  flex:0 0 auto;width:60px;height:60px;border-radius:16px;display:grid;place-items:center;
+  background:linear-gradient(135deg,var(--primary),var(--primary-l));
+}
+.council-titles .kicker{font-weight:800;font-size:.82rem;letter-spacing:1px;color:var(--secondary);margin-bottom:4px}
+.council-titles h2{font-size:clamp(1.5rem,3.4vw,2.1rem);font-weight:900;color:var(--primary-d);line-height:1.35}
+.council-inner{
+  margin-top:28px;background:linear-gradient(135deg,rgba(46,96,102,.06),rgba(198,170,118,.08));
+  border:2px solid var(--secondary);border-radius:var(--radius-sm);
+  padding:26px 24px;text-align:center;
+}
+.council-inner .box-title{font-size:clamp(1.2rem,2.6vw,1.6rem);font-weight:900;color:var(--primary-d)}
+.council-secretariat{
+  text-align:center;margin-top:18px;font-size:clamp(1.05rem,2.2vw,1.3rem);
+  font-weight:800;color:var(--secondary);letter-spacing:.3px;
+}
+
 /* ---------- FOOTER ---------- */
 footer{background:var(--primary-d);color:rgba(255,255,255,.78);padding:54px 0 30px;margin-top:70px}
 .footer-inner{display:flex;flex-wrap:wrap;gap:28px;justify-content:space-between;align-items:center}
@@ -196,6 +221,7 @@ footer{background:var(--primary-d);color:rgba(255,255,255,.78);padding:54px 0 30
       <a href="#p3">التدريب</a>
       <a href="#p4">الحرم الجامعي</a>
       <a href="#p5">الأخلاقيات</a>
+      <a href="#council">المجلس</a>
     </nav>
     <button class="nav-toggle" id="navToggle" aria-label="القائمة"><span></span><span></span><span></span></button>
   </div>
@@ -223,7 +249,7 @@ footer{background:var(--primary-d);color:rgba(255,255,255,.78);padding:54px 0 30
         </span>
         الرؤية
       </div>
-      <p>أن نكون المرجع العربي الرائد في توظيف الذكاء الاصطناعي المسؤول والموثوق في التعليم والتدريب والبحث والابتكار ودعم صناعة القرار لمواجهة تحديات المستقبل.</p>
+      <p>أن تكون الجامعة المرجع العربي الرائد في توظيف الذكاء الاصطناعي المسؤول والموثوق في التعليم والتدريب والبحث والابتكار ودعم صناعة القرار لمواجهة التحديات الأمنية.</p>
     </div>
   </section>
 </div>
@@ -251,14 +277,14 @@ footer{background:var(--primary-d);color:rgba(255,255,255,.78);padding:54px 0 30
       </div>
       <div class="pillar-goal">
         <span class="lbl">الهدف العام: </span>
-        <span class="txt">جيلٌ عربي متمكّن من قيادة المنظومة الأمنية في عصر الذكاء الاصطناعي، والتعامل مع مخاطره بفعالية.</span>
+        <span class="txt">كادرٌ عربي متمكّن من قيادة المنظومة الأمنية في عصر الذكاء الاصطناعي، والتعامل مع مخاطره بفعالية.</span>
       </div>
       <div class="pillar-body">
-        <p class="desc">ترسّخ هذه الركيزة منظومةً تعليميةً رائدة تدمج تقنيات الذكاء الاصطناعي وتطبيقاته في جميع مكونات التجربة الأكاديمية، بما يسهم في إعداد كوادر أمنية عربية قادرة على توظيف هذه التقنيات وتطويرها على نحوٍ مسؤول وقابل للتفسير، وتمكينها من الابتكار، واستشراف التحديات المستقبلية، وصياغة الحلول الأمنية الاستراتيجية بكفاءة وفاعلية.</p>
+        <p class="desc">ترسّخ هذه الركيزة منظومةً تعليميةً رائدة تدمج تقنيات الذكاء الاصطناعي وتطبيقاته في جميع مكونات التجربة الأكاديمية، بما يسهم في إعداد كوادر أمنية عربية قادرة على توظيف هذه التقنيات وتطويرها باستخدامٍ مسؤول وقابل للتفسير، وتمكينها من الابتكار، واستشراف التحديات المستقبلية، وصياغة الحلول الأمنية الاستراتيجية بكفاءة وفاعلية.</p>
         <div class="obj-title">الأهداف الاستراتيجية</div>
         <div class="obj-grid">
-          <div class="obj"><span class="chk"><svg viewBox="0 0 24 24" fill="none" stroke="#2e6066" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><p>طلابٌ قادرون على توظيف الذكاء الاصطناعي وتطبيقاته في تخصصاتهم الأمنية، ورفع إنتاجيتهم وكفاءة أدائهم المهني في قطاعاتهم، باستخدامٍ مسؤول وموثوق.</p></div>
-          <div class="obj"><span class="chk"><svg viewBox="0 0 24 24" fill="none" stroke="#2e6066" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><p>طلابٌ قادرون على إنتاج تطبيقات ذكاء اصطناعي تلبّي الاحتياجات والتحديات الأمنية، وتحافظ على السيادة الرقمية، مع ضمان قابليتها للتفسير.</p></div>
+          <div class="obj"><span class="chk"><svg viewBox="0 0 24 24" fill="none" stroke="#2e6066" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><p>طلابٌ قادرون على التوظيف المسؤول للذكاء الاصطناعي وتطبيقاته في تخصصاتهم، ورفع كفاءة أدائهم المهني.</p></div>
+          <div class="obj"><span class="chk"><svg viewBox="0 0 24 24" fill="none" stroke="#2e6066" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><p>طلابٌ مختصون في إنتاج تطبيقات ذكاء اصطناعي تلبّي الاحتياجات والتحديات الأمنية، وتحافظ على السيادة الرقمية، مع ضمان قابليتها للتفسير.</p></div>
 
           <div class="obj"><span class="chk"><svg viewBox="0 0 24 24" fill="none" stroke="#2e6066" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><p>تجربة أكاديمية عالية الجودة ترتكز على منظومة الذكاء الاصطناعي لتعزيز تجربة الطالب.</p></div>
         </div>
@@ -275,7 +301,7 @@ footer{background:var(--primary-d);color:rgba(255,255,255,.78);padding:54px 0 30
         </div>
         <div class="pillar-titles">
           <div class="pillar-kicker">الركيزة الثانية</div>
-          <h3>البحث والابتكار الأمني المدعوم بالذكاء الاصطناعي</h3>
+          <h3>البحث الأمني والابتكار المدعوم بالذكاء الاصطناعي</h3>
         </div>
       </div>
       <div class="pillar-goal">
@@ -283,12 +309,13 @@ footer{background:var(--primary-d);color:rgba(255,255,255,.78);padding:54px 0 30
         <span class="txt">أبحاثٌ مرجعية ذات أثر أمني تدعم الاستشراف الاستراتيجي في عصر الذكاء الاصطناعي.</span>
       </div>
       <div class="pillar-body">
-        <p class="desc">ترسّخ هذه الركيزة مكانة الجامعة، بوصفها الجهاز العلمي لمجلس وزراء الداخلية العرب، جامعةً عربيةً رائدة في البحوث الأمنية والابتكار التطبيقي، من خلال توظيف تقنيات الذكاء الاصطناعي وتطبيقاته عبر منظومتها البحثية لدعم التحليل الأمني والاستشراف الاستراتيجي، وتسريع تحويل المخرجات البحثية إلى حلول وابتكارات أمنية سيادية قابلة للتفسير، بما يعزّز دعم القرار الأمني العربي القائم على الأدلة.</p>
+        <p class="desc">ترسّخ هذه الركيزة مكانة الجامعة في توظيف تقنيات الذكاء الاصطناعي وتطبيقاته عبر منظومتها البحثية لدعم التحليل الأمني والاستشراف الاستراتيجي، وتسريع تحويل المخرجات البحثية إلى حلول وابتكارات أمنية سيادية وقابلة للتفسير، لتعزّز دعم القرار الأمني العربي القائم على الأدلة.</p>
         <div class="obj-title">الأهداف الاستراتيجية</div>
         <div class="obj-grid">
-          <div class="obj"><span class="chk"><svg viewBox="0 0 24 24" fill="none" stroke="#385676" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><p>مخرجات بحثية مبتكرة تواكب التحديات الأمنية المتسارعة وتلبّي الاحتياجات المستجدة.</p></div>
-          <div class="obj"><span class="chk"><svg viewBox="0 0 24 24" fill="none" stroke="#385676" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><p>حلول وتطبيقات تلبّي الاحتياجات الأمنية، وتضمن شفافية نماذجها وقابليتها للتفسير، وتعزّز الحفاظ على السيادة الرقمية للمنظومة الأمنية العربية.</p></div>
-          <div class="obj"><span class="chk"><svg viewBox="0 0 24 24" fill="none" stroke="#385676" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><p>دعم اتخاذ القرار بكفاءة وفعالية في عصر البيانات الضخمة والتحديات الأمنية المعقدة.</p></div>
+          <div class="obj"><span class="chk"><svg viewBox="0 0 24 24" fill="none" stroke="#385676" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><p>مخرجات بحثية مبتكرة مدعومة بالذكاء الاصطناعي، تواكب التحديات الأمنية المتسارعة وتلبّي الاحتياجات المستجدة.</p></div>
+          <div class="obj"><span class="chk"><svg viewBox="0 0 24 24" fill="none" stroke="#385676" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><p>حلول وتطبيقات ذكية تلبّي الاحتياجات الأمنية، وتضمن شفافية نماذجها وقابليتها للتفسير، وتعزّز الحفاظ على السيادة الرقمية للمنظومة الأمنية العربية.</p></div>
+          <div class="obj"><span class="chk"><svg viewBox="0 0 24 24" fill="none" stroke="#385676" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><p>قرارات فعّالة مدعومة بالذكاء الاصطناعي والبيانات الضخمة لمواجهة التحديات الأمنية المعقدة.</p></div>
+          <div class="obj"><span class="chk"><svg viewBox="0 0 24 24" fill="none" stroke="#385676" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><p>مرجعية استشارية رائدة تسهم في تطوير المنظومة الأمنية العربية.</p></div>
         </div>
       </div>
     </article>
@@ -308,14 +335,14 @@ footer{background:var(--primary-d);color:rgba(255,255,255,.78);padding:54px 0 30
       </div>
       <div class="pillar-goal">
         <span class="lbl">الهدف العام: </span>
-        <span class="txt">نخبٌ أمنية عربية جاهزة ميدانياً ومؤسسياً لقيادة التحول الأمني المعزَّز بالذكاء الاصطناعي، والارتقاء بجودة الحياة.</span>
+        <span class="txt">قادةٌ أمنية عربية جاهزة ميدانياً ومؤسسياً للتحول الأمني المعزَّز بالذكاء الاصطناعي.</span>
       </div>
       <div class="pillar-body">
-        <p class="desc">ترسّخ هذه الركيزة منظومةً تدريبيةً أمنية تدمج الذكاء الاصطناعي شريكاً تكتيكياً واستراتيجياً على نحوٍ مسؤول، لتمكين كفاءات أمنية قادرة على استشراف التهديدات، واتخاذ قرارات سريعة ومدروسة، وإدارة المخاطر في مواجهة التحديات الأمنية المستقبلية.</p>
+        <p class="desc">ترسّخ هذه الركيزة منظومةً تدريبيةً أمنية تدمج الذكاء الاصطناعي شريكاً تكتيكياً واستراتيجياً بطريقة مسؤولة، لتمكين كفاءات أمنية قادرة على استشراف التهديدات، واتخاذ قرارات سريعة ومدروسة، وإدارة المخاطر في مواجهة التحديات الأمنية، بما يسهم في الارتقاء بجودة الحياة.</p>
         <div class="obj-title">الأهداف الاستراتيجية</div>
         <div class="obj-grid">
           <div class="obj"><span class="chk"><svg viewBox="0 0 24 24" fill="none" stroke="#b6985f" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><p>خبراء أمنيون يمتلكون المهارات والقدرات المستقبلية لتعزيز مستوى الجاهزية الأمنية في عصر الذكاء الاصطناعي.</p></div>
-          <div class="obj"><span class="chk"><svg viewBox="0 0 24 24" fill="none" stroke="#b6985f" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><p>قادة أمنيون قادرون على توظيف تطبيقات الذكاء الاصطناعي في المجالات الأمنية وفق مبادئ الاستخدام المسؤول، وقيادة التحول الذكي، واستشراف التهديدات.</p></div>
+          <div class="obj"><span class="chk"><svg viewBox="0 0 24 24" fill="none" stroke="#b6985f" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><p>قادة أمنيون قادرون على استخدام تطبيقات الذكاء الاصطناعي في المجالات الأمنية وفق مبادئ الاستخدام المسؤول، وقيادة التحول الذكي.</p></div>
           <div class="obj"><span class="chk"><svg viewBox="0 0 24 24" fill="none" stroke="#b6985f" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><p>تجربة تدريبية عالية الجودة ترتكز على منظومة الذكاء الاصطناعي لتعزيز تجربة المتدرب.</p></div>
         </div>
       </div>
@@ -336,16 +363,17 @@ footer{background:var(--primary-d);color:rgba(255,255,255,.78);padding:54px 0 30
       </div>
       <div class="pillar-goal">
         <span class="lbl">الهدف العام: </span>
-        <span class="txt">بيئة جامعية ذكية ومستدامة تحقق أعلى مستويات الكفاءة والفعالية المؤسسية.</span>
+        <span class="txt">بيئة جامعية مستدامة تحقق الكفاءة والفعالية المؤسسية قائمة على الذكاء الاصطناعي.</span>
       </div>
       <div class="pillar-body">
-        <p class="desc">ترسّخ هذه الركيزة نموذجاً مؤسسياً متكاملاً يوظّف الذكاء الاصطناعي في العمليات التشغيلية والإدارية والخدمات المؤسسية، بما يعزّز تجربة المستفيدين، ويرفع كفاءة استخدام الموارد، ويدعم السلامة والاستدامة، ويرسّخ اتخاذ القرار المدعوم بالذكاء الاصطناعي.</p>
+        <p class="desc">ترسّخ هذه الركيزة نموذجاً مؤسسياً متكاملاً يوظّف الذكاء الاصطناعي في العمليات التشغيلية والإدارية والخدمات المؤسسية، بما يعزّز تجربة المستفيدين، ويرفع كفاءة استخدام الموارد، ويدعم السلامة والاستدامة، ويعزّز اتخاذ القرار المدعوم الذكاء الاصطناعي.</p>
         <div class="obj-title">الأهداف الاستراتيجية</div>
         <div class="obj-grid">
-          <div class="obj"><span class="chk"><svg viewBox="0 0 24 24" fill="none" stroke="#895b60" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><p>خدمات جامعية ذكية متمحورة حول المستفيد، توفر تجربة رقمية متكاملة وعالية الجودة.</p></div>
-          <div class="obj"><span class="chk"><svg viewBox="0 0 24 24" fill="none" stroke="#895b60" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><p>قرارات مؤسسية دقيقة وفعالة، مدعومة بالبيانات الفورية والذكاء الاصطناعي.</p></div>
-          <div class="obj"><span class="chk"><svg viewBox="0 0 24 24" fill="none" stroke="#895b60" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><p>كفاءات وظيفية عالية الإنتاجية، ممكَّنة بتطبيقات الذكاء الاصطناعي.</p></div>
-          <div class="obj"><span class="chk"><svg viewBox="0 0 24 24" fill="none" stroke="#895b60" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><p>إدارة ذكية للموارد والأصول المؤسسية تعزّز الكفاءة التشغيلية والاستدامة.</p></div>
+          <div class="obj"><span class="chk"><svg viewBox="0 0 24 24" fill="none" stroke="#895b60" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><p>خدمات جامعية ذكية للمستفيد توفر تجربة رقمية متكاملة وعالية الجودة.</p></div>
+          <div class="obj"><span class="chk"><svg viewBox="0 0 24 24" fill="none" stroke="#895b60" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><p>قرارات مؤسسية دقيقة وفعالة مدعومة بالبيانات الفورية والذكاء الاصطناعي.</p></div>
+          <div class="obj"><span class="chk"><svg viewBox="0 0 24 24" fill="none" stroke="#895b60" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><p>كفاءات وظيفية مُمكّنة بتطبيقات الذكاء الاصطناعي.</p></div>
+          <div class="obj"><span class="chk"><svg viewBox="0 0 24 24" fill="none" stroke="#895b60" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><p>إدارة ذكية ومستدامة للموارد والأصول المؤسسية تعزّز الكفاءة التشغيلية والاستدامة.</p></div>
+          <div class="obj"><span class="chk"><svg viewBox="0 0 24 24" fill="none" stroke="#895b60" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><p>شراكات استراتيجية مستدامة في مجال الذكاء الاصطناعي.</p></div>
         </div>
       </div>
     </article>
@@ -360,24 +388,38 @@ footer{background:var(--primary-d);color:rgba(255,255,255,.78);padding:54px 0 30
         </div>
         <div class="pillar-titles">
           <div class="pillar-kicker">الركيزة الخامسة</div>
-          <h3>الأخلاقيات والاستخدام المسؤول للذكاء الاصطناعي</h3>
+          <h3>أخلاقيات الذكاء الاصطناعي</h3>
         </div>
       </div>
       <div class="pillar-goal">
         <span class="lbl">الهدف العام: </span>
-        <span class="txt">مرجعية عربية رائدة في حوكمة الذكاء الاصطناعي وأخلاقياته.</span>
+        <span class="txt">إطار مؤسسي لحوكمة واستخدام الذكاء الاصطناعي.</span>
       </div>
       <div class="pillar-body">
-        <p class="desc">ترسّخ هذه الركيزة التزام الجامعة بتصميم تقنيات الذكاء الاصطناعي وتطبيقاته واستخدامها وفق أعلى معايير الأخلاقيات والمسؤولية والحوكمة، في التعليم والتدريب والبحوث وسائر المهام المؤسسية.</p>
+        <p class="desc">ترسّخ هذه الركيزة التزام الجامعة بتصميم واستخدام تقنيات الذكاء الاصطناعي وتطبيقاته وفق أعلى معايير الأخلاقيات والمسؤولية والحوكمة.</p>
         <div class="obj-title">الأهداف الاستراتيجية</div>
         <div class="obj-grid">
-          <div class="obj"><span class="chk"><svg viewBox="0 0 24 24" fill="none" stroke="#8a7e78" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><p>حوكمة البيانات وحمايتها بما يعزّز السيادة الرقمية.</p></div>
-          <div class="obj"><span class="chk"><svg viewBox="0 0 24 24" fill="none" stroke="#8a7e78" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><p>أطر حوكمة مؤسسية للاستخدام المسؤول لتطبيقات الذكاء الاصطناعي وفق أفضل الممارسات الإقليمية والدولية.</p></div>
-          <div class="obj"><span class="chk"><svg viewBox="0 0 24 24" fill="none" stroke="#8a7e78" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><p>منظومة مؤسسية راسخة تضمن الاستخدام المسؤول للذكاء الاصطناعي والبيانات وفق الأطر المعتمدة، بما يعزّز الشفافية والنزاهة والمساءلة في جميع الممارسات.</p></div>
+          <div class="obj"><span class="chk"><svg viewBox="0 0 24 24" fill="none" stroke="#8a7e78" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><p>حماية البيانات بما يعزّز السيادة الرقمية.</p></div>
+          <div class="obj"><span class="chk"><svg viewBox="0 0 24 24" fill="none" stroke="#8a7e78" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><p>حوكمة مؤسسية للاستخدام المسؤول لتطبيقات الذكاء الاصطناعي وفق أفضل الممارسات الدولية.</p></div>
+          <div class="obj"><span class="chk"><svg viewBox="0 0 24 24" fill="none" stroke="#8a7e78" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><p>الشفافية والنزاهة والمساءلة في جميع الممارسات.</p></div>
         </div>
       </div>
     </article>
 
+  </div>
+</section>
+
+<section class="council" id="council">
+  <div class="container">
+    <div class="section-head">
+      <h2>مجلس الذكاء الاصطناعي</h2>
+    </div>
+    <div class="council-box">
+      <div class="council-inner">
+        <div class="box-title">مجلس الذكاء الاصطناعي</div>
+      </div>
+      <div class="council-secretariat">أمانة الذكاء الاصطناعي</div>
+    </div>
   </div>
 </section>
 
