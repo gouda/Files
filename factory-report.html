@@ -31,10 +31,11 @@
   .brand .logo svg{width:34px;height:34px}
   .brand .bt b{display:block;font-weight:800;font-size:.95rem;letter-spacing:.3px}
   .brand .bt span{display:block;font-size:.64rem;opacity:.8;letter-spacing:1.5px}
-  .nav nav{margin-inline-start:auto;display:flex;gap:4px;overflow-x:auto;scrollbar-width:none}
-  .nav nav::-webkit-scrollbar{display:none}
+  .nav nav{margin-inline-start:auto;display:flex;gap:4px}
   .nav nav a{white-space:nowrap;font-size:.82rem;font-weight:600;color:#fff;text-decoration:none;padding:7px 12px;border-radius:999px;opacity:.85;transition:.2s}
   .nav nav a:hover{background:rgba(255,255,255,.14);opacity:1}
+  .burger{display:none;margin-inline-start:auto;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.22);color:#fff;width:44px;height:44px;border-radius:11px;cursor:pointer;align-items:center;justify-content:center;flex:0 0 auto}
+  .burger svg{width:24px;height:24px}
 
   /* Hero */
   .hero{background:linear-gradient(135deg,var(--purple),var(--purple-d));color:#fff;padding:44px 0 118px;position:relative;overflow:hidden}
@@ -126,10 +127,28 @@
   footer .wrap{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;align-items:center}
 
   @media print{header.site,.hero::after{position:static}.calc input{border:1px solid #999}}
+
+  /* ===== Mobile nav (hamburger) ===== */
+  @media(max-width:880px){
+    .nav{flex-wrap:wrap;position:relative}
+    .burger{display:flex}
+    .nav nav{order:3;flex-basis:100%;margin:0;display:none;flex-direction:column;gap:4px;padding-top:12px}
+    .nav nav.open{display:flex}
+    .nav nav a{font-size:.9rem;padding:11px 14px;border-radius:10px;background:rgba(255,255,255,.07);opacity:1}
+    .nav nav a:hover{background:rgba(255,255,255,.16)}
+  }
+
+  /* ===== Tables: force clean horizontal scroll on small screens ===== */
+  @media(max-width:680px){
+    .table-scroll{box-shadow:inset -14px 0 12px -12px rgba(91,42,114,.35)}
+    .table-scroll table{min-width:540px}
+  }
   @media(max-width:560px){
     .kpis{margin-top:-66px}
     .result-total{flex-direction:column;align-items:flex-start;text-align:right}
+    .calc-grid{grid-template-columns:1fr 1fr}
   }
+  @media(max-width:380px){.calc-grid{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -145,7 +164,10 @@
       </div>
       <div class="bt"><b>Engineering Consultant House</b><span>بيت الاستشارات الهندسية</span></div>
     </div>
-    <nav>
+    <button class="burger" id="burger" aria-label="القائمة" aria-expanded="false" onclick="toggleMenu()">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </button>
+    <nav id="menu">
       <a href="#overview">نظرة عامة</a>
       <a href="#sheets">اللوحات</a>
       <a href="#dims">الأبعاد</a>
@@ -511,6 +533,11 @@
 </footer>
 
 <script>
+  // ===== Mobile menu =====
+  const menu=document.getElementById('menu'), burger=document.getElementById('burger');
+  function toggleMenu(){const o=menu.classList.toggle('open');burger.setAttribute('aria-expanded',o);}
+  menu.addEventListener('click',e=>{if(e.target.tagName==='A'){menu.classList.remove('open');burger.setAttribute('aria-expanded',false);}});
+
   const $=id=>document.getElementById(id);
   const fmt=n=>n.toLocaleString('en-US',{maximumFractionDigits:0});
   const fmt1=n=>n.toLocaleString('en-US',{maximumFractionDigits:1});
