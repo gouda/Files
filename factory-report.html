@@ -161,6 +161,7 @@
       <a href="#struct">القطاعات</a>
       <a href="#takeoff">حصر الحديد</a>
       <a href="#calc">حاسبة الحصر</a>
+      <a href="#convert">Built-up ↔ Hot-rolled</a>
       <a href="#mat">الخامات والأسعار</a>
       <a href="#notes">التوصيات</a>
     </nav>
@@ -373,9 +374,70 @@
     </div>
   </section>
 
-  <!-- 7 Materials -->
+  <!-- 7 Built-up vs Hot-rolled -->
+  <section class="block" id="convert">
+    <div class="sec-head"><div class="n">7</div><div><h2>المقارنة: Built-up ↔ Hot-rolled</h2><p>تحويل القطاعات الملحومة المتنحّفة إلى قطاعات مدرفلة قياسية</p></div></div>
+    <div class="card">
+      <h3>المبدأ</h3>
+      <p>القطاعات الحالية <strong>مركّبة باللحام ومتنحّفة (Tapered Built-up)</strong> — العمق يتبع العزم فالوزن أقل. القطاع المدرفل <strong>ثابت العمق (Prismatic)</strong> فيُختار على أكبر عزم (عند الكَنّ) فيطلع أتقل. المطابقة بمعامل المقطع <code>Sx (Wel)</code> لنفس التحمّل.</p>
+    </div>
+    <div class="card table-scroll">
+      <table>
+        <caption>جدول التحويل المقترح (مطابقة بمعامل المقطع Sx)</caption>
+        <thead><tr><th>العضو</th><th>الملحوم (Built-up)</th><th>كجم/م</th><th>Sx المطلوب</th><th>البديل المدرفل (Hot-rolled)</th><th>كجم/م</th><th>الفرق</th></tr></thead>
+        <tbody>
+          <tr><td>عمود داخلي</td><td>Web 900×12 + Flg 350×16</td><td class="t-num">172.7</td><td>~6,600 cm³</td><td>HE 700 B (أو UB838×292×226)</td><td class="t-num">241</td><td><span class="pill lo">+40%</span></td></tr>
+          <tr><td>عمود خارجي</td><td>Web 900×10 + Flg 350×14</td><td class="t-num">128*</td><td>~5,700 cm³</td><td>HE 600 B</td><td class="t-num">212</td><td><span class="pill lo">+45–65%</span></td></tr>
+          <tr><td>جائز الإطار</td><td>Web 450–900×10 + Flg 220×12</td><td class="t-num">78*</td><td>~3,700 cm³</td><td>IPE 600 + كَنّ (أو UB686×254×140)</td><td class="t-num">122–140</td><td><span class="pill lo">+55–80%</span></td></tr>
+          <tr><td>كمرة الونش</td><td>Web 650×12 + Flg 250×14</td><td class="t-num">116.2</td><td>~3,100 cm³</td><td>HE 500 B + كاب قناة</td><td class="t-num">187+</td><td><span class="pill lo">+60%</span></td></tr>
+          <tr><td>عمود الميزانين</td><td>Web 500×10 + Flg 250×12</td><td class="t-num">86.4</td><td>~2,000 cm³</td><td>HE 320 B / IPE 450</td><td class="t-num">97–127</td><td><span class="pill md">+15–45%</span></td></tr>
+          <tr><td>المدادات Z200</td><td>على البارد (Cold-formed)</td><td class="t-num">7.07</td><td>—</td><td>تبقى كما هي</td><td class="t-num">7.07</td><td><span class="pill hi">بدون تغيير</span></td></tr>
+        </tbody>
+      </table>
+      <p style="font-size:.8rem;color:var(--muted);margin-top:8px">* قيمة متوسطة للقطاع المتنحّف. المطابقة بمعامل المقطع فقط — التحويل النهائي يتطلب مراجعة الترخيم والـ LTB وتصميم البحور المتعددة والونش.</p>
+    </div>
+
+    <div class="card calc">
+      <h3>حاسبة فرق الوزن والتكلفة</h3>
+      <div class="calc-grid" style="margin-bottom:8px">
+        <div class="fld"><label>سعر الطن ملحوم/مصنّع (جم)</label><input type="number" id="pTonBU" value="85000" step="1000"></div>
+        <div class="fld"><label>سعر الطن مدرفل مستورد (جم)</label><input type="number" id="pTonHR" value="92000" step="1000"></div>
+        <div class="fld"><label>زيادة وزن الميزانين عند التحويل %</label><input type="number" id="mezUp" value="20" step="5"></div>
+      </div>
+      <div class="grid2" style="margin-top:8px">
+        <div style="background:var(--purple-tint);border-radius:14px;padding:18px;border:2px solid var(--purple-tint2)">
+          <div style="font-weight:800;color:var(--purple-d);margin-bottom:6px">الخيار الحالي — Built-up</div>
+          <div style="font-size:1.7rem;font-weight:900;color:var(--purple)" id="cmpBUTon">—</div>
+          <div style="font-size:.85rem;color:var(--muted)">التكلفة التقديرية: <b id="cmpBUCost" style="color:var(--purple-d)">—</b></div>
+          <ul class="clean" style="margin-top:10px;font-size:.84rem">
+            <li>أخف وزناً · يستخدم بليت محلي متاح</li>
+            <li>لحام كثيف + فحص لحام</li>
+            <li>الأنسب لبحر 41م متعدد البحور</li>
+          </ul>
+        </div>
+        <div style="background:linear-gradient(160deg,#fff,#faf3ec);border-radius:14px;padding:18px;border:2px solid #ecd9b0">
+          <div style="font-weight:800;color:#7a5a1e;margin-bottom:6px">الخيار البديل — Hot-rolled</div>
+          <div style="font-size:1.7rem;font-weight:900;color:var(--warn)" id="cmpHRTon">—</div>
+          <div style="font-size:.85rem;color:var(--muted)">التكلفة التقديرية: <b id="cmpHRCost" style="color:#7a5a1e">—</b></div>
+          <ul class="clean" style="margin-top:10px;font-size:.84rem">
+            <li>أتقل وزناً · قطاعات عميقة مستوردة</li>
+            <li>تنفيذ أسرع · بدون لحام بليت · أفضل للإجهاد (الونش)</li>
+            <li>مهلة توريد + سعر طن أعلى</li>
+          </ul>
+        </div>
+      </div>
+      <div class="result-total">
+        <div><div class="sub">فرق الوزن (Hot-rolled − Built-up)</div><div class="big" id="cmpDW">—</div></div>
+        <div style="text-align:left;direction:ltr"><div class="sub" style="text-align:right;direction:rtl">فرق التكلفة</div><div class="big" id="cmpDC" style="font-size:1.4rem">—</div></div>
+        <div style="text-align:left;direction:ltr"><div class="sub" style="text-align:right;direction:rtl">التوصية</div><div id="cmpRec" style="font-size:.9rem;font-weight:700">حل هجين</div></div>
+      </div>
+      <p style="font-size:.78rem;color:var(--muted);margin-top:10px">* الحاسبة تبني على بنود حصر الحديد بالأعلى. التوصية: إبقاء الإطارات Built-up + تحويل كمرة الونش لمدرفل (إجهاد) والميزانين الثانوي لـ IPE (سرعة).</p>
+    </div>
+  </section>
+
+  <!-- 8 Materials -->
   <section class="block" id="mat">
-    <div class="sec-head"><div class="n">7</div><div><h2>الخامات وأسعار السوق</h2><p>أسعار استرشادية للسوق المصري ٢٠٢٦ — للموازنة المبدئية</p></div></div>
+    <div class="sec-head"><div class="n">8</div><div><h2>الخامات وأسعار السوق</h2><p>أسعار استرشادية للسوق المصري ٢٠٢٦ — للموازنة المبدئية</p></div></div>
     <div class="card table-scroll">
       <table>
         <caption>أسعار استرشادية (تتغيّر بالسوق والكمية والمورّد)</caption>
@@ -398,9 +460,9 @@
     </div>
   </section>
 
-  <!-- 8 Notes -->
+  <!-- 9 Notes -->
   <section class="block" id="notes">
-    <div class="sec-head"><div class="n">8</div><div><h2>الملاحظات والتوصيات</h2></div></div>
+    <div class="sec-head"><div class="n">9</div><div><h2>الملاحظات والتوصيات</h2></div></div>
     <div class="grid2">
       <div class="card">
         <h3>بنود تحتاج تأكيداً (تأثير عالٍ على الوزن)</h3>
@@ -446,18 +508,19 @@
   const fmt0=n=>n.toLocaleString('en-US',{maximumFractionDigits:0});
   const FOOTPRINT=2321;
   // rows: name, qty, len(m), webW,webT, flgW,flgT (mm) for built-up; OR kgm direct (for cold-formed/rail); lump=kg total
+  // hr = وزن المتر للبديل المدرفل (Hot-rolled). إن لم يوجد فالعضو لا يتغيّر.
   const ROWS=[
-    {n:'أعمدة خارجية',           q:20, L:13.5,  w:900,wt:10, f:350,ft:14},
-    {n:'أعمدة داخلية',           q:24, L:14.7,  w:900,wt:12, f:350,ft:16},
-    {n:'جوائز الإطار',           q:10, L:41.66, kgm:78},
-    {n:'أعمدة الجملون',          q:10, L:13.0,  kgm:90},
-    {n:'كمرات الونش',            q:2,  L:56.0,  w:650,wt:12, f:250,ft:14},
+    {n:'أعمدة خارجية',           q:20, L:13.5,  w:900,wt:10, f:350,ft:14, hr:212},
+    {n:'أعمدة داخلية',           q:24, L:14.7,  w:900,wt:12, f:350,ft:16, hr:241},
+    {n:'جوائز الإطار',           q:10, L:41.66, kgm:78,  hr:135},
+    {n:'أعمدة الجملون',          q:10, L:13.0,  kgm:90,  hr:120},
+    {n:'كمرات الونش',            q:2,  L:56.0,  w:650,wt:12, f:250,ft:14, hr:199},
     {n:'سكة الونش',              q:2,  L:56.0,  kgm:35},
     {n:'كوابيل الونش',           q:20, L:1,     kgm:140},
     {n:'مدادات السقف Z200',      q:25, L:56.0,  kgm:7.07},
     {n:'مدادات الحوائط Z200',    q:1,  L:1692,  kgm:7.07},
     {n:'الكمر القطري + ST-1',    q:1,  L:1,     kgm:7000},
-    {n:'الميزانين (إجمالي)',     q:1,  L:1,     kgm:50000},
+    {n:'الميزانين (إجمالي)',     q:1,  L:1,     kgm:50000, mez:true},
     {n:'السلالم المعدنية',       q:1,  L:1,     kgm:3000},
   ];
   function rowKgm(r){ if(r.w){return 0.00785*(r.w*r.wt + 2*r.f*r.ft);} return r.kgm; }
@@ -490,9 +553,29 @@
     $('kgm2').textContent=fmt0(tot*1000/FOOTPRINT)+' كجم/م²';
     $('cost').textContent=fmt0(tot*(parseFloat($('pTon').value)||0))+' جم';
     $('kSteel').innerHTML='~'+fmt0(tot)+'<small> طن</small>';
+
+    // ===== مقارنة Built-up ↔ Hot-rolled =====
+    const mezUp=(parseFloat($('mezUp').value)||0)/100;
+    let subHR=0;
+    ROWS.forEach(r=>{
+      let kg;
+      if(r.mez){ kg=r.q*r.L*r.kgm*(1+mezUp); }
+      else { const k=(r.hr!=null)?r.hr:rowKgm(r); kg=r.q*r.L*k; }
+      subHR+=kg/1000;
+    });
+    const upl=1+(parseFloat($('connPct').value)||0)/100+(parseFloat($('wastePct').value)||0)/100;
+    const totBU=sub*upl, totHR=subHR*upl;
+    const pBU=parseFloat($('pTonBU').value)||0, pHR=parseFloat($('pTonHR').value)||0;
+    $('cmpBUTon').innerHTML=fmt(totBU,1)+' <small style="font-size:.55em">طن</small>';
+    $('cmpHRTon').innerHTML=fmt(totHR,1)+' <small style="font-size:.55em">طن</small>';
+    $('cmpBUCost').textContent=fmt0(totBU*pBU)+' جم';
+    $('cmpHRCost').textContent=fmt0(totHR*pHR)+' جم';
+    const dW=totHR-totBU, dC=totHR*pHR-totBU*pBU;
+    $('cmpDW').textContent=(dW>=0?'+':'')+fmt(dW,1)+' طن ('+(dW>=0?'+':'')+fmt0(dW/totBU*100)+'%)';
+    $('cmpDC').textContent=(dC>=0?'+':'')+fmt0(dC)+' جم';
   }
   function resetTO(){location.reload();}
-  ['connPct','wastePct','pTon'].forEach(id=>$(id).addEventListener('input',recalc));
+  ['connPct','wastePct','pTon','pTonBU','pTonHR','mezUp'].forEach(id=>$(id).addEventListener('input',recalc));
   build(); recalc();
 </script>
 </body>
