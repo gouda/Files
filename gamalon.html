@@ -13,109 +13,54 @@
     --accent:#F5CBA7;
     --accent-dark:#E8B183;
     --ink:#2B2230;
-    --line:#D8CCDA;
   }
   *{margin:0;padding:0;box-sizing:border-box}
-  body{
-    font-family:"Segoe UI","Cairo",Tahoma,Arial,sans-serif;
-    background:#EFEAF0;color:var(--ink);
-    line-height:1.6;
-  }
-  .page{max-width:1050px;margin:0 auto;background:#fff;box-shadow:0 0 25px rgba(0,0,0,.12)}
+  body{font-family:"Segoe UI","Cairo",Tahoma,Arial,sans-serif;background:#EFEAF0;color:var(--ink);line-height:1.6}
+  .page{max-width:1080px;margin:0 auto;background:#fff;box-shadow:0 0 25px rgba(0,0,0,.12)}
 
-  /* ======= Header ======= */
-  header{
-    background:var(--purple);
-    color:#fff;
-    padding:34px 44px 28px;
-    display:flex;align-items:center;gap:30px;flex-wrap:wrap;
-  }
+  header{background:var(--purple);color:#fff;padding:32px 44px 26px;display:flex;align-items:center;gap:30px;flex-wrap:wrap}
   .logo{flex:0 0 auto;text-align:center}
-  .logo svg{display:block;margin:0 auto}
-  .brand{
-    text-align:center;flex:1 1 320px;
-  }
-  .brand .l1{
-    font-size:30px;letter-spacing:.45em;font-weight:300;
-    font-family:"Segoe UI Light","Segoe UI",Arial,sans-serif;
-    white-space:nowrap;
-  }
-  .brand .l2{
-    font-size:17px;letter-spacing:.38em;font-weight:300;margin-top:4px;white-space:nowrap;
-  }
+  .brand{text-align:center;flex:1 1 320px}
+  .brand .l1{font-size:30px;letter-spacing:.45em;font-weight:300;white-space:nowrap}
+  .brand .l2{font-size:17px;letter-spacing:.38em;font-weight:300;margin-top:4px;white-space:nowrap}
   .brand .rule{height:5px;background:#fff;margin:16px auto 0;width:92%}
-  .doc-title{
-    background:var(--purple-dark);color:#fff;text-align:center;padding:16px 20px;
-  }
-  .doc-title h1{font-size:26px;font-weight:700;letter-spacing:.02em}
-  .doc-title p{font-size:14px;opacity:.85;margin-top:4px}
+  .doc-title{background:var(--purple-dark);color:#fff;text-align:center;padding:15px 20px}
+  .doc-title h1{font-size:25px;font-weight:700}
+  .doc-title p{font-size:13.5px;opacity:.85;margin-top:4px}
 
-  /* ======= Summary cards ======= */
-  .cards{
-    display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
-    gap:12px;padding:22px 34px 4px;
-  }
-  .card{
-    background:var(--purple-light);border:1px solid var(--purple-mid);
-    border-radius:10px;padding:12px 10px;text-align:center;
-  }
-  .card .v{font-size:19px;font-weight:700;color:var(--purple)}
-  .card .k{font-size:12.5px;color:#6b5a6e;margin-top:2px}
+  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;padding:20px 34px 2px}
+  .card{background:var(--purple-light);border:1px solid var(--purple-mid);border-radius:10px;padding:11px 8px;text-align:center}
+  .card .v{font-size:18px;font-weight:700;color:var(--purple)}
+  .card .k{font-size:12px;color:#6b5a6e;margin-top:2px}
 
-  /* ======= Sections ======= */
-  section{padding:20px 34px}
-  h2{
-    color:var(--purple);font-size:19px;margin:8px 0 12px;
-    display:flex;align-items:center;gap:10px;
-  }
+  section{padding:18px 34px}
+  h2{color:var(--purple);font-size:19px;margin:6px 0 12px;display:flex;align-items:center;gap:10px}
   h2::after{content:"";flex:1;height:2px;background:var(--purple-mid)}
 
-  /* ======= Table ======= */
   .tbl-wrap{overflow-x:auto}
-  table{width:100%;border-collapse:collapse;font-size:13.5px}
-  th,td{border:1.5px solid var(--purple);padding:7px 9px;text-align:center}
-  thead th{
-    background:var(--purple);color:#fff;font-size:14px;font-weight:700;
-  }
+  table{width:100%;border-collapse:collapse;font-size:13px}
+  th,td{border:1.5px solid var(--purple);padding:6px 8px;text-align:center}
+  thead th{background:var(--purple);color:#fff;font-size:13.5px;font-weight:700}
   td.item{text-align:right;font-weight:600}
-  td.sec{direction:ltr;font-family:Consolas,"Courier New",monospace;font-size:13px}
-  tr.group td{
-    background:var(--purple-mid);color:var(--purple-dark);
-    font-weight:800;text-align:right;font-size:14px;letter-spacing:.02em;
-  }
-  tr.subtotal td{background:var(--purple-light);font-weight:700}
-  tr.total td{
-    background:var(--accent);font-weight:800;font-size:16.5px;color:#5a3413;
-    border-top:3px double var(--purple);
-  }
-  tr.area td{background:#FBEFE3;font-weight:700;font-size:14.5px}
-  tbody tr:nth-child(odd):not(.group):not(.subtotal):not(.total):not(.area) td{background:#FBF8FC}
-  .unit{font-size:12px;color:#7c6a80}
+  td.calc{text-align:right;font-size:12px;color:#584a5c}
+  td.sec{direction:ltr;font-family:Consolas,"Courier New",monospace;font-size:12.5px}
+  tr.group td{background:var(--purple-mid);color:var(--purple-dark);font-weight:800;text-align:right;font-size:13.5px}
+  tr.total td{background:var(--accent);font-weight:800;font-size:16px;color:#5a3413;border-top:3px double var(--purple)}
+  tr.area td{background:#FBEFE3;font-weight:700;font-size:14px}
+  tr.sub td{background:var(--purple-light);font-weight:700}
+  tbody tr:nth-child(odd):not(.group):not(.total):not(.area):not(.sub) td{background:#FBF8FC}
+  .unit{font-size:11.5px;color:#7c6a80}
+  thead th .unit{color:#e8d9ea}
 
-  /* ======= Notes ======= */
-  .note-box{
-    background:var(--purple-light);border-right:5px solid var(--purple);
-    border-radius:8px;padding:14px 18px;margin-top:10px;font-size:13.5px;
-  }
-  .note-box ol{padding-right:20px}
-  .note-box li{margin-bottom:7px}
-  .q-box{
-    background:#FDF3E7;border-right:5px solid var(--accent-dark);
-    border-radius:8px;padding:14px 18px;margin-top:14px;font-size:13.5px;
-  }
+  .note-box{background:var(--purple-light);border-right:5px solid var(--purple);border-radius:8px;padding:13px 18px;margin-top:10px;font-size:13.5px}
+  .note-box ol,.q-box ol{padding-right:20px}
+  .note-box li,.q-box li{margin-bottom:6px}
+  .q-box{background:#FDF3E7;border-right:5px solid var(--accent-dark);border-radius:8px;padding:13px 18px;margin-top:12px;font-size:13.5px}
   .q-box b{color:#8a5a1f}
-  .q-box ol{padding-right:20px}
-  .q-box li{margin-bottom:7px}
-
-  footer{
-    background:var(--purple);color:#fff;text-align:center;
-    padding:14px;font-size:12.5px;letter-spacing:.05em;margin-top:26px;
-  }
+  .ok{color:#1e6b34;font-weight:700}
+  footer{background:var(--purple);color:#fff;text-align:center;padding:13px;font-size:12.5px;letter-spacing:.05em;margin-top:24px}
   @media print{
-    body{background:#fff}
-    .page{box-shadow:none;max-width:100%}
-    section{padding:12px 20px}
-    thead th{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+    body{background:#fff}.page{box-shadow:none;max-width:100%}section{padding:10px 20px}
     *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
   }
 </style>
@@ -126,8 +71,7 @@
   <!-- ===================== HEADER ===================== -->
   <header>
     <div class="logo">
-      <svg width="120" height="120" viewBox="0 0 120 120" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
-        <!-- house outline -->
+      <svg width="115" height="115" viewBox="0 0 120 120" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
         <path d="M22 58 L60 24 L98 58"/>
         <path d="M32 50 L32 96 L60 96"/>
         <path d="M88 50 L88 96 L36 96"/>
@@ -142,116 +86,166 @@
   </header>
 
   <div class="doc-title">
-    <h1>حصر أعمال الجمالون المعدني — Steel Structure Take-Off</h1>
-    <p>مبنى ورشة صناعية بونش علوي 20 طن وميزانين — المرجع: STEEL STR DRAWINGS (10 لوحات — Rev.00)</p>
+    <h1>حصر أعمال الجمالون المعدني — Steel Structure Detailed Take-Off</h1>
+    <p>مبنى ورشة صناعية بونش علوي 20 طن وميزانين — المرجع: STEEL STR DRAWINGS (10 لوحات — Rev.00) — إصدار ثانٍ مُدقَّق بالعدّ المباشر من اللوحات</p>
   </div>
 
   <!-- ===================== SUMMARY ===================== -->
   <div class="cards">
-    <div class="card"><div class="v">40.95 × 55.61 م</div><div class="k">أبعاد المبنى (محاور A–E × 1–10)</div></div>
+    <div class="card"><div class="v">233.61 طن</div><div class="k">إجمالي وزن الحديد</div></div>
+    <div class="card"><div class="v">3,912 م²</div><div class="k">إجمالي مسطحات الصاج (شينكو)</div></div>
+    <div class="card"><div class="v">1,103 م²</div><div class="k">لوح الميزانين Deck 1.0مم</div></div>
+    <div class="card"><div class="v">40.95 × 55.61 م</div><div class="k">أبعاد المحاور A–E × 1–10</div></div>
     <div class="card"><div class="v">13.50 / 15.00 م</div><div class="k">ارتفاع الركن / القمة</div></div>
-    <div class="card"><div class="v">2 × 20.475 م</div><div class="k">بحران (جمالونان) — 10 فريمات</div></div>
-    <div class="card"><div class="v">20 طن</div><div class="k">ونش علوي — منسوب +10.00</div></div>
-    <div class="card"><div class="v">+8.00 م</div><div class="k">ميزانين (المحاور C–E)</div></div>
-    <div class="card"><div class="v">ST52 / ST37</div><div class="k">رتبة الصلب — كود مصري ECP-205</div></div>
+    <div class="card"><div class="v">20 طن — +10.00</div><div class="k">الونش العلوي</div></div>
   </div>
 
-  <!-- ===================== MAIN TABLE ===================== -->
+  <!-- ===================== SHEET AREAS ===================== -->
   <section>
-    <h2>جدول الحصر التفصيلي بالأوزان</h2>
+    <h2>أولاً — إجمالي مسطحات الصاج (Corrugated Sheets)</h2>
     <div class="tbl-wrap">
     <table>
       <thead>
         <tr>
-          <th style="width:26%">Section / البند</th>
-          <th style="width:17%">القطاع</th>
-          <th style="width:9%">المرجع<br><span class="unit">لوحة</span></th>
-          <th style="width:12%">الطول الكلي<br><span class="unit">م.ط</span></th>
-          <th style="width:12%">وزن المتر<br><span class="unit">كجم/م</span></th>
-          <th style="width:14%">Weight<br><span class="unit">طن</span></th>
+          <th style="width:34%">البند</th>
+          <th style="width:38%">طريقة الحساب</th>
+          <th style="width:14%">المساحة <span class="unit">م²</span></th>
+          <th style="width:14%">المرجع <span class="unit">لوحة</span></th>
         </tr>
       </thead>
       <tbody>
-        <!-- ============ الهيكل الرئيسي ============ -->
-        <tr class="group"><td colspan="5">أولاً — الهيكل الرئيسي (الفريمات)</td><td>94.43</td></tr>
-        <tr><td class="item">FRAME COL. — أعمدة الفريمات (A,C,E×13.5م + D×8.0م)</td><td class="sec">HEA 400</td><td>01، 09</td><td>485.0</td><td>125.0</td><td>60.63</td></tr>
-        <tr><td class="item">FRAME RAFTER — جسور الجمالون المائلة</td><td class="sec">IPE 400</td><td>09</td><td>413.9</td><td>66.3</td><td>27.44</td></tr>
-        <tr><td class="item">HAUNCHES — تقويات الركب والقمة (1.5-IPE400)</td><td class="sec">قطع من IPE 400</td><td>09</td><td>171.3</td><td>25.8</td><td>4.42</td></tr>
-        <tr><td class="item">GABLE POSTS — أعمدة الجمالون الطرفي (محور 1)</td><td class="sec">HEA 300</td><td>01، 09</td><td>22.0</td><td>88.3</td><td>1.94</td></tr>
+        <tr><td class="item">صاج السقف (جمالونان × ميلان)</td><td class="calc">41.45م عرض كلي × 1.01068 معامل ميل (1.5/10.24) × 56.01م طول كلي</td><td><b>2,346.4</b></td><td>06، 09</td></tr>
+        <tr><td class="item">صاج الحائط الجانبي — محور A</td><td class="calc">56.01م × ارتفاع 10.00م (من فوق حائط البلوك +3.50 حتى الركن +13.50)</td><td><b>560.1</b></td><td>07</td></tr>
+        <tr><td class="item">صاج الحائط الجانبي — محور E</td><td class="calc">56.01م × 10.00م (فوق حائط البلوك +3.50)</td><td><b>560.1</b></td><td>08</td></tr>
+        <tr><td class="item">صاج الجمالون الطرفي — محور 1</td><td class="calc">41.45م × 10.00م (مستطيل) + 2 مثلث جمالون (2 × ½ × 20.475 × 1.50)</td><td><b>445.2</b></td><td>09</td></tr>
+        <tr class="total"><td colspan="2">إجمالي مسطحات الصاج (سقف + حوائط)</td><td>3,911.8 م²</td><td>—</td></tr>
+        <tr class="area"><td class="item">لوح الميزانين المموج Deck سمك 1.0مم (بند مستقل)</td><td class="calc">20.475 × 55.61م − فتحات 35.7م² (5.94×4.01 + 3.90×2.0 + 2.90×1.4)</td><td><b>1,102.9</b></td><td>03</td></tr>
+        <tr class="area"><td class="item">اختياري: تكسية محور 10 (غير مرسومة — المحور بدون أعمدة جمالون طرفي)</td><td class="calc">مثل محور 1 = 445.2 م² → يصبح الإجمالي 4,357 م²</td><td>+445.2</td><td>01</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <div class="note-box">
+      المساحات <b>صافية هندسياً</b> (Net Covered Area) بدون هالك التراكيب الجانبية/الطولية للألواح ولا الإكسسوارات (Flashings/Ridge caps/Gutters) — تُضاف نسبة الهالك حسب نوع اللوح المورَّد (عادة 8–12%). حوائط البلوك بارتفاع 3.50م على المحاور A وE والمحور 1 غير مكسوّة صاجاً.
+    </div>
+  </section>
 
-        <!-- ============ منظومة الونش ============ -->
-        <tr class="group"><td colspan="5">ثانياً — منظومة الونش العلوي (20 طن)</td><td>32.78</td></tr>
-        <tr><td class="item">CRANE COL. — أعمدة الونش (20 عمود × 10.0م)</td><td class="sec">HEA 300</td><td>05، 09</td><td>200.0</td><td>88.3</td><td>17.66</td></tr>
-        <tr><td class="item">BATTENS — بواسق ربط العمود المزدوج @ 1.00م</td><td class="sec">HEA 300</td><td>05</td><td>60.0</td><td>88.3</td><td>5.30</td></tr>
-        <tr><td class="item">CRANE GIRDER — كمرات مسار الونش (محورا A ,C)</td><td class="sec">HEA 300</td><td>05</td><td>111.2</td><td>88.3</td><td>9.82</td></tr>
+  <!-- ===================== MAIN TABLE ===================== -->
+  <section>
+    <h2>ثانياً — جدول الحصر التفصيلي بالأوزان (أطوال صافية من اللوحات)</h2>
+    <div class="tbl-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th style="width:23%">Section / البند</th>
+          <th style="width:13%">القطاع</th>
+          <th style="width:28%">التفريد (طريقة الحساب)</th>
+          <th style="width:9%">الطول<br><span class="unit">م.ط</span></th>
+          <th style="width:9%">وزن المتر<br><span class="unit">كجم/م</span></th>
+          <th style="width:11%">الوزن<br><span class="unit">طن</span></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="group"><td colspan="5">① الهيكل الرئيسي (الفريمات) — Main Frames</td><td>92.45</td></tr>
+        <tr><td class="item">FRAME COL. — أعمدة الفريمات A ,C ,E</td><td class="sec">HEA 400</td><td class="calc">30 عمود × 13.00م صافي (حتى باطن تقوية الركن −0.50م من منسوب +13.50)</td><td>390.0</td><td>125.0</td><td>48.75</td></tr>
+        <tr><td class="item">MEZZ. COL. — أعمدة المحور D (تحمل الميزانين)</td><td class="sec">HEA 400</td><td class="calc">10 أعمدة × 8.00م (حتى ظهر الكمرة الرئيسية عند +8.00 — وصلة جانبية DET-4)</td><td>80.0</td><td>125.0</td><td>10.00</td></tr>
+        <tr><td class="item">FRAME RAFTER — جسور الجمالون</td><td class="sec">IPE 400</td><td class="calc">10 فريم × 40.95م أفقي × 1.01068 ميل = 41.39م/فريم (مستمر شامل مناطق التقوية)</td><td>413.9</td><td>66.3</td><td>27.44</td></tr>
+        <tr><td class="item">HAUNCHES — تقويات 1.5-IPE400 (أركان + قمم)</td><td class="sec">قطع من IPE400</td><td class="calc">لكل فريم: أركان 2×1.713 + وادي 2×1.763 + قمم 4×2.50م ×ميل = 17.13م × متوسط قطعة التقوية 25.8 كجم/م</td><td>171.3</td><td>25.8</td><td>4.42</td></tr>
+        <tr><td class="item">GABLE POSTS — أعمدة الجمالون الطرفي محور 1</td><td class="sec">HEA 300</td><td class="calc">عمود B: 14.40م صافي (حتى باطن الجسر عند القمة) + امتداد عمود D: 6.40م (من +8.00)</td><td>20.8</td><td>88.3</td><td>1.84</td></tr>
 
-        <!-- ============ الميزانين ============ -->
-        <tr class="group"><td colspan="5">ثالثاً — ميزانين منسوب +8.00 (المحاور C–E)</td><td>48.70</td></tr>
-        <tr><td class="item">MEZZ. MAIN BEAM — الكمرات الرئيسية (10 صفوف)</td><td class="sec">IPE 450</td><td>03، 09</td><td>204.8</td><td>77.6</td><td>15.89</td></tr>
-        <tr><td class="item">MEZZ. SEC. BEAM — الكمرات الثانوية @ ~2.05م (11 خط)</td><td class="sec">IPE 270</td><td>03، 09</td><td>593.0</td><td>36.1</td><td>21.41</td></tr>
-        <tr><td class="item">OPENING TRIMMERS — تجليد الفتحات</td><td class="sec">UPN 180</td><td>03</td><td>20.4</td><td>22.0</td><td>0.45</td></tr>
-        <tr><td class="item">MEZZ. STEEL DECK — لوح تسليح مموج سمك 1.0مم (1,103 م²)</td><td class="sec">Deck 1.0 mm</td><td>03</td><td>—</td><td>9.93 كجم/م²</td><td>10.95</td></tr>
+        <tr class="group"><td colspan="5">② منظومة الونش العلوي 20 طن — Crane System</td><td>32.78</td></tr>
+        <tr><td class="item">CRANE COL. — أعمدة الونش الملاصقة</td><td class="sec">HEA 300</td><td class="calc">20 عمود (10×محور A + 10×محور C) × 10.00م (منسوب باطن كمرة الونش +10.00)</td><td>200.0</td><td>88.3</td><td>17.66</td></tr>
+        <tr><td class="item">BATTENS — بواسق ربط العمود المزدوج</td><td class="sec">HEA 300</td><td class="calc">وصلة كل 1.00م (لوحة 05): 20 عمود × 10 قطع × 0.30م (الفراغ بين العمودين — م.م 640)</td><td>60.0</td><td>88.3</td><td>5.30</td></tr>
+        <tr><td class="item">CRANE GIRDER — كمرات مسار الونش</td><td class="sec">HEA 300</td><td class="calc">خطان (A ,C) × 55.61م = 18 كمرة على البحور (6.12/6.22/5.95م)</td><td>111.2</td><td>88.3</td><td>9.82</td></tr>
 
-        <!-- ============ المداديات ============ -->
-        <tr class="group"><td colspan="5">رابعاً — المداديات والأعصاب (Cold-Formed)</td><td>18.76</td></tr>
-        <tr><td class="item">PURLINS — مداديات السقف (24 خط × 56.0م)</td><td class="sec">Z 200x60x20x2.5</td><td>06، 09</td><td>1,344.2</td><td>7.00</td><td>9.41</td></tr>
-        <tr><td class="item">SIDE GIRTS — أعصاب الحوائط الجانبية (8 صفوف × محورا A ,E)</td><td class="sec">Z 200x60x20x2.5</td><td>07، 08</td><td>896.2</td><td>7.00</td><td>6.27</td></tr>
-        <tr><td class="item">GABLE GIRTS — أعصاب الجمالون الطرفي (محور 1)</td><td class="sec">C 250x70x25x3</td><td>09</td><td>314.0</td><td>9.80</td><td>3.08</td></tr>
+        <tr class="group"><td colspan="5">③ ميزانين +8.00 (المحاور C–E × 1–10) — Mezzanine</td><td>48.70</td></tr>
+        <tr><td class="item">MEZZ. MAIN BEAM — كمرات رئيسية</td><td class="sec">IPE 450</td><td class="calc">10 صفوف (كل محور 1→10) × 20.475م (بحران C–D + D–E)</td><td>204.8</td><td>77.6</td><td>15.89</td></tr>
+        <tr><td class="item">MEZZ. SEC. BEAM — كمرات ثانوية @ ~2.05م</td><td class="sec">IPE 270</td><td class="calc">11 خط طولي (حواف C ,D ,E + 8 داخلية بتباعد 2050مم مُتحقق من اللوحة) × 55.61م − خصم فتحات 18.7م</td><td>593.0</td><td>36.1</td><td>21.41</td></tr>
+        <tr><td class="item">OPENING TRIMMERS — تجليد الفتحات</td><td class="sec">UPN 180</td><td class="calc">فتحتا السلم/الخدمات (3.90×2.0م + 2.90×1.4م) — 8 قطع</td><td>20.4</td><td>22.0</td><td>0.45</td></tr>
+        <tr><td class="item">MEZZ. STEEL DECK — لوح مموج سمك 1.0مم</td><td class="sec">Deck 1.0mm</td><td class="calc">1,102.9 م² × 9.93 كجم/م² (مقطع اللوح بلوحة 03: عمق 55مم، تغطية 688مم) + مسامير قص HSC16@500</td><td>—</td><td>—</td><td>10.95</td></tr>
 
-        <!-- ============ الشدادات ============ -->
-        <tr class="group"><td colspan="5">خامساً — التكسيحات والشدادات</td><td>27.26</td></tr>
-        <tr><td class="item">ROOF BRACING — تكسيح أفقي بالسقف (3 باكيات × 12 لوح X)</td><td class="sec">2L 80x80x8</td><td>06</td><td>504.3</td><td>19.26</td><td>9.71</td></tr>
-        <tr><td class="item">VL. BRACING — تكسيح رأسي بالحوائط (محاور A ,C ,E)</td><td class="sec">2L 90x90x9</td><td>07، 08</td><td>238.7</td><td>24.40</td><td>5.83</td></tr>
-        <tr><td class="item">STRUT — شدادات مواسير (سقف + حوائط + منسوب +10)</td><td class="sec">PIPE 168x4 (ST-1)</td><td>05–08</td><td>537.8</td><td>16.21</td><td>8.72</td></tr>
-        <tr><td class="item">PORTAL FRAMES — بوابات اتزان أسفل الميزانين (محور C)</td><td class="sec">½ HEA 400</td><td>07</td><td>48.0</td><td>62.5</td><td>3.00</td></tr>
+        <tr class="group"><td colspan="5">④ المداديات والأعصاب (Cold-Formed) — Purlins &amp; Girts</td><td>18.79</td></tr>
+        <tr><td class="item">PURLINS — مداديات السقف</td><td class="sec">Z 200x60x20x2.5</td><td class="calc">12 خط/جمالون <span class="ok">(مُتحقق بالعدّ: 5 داخلي/نصف بحر + زوج القمة)</span> × جمالونان × 56.01م — تباعد 1710مم</td><td>1,344.2</td><td>7.00</td><td>9.41</td></tr>
+        <tr><td class="item">SIDE GIRTS — أعصاب الحوائط A ,E</td><td class="sec">Z 200x60x20x2.5</td><td class="calc">8 صفوف/حائط <span class="ok">(مُتحقق: مناسيب 3.5→13.5 بتباعدات 1500/1000)</span> × حائطان × 56.01م</td><td>896.2</td><td>7.00</td><td>6.27</td></tr>
+        <tr><td class="item">GABLE GIRTS — أعصاب الجمالون الطرفي محور 1</td><td class="sec">C 250x70x25x3</td><td class="calc">7 صفوف كاملة (3.5→12.5م) × 41.45م + صف جزئي قرب القمم 27.3م</td><td>317.5</td><td>9.80</td><td>3.11</td></tr>
 
-        <!-- ============ متفرقات ============ -->
-        <tr class="group"><td colspan="5">سادساً — أعمال متممة</td><td>11.99</td></tr>
-        <tr><td class="item">STEEL STAIR — سلم صاج (قوائم UPN180 + درجات شانيو 4/6)</td><td class="sec">UPN180 / IPE180</td><td>10</td><td>—</td><td>—</td><td>1.91</td></tr>
-        <tr><td class="item">CONNECTIONS — ألواح وصلات (SP1–SP3) وقواعد وجساءات وركب</td><td class="sec">PL 25/30 + G.PL 10/12</td><td>01، 09</td><td>—</td><td>—</td><td>10.08</td></tr>
+        <tr class="group"><td colspan="5">⑤ التكسيحات والشدادات — Bracing &amp; Struts</td><td>27.26</td></tr>
+        <tr><td class="item">ROOF BRACING — تكسيح أفقي بالسقف</td><td class="sec">2L 80x80x8</td><td class="calc">3 باكيات (1-2، 5-6، 9-10) × 12 لوح X <span class="ok">(مُتحقق بالعدّ)</span> — قطر اللوح √(3.44² + عرض الباكية²) × 24 قطر/باكية</td><td>504.4</td><td>19.26</td><td>9.71</td></tr>
+        <tr><td class="item">VL. BRACING — تكسيح رأسي بالحوائط</td><td class="sec">2L 90x90x9</td><td class="calc">محورا A ,E: 3 باكيات × (X علوي 5.5م + X سفلي 4.5م) + محور C: 3 باكيات × X علوي فقط</td><td>238.7</td><td>24.40</td><td>5.83</td></tr>
+        <tr><td class="item">STRUT — شدادات مواسير ST-1</td><td class="sec">PIPE 168x4</td><td class="calc">سقف: 3 خطوط (A ,C ,E — كل الباكيات <span class="ok">مُتحقق</span>) + منسوب +10: 3 خطوط (لوحة 05) + حوائط: A صفان (+8 ,+3.5) ,E صف (+3.5) ,C ستة بحور (+3.5)</td><td>537.8</td><td>16.21</td><td>8.72</td></tr>
+        <tr><td class="item">PORTAL FRAMES — بوابات اتزان محور C</td><td class="sec">½ HEA 400</td><td class="calc">3 باكيات مكسحة × 2 ساق × 8.00م (أسفل الميزانين — بديل التكسيح لممر الونش)</td><td>48.0</td><td>62.5</td><td>3.00</td></tr>
 
-        <!-- ============ TOTAL ============ -->
-        <tr class="total"><td colspan="5">TOTAL WEIGHT — إجمالي وزن أعمال الجمالون</td><td>233.91 طن</td></tr>
-        <tr class="area"><td colspan="5">total area of corr. Sheet — إجمالي مساحة الشينكو (سقف 2,346 + جوانب 1,120 + جمالون طرفي 440)</td><td>3,907 م²</td></tr>
-        <tr class="area"><td colspan="5">مساحة لوح الميزانين المموج (Deck 1.0mm) — محسوب وزنه ضمن الجدول</td><td>1,103 م²</td></tr>
+        <tr class="group"><td colspan="5">⑥ أعمال متممة — Miscellaneous</td><td>13.64</td></tr>
+        <tr><td class="item">STEEL STAIR — سلم الميزانين (سلم واحد)</td><td class="sec">UPN180/IPE180</td><td class="calc">قوائم 4×5.38م + إطار صدفة 14.4م UPN180 + كمرات IPE180/200 + 20 درجة شانيو 4/6 + درابزين — تفريد باللوحة 10</td><td>—</td><td>—</td><td>1.70</td></tr>
+        <tr><td class="item">CONNECTIONS &amp; PLATES — وصلات وألواح (ملحق أ)</td><td class="sec">PL / G.PL / L50</td><td class="calc">ألواح نهايات SP1–SP3 وقواعد B.P1–3 وجساءات وكلبسات ومساند ركبية — مفردة بالملحق أدناه</td><td>—</td><td>—</td><td>11.94</td></tr>
+
+        <tr class="total"><td colspan="5">TOTAL WEIGHT — إجمالي وزن أعمال الجمالون</td><td>233.61 طن</td></tr>
+        <tr class="area"><td colspan="5">total area of corr. Sheet — إجمالي مسطحات الصاج (سقف + حوائط)</td><td>3,912 م²</td></tr>
+        <tr class="area"><td colspan="5">مساحة لوح الميزانين المموج (وزنه محسوب بالجدول)</td><td>1,103 م²</td></tr>
       </tbody>
     </table>
     </div>
   </section>
 
-  <!-- ===================== METHOD ===================== -->
+  <!-- ===================== CONNECTIONS APPENDIX ===================== -->
   <section>
-    <h2>أساس الحساب</h2>
-    <div class="note-box">
-      <ol>
-        <li>تم حصر <b>كل عنصر على حدة</b> من أطواله الفعلية بالرسومات (لا معدلات تقديرية): الأعمدة من الارتفاعات المنسوبية، الجسور بطول الميل الفعلي (معامل ميل 1.0107)، والمداديات والشدادات بعدد الخطوط × أطوال المحاور.</li>
-        <li>أوزان الأمتار من الجداول القياسية: HEA400 =125، HEA300 =88.3، IPE450 =77.6، IPE400 =66.3، IPE270 =36.1، UPN180 =22 كجم/م، 2L80×8 =19.26، 2L90×9 =24.4، ماسورة 168×4 =16.21، Z200×2.5 =7.0، C250×3 =9.8 كجم/م.</li>
-        <li>تقويات الجسور (1.5-IPE400 عند الركب والقمم بطول 1.74م + 2.50م لكل نصف بحر) حُسبت كقطع مقصوصة من IPE400 (شفة + عصب مثلث) بمتوسط 25.8 كجم/م مضافة فوق وزن الجسر المستمر.</li>
-        <li>الوصلات محسوبة تفصيلياً من اللوحات: ألواح نهايات SP-1 (1000×300×25) × 40 + SP-2 (1000×220×25) × 20 + SP-3 (600×220×25) × 40، قواعد أعمدة B.P(1–3)، ألواح نهايات كمرات الونش 25مم، جساءات التكسيح (G.PL 10/12مم)، وصلات كمرات الميزانين (2L90×90×9 + PL550×220×25) والمساند الركبية.</li>
-        <li>خُصمت فتحات الميزانين الثلاث (5.94×4.01م + 3.90×2.0م + 2.90×1.4م) من الكمرات الثانوية ولوح التسليح، وأضيف تجليدها UPN180.</li>
-        <li>مساحة الشينكو: السقف بمساحة الميل (41.45×1.0107×56.01م) + الحوائط الجانبية فوق حائط البلوك (+3.50 حتى +13.50) + الجمالون الطرفي محور 1 فوق +3.50.</li>
-      </ol>
+    <h2>ملحق (أ) — تفريد الوصلات والألواح</h2>
+    <div class="tbl-wrap">
+    <table>
+      <thead>
+        <tr><th style="width:34%">البند</th><th style="width:20%">المقاس</th><th style="width:16%">العدد</th><th style="width:14%">وزن القطعة <span class="unit">كجم</span></th><th style="width:16%">الوزن <span class="unit">كجم</span></th></tr>
+      </thead>
+      <tbody>
+        <tr><td class="item">ألواح نهايات ركن SP-1 (جسر/عمود)</td><td class="sec">PL 1000×300×25</td><td>40 (4 × 10 فريم)</td><td>58.9</td><td>2,356</td></tr>
+        <tr><td class="item">ألواح قمة SP-2</td><td class="sec">PL 1000×220×25</td><td>20 (2 × 10)</td><td>43.2</td><td>864</td></tr>
+        <tr><td class="item">ألواح نهاية تقوية SP-3</td><td class="sec">PL 600×220×25</td><td>40 (4 × 10)</td><td>25.9</td><td>1,036</td></tr>
+        <tr><td class="item">قواعد أعمدة B.P(2) مزدوجة (محورا A ,C)</td><td class="sec">460×320×30 + 360×320×30</td><td>20</td><td>61.8</td><td>1,236</td></tr>
+        <tr><td class="item">قواعد أعمدة B.P(1) (محورا D ,E)</td><td class="sec">PL 460×310×30</td><td>20</td><td>33.6</td><td>672</td></tr>
+        <tr><td class="item">قواعد أعمدة B.P(3) (مناصب محور 1)</td><td class="sec">PL 360×320×30</td><td>2</td><td>27.1</td><td>54</td></tr>
+        <tr><td class="item">ألواح نهايات كمرات الونش</td><td class="sec">PL 25mm</td><td>36 (18 كمرة × 2)</td><td>17.1</td><td>616</td></tr>
+        <tr><td class="item">ألواح نهايات الكمرات الرئيسية MB (DET-4)</td><td class="sec">PL 550×220×25</td><td>30 (10 صف × 3)</td><td>23.7</td><td>711</td></tr>
+        <tr><td class="item">جساءات تكسيح السقف (D01–D04)</td><td class="sec">G.PL 12mm</td><td>~90</td><td>8.5</td><td>765</td></tr>
+        <tr><td class="item">جساءات تكسيح الحوائط (D-5–D-8)</td><td class="sec">G.PL 10mm</td><td>~60</td><td>7.1</td><td>424</td></tr>
+        <tr><td class="item">ألواح نهايات الشدادات ST-1</td><td class="sec">PL 10mm</td><td>174 (87 قطعة × 2)</td><td>4.9</td><td>853</td></tr>
+        <tr><td class="item">كلبسات الكمرات الثانوية (DET-1/2)</td><td class="sec">2L 90×90×9 × 0.20م</td><td>198 (99 قطعة × 2)</td><td>4.9</td><td>966</td></tr>
+        <tr><td class="item">كلبسات مداديات وأعصاب</td><td class="sec">PL 6mm</td><td>~445</td><td>1.3</td><td>580</td></tr>
+        <tr><td class="item">مساند ركبية Knee Bracing (▽ بلوحة 09: 10/جمالون)</td><td class="sec">L 50×50×5 × 1.0م</td><td>200</td><td>3.8</td><td>754</td></tr>
+        <tr><td class="item">متفرقات (وصلات التجليد والسلم)</td><td class="sec">—</td><td>—</td><td>—</td><td>50</td></tr>
+        <tr class="total"><td colspan="4">إجمالي الوصلات والألواح</td><td>11,937 كجم ≈ 11.94 طن</td></tr>
+      </tbody>
+    </table>
     </div>
   </section>
 
-  <!-- ===================== QUESTIONS ===================== -->
+  <!-- ===================== VERIFIED / ASSUMPTIONS ===================== -->
   <section>
-    <h2>استفسارات مطلوب حسمها قبل الاعتماد النهائي</h2>
-    <div class="q-box">
-      <b>النقاط التالية بُنيت على أوضح قراءة للرسومات، ويلزم تأكيدها لأنها تؤثر على الإجمالي:</b>
+    <h2>ما تم التحقق منه بالعدّ المباشر من اللوحات</h2>
+    <div class="note-box">
       <ol>
-        <li><b>محور (10) — الجمالون الطرفي الثاني:</b> لوحة القواعد (01) لا تُظهر أعمدة جمالون طرفي عند المحور 10 (بعكس المحور 1)، ولوحة (09) تنص على أن الجمالون الطرفي عند المحور (1) فقط. <b>اعتبرته بدون تغطية ولا أعصاب</b>. إذا كان مطلوباً تكسيته تُضاف ≈ 440 م² شينكو + ≈ 5 طن (أعمدة وأعصاب مماثلة لمحور 1).</li>
-        <li><b>شدادات منسوب +10.00:</b> لوحة مسار الونش (05) تُظهر ST-1 على المحاور A ,C ,E في كل باكية عند منسوب +10.00 وقد أدرجتها (166.8 م.ط ≈ 2.70 طن)، مع أن واجهات (07، 08) لا تظهر صفاً عند هذا المنسوب. يُرجى التأكيد.</li>
-        <li><b>بواسق العمود المزدوج:</b> "HZ. LACING HEA300 @ 1000mm" حُسبت كقطع HEA300 طول 0.30م × 10 لكل عمود (5.30 طن). لو كانت ألواح ربط فقط سينخفض هذا البند.</li>
-        <li><b>كمرة مسار الونش HEA300:</b> مثبتة كما هو منصوص بلوحة (05) لونش 20 طن — قطاع خفيف نسبياً لهذه الحمولة، يُرجى مراجعة المصمم.</li>
-        <li><b>السلم:</b> محسوب سلم واحد (Typ.) من لوحة (10) ≈ 1.91 طن. إذا كانت فتحتا الميزانين (محاور 1–2 و9–10) كلتاهما بسلالم، يُضاف ≈ 1.9 طن.</li>
-        <li>أطوال المداديات والأعصاب صافية بدون وصلات التراكب (Laps) وبدون شدادات الرباط (Sag Rods) لعدم ظهورها بالرسومات.</li>
+        <li><span class="ok">✓</span> عدد المداديات: 12 خطاً لكل جمالون (5 داخلية بكل نصف بحر بتباعد 1710مم + زوج القمة) — عُدّت خطاً خطاً على لوحة 06 وطابقت نص لوحة 09 "12@1710+400".</li>
+        <li><span class="ok">✓</span> شدادات السقف ST-1 على المحاور A ,C ,E موجودة في <b>كل</b> الباكيات التسع (وليست المكسحة فقط).</li>
+        <li><span class="ok">✓</span> ألواح التكسيح الأفقي: 12 لوح X لكل باكية مكسحة × 3 باكيات = 36 لوحاً (72 قطراً).</li>
+        <li><span class="ok">✓</span> أعصاب الحوائط: 8 صفوف بالضبط لكل حائط جانبي (مناسيب 3.50/5.00/6.50/8.00/9.00/10.50/12.00/13.50 حسب تباعدات 1500/1000 المرسومة).</li>
+        <li><span class="ok">✓</span> التكسيح الرأسي بمحوري A ,E: لوحان X متراكبان (علوي 5.50م + سفلي 4.50م فوق منسوب +3.50) — ومحور C: X علوي فقط + بوابات ½HEA400 أسفل الميزانين.</li>
+        <li><span class="ok">✓</span> الكمرات الثانوية: 10 مسافات @ ~2050مم بين المحورين C وE (11 خطاً شاملة الحواف) — مُطابقة لمجموع التباعدات المرسومة (2050×8 + 2062×2 = 20,524 ≈ 20,475مم).</li>
+        <li><span class="ok">✓</span> سماكة لوح الميزانين 1.0مم (منصوص عليها بلوحة 03: MEZZANINE DECKING PROFILE Th. 1.0mm).</li>
+        <li><span class="ok">✓</span> الأطوال الصافية: أعمدة الفريم 13.00م (حتى باطن التقوية) بدلاً من منسوب الركن الاسمي 13.50م — فرق منهجية قدره 1.88 طن تم خصمه لصالح الدقة.</li>
+      </ol>
+    </div>
+
+    <h2 style="margin-top:22px">افتراضات متبقية تحتاج اعتماد المصمم</h2>
+    <div class="q-box">
+      <ol>
+        <li><b>محور 10 مفتوح:</b> لا توجد أعمدة جمالون طرفي بلوحة القواعد عند المحور 10، والجمالون الطرفي مرسوم للمحور 1 فقط → حُسب بدون تكسية ولا أعصاب. <b>لو مطلوب تكسيته: +445 م² صاجاً</b> + ≈5 طن (أعمدة وأعصاب مثل محور 1).</li>
+        <li><b>شدادات منسوب +10.00</b> (A ,C ,E): مُدرجة من لوحة 05 (ST-1 بكل باكية) = 166.8م ≈ 2.70 طن — لا تظهر بواجهات 07/08.</li>
+        <li><b>بواسق العمود المزدوج:</b> قطع HEA300 طول 0.30م كل 1.00م (5.30 طن) — لو المقصود ألواح ربط فقط ينخفض البند إلى ≈1.5 طن.</li>
+        <li><b>أطوال المداديات والأعصاب صافية</b> بدون تراكب (Laps) وبدون شدادات رباط (Sag Rods) لعدم ورودها بالرسومات.</li>
+        <li><b>وزن متر Z200×2.5 = 7.00 كجم/م</b> و<b>C250×3 = 9.80 كجم/م</b> (محسوبان من أبعاد المقطع المرسومة × كثافة 7850).</li>
       </ol>
     </div>
   </section>
 
   <footer>
-    ENGINEERING CONSULTANT HOUSE &nbsp;•&nbsp; حصر كميات أعمال الجمالون المعدني &nbsp;•&nbsp; المرجع: STEEL STR DRAWINGS — Rev.00 (10 لوحات) &nbsp;•&nbsp; يوليو 2026
+    ENGINEERING CONSULTANT HOUSE &nbsp;•&nbsp; حصر كميات أعمال الجمالون المعدني — إصدار مُدقَّق &nbsp;•&nbsp; STEEL STR DRAWINGS — Rev.00 &nbsp;•&nbsp; يوليو 2026
   </footer>
 </div>
 </body>
