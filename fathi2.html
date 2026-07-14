@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>حصر أوزان الستيل — مصنع السادس من أكتوبر — Engineering Consultant House</title>
+<style>
+  :root{
+    --purple:#5A1F5F; --purple-dark:#471849; --purple-light:#F3EBF4; --purple-mid:#E4D3E6;
+    --accent:#F5CBA7; --accent-dark:#E8B183; --ink:#2B2230;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:"Segoe UI","Cairo",Tahoma,Arial,sans-serif;background:#EFEAF0;color:var(--ink);line-height:1.65}
+  .page{max-width:1120px;margin:0 auto;background:#fff;box-shadow:0 0 25px rgba(0,0,0,.12)}
+  header{background:var(--purple);color:#fff;padding:30px 44px 24px;display:flex;align-items:center;gap:30px;flex-wrap:wrap}
+  .brand{text-align:center;flex:1 1 320px}
+  .brand .l1{font-size:29px;letter-spacing:.45em;font-weight:300;white-space:nowrap}
+  .brand .l2{font-size:16px;letter-spacing:.38em;font-weight:300;margin-top:4px;white-space:nowrap}
+  .brand .rule{height:5px;background:#fff;margin:14px auto 0;width:92%}
+  .doc-title{background:var(--purple-dark);color:#fff;text-align:center;padding:14px 20px}
+  .doc-title h1{font-size:24px;font-weight:700}
+  .doc-title p{font-size:13px;opacity:.85;margin-top:4px}
+  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(148px,1fr));gap:11px;padding:18px 32px 2px}
+  .card{background:var(--purple-light);border:1px solid var(--purple-mid);border-radius:10px;padding:10px 8px;text-align:center}
+  .card .v{font-size:17.5px;font-weight:700;color:var(--purple)}
+  .card .k{font-size:11.5px;color:#6b5a6e;margin-top:2px}
+  section{padding:16px 32px}
+  h2{color:var(--purple);font-size:18.5px;margin:6px 0 12px;display:flex;align-items:center;gap:10px}
+  h2::after{content:"";flex:1;height:2px;background:var(--purple-mid)}
+  .tbl-wrap{overflow-x:auto}
+  table{width:100%;border-collapse:collapse;font-size:12.5px}
+  th,td{border:1.5px solid var(--purple);padding:6px 7px;text-align:center;vertical-align:middle}
+  thead th{background:var(--purple);color:#fff;font-size:13px;font-weight:700}
+  td.item{text-align:right;font-weight:700;white-space:nowrap}
+  td.def{text-align:right;font-size:11.8px;color:#4a3c4e;line-height:1.55}
+  td.sec{direction:ltr;font-family:Consolas,"Courier New",monospace;font-size:12px;white-space:nowrap}
+  tr.group td{background:var(--purple-mid);color:var(--purple-dark);font-weight:800;text-align:right;font-size:13.5px}
+  tr.total td{background:var(--accent);font-weight:800;font-size:16px;color:#5a3413;border-top:3px double var(--purple)}
+  tr.area td{background:#FBEFE3;font-weight:700;font-size:13.5px}
+  tbody tr:nth-child(odd):not(.group):not(.total):not(.area) td{background:#FBF8FC}
+  .unit{font-size:11px;color:#7c6a80}
+  thead th .unit{color:#e8d9ea}
+  .note-box{background:var(--purple-light);border-right:5px solid var(--purple);border-radius:8px;padding:12px 18px;margin-top:10px;font-size:13px}
+  .note-box ol,.q-box ol{padding-right:20px}
+  .note-box li,.q-box li{margin-bottom:6px}
+  .q-box{background:#FDF3E7;border-right:5px solid var(--accent-dark);border-radius:8px;padding:12px 18px;margin-top:12px;font-size:13px}
+  .q-box b{color:#8a5a1f}
+  .ok{color:#1e6b34;font-weight:700}
+  footer{background:var(--purple);color:#fff;text-align:center;padding:12px;font-size:12px;letter-spacing:.05em;margin-top:22px}
+  @media print{body{background:#fff}.page{box-shadow:none;max-width:100%}section{padding:10px 18px}*{-webkit-print-color-adjust:exact;print-color-adjust:exact}}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <header>
+    <div class="logo">
+      <svg width="110" height="110" viewBox="0 0 120 120" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M22 58 L60 24 L98 58"/><path d="M32 50 L32 96 L60 96"/><path d="M88 50 L88 96 L36 96"/><rect x="52" y="62" width="17" height="34"/>
+      </svg>
+    </div>
+    <div class="brand">
+      <div class="l1">ENGINEERING</div>
+      <div class="l2">CONSULTANT&nbsp;HOUSE</div>
+      <div class="rule"></div>
+    </div>
+  </header>
+
+  <div class="doc-title">
+    <h1>حصر أوزان الستيل التفصيلي — تقرير مُدافَع عن كل رقم</h1>
+    <p>مصنع بمساحة ٦٨٢٩ م² — مدينة السادس من أكتوبر، قطعة 45 بالمجاورة الصناعية الأولى — المالك: نادر عمر عموري — لوحات STEEL 01–05 (نوفمبر 2025)</p>
+  </div>
+
+  <div class="cards">
+    <div class="card"><div class="v">144.26 طن</div><div class="k">إجمالي وزن الستيل</div></div>
+    <div class="card"><div class="v">5,293 م²</div><div class="k">مسطحات الصاج 0.50مم</div></div>
+    <div class="card"><div class="v">52.00 × 76.65 م</div><div class="k">الأبعاد خارج–خارج</div></div>
+    <div class="card"><div class="v">13 فريم</div><div class="k">بحران × 25.80م + عمود داخلي</div></div>
+    <div class="card"><div class="v">7.00 / 9.58 م</div><div class="k">الركن / القمة (ميل 1:10)</div></div>
+    <div class="card"><div class="v">Built-up ST52</div><div class="k">فاصل تمدد عند محور 7</div></div>
+  </div>
+
+  <!-- ===================== SHEET AREAS ===================== -->
+  <section>
+    <h2>أولاً — مسطحات الصاج (Single Layer 0.50 mm)</h2>
+    <div class="tbl-wrap">
+    <table>
+      <thead><tr>
+        <th style="width:22%">البند</th>
+        <th style="width:50%">الاشتقاق (الدفاع عن الرقم)</th>
+        <th style="width:13%">المساحة <span class="unit">م²</span></th>
+        <th style="width:15%">المرجع</th>
+      </tr></thead>
+      <tbody>
+        <tr><td class="item">صاج السقف</td><td class="def">عرض خارج–خارج 52.00م × معامل ميل 1.004988 (الميل 1:10 مرسوم برمز 10/1.0 على المقطع) × طول خارج–خارج 76.65م = 52.26 × 76.65</td><td><b>4,005.7</b></td><td>لوحة 05 (المقطع) + 02 (المسقط)</td></tr>
+        <tr><td class="item">الحائطان الجانبيان A ,I</td><td class="def">2 × 76.65م × ارتفاع التغطية 4.50م (من أعلى حائط البلوك +2.50 — منسوب أول عصب المدون "GIRTS 2500+2@1500" — حتى الركن +7.00)</td><td><b>689.9</b></td><td>لوحة 04 (واجهة A&I)</td></tr>
+        <tr><td class="item">الجمالونان الطرفيان (محورا 1 ,13)</td><td class="def">لكل جمالون: مستطيل 51.60 × 4.50م + مثلثا الجمالون 2×(½ × 25.80 × 2.58) — الارتفاع من +2.50 حتى خط الميل (7.00→9.58)</td><td><b>597.5</b></td><td>لوحة 05 (END WALL)</td></tr>
+        <tr class="total"><td colspan="2">إجمالي مسطحات الصاج — SINGLE LAYER 0.50mm (منصوص بتفصيلة CONNECTION OF END GABLE COL.)</td><td>5,293 م²</td><td>—</td></tr>
+        <tr class="area"><td colspan="2">وزن الصاج الاسترشادي (لا يُدرج ضمن وزن الهيكل): 5,293 م² × ≈4.5 كجم/م² للوح 0.5مم المموج</td><td>≈ 23.8 طن</td><td>—</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <div class="note-box">المساحات صافية هندسياً بدون هالك التراكيب (Side/End Laps ≈ 8–12% حسب اللوح) وبدون الإكسسوارات (Ridge cap/Flashing/Gutter). حوائط البلوك حتى +2.50م على المحيط كله (مرسومة هاشور بالواجهات، وأول صف أعصاب يبدأ عندها، ونوت التنفيذ يُلزم المدني بربط أعمدة الجمالون بالبلوك).</div>
+  </section>
+
+  <!-- ===================== MAIN TABLE ===================== -->
+  <section>
+    <h2>ثانياً — جدول الحصر التفصيلي بالأوزان (كل رقم بدفاعه)</h2>
+    <div class="tbl-wrap">
+    <table>
+      <thead><tr>
+        <th style="width:14%">البند</th>
+        <th style="width:14%">القطاع</th>
+        <th style="width:42%">الاشتقاق والدفاع</th>
+        <th style="width:9%">الطول<br><span class="unit">م.ط</span></th>
+        <th style="width:9%">كجم/م</th>
+        <th style="width:12%">الوزن<br><span class="unit">طن</span></th>
+      </tr></thead>
+      <tbody>
+        <tr class="group"><td colspan="5">① الهيكل الرئيسي Built-up (ST52) — Main Frames</td><td>74.75</td></tr>
+        <tr>
+          <td class="item">R.F. RAFTER<br>جسور الفريمات</td>
+          <td class="sec">FLG 2×180×10<br>WEB 450/850×8</td>
+          <td class="def">الأطوال منصوصة على المقطع لكل نصف بحر (25.80م): منطقة ركن متغيرة 850→450 بطول <b>BAL = 25800−16000−5000 = 4800</b> + وسط ثابت 450×8 بطول <b>16000</b> + منطقة قمة 450→850 بطول <b>5000</b>. وزن المتر: ثابت = (2×180×10 + 450×8)×7850×10⁻⁶ = <b>56.52</b>؛ المتغير بمتوسط عصب 650مم = <b>69.08</b>. لكل فريم: [2×(4.8+5.0)×69.08 + 2×16.0×56.52]×1.00499 ميل = <b>3,178 كجم</b> × 13 فريم</td>
+          <td>674.1</td><td>مختلط</td><td>41.32</td>
+        </tr>
+        <tr>
+          <td class="item">FRAME COL.<br>أعمدة خارجية A ,I</td>
+          <td class="sec">FLG 2×200×12<br>WEB 400–850×10</td>
+          <td class="def">26 عمود (13 فريم × محورا A وI) × 7.00م كامل حتى منسوب الركن — الجسر يتصل بوجه العمود الداخلي عبر لوح رأسي SP-1 (1000×300×25) فلا يُخصم عمق الجسر. مقطعان مدونان: سفلي 4.00م عصب متغير 400→850×10 (متوسط 625) = <b>86.74 كجم/م</b>، وعلوي 3.00م عصب ثابت 850×10 = <b>104.41 كجم/م</b> → 660.2 كجم/عمود</td>
+          <td>182.0</td><td>مختلط</td><td>17.17</td>
+        </tr>
+        <tr>
+          <td class="item">INTERIOR COL.<br>الأعمدة الداخلية E</td>
+          <td class="sec">650×10 WEB<br>250×12 FL.</td>
+          <td class="def">13 عمود تحت القمة. الطول = منسوب القمة (7000 + 25800×0.10 = <b>9580</b>) − عمق الجسر عندها (عصب 850 + شفة 20 = 870) = <b>8.71م</b> — الجسران يرتكزان فوق العمود بوصلة أفقية SP-3 (لوح 850×350×25). وزن المتر = (650×10 + 2×250×12)×7850×10⁻⁶ = <b>98.12</b></td>
+          <td>113.2</td><td>98.12</td><td>11.11</td>
+        </tr>
+        <tr>
+          <td class="item">END WALL POSTS<br>أعمدة الجمالونين</td>
+          <td class="sec">375×8 WEB<br>200×10 FL.</td>
+          <td class="def">6 أعمدة لكل جمالون (B,C,D,F,G,H — قواعد B.P(3) بلوحة القواعد) × جمالونان. الأطوال حتى باطن الجسر (عمق 470 عند مواقعها): B/H: 7645−470 = <b>7.18</b>؛ C/G: 8290−470 = <b>7.82</b>؛ D/F: 8935−470 = <b>8.47م</b>. وزن المتر = (375×8+2×200×10)×7850×10⁻⁶ = <b>54.95</b></td>
+          <td>93.9</td><td>54.95</td><td>5.16</td>
+        </tr>
+
+        <tr class="group"><td colspan="5">② المداديات والأعصاب Cold-Formed (ST37) — شاملة التراكيب</td><td>34.22</td></tr>
+        <tr>
+          <td class="item">PURLINS<br>مداديات السقف</td>
+          <td class="sec">Z 250×70×20×2.5</td>
+          <td class="def"><b>34 خطاً</b> = 17 لكل نصف عرض — مواقع الخطوط مُستخرجة برمجياً من مسقط السقف (194، 3356، 4905 … 25606مم من المحور A) ومطابقة للمسافات المدونة بالمقطع (200 + 1350 + 1550 نمطي + 400 زوج القمة). الطول = 76.65م خ–خ + <b>10.0م تراكيب</b> (تفصيلة GIRT LAP: 500مم كل جهة عند 10 فريمات داخلية — بدون تراكيب عند فاصل التمدد محور 7 حيث كلبسات مجرى SLOT Ø18). وزن المتر = شريط مفرود 410مم × 2.5مم × 7.85 = <b>8.05</b></td>
+          <td>2,946.1</td><td>8.05</td><td>23.71</td>
+        </tr>
+        <tr>
+          <td class="item">SIDE GIRTS<br>أعصاب الجانبين</td>
+          <td class="sec">Z 250×70×20×2.5</td>
+          <td class="def"><b>4 صفوف لكل حائط</b> عند 2500/4000/5500/~6900 (السلسلة المدونة "2500 + 2@1500 + BAL" + صف الركن المرسوم بالواجهة) × حائطان × (76.65 + 10.0م تراكيب كالمداديات). النوع مدون أسفل الواجهة: SIDE GIRTS Z250X70X20X2.5</td>
+          <td>693.2</td><td>8.05</td><td>5.58</td>
+        </tr>
+        <tr>
+          <td class="item">END WALL GIRTS<br>أعصاب الجمالونين</td>
+          <td class="sec">Z 250×70×20×2.5</td>
+          <td class="def">لكل جمالون: 3 صفوف كاملة (2500/4000/5500) × 52.0م + صف 7000 حيث يسمح الميل (52−2×2.5 = <b>46.6م</b>) + صف 8500 (52−2×17.5 = <b>16.6م</b>) + عصب مائل موازٍ للجسر بكامل العرض (<b>51.86م</b>) — الصفوف المتدرجة ظاهرة بواجهة END WALL عند المنطقة الوسطى + تراكيب عند الأعمدة الداخلية (7 و6 و2 فواصل)</td>
+          <td>614.1</td><td>8.05</td><td>4.94</td>
+        </tr>
+
+        <tr class="group"><td colspan="5">③ الشدادات والتكسيحات — Struts &amp; Bracing (ST37)</td><td>22.77</td></tr>
+        <tr>
+          <td class="item">STRUT ST-1<br>شدادات مواسير</td>
+          <td class="sec">PIPE 168.3×4.0</td>
+          <td class="def"><b>7 خطوط × 76.35م</b>: محور A صفان (+4.00 و+7.00 — ST-1 مكتوبة في كل باكية بالواجهتين والمنسوبان مدونان 4.00/3.00) + محور I صفان + محور E صفان (+4.00 و+7.00 بواجهة محور E) + <b>مدادة قمة</b> على محور E (مربع ⊞ STRUT مرسوم أعلى العمود الداخلي بالمقطع + مربعات على خط القمة بالمسقط عند كل فريم). وزن المتر (168.3−4)×4×π×7.85×10⁻³ = <b>16.21</b></td>
+          <td>534.4</td><td>16.21</td><td>8.66</td>
+        </tr>
+        <tr>
+          <td class="item">ROOF BRACING<br>تكسيح أفقي</td>
+          <td class="sec">2L 80×80×8</td>
+          <td class="def"><b>3 صفوف مكسحة</b> (باكيات 1-2 و6-7 و12-13 — مرئية بالمسقط) × <b>8 ألواح X</b> (لوح لكل باكية عرضية 6.45م، معدودة بالمسقط) × قطران. القطر = √((6.45×1.005)² + عرض الباكية²): 8.833م للباكيات 6.00 و8.585م لباكية 5.63. وزن 2L80×8 = 2×9.63 = <b>19.26</b> (جداول الزوايا القياسية)</td>
+          <td>420.0</td><td>19.26</td><td>8.09</td>
+        </tr>
+        <tr>
+          <td class="item">VL. BRACING<br>تكسيح رأسي</td>
+          <td class="sec">2L 90×90×9</td>
+          <td class="def"><b>3 محاور (A ,I ,E) × 3 باكيات مكسحة</b> (1-2، 6-7، 12-13) × لوحان: علوي 3.00م (من +4.00 للركن) وسفلي 4.00م (من الأرض لـ+4.00) — الأقطار: علوي √(bay²+3²)، سفلي √(bay²+4²). وزن 2L90×9 = 2×12.2 = <b>24.40</b></td>
+          <td>246.7</td><td>24.40</td><td>6.02</td>
+        </tr>
+
+        <tr class="group"><td colspan="5">④ شدادات الرباط ومساند الشفة — Sag Rods &amp; Flange Braces</td><td>1.59</td></tr>
+        <tr>
+          <td class="item">SAG RODS<br>شدادات رباط</td>
+          <td class="sec">RODS Ø12</td>
+          <td class="def">سقف: <b>9 خطوط</b> (خط بمنتصف كل باكية غير مكسحة — مواقعها مكتشفة برمجياً بالمسح الأفقي للمسقط + تفصيلتا SAGROD @RIDGE/@ROOF) × 51.86م عرض مائل. جوانب: خط/باكية × 24 × 4.5م (من +2.5 للركن). جمالونان: خطان/باكية (مرسومان) × 16 × ~5.6م متوسط. Ø12 = <b>0.888 كجم/م</b></td>
+          <td>753.9</td><td>0.888</td><td>0.67</td>
+        </tr>
+        <tr>
+          <td class="item">FLANGE BRACES<br>مساند الشفة</td>
+          <td class="sec">L 50×50×5</td>
+          <td class="def">عدّ علامات ▽ بالمقطع: ~16 على الجسر لكل فريم (عند مدادٍ بالتبادل + زوج القمة) + 6 على العمودين (3 صفوف أعصاب × 2) = <b>22 × 13 فريم = 286 مسند</b> × 0.8م + كليبسات أعمدة الجمالون L70×70×7 (24 × 0.3م — تفصيلة CONNECTION OF END GABLE COL.). المقاس غير منصوص → L50×5 (نمطي ECH — يُعتمد)</td>
+          <td>236.0</td><td>3.77</td><td>0.92</td>
+        </tr>
+
+        <tr class="group"><td colspan="5">⑤ الوصلات والألواح ومسامير التأسيس (ملحق أ)</td><td>10.92</td></tr>
+        <tr>
+          <td class="item">CONNECTIONS<br>&amp; ANCHORS</td>
+          <td class="sec">PL 25/30 + G.PL 10/12</td>
+          <td class="def">مفردة قطعة قطعة بالملحق (أ): ألواح SP-1..SP-4 بمقاساتها المنصوصة، قواعد B.P(1/2/3)، مسامير تأسيس 204×M25×1000 ST52 ("ANCHOR BOLTS BY ROOTS" = ضمن توريد الستيل)، جساءات التكسيح 10/12مم، كلبسات المداديات BENT PL180×100×4</td>
+          <td>—</td><td>—</td><td>10.92</td>
+        </tr>
+
+        <tr class="total"><td colspan="5">TOTAL STEEL WEIGHT — إجمالي وزن أعمال الستيل</td><td>144.26 طن</td></tr>
+        <tr class="area"><td colspan="5">إجمالي مسطحات الصاج (سقف + جوانب + جمالونان) — Single Layer 0.50mm</td><td>5,293 م²</td></tr>
+      </tbody>
+    </table>
+    </div>
+  </section>
+
+  <!-- ===================== CONNECTIONS APPENDIX ===================== -->
+  <section>
+    <h2>ملحق (أ) — تفريد الوصلات والألواح ومسامير التأسيس</h2>
+    <div class="tbl-wrap">
+    <table>
+      <thead><tr><th style="width:30%">البند</th><th style="width:22%">المقاس (منصوص باللوحات)</th><th style="width:18%">العدد</th><th style="width:14%">وزن الوحدة <span class="unit">كجم</span></th><th style="width:16%">الوزن <span class="unit">كجم</span></th></tr></thead>
+      <tbody>
+        <tr><td class="item">SP-1 — وصلة جسر/عمود خارجي</td><td class="sec">PL1000×300×25 + جساءات 12مم</td><td>26 (2×13)</td><td>79.9</td><td>2,077</td></tr>
+        <tr><td class="item">SP-2 — وصلة نهاية منطقة الركن</td><td class="sec">2×PL650×250×25 M22</td><td>26 وصلة</td><td>63.8</td><td>1,659</td></tr>
+        <tr><td class="item">SP-4 — وصلة بداية منطقة القمة</td><td class="sec">2×PL650×250×25 M22</td><td>26 وصلة</td><td>63.8</td><td>1,659</td></tr>
+        <tr><td class="item">SP-3 — وصلة القمة فوق العمود الداخلي</td><td class="sec">2×PL850×350×25 M22</td><td>13 وصلة</td><td>116.8</td><td>1,518</td></tr>
+        <tr><td class="item">قواعد B.P(1) أعمدة A ,I</td><td class="sec">PL350×300×25</td><td>26</td><td>20.6</td><td>536</td></tr>
+        <tr><td class="item">قواعد B.P(2) الأعمدة الداخلية</td><td class="sec">PL650×250×25</td><td>13</td><td>31.9</td><td>415</td></tr>
+        <tr><td class="item">قواعد B.P(3) أعمدة الجمالونين</td><td class="sec">PL450×250×25</td><td>12</td><td>22.1</td><td>265</td></tr>
+        <tr><td class="item">مسامير تأسيس (BY ROOTS)</td><td class="sec">M25 ST52 L=1000 + صواميل</td><td>204 (51 قاعدة × 4)</td><td>4.15</td><td>847</td></tr>
+        <tr><td class="item">جساءات تكسيح السقف (D01–D04)</td><td class="sec">G.PL 12mm</td><td>~96 (24 لوح X × 4)</td><td>6.0</td><td>576</td></tr>
+        <tr><td class="item">جساءات تكسيح الحوائط (D-1–D-4)</td><td class="sec">G.PL 10mm</td><td>~72 (18 لوح X × 4)</td><td>5.0</td><td>360</td></tr>
+        <tr><td class="item">ألواح نهايات الشدادات ST-1</td><td class="sec">PL 10mm</td><td>168 (84 قطعة × 2)</td><td>4.0</td><td>672</td></tr>
+        <tr><td class="item">كلبسات مداديات/أعصاب</td><td class="sec">BENT PL180×100×4</td><td>~500</td><td>0.56</td><td>280</td></tr>
+        <tr><td class="item">أغطية أعمدة الجمالون + كلبسات</td><td class="sec">PL265×200×12 + L70×70×7</td><td>12 + 24</td><td>—</td><td>113</td></tr>
+        <tr class="total"><td colspan="4">إجمالي الوصلات والألواح والمسامير</td><td>10,924 كجم ≈ 10.92 طن</td></tr>
+      </tbody>
+    </table>
+    </div>
+  </section>
+
+  <!-- ===================== METHOD DEFENSE ===================== -->
+  <section>
+    <h2>الدفاع المنهجي — لماذا هذه الأرقام موثوقة؟</h2>
+    <div class="note-box">
+      <ol>
+        <li><b>لا معدلات تقديرية إطلاقاً:</b> كل وزن متر مشتق من أبعاد المقطع المنصوصة × كثافة 7850 كجم/م³ (القطاعات المجمعة)، أو من الجداول القياسية (الزوايا والمواسير)، وكل طول من الأبعاد المدونة نفسها.</li>
+        <li><b>عدّ برمجي لا بصري:</b> خطوط المداديات (34) وخطوط شدادات الرباط (9) ومواقع المحاور استُخرجت بمعالجة صورة اللوحات بدقة 200dpi (كشف الخطوط الرأسية/الأفقية بإحداثياتها الملّيمترية) — هامش الخطأ ± خط واحد مستبعد بمطابقة المسافات المدونة (1550مم) على مجموع البحر (25800مم).</li>
+        <li><b>تراكيب المداديات محسوبة من تفصيلة معتمدة:</b> GIRT LAP = 500مم كل جهة (لوحة 05) → 1.00م إضافي لكل فريم داخلي؛ واستُثني محور 7 لوجود فاصل تمدد بكلبسات مجاري SLOT Ø18 (لوحة 04) بلا تراكيب.</li>
+        <li><b>الميل 1:10 ليس افتراضاً:</b> مرسوم برمز المثلث (10 أفقي / 1.0 رأسي) على المقطع، ومنه القمة = 7000 + 2580 = 9580مم ومعامل الميل 1.004988 المطبق على الجسور والمداديات المائلة والصاج.</li>
+        <li><b>أطوال الأعمدة مبررة إنشائياً من تفاصيل الوصلات:</b> العمود الخارجي 7.00م كامل لأن SP-1 لوح رأسي على وجه العمود (وليس وصلة جلوس)؛ العمود الداخلي 8.71م لأن SP-3 وصلة أفقية يجلس عليها الجسران (9580 − 870 عمق الجسر).</li>
+        <li><b>حدود الحصر:</b> لا يشمل وزن ألواح التغطية (مُعطاة مساحةً وبوزن استرشادي منفصل)، ولا البلوك أو الخرسانة (لوحة R.C FOOTING أعمال مدنية)، ولا مسامير الربط عالية الشد بين القطاعات (عادة &lt;0.3% من الوزن).</li>
+      </ol>
+    </div>
+
+    <h2 style="margin-top:20px">نقاط تحفُّظ يلزم اعتمادها من المصمم</h2>
+    <div class="q-box">
+      <ol>
+        <li><b>سماكة الأعصاب:</b> كل بيانات المساقط والواجهات تنص Z250×70×<b>20×2.5</b> (ونوت "Thickness is mentioned on Plan")، بينما تفصيلة CONNECTION OF END GABLE COL. وحدها كتبت Z250×70×<b>30×3</b>. اعتمدنا 2.5مم الأعم. لو اعتُمدت 3.0مم لكل المداديات والأعصاب يضاف <b>+8.3 طن</b> (وزن المتر يصبح 9.9).</li>
+        <li><b>شدادات رباط الجوانب:</b> المرسوم خط واحد بمنتصف كل باكية، بينما عنوان الواجهة يقول "2 SAG ROD 12mm TYP." — لو المقصود خطان تُضاف ≈ <b>+0.10 طن</b> (بند صغير).</li>
+        <li><b>مساند الشفة:</b> المقاس غير منصوص باللوحات (العدد معدود من علامات ▽) — افترضنا L50×50×5 × 0.80م. أي مقاس آخر يغير البند (0.92 طن) طرداً.</li>
+        <li><b>مدادة القمة ST-1:</b> أُدرجت (76.35م ≈ 1.24 طن) استناداً لمربع STRUT أعلى العمود الداخلي بالمقطع ومربعات خط القمة بالمسقط — يُستحسن تأكيدها من لوحة التركيب (Erection).</li>
+        <li><b>مسامير التأسيس M25</b> أُدرجت (0.85 طن) لأن اللوحة تنص "ANCHOR BOLTS BY ROOTS" (مورد الستيل). لو أُسندت للمدني تُخصم.</li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ===================== SUMMARY ===================== -->
+  <section>
+    <h2>الخلاصة</h2>
+    <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>المجموعة</th><th>الوزن (طن)</th><th>النسبة</th></tr></thead>
+      <tbody>
+        <tr><td class="item">الهيكل الرئيسي Built-up (جسور + أعمدة + أعمدة جمالونين)</td><td>74.75</td><td>51.8%</td></tr>
+        <tr><td class="item">المداديات والأعصاب Cold-Formed (بالتراكيب)</td><td>34.22</td><td>23.7%</td></tr>
+        <tr><td class="item">الشدادات والتكسيحات</td><td>22.77</td><td>15.8%</td></tr>
+        <tr><td class="item">شدادات الرباط ومساند الشفة</td><td>1.59</td><td>1.1%</td></tr>
+        <tr><td class="item">الوصلات والألواح ومسامير التأسيس</td><td>10.92</td><td>7.6%</td></tr>
+        <tr class="total"><td>الإجمالي العام</td><td>144.26 طن</td><td>100%</td></tr>
+        <tr class="area"><td>معدل الوزن الناتج (للمراجعة فقط، ليس أساس الحساب): 144,260 ÷ (52.0×76.65)م²</td><td colspan="2">≈ 36.2 كجم/م² مسقط أفقي</td></tr>
+      </tbody>
+    </table>
+    </div>
+  </section>
+
+  <footer>
+    ENGINEERING CONSULTANT HOUSE &nbsp;•&nbsp; حصر أوزان الستيل — مصنع السادس من أكتوبر (قطعة 45) &nbsp;•&nbsp; لوحات STEEL 01–05 Rev.— نوفمبر 2025 &nbsp;•&nbsp; التقرير: يوليو 2026
+  </footer>
+</div>
+</body>
+</html>
