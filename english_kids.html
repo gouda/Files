@@ -1,0 +1,926 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>رحلة الإنجليزي — الصف الثالث الابتدائي</title>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&family=Lalezar&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#1d2b4a;
+    --paper:#fef8ee;
+    --sky:#3b7fd4;
+    --grass:#42a86b;
+    --sun:#f6b32c;
+    --coral:#e8604c;
+    --grape:#7d52c9;
+    --soft:#e8dfcb;
+    --shadow:rgba(29,43,74,.15);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Cairo',sans-serif;background:var(--paper);color:var(--ink);line-height:1.9;overflow-x:hidden}
+  .wrap{max-width:900px;margin:0 auto;padding:0 18px 80px}
+  .en{direction:ltr;unicode-bidi:isolate;display:inline-block}
+
+  header{
+    text-align:center;padding:52px 18px 38px;
+    background:radial-gradient(circle at 20% 30%,rgba(59,127,212,.14),transparent 55%),
+               radial-gradient(circle at 80% 25%,rgba(246,179,44,.2),transparent 55%);
+  }
+  h1{font-family:'Lalezar',cursive;font-size:clamp(2rem,6vw,3.4rem)}
+  .tag{color:#5d6a85;margin-top:6px}
+  .road{display:flex;justify-content:center;gap:8px;margin-top:24px;flex-wrap:wrap}
+  .road span{background:#fff;border:2px solid var(--soft);border-radius:999px;padding:5px 14px;font-size:.82rem;font-weight:700;box-shadow:0 2px 0 var(--soft)}
+
+  .lesson{background:#fff;border:3px solid var(--ink);border-radius:24px;padding:26px;margin-top:46px;box-shadow:8px 8px 0 var(--shadow);position:relative}
+  .num{position:absolute;top:-22px;inset-inline-start:24px;background:var(--sun);border:3px solid var(--ink);border-radius:14px;padding:2px 16px;font-family:'Lalezar',cursive;font-size:1.4rem}
+  h2{font-family:'Lalezar',cursive;font-size:1.85rem;margin:12px 0 6px}
+  h3{font-size:1.08rem;margin:20px 0 8px;color:var(--sky)}
+  p{margin-bottom:11px}
+  .hook{background:var(--paper);border-inline-start:6px solid var(--coral);padding:12px 16px;border-radius:0 12px 12px 0;margin:14px 0;font-weight:700}
+  ul{margin:0 20px 14px}
+  li{margin-bottom:6px}
+  .word{background:#fff3cf;padding:1px 7px;border-radius:6px;font-weight:700}
+
+  table{width:100%;border-collapse:collapse;margin:12px 0;font-size:.95rem}
+  th,td{border:2px solid var(--ink);padding:7px 9px;text-align:center}
+  th{background:var(--grape);color:#fff;font-family:'Lalezar';font-weight:400;font-size:1.05rem}
+  tbody tr:nth-child(even){background:#faf6ff}
+
+  .game{margin:22px 0;background:linear-gradient(180deg,#f4f9ff,#eaf3ff);border:3px dashed var(--sky);border-radius:18px;padding:20px}
+  .game-title{font-family:'Lalezar',cursive;font-size:1.32rem;color:var(--sky);margin-bottom:2px}
+  .game-help{font-size:.88rem;color:#5d6a85;margin-bottom:14px}
+  .btn{font-family:'Cairo';font-weight:700;cursor:pointer;border:2.5px solid var(--ink);border-radius:12px;background:#fff;padding:8px 15px;font-size:.92rem;box-shadow:0 3px 0 var(--ink);transition:.1s;margin:2px}
+  .btn:hover{transform:translateY(1px);box-shadow:0 2px 0 var(--ink)}
+  .btn:active{transform:translateY(3px);box-shadow:none}
+  .btn.go{background:var(--grass);color:#fff}
+  .status{margin-top:12px;font-weight:700;min-height:26px;font-size:.93rem}
+
+  .sent{background:#fff;border:2px solid var(--soft);border-radius:12px;padding:14px;text-align:center;font-size:1.25rem;font-weight:700;margin-bottom:12px;direction:ltr}
+  .blank{display:inline-block;min-width:70px;border-bottom:3px solid var(--coral);color:var(--coral)}
+  .picks{display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
+
+  .bins{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px}
+  .bin{background:#fff;border:2.5px dashed var(--ink);border-radius:14px;min-height:100px;padding:8px;text-align:center}
+  .bin b{display:block;margin-bottom:6px;font-size:.9rem}
+  .bin.hot{background:#e9ffe9;border-style:solid}
+  .chips{display:flex;flex-wrap:wrap;gap:7px;justify-content:center}
+  .chip{background:var(--grape);color:#fff;border:2px solid var(--ink);border-radius:10px;padding:5px 11px;font-weight:700;font-size:.85rem;cursor:pointer;box-shadow:0 2px 0 var(--ink)}
+  .chip.done{opacity:.5;cursor:default}
+
+  #box{position:relative;height:190px;background:#fff;border-radius:12px;border:2px solid var(--soft);overflow:hidden;margin-bottom:12px}
+  .crate{position:absolute;left:50%;top:70px;transform:translateX(-50%);font-size:4.2rem}
+  .ball{position:absolute;font-size:2rem;transition:all .5s cubic-bezier(.4,1.4,.5,1)}
+
+  .mem{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+  .card{aspect-ratio:1;border:2.5px solid var(--ink);border-radius:12px;background:var(--grape);cursor:pointer;display:grid;place-items:center;font-size:.8rem;font-weight:700;color:transparent;transition:.2s;text-align:center;padding:3px;direction:ltr}
+  .card.open{background:#fff;color:var(--ink)}
+  .card.match{background:var(--grass);color:#fff;cursor:default}
+
+  .quiz{background:#fff7ef;border:3px solid var(--coral);border-radius:18px;padding:20px;margin:22px 0}
+  .quiz h3{color:var(--coral);margin-top:0}
+  .q{margin-bottom:16px}
+  .q p{font-weight:700;margin-bottom:8px}
+  .opt{display:block;width:100%;text-align:start;background:#fff;border:2px solid var(--ink);border-radius:10px;padding:8px 12px;margin-bottom:6px;cursor:pointer;font-family:'Cairo';font-size:.92rem}
+  .opt:hover{background:#fff3cf}
+  .opt.right{background:var(--grass);color:#fff}
+  .opt.wrong{background:var(--coral);color:#fff}
+  .fb{font-size:.87rem;margin-top:4px;font-weight:700;min-height:20px}
+
+  .sum{background:var(--ink);color:#fff;border-radius:18px;padding:20px;margin-top:22px}
+  .sum h3{color:var(--sun);margin-top:0}
+
+  .finale{margin-top:50px;text-align:center;background:#fff;border:3px solid var(--ink);border-radius:24px;padding:34px 22px;box-shadow:8px 8px 0 var(--shadow)}
+  .medal{font-size:4rem}
+  @media(max-width:600px){.mem{grid-template-columns:repeat(3,1fr)}.bins{grid-template-columns:1fr}}
+  @media(prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>✨ رحلة الإنجليزي</h1>
+  <p class="tag">الصف الثالث الابتدائي — الترم الأول · اشرح · العب · جاوب</p>
+  <div class="road">
+    <span>1️⃣ Verb to be</span>
+    <span>2️⃣ Present Simple</span>
+    <span>3️⃣ Possessive</span>
+    <span>4️⃣ Prepositions</span>
+    <span>5️⃣ Past Simple</span>
+    <span>6️⃣ Action Verbs</span>
+    <span>7️⃣ البراجراف</span>
+  </div>
+</header>
+
+<div class="wrap">
+
+<!-- ===== 1 : VERB TO BE ===== -->
+<section class="lesson">
+  <div class="num">1</div>
+  <h2>فعل الكينونة — <span class="en">Verb to be</span></h2>
+
+  <div class="hook">تخيّل إن <span class="en">am / is / are</span> دول تلات إخوات، وكل واحد بيمشي مع ناس معيّنة بس. لو مشّيته مع غلط، الجملة تزعل! 😅</div>
+
+  <p>معناهم في العربي «<b>يكون</b>». بنستخدمهم عشان نقول إن حاجة <b>موجودة</b> أو <b>صفتها إيه</b>.</p>
+
+  <table>
+    <thead><tr><th>الضمير</th><th>الشكل الطويل</th><th>الشكل القصير</th></tr></thead>
+    <tbody>
+      <tr><td class="en">I</td><td class="en">I am</td><td class="en">I'm</td></tr>
+      <tr><td class="en">He / She / It</td><td class="en">He is</td><td class="en">He's</td></tr>
+      <tr><td class="en">You / We / They</td><td class="en">You are</td><td class="en">You're</td></tr>
+    </tbody>
+  </table>
+
+  <h3>القاعدة الذهبية 🔑</h3>
+  <ul>
+    <li>اسم <b>مفرد</b> + <span class="word en">is</span> ← <span class="en">The lion <b>is</b> fast.</span></li>
+    <li>اسم <b>جمع</b> + <span class="word en">are</span> ← <span class="en">Lions <b>are</b> fast.</span></li>
+    <li><span class="en">I</span> ليها <span class="word en">am</span> لوحدها بس!</li>
+  </ul>
+
+  <h3>بنستخدمه إمتى؟</h3>
+  <p>للأعمار، الجنسيات، الألوان، الأسعار، المهن، الوقت، والمشاعر.</p>
+  <ul>
+    <li><span class="en">I <b>am</b> a student.</span> — أنا طالب</li>
+    <li><span class="en">He<b>'s</b> tall.</span> — هو طويل</li>
+    <li><span class="en">They <b>are</b> family.</span> — هم عيلة</li>
+    <li><span class="en">Ali <b>is</b> happy.</span> — علي مبسوط</li>
+  </ul>
+
+  <div class="game">
+    <div class="game-title">🎮 لعبة: اختار الأخ الصح</div>
+    <div class="game-help">اقرا الجملة واضغط الكلمة الصح.</div>
+    <div class="sent" id="g1s"></div>
+    <div class="picks">
+      <button class="btn" data-v="am">am</button>
+      <button class="btn" data-v="is">is</button>
+      <button class="btn" data-v="are">are</button>
+    </div>
+    <div class="status" id="g1st"></div>
+    <button class="btn go" id="g1next">➡️ جملة تانية</button>
+  </div>
+
+  <div class="quiz">
+    <h3>❓ اتأكد إنك فهمت</h3>
+    <div class="q" data-a="1">
+      <p>1. <span class="en">It ___ my country's flag.</span></p>
+      <button class="opt en">Am</button><button class="opt en">Is</button><button class="opt en">Are</button>
+      <div class="fb"></div>
+    </div>
+    <div class="q" data-a="2">
+      <p>2. <span class="en">They ___ always together.</span></p>
+      <button class="opt en">Am</button><button class="opt en">Is</button><button class="opt en">Are</button>
+      <div class="fb"></div>
+    </div>
+    <div class="q" data-a="0">
+      <p>3. <span class="en">I ___ a doctor.</span></p>
+      <button class="opt en">Am</button><button class="opt en">Is</button><button class="opt en">Are</button>
+      <div class="fb"></div>
+    </div>
+  </div>
+
+  <div class="sum">
+    <h3>📌 ملخص سريع</h3>
+    <ul>
+      <li><span class="en">I → am</span> · <span class="en">He/She/It → is</span> · <span class="en">You/We/They → are</span></li>
+      <li>مفرد ← <span class="en">is</span> · جمع ← <span class="en">are</span></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ===== 2 : PRESENT SIMPLE ===== -->
+<section class="lesson">
+  <div class="num">2</div>
+  <h2>المضارع البسيط — <span class="en">Present Simple</span></h2>
+
+  <div class="hook">الزمن ده بنستخدمه للحاجات اللي بتتكرر كل يوم — زي ما إنت بتصحى وتفطر وتروح المدرسة كل يوم.</div>
+
+  <h3>القاعدة 🔑</h3>
+  <ul>
+    <li><span class="en">I / We / You / They</span> أو اسم <b>جمع</b> ← الفعل زي ما هو<br>
+      <span class="en">They <b>play</b> football.</span> · <span class="en">We <b>drink</b> milk.</span></li>
+    <li><span class="en">He / She / It</span> أو اسم <b>مفرد</b> ← الفعل + <span class="word">s</span><br>
+      <span class="en">He <b>plays</b> football.</span> · <span class="en">Ali <b>lives</b> in Cairo.</span></li>
+  </ul>
+
+  <h3>امتى نضيف <span class="en">es</span> بدل <span class="en">s</span>؟</h3>
+  <p>لو الفعل آخره: <b class="en">ss · sh · ch · o · x · z</b></p>
+  <ul>
+    <li><span class="en">She wash<b>es</b> the dishes.</span></li>
+    <li><span class="en">Ali go<b>es</b> to school.</span></li>
+  </ul>
+  <p>ولو آخره <b class="en">y</b> وقبلها <b>حرف ساكن</b> ← نشيل الـ <span class="en">y</span> ونحط <span class="word en">ies</span>:<br>
+  <span class="en">study → He stud<b>ies</b> English.</span></p>
+
+  <h3>بنستخدمه إمتى؟</h3>
+  <ul>
+    <li><b>حقائق:</b> <span class="en">Plants need water.</span></li>
+    <li><b>عادات:</b> <span class="en">He goes to school every day.</span></li>
+    <li><b>أوضاع ثابتة:</b> <span class="en">We live in Cairo.</span></li>
+    <li><b>مواعيد:</b> <span class="en">The train leaves at 10 o'clock.</span></li>
+  </ul>
+
+  <h3>كلمات دليلية 🔍 <span style="font-size:.85rem;color:#5d6a85">(لو شفتها اعرف إنه Present Simple)</span></h3>
+  <p><span class="en">every</span> كل · <span class="en">always</span> دائماً · <span class="en">usually</span> عادة · <span class="en">often</span> غالباً · <span class="en">never</span> أبداً · <span class="en">sometimes</span> أحياناً · <span class="en">rarely / seldom</span> نادراً</p>
+
+  <div class="game">
+    <div class="game-title">🎮 لعبة: حط الـ <span class="en">s</span> صح</div>
+    <div class="game-help">شوف الفاعل: مفرد ولا جمع؟ وبعدين اختار.</div>
+    <div class="sent" id="g2s"></div>
+    <div class="picks" id="g2p"></div>
+    <div class="status" id="g2st"></div>
+    <button class="btn go" id="g2next">➡️ جملة تانية</button>
+  </div>
+
+  <div class="quiz">
+    <h3>❓ اتأكد إنك فهمت</h3>
+    <div class="q" data-a="1">
+      <p>1. <span class="en">He ___ to school every day.</span></p>
+      <button class="opt en">go</button><button class="opt en">goes</button><button class="opt en">going</button>
+      <div class="fb"></div>
+    </div>
+    <div class="q" data-a="0">
+      <p>2. <span class="en">They ___ football on Fridays.</span></p>
+      <button class="opt en">play</button><button class="opt en">plays</button><button class="opt en">played</button>
+      <div class="fb"></div>
+    </div>
+    <div class="q" data-a="2">
+      <p>3. <span class="en">Mona ___ the dishes every day.</span></p>
+      <button class="opt en">wash</button><button class="opt en">washing</button><button class="opt en">washes</button>
+      <div class="fb"></div>
+    </div>
+    <div class="q" data-a="1">
+      <p>4. <span class="en">The sun ___ in the east.</span></p>
+      <button class="opt en">rise</button><button class="opt en">rises</button><button class="opt en">rising</button>
+      <div class="fb"></div>
+    </div>
+  </div>
+
+  <div class="sum">
+    <h3>📌 ملخص سريع</h3>
+    <ul>
+      <li>جمع ← الفعل عادي · مفرد (<span class="en">He/She/It</span>) ← فعل + <span class="en">s</span></li>
+      <li>آخره <span class="en">ss·sh·ch·o·x·z</span> ← <span class="en">es</span></li>
+      <li>آخره <span class="en">y</span> بعد ساكن ← <span class="en">ies</span></li>
+      <li>كلماته: <span class="en">every day · always · usually · never</span></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ===== 3 : POSSESSIVE ===== -->
+<section class="lesson">
+  <div class="num">3</div>
+  <h2>صفات الملكية — <span class="en">Possessive Adjectives</span></h2>
+
+  <div class="hook">دي الكلمات اللي بتقول «ده بتاع مين؟» — كتابي، كتابك، كتابه.</div>
+
+  <table>
+    <thead><tr><th>الضمير</th><th>صفة الملكية</th><th>المعنى</th></tr></thead>
+    <tbody>
+      <tr><td class="en">I</td><td class="en"><b>my</b></td><td>ملكي</td></tr>
+      <tr><td class="en">you</td><td class="en"><b>your</b></td><td>ملكك</td></tr>
+      <tr><td class="en">he</td><td class="en"><b>his</b></td><td>ملكه</td></tr>
+      <tr><td class="en">she</td><td class="en"><b>her</b></td><td>ملكها</td></tr>
+      <tr><td class="en">it</td><td class="en"><b>its</b></td><td>لغير العاقل</td></tr>
+      <tr><td class="en">we</td><td class="en"><b>our</b></td><td>ملكنا</td></tr>
+      <tr><td class="en">they</td><td class="en"><b>their</b></td><td>ملكهم</td></tr>
+    </tbody>
+  </table>
+
+  <h3>القاعدة الذهبية 🔑</h3>
+  <p><b>صفة الملكية لازم بعدها اسم!</b> عمرها ما تيجي لوحدها.</p>
+  <ul>
+    <li><span class="en">I have a book. It's <b>my</b> book.</span></li>
+    <li><span class="en">We have a car. It's <b>our</b> car.</span></li>
+    <li><span class="en">They want <b>their</b> books.</span></li>
+  </ul>
+
+  <div class="game">
+    <div class="game-title">🎮 لعبة: ده بتاع مين؟</div>
+    <div class="game-help">اقرا الجملة الأولى، وبعدين اختار الصفة الصح.</div>
+    <div class="sent" id="g3s"></div>
+    <div class="picks" id="g3p"></div>
+    <div class="status" id="g3st"></div>
+    <button class="btn go" id="g3next">➡️ جملة تانية</button>
+  </div>
+
+  <div class="quiz">
+    <h3>❓ اتأكد إنك فهمت</h3>
+    <div class="q" data-a="0">
+      <p>1. <span class="en">I have a bag. ___ bag is blue.</span></p>
+      <button class="opt en">My</button><button class="opt en">His</button><button class="opt en">Her</button>
+      <div class="fb"></div>
+    </div>
+    <div class="q" data-a="1">
+      <p>2. <span class="en">Sarah has a cat. ___ cat is white.</span></p>
+      <button class="opt en">His</button><button class="opt en">Her</button><button class="opt en">Our</button>
+      <div class="fb"></div>
+    </div>
+    <div class="q" data-a="2">
+      <p>3. <span class="en">John and Mary have a dog. ___ dog is big.</span></p>
+      <button class="opt en">Our</button><button class="opt en">His</button><button class="opt en">Their</button>
+      <div class="fb"></div>
+    </div>
+    <div class="q" data-a="1">
+      <p>4. <span class="en">This is ___ pencil.</span> (بتاعه)</p>
+      <button class="opt en">he</button><button class="opt en">his</button><button class="opt en">him</button>
+      <div class="fb"></div>
+    </div>
+  </div>
+
+  <div class="sum">
+    <h3>📌 ملخص سريع</h3>
+    <ul>
+      <li><span class="en">my · your · his · her · its · our · their</span></li>
+      <li>بعدها <b>اسم</b> دايماً</li>
+      <li><span class="en">his</span> للولد · <span class="en">her</span> للبنت · <span class="en">their</span> لأكتر من واحد</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ===== 4 : PREPOSITIONS ===== -->
+<section class="lesson">
+  <div class="num">4</div>
+  <h2>حروف المكان — <span class="en">Prepositions of Place</span></h2>
+
+  <div class="hook">دي الكلمات اللي بتجاوب على سؤال: <span class="en">Where is it?</span> — الحاجة فين؟</div>
+
+  <ul>
+    <li><span class="word en">in</span> = في (جوّه) ← <span class="en">It is <b>in</b> the box.</span></li>
+    <li><span class="word en">on</span> = على (فوق وملامس) ← <span class="en">It is <b>on</b> the box.</span></li>
+    <li><span class="word en">in front of</span> = أمام ← <span class="en">It is <b>in front of</b> the box.</span></li>
+    <li><span class="word en">behind</span> = خلف ← <span class="en">It is <b>behind</b> the box.</span></li>
+    <li><span class="word en">next to</span> = بجانب ← <span class="en">It is <b>next to</b> the box.</span></li>
+    <li><span class="word en">between</span> = بين (اتنين) ← <span class="en">It is <b>between</b> the boxes.</span></li>
+  </ul>
+
+  <div class="hook">⚠️ خلي بالك: <span class="en">in front <b>of</b></span> · <span class="en">next <b>to</b></span> · <span class="en">between</span> لازم <b>حاجتين</b>.</div>
+
+  <div class="game">
+    <div class="game-title">🎮 لعبة: الكورة فين؟</div>
+    <div class="game-help">اضغط الزرار وشوف الكورة بتروح فين.</div>
+    <div id="box"><div class="crate">📦</div><div class="ball" id="ball">⚽</div></div>
+    <div class="picks" id="g4p"></div>
+    <div class="status" id="g4st"></div>
+  </div>
+
+  <div class="quiz">
+    <h3>❓ اتأكد إنك فهمت</h3>
+    <div class="q" data-a="1">
+      <p>1. <span class="en">Ali is ___ front of the door.</span></p>
+      <button class="opt en">on</button><button class="opt en">in</button><button class="opt en">at</button>
+      <div class="fb"></div>
+    </div>
+    <div class="q" data-a="2">
+      <p>2. <span class="en">The cat is next ___ the chair.</span></p>
+      <button class="opt en">of</button><button class="opt en">in</button><button class="opt en">to</button>
+      <div class="fb"></div>
+    </div>
+    <div class="q" data-a="0">
+      <p>3. <span class="en">The bank is ___ the school and the hospital.</span></p>
+      <button class="opt en">between</button><button class="opt en">on</button><button class="opt en">under</button>
+      <div class="fb"></div>
+    </div>
+    <div class="q" data-a="1">
+      <p>4. <span class="en">The picture is ___ the wall.</span></p>
+      <button class="opt en">under</button><button class="opt en">on</button><button class="opt en">in</button>
+      <div class="fb"></div>
+    </div>
+  </div>
+
+  <div class="sum">
+    <h3>📌 ملخص سريع</h3>
+    <ul>
+      <li><span class="en">in</span> جوّه · <span class="en">on</span> فوق · <span class="en">behind</span> ورا</li>
+      <li><span class="en">in front of</span> قدّام · <span class="en">next to</span> جنب · <span class="en">between</span> بين اتنين</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ===== 5 : PAST SIMPLE ===== -->
+<section class="lesson">
+  <div class="num">5</div>
+  <h2>الماضي البسيط — <span class="en">Past Simple</span></h2>
+
+  <div class="hook">لما تحكي حاجة <b>خلصت</b> وحصلت إمبارح أو زمان — دي شغلانة الماضي البسيط.</div>
+
+  <h3>القاعدة 🔑 <span class="en">V + ed</span></h3>
+  <ul>
+    <li><span class="en">I <b>played</b> football yesterday.</span></li>
+    <li>الفعل آخره <span class="en">e</span> ← نضيف <span class="word en">d</span> بس: <span class="en">like → lik<b>ed</b></span> · <span class="en">love → lov<b>ed</b></span></li>
+    <li>آخره <span class="en">y</span> بعد ساكن ← <span class="word en">ied</span>: <span class="en">study → stud<b>ied</b></span></li>
+  </ul>
+
+  <h3>أفعال شقية 😈 <span class="en">Irregular Verbs</span></h3>
+  <p>دول مالهمش قاعدة — لازم تحفظهم!</p>
+  <table>
+    <thead><tr><th class="en">Base</th><th class="en">Past</th><th class="en">Base</th><th class="en">Past</th></tr></thead>
+    <tbody>
+      <tr><td class="en">go</td><td class="en">went</td><td class="en">eat</td><td class="en">ate</td></tr>
+      <tr><td class="en">see</td><td class="en">saw</td><td class="en">drink</td><td class="en">drank</td></tr>
+      <tr><td class="en">have</td><td class="en">had</td><td class="en">buy</td><td class="en">bought</td></tr>
+      <tr><td class="en">is/are</td><td class="en">was/were</td><td class="en">do</td><td class="en">did</td></tr>
+      <tr><td class="en">come</td><td class="en">came</td><td class="en">give</td><td class="en">gave</td></tr>
+      <tr><td class="en">find</td><td class="en">found</td><td class="en">get</td><td class="en">got</td></tr>
+    </tbody>
+  </table>
+
+  <h3>النفي والسؤال ⚡</h3>
+  <p>بعد <span class="word en">didn't</span> و <span class="word en">did</span> الفعل يرجع <b>مصدر</b> (من غير <span class="en">ed</span>)!</p>
+  <ul>
+    <li><span class="en">I <b>didn't watch</b> TV.</span> ✅ &nbsp; <span style="color:#e8604c">✗ <span class="en">didn't watched</span></span></li>
+    <li><span class="en"><b>Did</b> he <b>go</b> to school?</span> ✅</li>
+  </ul>
+
+  <h3>كلمات دليلية 🔍</h3>
+  <p><span class="en">yesterday</span> أمس · <span class="en">last week/month/year</span> · <span class="en">ago</span> منذ · <span class="en">in the past</span> · <span class="en">in 2020</span></p>
+
+  <div class="game">
+    <div class="game-title">🎮 لعبة: رتّب الأفعال</div>
+    <div class="game-help">اضغط الفعل وبعدين اضغط الصندوق الصح.</div>
+    <div class="bins">
+      <div class="bin" data-bin="reg"><b>✅ منتظم (+ed)</b><div class="chips"></div></div>
+      <div class="bin" data-bin="irr"><b>😈 شقي (شكل تاني)</b><div class="chips"></div></div>
+    </div>
+    <div class="chips" id="g5pool"></div>
+    <div class="status" id="g5st"></div>
+    <button class="btn" id="g5reset">↺ من الأول</button>
+  </div>
+
+  <div class="quiz">
+    <h3>❓ اتأكد إنك فهمت</h3>
+    <div class="q" data-a="1">
+      <p>1. <span class="en">I ___ a movie yesterday.</span></p>
+      <button class="opt en">watch</button><button class="opt en">watched</button><button class="opt en">watching</button>
+      <div class="fb"></div>
+    </div>
+    <div class="q" data-a="2">
+      <p>2. <span class="en">We ___ to the club on Friday.</span></p>
+      <button class="opt en">go</button><button class="opt en">goes</button><button class="opt en">went</button>
+      <div class="fb"></div>
+    </div>
+    <div class="q" data-a="0">
+      <p>3. <span class="en">Ahmed didn't ___ the board.</span></p>
+      <button class="opt en">clean</button><button class="opt en">cleaned</button><button class="opt en">cleaning</button>
+      <div class="fb"></div>
+    </div>
+    <div class="q" data-a="1">
+      <p>4. <span class="en">They ___ very happy yesterday.</span></p>
+      <button class="opt en">was</button><button class="opt en">were</button><button class="opt en">are</button>
+      <div class="fb"></div>
+    </div>
+    <div class="q" data-a="0">
+      <p>5. <span class="en">___ he go to school yesterday?</span></p>
+      <button class="opt en">Did</button><button class="opt en">Does</button><button class="opt en">Do</button>
+      <div class="fb"></div>
+    </div>
+  </div>
+
+  <div class="sum">
+    <h3>📌 ملخص سريع</h3>
+    <ul>
+      <li>عادي ← <span class="en">+ed</span> · آخره <span class="en">e</span> ← <span class="en">+d</span> · آخره <span class="en">y</span> ← <span class="en">ied</span></li>
+      <li>أفعال شقية لازم حفظ: <span class="en">go→went · see→saw · eat→ate</span></li>
+      <li>بعد <span class="en">didn't / did</span> ← الفعل <b>مصدر</b></li>
+      <li>كلماته: <span class="en">yesterday · last · ago</span></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ===== 6 : ACTION VERBS ===== -->
+<section class="lesson">
+  <div class="num">6</div>
+  <h2>أفعال الحركة — <span class="en">Action Verbs</span></h2>
+
+  <div class="hook">دي الأفعال اللي بتوصف حاجة بنعملها — زي ما تشوف حد بيتحرك في فيلم!</div>
+
+  <ul>
+    <li>🤝 <span class="word en">help</span> يساعد — <span class="en">Salma <b>helps</b> Youssef with the project.</span></li>
+    <li>🧮 <span class="word en">solve</span> يحل — <span class="en">They <b>solve</b> the problem together.</span></li>
+    <li>🔍 <span class="word en">find</span> يجد — <span class="en">Youssef <b>finds</b> a good idea.</span></li>
+    <li>💼 <span class="word en">work</span> يعمل — <span class="en">They <b>work</b> as a team.</span></li>
+    <li>📋 <span class="word en">plan</span> يخطط — <span class="en">They <b>plan</b> their project first.</span></li>
+    <li>🔧 <span class="word en">fix</span> يصلح — <span class="en">Salma <b>fixes</b> the poster.</span></li>
+    <li>👍 <span class="word en">agree</span> يوافق — <span class="en">They <b>agree</b> on what to do.</span></li>
+  </ul>
+
+  <div class="game">
+    <div class="game-title">🎮 لعبة: كارت الذاكرة</div>
+    <div class="game-help">دوّر على الفعل مع معناه.</div>
+    <div class="mem" id="g6"></div>
+    <div class="status" id="g6st"></div>
+    <button class="btn" id="g6reset">↺ لعبة جديدة</button>
+  </div>
+
+  <div class="quiz">
+    <h3>❓ اتأكد إنك فهمت</h3>
+    <div class="q" data-a="1">
+      <p>1. معنى <span class="en">fix</span> إيه؟</p>
+      <button class="opt">يخطط</button><button class="opt">يصلح</button><button class="opt">يوافق</button>
+      <div class="fb"></div>
+    </div>
+    <div class="q" data-a="2">
+      <p>2. <span class="en">They ___ the problem together.</span></p>
+      <button class="opt en">plan</button><button class="opt en">find</button><button class="opt en">solve</button>
+      <div class="fb"></div>
+    </div>
+    <div class="q" data-a="0">
+      <p>3. <span class="en">Salma ___ the poster.</span> (لاحظ <span class="en">Salma</span> مفرد!)</p>
+      <button class="opt en">fixes</button><button class="opt en">fix</button><button class="opt en">fixing</button>
+      <div class="fb"></div>
+    </div>
+  </div>
+
+  <div class="sum">
+    <h3>📌 ملخص سريع</h3>
+    <ul>
+      <li><span class="en">help · solve · find · work · plan · fix · agree</span></li>
+      <li>مع <span class="en">He/She/It</span> ← زوّد <span class="en">s</span> · و<span class="en">fix → fixes</span></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ===== 7 : PARAGRAPH ===== -->
+<section class="lesson">
+  <div class="num">7</div>
+  <h2>سؤال البراجراف ✍️</h2>
+
+  <div class="hook">المطلوب منك تكتب فقرة صغيرة مستخدم الكلمات الاسترشادية اللي فوق. السر إنك تحفظ 4-6 جمل جاهزة لكل موضوع!</div>
+
+  <h3>🟣 <span class="en">Unit 1</span> — <span class="en">My new friend</span> <span style="font-size:.85rem">(kind · friendly · tall)</span></h3>
+  <ul>
+    <li><span class="en">I meet a new friend.</span> — أقابل صديق جديد</li>
+    <li><span class="en">His name is Omar.</span> — اسمه عمر</li>
+    <li><span class="en">He is 9 years old.</span> — عنده 9 سنين</li>
+    <li><span class="en">He is kind. He is friendly. He is tall.</span></li>
+  </ul>
+
+  <h3>🟢 <span class="en">Unit 1</span> — <span class="en">Classroom rules</span> <span style="font-size:.85rem">(listen · keep · shout)</span></h3>
+  <ul>
+    <li><span class="en">There are classroom rules.</span></li>
+    <li><span class="en">Listen carefully to your teacher.</span> · <span class="en">I raise my hand to speak.</span></li>
+    <li><span class="en">Keep your classroom clean.</span> · <span class="en">Be kind to your friends.</span></li>
+    <li><span class="en">Don't shout.</span></li>
+  </ul>
+
+  <h3>🔵 <span class="en">Unit 1</span> — <span class="en">My daily routine</span> <span style="font-size:.85rem">(brush · breakfast · bed)</span></h3>
+  <ul>
+    <li><span class="en">I wake up at 7 a.m.</span> · <span class="en">I brush my teeth.</span></li>
+    <li><span class="en">I have breakfast.</span> · <span class="en">I go to school.</span></li>
+    <li><span class="en">I do my homework.</span> · <span class="en">I go to bed at 10 p.m.</span></li>
+  </ul>
+
+  <h3>🟠 <span class="en">Unit 2</span> — <span class="en">Jobs in my family</span> <span style="font-size:.85rem">(teacher · pilot · baker)</span></h3>
+  <ul>
+    <li><span class="en">My father is a teacher. He works at a school.</span></li>
+    <li><span class="en">My mother is a pilot. She travels around the world.</span></li>
+    <li><span class="en">My uncle is a baker. He bakes bread.</span></li>
+    <li><span class="en">My aunt is a doctor.</span></li>
+  </ul>
+
+  <h3>🔴 <span class="en">Unit 2</span> — <span class="en">Eid Al-Fitr</span> <span style="font-size:.85rem">(wear · visit · happy)</span></h3>
+  <ul>
+    <li><span class="en">I love Egyptian celebrations.</span></li>
+    <li><span class="en">My favorite celebration is Eid Al-Fitr.</span></li>
+    <li><span class="en">I wear new clothes. I visit my family. I am happy.</span></li>
+  </ul>
+
+  <h3>🟡 <span class="en">Unit 3</span> — <span class="en">A trip to the zoo</span> <span style="font-size:.85rem">(zoo · elephants · lions)</span> <span style="color:#e8604c;font-size:.85rem">⚠️ ماضي!</span></h3>
+  <ul>
+    <li><span class="en">Last Monday, I <b>went</b> on a trip to the zoo.</span></li>
+    <li><span class="en">I <b>saw</b> lions, monkeys, and elephants.</span></li>
+    <li><span class="en">The ticket <b>was</b> 20 pounds.</span> · <span class="en">We <b>drank</b> juice.</span></li>
+    <li><span class="en">I <b>had</b> fun at the zoo.</span></li>
+  </ul>
+
+  <h3>🟣 <span class="en">Unit 4</span> — <span class="en">Our emotions</span> <span style="font-size:.85rem">(happy · worried · tired)</span></h3>
+  <ul>
+    <li><span class="en">I feel happy when I win a game.</span></li>
+    <li><span class="en">I feel worried when I have an exam.</span></li>
+    <li><span class="en">I feel tired when I sleep late.</span></li>
+  </ul>
+
+  <h3>🟢 <span class="en">Unit 4</span> — <span class="en">A football match</span> <span style="font-size:.85rem">(played · scored · happy)</span> <span style="color:#e8604c;font-size:.85rem">⚠️ ماضي!</span></h3>
+  <ul>
+    <li><span class="en">Omar is my friend. He <b>played</b> a football match.</span></li>
+    <li><span class="en">He <b>scored</b> a goal. He <b>felt</b> proud.</span></li>
+    <li><span class="en">He <b>was</b> happy. His team <b>won</b> the game.</span></li>
+  </ul>
+
+  <h3>🔵 <span class="en">Unit 5</span> — <span class="en">Helping our community</span> <span style="font-size:.85rem">(help · clean · plant)</span></h3>
+  <ul>
+    <li><span class="en">We can help our community.</span> · <span class="en">We can clean streets.</span></li>
+    <li><span class="en">We can plant trees.</span> · <span class="en">We can donate clothes.</span></li>
+    <li><span class="en">We can work together.</span></li>
+  </ul>
+
+  <h3>🟠 <span class="en">Unit 6</span> — <span class="en">My dream</span></h3>
+  <ul>
+    <li><span class="en">I have a goal. I want to be a doctor.</span></li>
+    <li><span class="en">I have a plan. I should take a step. I study hard.</span></li>
+  </ul>
+
+  <div class="game">
+    <div class="game-title">🎮 لعبة: رتّب البراجراف</div>
+    <div class="game-help">اضغط الجمل بالترتيب الصح عشان تبني الفقرة.</div>
+    <div class="sent" id="g7goal" style="font-size:1rem;direction:rtl"></div>
+    <div class="picks" id="g7p" style="flex-direction:column;align-items:stretch"></div>
+    <div class="status" id="g7st"></div>
+    <button class="btn go" id="g7next">➡️ فقرة تانية</button>
+  </div>
+
+  <div class="quiz">
+    <h3>❓ اتأكد إنك فهمت</h3>
+    <div class="q" data-a="1">
+      <p>1. لما تكتب عن <span class="en">A trip to the zoo</span> تستخدم أنهي زمن؟</p>
+      <button class="opt">المضارع البسيط</button>
+      <button class="opt">الماضي البسيط (لأنها حصلت وخلصت)</button>
+      <button class="opt">أي زمن</button>
+      <div class="fb"></div>
+    </div>
+    <div class="q" data-a="0">
+      <p>2. <span class="en">My mother is a pilot. ___ travels around the world.</span></p>
+      <button class="opt en">She</button><button class="opt en">He</button><button class="opt en">They</button>
+      <div class="fb"></div>
+    </div>
+    <div class="q" data-a="2">
+      <p>3. إيه أهم حاجة في سؤال البراجراف؟</p>
+      <button class="opt">أكتب أطول فقرة ممكنة</button>
+      <button class="opt">أكتب بالعربي</button>
+      <button class="opt">أستخدم الكلمات الاسترشادية في جمل صح</button>
+      <div class="fb"></div>
+    </div>
+  </div>
+
+  <div class="sum">
+    <h3>📌 ملخص سريع</h3>
+    <ul>
+      <li>احفظ 4-6 جمل جاهزة لكل موضوع</li>
+      <li>استخدم <b>الكلمات الاسترشادية</b> كلها</li>
+      <li>رحلة أو مباراة حصلت ← <b>ماضي</b> · عادات ← <b>مضارع</b></li>
+      <li>ابدأ بجملة تعريفية واقفل بجملة مشاعر</li>
+    </ul>
+  </div>
+</section>
+
+<div class="finale">
+  <div class="medal">🏅</div>
+  <h2>مبروك يا بطل!</h2>
+  <p>خلّصت كل قواعد الترم الأول.<br>ارجع للألعاب كل يوم 5 دقايق وهتلاقي نفسك حافظ كل حاجة! 🌟</p>
+</div>
+
+</div>
+
+<script>
+/* ---- shared quiz ---- */
+document.querySelectorAll('.q').forEach(q=>{
+  const ans=+q.dataset.a, fb=q.querySelector('.fb');
+  q.querySelectorAll('.opt').forEach((b,i)=>{
+    b.onclick=()=>{
+      if(q.dataset.done)return; q.dataset.done=1;
+      if(i===ans){b.classList.add('right');fb.textContent='✅ برافو! إجابة صحيحة';fb.style.color='#42a86b';}
+      else{b.classList.add('wrong');q.querySelectorAll('.opt')[ans].classList.add('right');
+        fb.textContent='❌ مش دي — الصح هي الخضرا';fb.style.color='#e8604c';}
+    };
+  });
+});
+const sh=a=>a.slice().sort(()=>Math.random()-.5);
+
+/* ---- G1 : am/is/are ---- */
+(()=>{
+  const D=[
+    {t:'I ___ a student.',a:'am',w:'مع I دايماً am'},
+    {t:'He ___ tall.',a:'is',w:'He مفرد ← is'},
+    {t:'They ___ family.',a:'are',w:'They جمع ← are'},
+    {t:'The lion ___ fast.',a:'is',w:'lion اسم مفرد ← is'},
+    {t:'Lions ___ fast.',a:'are',w:'Lions جمع ← are'},
+    {t:'She ___ a newscaster.',a:'is',w:'She مفرد ← is'},
+    {t:'We ___ friends.',a:'are',w:'We جمع ← are'},
+    {t:'That ___ my cap.',a:'is',w:'That مفرد ← is'},
+    {t:'Ali ___ happy.',a:'is',w:'Ali اسم مفرد ← is'},
+    {t:'You ___ kind.',a:'are',w:'You ← are'}
+  ];
+  let q=sh(D),i=0;
+  const s=document.getElementById('g1s'),st=document.getElementById('g1st');
+  function show(){
+    if(i>=q.length){q=sh(D);i=0;}
+    s.innerHTML=q[i].t.replace('___','<span class="blank">؟</span>');st.textContent='';
+  }
+  document.querySelectorAll('#g1s ~ .picks .btn').forEach(b=>{
+    b.onclick=()=>{
+      if(b.dataset.v===q[i].a){st.style.color='#42a86b';st.textContent='✅ صح! '+q[i].w;
+        s.innerHTML=q[i].t.replace('___','<b style="color:#42a86b">'+q[i].a+'</b>');}
+      else{st.style.color='#e8604c';st.textContent='❌ لأ — '+q[i].w;}
+    };
+  });
+  document.getElementById('g1next').onclick=()=>{i++;show();};
+  show();
+})();
+
+/* ---- G2 : present simple s ---- */
+(()=>{
+  const D=[
+    {t:'He ___ to school every day.',o:['go','goes'],a:'goes',w:'He مفرد ← نضيف es لأن go آخرها o'},
+    {t:'They ___ football.',o:['play','plays'],a:'play',w:'They جمع ← الفعل عادي'},
+    {t:'She ___ the dishes.',o:['wash','washes'],a:'washes',w:'آخرها sh ← نضيف es'},
+    {t:'He ___ English.',o:['study','studies'],a:'studies',w:'آخرها y بعد ساكن ← ies'},
+    {t:'We ___ milk.',o:['drink','drinks'],a:'drink',w:'We جمع ← الفعل عادي'},
+    {t:'Ali ___ in Cairo.',o:['live','lives'],a:'lives',w:'Ali مفرد ← نضيف s'},
+    {t:'My father ___ to work.',o:['drive','drives'],a:'drives',w:'father مفرد ← s'},
+    {t:'I ___ books at night.',o:['read','reads'],a:'read',w:'مع I الفعل عادي'},
+    {t:'The sun ___ in the east.',o:['rise','rises'],a:'rises',w:'sun مفرد ← s'},
+    {t:'Ahmed never ___ fast food.',o:['eat','eats'],a:'eats',w:'Ahmed مفرد ← s'}
+  ];
+  let q=sh(D),i=0;
+  const s=document.getElementById('g2s'),p=document.getElementById('g2p'),st=document.getElementById('g2st');
+  function show(){
+    if(i>=q.length){q=sh(D);i=0;}
+    const c=q[i];
+    s.innerHTML=c.t.replace('___','<span class="blank">؟</span>');st.textContent='';p.innerHTML='';
+    sh(c.o).forEach(o=>{
+      const b=document.createElement('button');b.className='btn';b.textContent=o;
+      b.onclick=()=>{
+        if(o===c.a){st.style.color='#42a86b';st.textContent='✅ صح! '+c.w;
+          s.innerHTML=c.t.replace('___','<b style="color:#42a86b">'+c.a+'</b>');}
+        else{st.style.color='#e8604c';st.textContent='❌ لأ — '+c.w;}
+      };
+      p.appendChild(b);
+    });
+  }
+  document.getElementById('g2next').onclick=()=>{i++;show();};
+  show();
+})();
+
+/* ---- G3 : possessive ---- */
+(()=>{
+  const D=[
+    {t:'I have a bag. ___ bag is blue.',a:'My',o:['My','His','Her'],w:'I ← My'},
+    {t:'You have a kite. ___ kite is red.',a:'Your',o:['Your','My','Its'],w:'You ← Your'},
+    {t:'Ahmed has a ball. ___ ball is green.',a:'His',o:['His','Her','Our'],w:'Ahmed ولد ← His'},
+    {t:'Sarah has a cat. ___ cat is white.',a:'Her',o:['Her','His','Their'],w:'Sarah بنت ← Her'},
+    {t:'We have books. ___ books are new.',a:'Our',o:['Our','Their','My'],w:'We ← Our'},
+    {t:'John and Mary have a dog. ___ dog is big.',a:'Their',o:['Their','His','Our'],w:'اتنين ← Their'},
+    {t:'Amy has a good voice. ___ hobby is singing.',a:'Her',o:['Her','His','Its'],w:'Amy بنت ← Her'},
+    {t:'I love soccer. ___ hobby is playing soccer.',a:'My',o:['My','Your','Our'],w:'I ← My'}
+  ];
+  let q=sh(D),i=0;
+  const s=document.getElementById('g3s'),p=document.getElementById('g3p'),st=document.getElementById('g3st');
+  function show(){
+    if(i>=q.length){q=sh(D);i=0;}
+    const c=q[i];
+    s.innerHTML=c.t.replace('___','<span class="blank">؟</span>');st.textContent='';p.innerHTML='';
+    sh(c.o).forEach(o=>{
+      const b=document.createElement('button');b.className='btn';b.textContent=o;
+      b.onclick=()=>{
+        if(o===c.a){st.style.color='#42a86b';st.textContent='✅ صح! '+c.w;
+          s.innerHTML=c.t.replace('___','<b style="color:#42a86b">'+c.a+'</b>');}
+        else{st.style.color='#e8604c';st.textContent='❌ لأ — '+c.w;}
+      };
+      p.appendChild(b);
+    });
+  }
+  document.getElementById('g3next').onclick=()=>{i++;show();};
+  show();
+})();
+
+/* ---- G4 : prepositions ---- */
+(()=>{
+  const pos={
+    'in':{l:'50%',t:'88px',ar:'جوّه الصندوق'},
+    'on':{l:'50%',t:'34px',ar:'فوق الصندوق'},
+    'in front of':{l:'50%',t:'140px',ar:'قدّام الصندوق'},
+    'behind':{l:'50%',t:'46px',ar:'ورا الصندوق'},
+    'next to':{l:'72%',t:'92px',ar:'جنب الصندوق'},
+    'between':{l:'50%',t:'92px',ar:'بين الصندوقين'}
+  };
+  const ball=document.getElementById('ball'),st=document.getElementById('g4st'),
+        p=document.getElementById('g4p'),box=document.getElementById('box');
+  Object.keys(pos).forEach(k=>{
+    const b=document.createElement('button');b.className='btn';b.textContent=k;
+    b.onclick=()=>{
+      box.querySelectorAll('.crate').forEach((c,idx)=>{ if(idx>0)c.remove(); });
+      const c0=box.querySelector('.crate');
+      if(k==='between'){
+        c0.style.left='30%';
+        const c2=document.createElement('div');c2.className='crate';
+        c2.textContent='📦';c2.style.left='70%';box.appendChild(c2);
+      }else{ c0.style.left='50%'; }
+      const P=pos[k];
+      ball.style.left=P.l;ball.style.top=P.t;ball.style.transform='translateX(-50%)';
+      ball.style.zIndex = (k==='behind')?'0':'5';
+      ball.style.opacity = (k==='behind')?'.45':'1';
+      st.style.color='#1d2b4a';
+      st.innerHTML='<span class="en">It is <b>'+k+'</b> the box'+(k==='between'?'es':'')+'.</span> — الكورة '+P.ar;
+    };
+    p.appendChild(b);
+  });
+  ball.style.left='50%';ball.style.top='88px';ball.style.transform='translateX(-50%)';ball.style.zIndex='5';
+})();
+
+/* ---- G5 : regular vs irregular ---- */
+(()=>{
+  const D=[{n:'play → played',b:'reg'},{n:'study → studied',b:'reg'},{n:'clean → cleaned',b:'reg'},
+           {n:'watch → watched',b:'reg'},{n:'go → went',b:'irr'},{n:'see → saw',b:'irr'},
+           {n:'eat → ate',b:'irr'},{n:'buy → bought',b:'irr'}];
+  const pool=document.getElementById('g5pool'),st=document.getElementById('g5st'),
+        bins=[...document.querySelectorAll('#g5pool')[0].closest('.game').querySelectorAll('.bin')];
+  let sel=null,score=0;
+  function build(){
+    pool.innerHTML='';sel=null;score=0;st.textContent='';
+    bins.forEach(b=>{b.querySelector('.chips').innerHTML='';b.classList.remove('hot');});
+    sh(D).forEach(d=>{
+      const c=document.createElement('div');c.className='chip';c.dataset.b=d.b;
+      c.innerHTML='<span class="en">'+d.n+'</span>';
+      c.onclick=()=>{if(c.classList.contains('done'))return;
+        pool.querySelectorAll('.chip').forEach(x=>x.style.outline='');
+        sel=c;c.style.outline='3px solid #1d2b4a';};
+      pool.appendChild(c);
+    });
+  }
+  bins.forEach(b=>{
+    b.onclick=()=>{
+      if(!sel){st.style.color='#e8604c';st.textContent='👆 اختار فعل الأول';return;}
+      if(sel.dataset.b===b.dataset.bin){
+        const c=sel;c.style.outline='';c.classList.add('done');
+        b.querySelector('.chips').appendChild(c);
+        b.classList.add('hot');setTimeout(()=>b.classList.remove('hot'),400);
+        sel=null;score++;st.style.color='#42a86b';
+        st.textContent=score===8?'🎉 ممتاز! رتّبتهم كلهم صح':'✅ صح! فاضل '+(8-score);
+      }else{st.style.color='#e8604c';st.textContent='❌ مش الصندوق ده — بصّ على شكل الماضي';}
+    };
+  });
+  document.getElementById('g5reset').onclick=build;
+  build();
+})();
+
+/* ---- G6 : memory ---- */
+(()=>{
+  const P=[['help','يساعد'],['solve','يحل'],['find','يجد'],['fix','يصلح'],
+           ['plan','يخطط'],['agree','يوافق'],['work','يعمل'],['bake','يخبز']];
+  const wrap=document.getElementById('g6'),st=document.getElementById('g6st');
+  let open=[],lock=false,found=0;
+  function build(){
+    found=0;open=[];lock=false;st.textContent='';wrap.innerHTML='';
+    const deck=[];P.forEach((p,i)=>{deck.push({t:p[0],k:i});deck.push({t:p[1],k:i});});
+    sh(deck).forEach(c=>{
+      const d=document.createElement('div');d.className='card';d.textContent=c.t;d.dataset.k=c.k;
+      d.onclick=()=>{
+        if(lock||d.classList.contains('open')||d.classList.contains('match'))return;
+        d.classList.add('open');open.push(d);
+        if(open.length===2){
+          lock=true;const[a,b]=open;
+          if(a.dataset.k===b.dataset.k){
+            setTimeout(()=>{a.classList.add('match');b.classList.add('match');open=[];lock=false;found++;
+              st.style.color='#42a86b';
+              st.textContent=found===8?'🎉 لقيت كل الأجواز! إنت شاطر':'✅ تمام! فاضل '+(8-found);},380);
+          }else{
+            setTimeout(()=>{a.classList.remove('open');b.classList.remove('open');open=[];lock=false;},750);
+            st.style.color='#e8604c';st.textContent='❌ مش متطابقين — حاول تاني';
+          }
+        }
+      };
+      wrap.appendChild(d);
+    });
+  }
+  document.getElementById('g6reset').onclick=build;
+  build();
+})();
+
+/* ---- G7 : paragraph order ---- */
+(()=>{
+  const D=[
+    {g:'📝 رتّب فقرة: My new friend',
+     s:['I meet a new friend.','His name is Omar.','He is 9 years old.','He is kind and friendly.']},
+    {g:'📝 رتّب فقرة: A trip to the zoo (ماضي)',
+     s:['Last Monday, I went on a trip to the zoo.','I saw lions, monkeys, and elephants.','The ticket was 20 pounds.','I had fun at the zoo.']},
+    {g:'📝 رتّب فقرة: My daily routine',
+     s:['I wake up at 7 a.m.','I brush my teeth.','I have breakfast.','I go to school.']},
+    {g:'📝 رتّب فقرة: A football match (ماضي)',
+     s:['Omar is my friend.','He played a football match.','He scored a goal.','His team won the game.']}
+  ];
+  let q=sh(D),i=0,step=0;
+  const g=document.getElementById('g7goal'),p=document.getElementById('g7p'),st=document.getElementById('g7st');
+  function show(){
+    if(i>=q.length){q=sh(D);i=0;}
+    const c=q[i];step=0;g.textContent=c.g;st.textContent='';p.innerHTML='';
+    sh(c.s).forEach(t=>{
+      const b=document.createElement('button');b.className='btn';b.style.marginBottom='5px';
+      b.innerHTML='<span class="en">'+t+'</span>';
+      b.onclick=()=>{
+        if(b.disabled)return;
+        if(t===c.s[step]){
+          b.disabled=true;b.style.background='#42a86b';b.style.color='#fff';step++;
+          st.style.color='#42a86b';
+          st.textContent=step===c.s.length?'🎉 الفقرة كاملة وبالترتيب الصح!':'✅ صح! الجملة رقم '+step;
+        }else{st.style.color='#e8604c';st.textContent='❌ مش دي الجملة اللي المفروض تيجي دلوقتي';}
+      };
+      p.appendChild(b);
+    });
+  }
+  document.getElementById('g7next').onclick=()=>{i++;show();};
+  show();
+})();
+</script>
+</body>
+</html>
