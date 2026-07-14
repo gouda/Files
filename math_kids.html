@@ -1,0 +1,1177 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Math Adventure — Grade 3</title>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&family=Lalezar&family=Fredoka:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#1d2b4a;
+    --paper:#fef8ee;
+    --sky:#3b7fd4;
+    --grass:#42a86b;
+    --sun:#f6b32c;
+    --coral:#e8604c;
+    --grape:#7d52c9;
+    --soft:#e8dfcb;
+    --shadow:rgba(29,43,74,.15);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Fredoka','Cairo',sans-serif;background:var(--paper);color:var(--ink);line-height:1.8;overflow-x:hidden}
+  html[dir="rtl"] body{font-family:'Cairo',sans-serif;line-height:1.9}
+  .wrap{max-width:900px;margin:0 auto;padding:0 18px 80px}
+  .en{direction:ltr;unicode-bidi:isolate;display:inline-block}
+  .num-txt{direction:ltr;unicode-bidi:isolate;display:inline-block;font-variant-numeric:tabular-nums}
+
+  /* ---------- language toggle ---------- */
+  .langbar{position:sticky;top:0;z-index:99;display:flex;justify-content:center;gap:0;
+           padding:10px 0;background:rgba(254,248,238,.92);backdrop-filter:blur(6px);
+           border-bottom:2px solid var(--soft)}
+  .langbtn{font-family:'Cairo';font-weight:700;cursor:pointer;border:2.5px solid var(--ink);
+           background:#fff;padding:6px 20px;font-size:.9rem;box-shadow:0 3px 0 var(--ink);transition:.12s}
+  .langbtn:first-child{border-radius:12px 0 0 12px;border-inline-end-width:1.25px}
+  .langbtn:last-child{border-radius:0 12px 12px 0;border-inline-start-width:1.25px}
+  .langbtn.on{background:var(--grape);color:#fff}
+  .langbtn:active{transform:translateY(3px);box-shadow:none}
+
+  html[lang="en"] .ar-only{display:none!important}
+  html[lang="ar"] .en-only{display:none!important}
+
+  header{
+    text-align:center;padding:44px 18px 38px;
+    background:radial-gradient(circle at 20% 30%,rgba(59,127,212,.14),transparent 55%),
+               radial-gradient(circle at 80% 25%,rgba(246,179,44,.2),transparent 55%);
+  }
+  h1{font-family:'Lalezar',cursive;font-size:clamp(2rem,6vw,3.4rem)}
+  .tag{color:#5d6a85;margin-top:6px}
+  .road{display:flex;justify-content:center;gap:8px;margin-top:24px;flex-wrap:wrap}
+  .road span{background:#fff;border:2px solid var(--soft);border-radius:999px;padding:5px 14px;font-size:.82rem;font-weight:700;box-shadow:0 2px 0 var(--soft)}
+
+  .lesson{background:#fff;border:3px solid var(--ink);border-radius:24px;padding:26px;margin-top:46px;box-shadow:8px 8px 0 var(--shadow);position:relative}
+  .num{position:absolute;top:-22px;inset-inline-start:24px;background:var(--sun);border:3px solid var(--ink);border-radius:14px;padding:2px 16px;font-family:'Lalezar',cursive;font-size:1.4rem}
+  h2{font-family:'Lalezar',cursive;font-size:1.85rem;margin:12px 0 6px}
+  h3{font-size:1.08rem;margin:20px 0 8px;color:var(--sky);font-weight:700}
+  p{margin-bottom:11px}
+  .hook{background:var(--paper);border-inline-start:6px solid var(--coral);padding:12px 16px;border-radius:0 12px 12px 0;margin:14px 0;font-weight:700}
+  html[dir="rtl"] .hook{border-radius:12px 0 0 12px}
+  ul{margin:0 20px 14px}
+  html[dir="rtl"] ul{margin:0 20px 14px}
+  li{margin-bottom:6px}
+  .word{background:#fff3cf;padding:1px 7px;border-radius:6px;font-weight:700}
+
+  table{width:100%;border-collapse:collapse;margin:12px 0;font-size:.95rem}
+  th,td{border:2px solid var(--ink);padding:7px 9px;text-align:center}
+  th{background:var(--grape);color:#fff;font-family:'Lalezar';font-weight:400;font-size:1.05rem}
+  tbody tr:nth-child(even){background:#faf6ff}
+
+  .game{margin:22px 0;background:linear-gradient(180deg,#f4f9ff,#eaf3ff);border:3px dashed var(--sky);border-radius:18px;padding:20px}
+  .game-title{font-family:'Lalezar',cursive;font-size:1.32rem;color:var(--sky);margin-bottom:2px}
+  .game-help{font-size:.88rem;color:#5d6a85;margin-bottom:14px}
+  .btn{font-family:'Fredoka','Cairo';font-weight:700;cursor:pointer;border:2.5px solid var(--ink);border-radius:12px;background:#fff;padding:8px 15px;font-size:.92rem;box-shadow:0 3px 0 var(--ink);transition:.1s;margin:2px}
+  .btn:hover{transform:translateY(1px);box-shadow:0 2px 0 var(--ink)}
+  .btn:active{transform:translateY(3px);box-shadow:none}
+  .btn.go{background:var(--grass);color:#fff}
+  .status{margin-top:12px;font-weight:700;min-height:26px;font-size:.93rem}
+
+  .sent{background:#fff;border:2px solid var(--soft);border-radius:12px;padding:14px;text-align:center;font-size:1.6rem;font-weight:700;margin-bottom:12px;direction:ltr;font-variant-numeric:tabular-nums}
+  .blank{display:inline-block;min-width:60px;border-bottom:3px solid var(--coral);color:var(--coral)}
+  .picks{display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
+
+  .bins{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px}
+  .bin{background:#fff;border:2.5px dashed var(--ink);border-radius:14px;min-height:100px;padding:8px;text-align:center}
+  .bin b{display:block;margin-bottom:6px;font-size:.9rem}
+  .bin.hot{background:#e9ffe9;border-style:solid}
+  .chips{display:flex;flex-wrap:wrap;gap:7px;justify-content:center}
+  .chip{background:var(--grape);color:#fff;border:2px solid var(--ink);border-radius:10px;padding:5px 11px;font-weight:700;font-size:.85rem;cursor:pointer;box-shadow:0 2px 0 var(--ink)}
+  .chip.done{opacity:.5;cursor:default}
+
+  .quiz{background:#fff7ef;border:3px solid var(--coral);border-radius:18px;padding:20px;margin:22px 0}
+  .quiz h3{color:var(--coral);margin-top:0}
+  .q{margin-bottom:16px}
+  .q p{font-weight:700;margin-bottom:8px}
+  .opt{display:block;width:100%;text-align:start;background:#fff;border:2px solid var(--ink);border-radius:10px;padding:8px 12px;margin-bottom:6px;cursor:pointer;font-family:'Fredoka','Cairo';font-size:.95rem}
+  .opt:hover{background:#fff3cf}
+  .opt.right{background:var(--grass);color:#fff}
+  .opt.wrong{background:var(--coral);color:#fff}
+  .fb{font-size:.87rem;margin-top:4px;font-weight:700;min-height:20px}
+
+  .sum{background:var(--ink);color:#fff;border-radius:18px;padding:20px;margin-top:22px}
+  .sum h3{color:var(--sun);margin-top:0}
+  .sum ul{margin-inline-start:20px}
+
+  .finale{margin-top:50px;text-align:center;background:#fff;border:3px solid var(--ink);border-radius:24px;padding:34px 22px;box-shadow:8px 8px 0 var(--shadow)}
+  .medal{font-size:4rem}
+
+  /* ---------- arrays / dots ---------- */
+  .arrayGrid{display:grid;gap:6px;justify-content:center;margin:14px auto;width:max-content;direction:ltr}
+  .dot{width:26px;height:26px;border-radius:50%;background:var(--sun);border:2px solid var(--ink)}
+  .rowlbl{font-size:.85rem;color:#5d6a85;text-align:center}
+
+  /* ---------- japanese lines canvas ---------- */
+  .jpBoard{background:#fff;border:2px solid var(--soft);border-radius:14px;padding:8px;margin-bottom:12px;overflow-x:auto}
+  .jpBoard svg{display:block;margin:0 auto;max-width:100%;height:auto}
+  .jpline{stroke-width:3.5;stroke-linecap:round;fill:none}
+  .jpA{stroke:var(--sky)}
+  .jpB{stroke:var(--coral)}
+  .jpNode{fill:var(--ink);opacity:.28}
+  .jpNode.hot{fill:var(--grass);opacity:1}
+  .jpZone{fill:none;stroke:var(--ink);stroke-width:2;stroke-dasharray:6 5;opacity:.35}
+  .jpZone.hot{stroke:var(--grass);stroke-width:3;stroke-dasharray:none;opacity:1}
+  .jpTxt{font-family:'Fredoka',sans-serif;font-weight:700;font-size:15px;fill:var(--ink)}
+
+  /* ---------- long multiplication ---------- */
+  .colBoard{direction:ltr;font-variant-numeric:tabular-nums;font-size:1.5rem;font-weight:700;
+            background:#fff;border:2px solid var(--soft);border-radius:14px;padding:16px;
+            display:inline-block;min-width:210px;text-align:right;line-height:1.5}
+  .colBoard .rule{border-top:3px solid var(--ink);margin:4px 0}
+  .carry{color:var(--coral);font-size:.85rem;height:20px;line-height:1}
+  .hl{background:#fff3cf;border-radius:5px;padding:0 3px}
+
+  /* ---------- grams balance ---------- */
+  .scale{background:#fff;border:2px solid var(--soft);border-radius:14px;padding:18px;text-align:center;margin-bottom:12px}
+  .beam{height:12px;background:var(--ink);border-radius:6px;margin:0 auto;width:78%;
+        transition:transform .5s cubic-bezier(.4,1.4,.5,1);transform-origin:center}
+  .pans{display:flex;justify-content:space-between;width:88%;margin:0 auto;align-items:flex-start}
+  .pan{width:44%;background:#f4f9ff;border:2.5px solid var(--ink);border-radius:0 0 16px 16px;
+       min-height:74px;padding:8px;transition:transform .5s cubic-bezier(.4,1.4,.5,1)}
+  .pan .lbl{font-size:.8rem;color:#5d6a85;font-weight:700}
+  .pan .val{font-size:1.35rem;font-weight:700;direction:ltr}
+
+  .fam{display:grid;grid-template-columns:1fr 1fr;gap:8px;direction:ltr;margin-top:10px}
+  .famcell{background:#fff;border:2px solid var(--ink);border-radius:10px;padding:8px;text-align:center;font-weight:700;font-size:1.05rem}
+
+  .keypad{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:6px;max-width:340px;margin:0 auto}
+
+  @media(max-width:600px){
+    .bins{grid-template-columns:1fr}
+    .sent{font-size:1.35rem}
+    .colBoard{font-size:1.25rem;min-width:170px}
+  }
+  @media(prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+
+<div class="langbar">
+  <button class="langbtn on" id="btnEN">🇬🇧 English</button>
+  <button class="langbtn" id="btnAR">🇸🇦 العربية</button>
+</div>
+
+<header>
+  <h1><span class="en-only">🚀 Math Adventure</span><span class="ar-only">🚀 مغامرة الرياضيات</span></h1>
+  <p class="tag">
+    <span class="en-only">Grade 3 · Age 10 — Learn · Play · Answer</span>
+    <span class="ar-only">الصف الثالث · ١٠ سنوات — اتعلّم · العب · جاوب</span>
+  </p>
+  <div class="road">
+    <span>1️⃣ <span class="en-only">Times Tables</span><span class="ar-only">جدول الضرب</span></span>
+    <span>2️⃣ <span class="en-only">Japanese Method</span><span class="ar-only">الطريقة اليابانية</span></span>
+    <span>3️⃣ <span class="en-only">Column Method</span><span class="ar-only">الطريقة التقليدية</span></span>
+    <span>4️⃣ <span class="en-only">Add & Subtract</span><span class="ar-only">الجمع والطرح</span></span>
+    <span>5️⃣ <span class="en-only">Division</span><span class="ar-only">القسمة</span></span>
+    <span>6️⃣ <span class="en-only">Grams & Mass</span><span class="ar-only">الجرامات والكتلة</span></span>
+  </div>
+</header>
+
+<div class="wrap">
+
+<!-- ===== 1 : TIMES TABLES ===== -->
+<section class="lesson">
+  <div class="num">1</div>
+  <h2>
+    <span class="en-only">Times Tables — <span class="en">Multiplication</span></span>
+    <span class="ar-only">جدول الضرب — <span class="en">Multiplication</span></span>
+  </h2>
+
+  <div class="hook">
+    <span class="en-only">Multiplication is just <b>fast adding</b>. Instead of saying 4 + 4 + 4, you say "3 groups of 4" → <span class="num-txt">3 × 4 = 12</span>. Same answer, way less writing! 😎</span>
+    <span class="ar-only">الضرب هو <b>جمع سريع</b>. بدل ما تقول ٤ + ٤ + ٤، تقول «٣ مجموعات فيهم ٤» ← <span class="num-txt">3 × 4 = 12</span>. نفس الإجابة، وكتابة أقل بكتير! 😎</span>
+  </div>
+
+  <h3><span class="en-only">See it as an array 🔑</span><span class="ar-only">شوفها كمصفوفة نقط 🔑</span></h3>
+  <p>
+    <span class="en-only">An <b>array</b> is dots in neat rows and columns. Rows × Columns = total dots. Count the dots below — you never have to guess.</span>
+    <span class="ar-only"><b>المصفوفة</b> هي نقط مرصوصة في صفوف وأعمدة. الصفوف × الأعمدة = عدد النقط. عُدّ النقط تحت — مش هتحتاج تخمّن أبداً.</span>
+  </p>
+
+  <div class="arrayGrid" id="demoArray"></div>
+  <div class="rowlbl" id="demoLbl"></div>
+
+  <h3><span class="en-only">Two golden rules</span><span class="ar-only">قاعدتين ذهبيتين</span></h3>
+  <ul>
+    <li>
+      <span class="en-only"><b>Order does not matter:</b> <span class="num-txt">3 × 4 = 4 × 3 = 12</span>. Learn one, get one free!</span>
+      <span class="ar-only"><b>الترتيب مش مهم:</b> <span class="num-txt">3 × 4 = 4 × 3 = 12</span>. تحفظ واحدة، تاخد التانية ببلاش!</span>
+    </li>
+    <li>
+      <span class="en-only"><b>× 0 = 0</b> and <b>× 1 = same number</b>. <span class="num-txt">7 × 0 = 0</span> · <span class="num-txt">7 × 1 = 7</span></span>
+      <span class="ar-only"><b>× 0 = 0</b> و <b>× 1 = نفس الرقم</b>. <span class="num-txt">7 × 0 = 0</span> · <span class="num-txt">7 × 1 = 7</span></span>
+    </li>
+  </ul>
+
+  <h3><span class="en-only">Tricks that save your brain 🧠</span><span class="ar-only">حيل توفّر عليك تعب 🧠</span></h3>
+  <table>
+    <thead><tr>
+      <th><span class="en-only">Table</span><span class="ar-only">الجدول</span></th>
+      <th><span class="en-only">Trick</span><span class="ar-only">الحيلة</span></th>
+      <th><span class="en-only">Example</span><span class="ar-only">مثال</span></th>
+    </tr></thead>
+    <tbody>
+      <tr><td class="en">× 2</td>
+        <td><span class="en-only">Double it</span><span class="ar-only">ضاعف الرقم</span></td>
+        <td class="en">6 × 2 = 12</td></tr>
+      <tr><td class="en">× 4</td>
+        <td><span class="en-only">Double, then double again</span><span class="ar-only">ضاعف مرتين</span></td>
+        <td class="en">6→12→24</td></tr>
+      <tr><td class="en">× 5</td>
+        <td><span class="en-only">Ends in 0 or 5, always</span><span class="ar-only">دايماً بينتهي بـ 0 أو 5</span></td>
+        <td class="en">7 × 5 = 35</td></tr>
+      <tr><td class="en">× 9</td>
+        <td><span class="en-only">× 10 then take one away</span><span class="ar-only">× 10 وبعدين اطرح الرقم</span></td>
+        <td class="en">7×9 = 70−7 = 63</td></tr>
+      <tr><td class="en">× 10</td>
+        <td><span class="en-only">Just add a zero</span><span class="ar-only">زوّد صفر بس</span></td>
+        <td class="en">8 × 10 = 80</td></tr>
+      <tr><td class="en">× 11</td>
+        <td><span class="en-only">Write the digit twice (1–9)</span><span class="ar-only">اكتب الرقم مرتين (١–٩)</span></td>
+        <td class="en">7 × 11 = 77</td></tr>
+    </tbody>
+  </table>
+
+  <div class="game">
+    <div class="game-title">🎮 <span class="en-only">Game: Build the Array</span><span class="ar-only">لعبة: ابني المصفوفة</span></div>
+    <div class="game-help">
+      <span class="en-only">Look at the dots, count the rows and columns, then pick the answer.</span>
+      <span class="ar-only">بُصّ على النقط، عُدّ الصفوف والأعمدة، وبعدين اختار الإجابة.</span>
+    </div>
+    <div class="arrayGrid" id="g1grid"></div>
+    <div class="sent" id="g1s"></div>
+    <div class="picks" id="g1p"></div>
+    <div class="status" id="g1st"></div>
+    <button class="btn go" id="g1next">➡️ <span class="en-only">Next one</span><span class="ar-only">واحدة تانية</span></button>
+  </div>
+
+  <div class="quiz">
+    <h3>❓ <span class="en-only">Check you got it</span><span class="ar-only">اتأكد إنك فهمت</span></h3>
+    <div class="q" data-a="1">
+      <p>1. <span class="en">6 × 7 = ?</span></p>
+      <button class="opt en">36</button><button class="opt en">42</button><button class="opt en">48</button>
+      <div class="fb"></div>
+    </div>
+    <div class="q" data-a="2">
+      <p>2. <span class="en">9 × 8 = ?</span></p>
+      <button class="opt en">63</button><button class="opt en">81</button><button class="opt en">72</button>
+      <div class="fb"></div>
+    </div>
+    <div class="q" data-a="0">
+      <p>3. <span class="en">5 × 0 = ?</span></p>
+      <button class="opt en">0</button><button class="opt en">5</button><button class="opt en">50</button>
+      <div class="fb"></div>
+    </div>
+    <div class="q" data-a="2">
+      <p>4. <span class="en">4 × 3</span> <span class="en-only">has the same answer as…</span><span class="ar-only">إجابتها زي…</span></p>
+      <button class="opt en">4 + 3</button><button class="opt en">4 − 3</button><button class="opt en">3 × 4</button>
+      <div class="fb"></div>
+    </div>
+  </div>
+
+  <div class="sum">
+    <h3>📌 <span class="en-only">Quick summary</span><span class="ar-only">ملخص سريع</span></h3>
+    <ul>
+      <li><span class="en-only">Multiplication = repeated addition. <span class="num-txt">3 × 4</span> = 3 groups of 4.</span>
+          <span class="ar-only">الضرب = جمع متكرر. <span class="num-txt">3 × 4</span> = ٣ مجموعات فيهم ٤.</span></li>
+      <li><span class="en-only">Rows × Columns = total dots in an array.</span>
+          <span class="ar-only">الصفوف × الأعمدة = كل النقط في المصفوفة.</span></li>
+      <li><span class="en-only"><span class="num-txt">a × b = b × a</span> · <span class="num-txt">n × 0 = 0</span> · <span class="num-txt">n × 1 = n</span></span>
+          <span class="ar-only"><span class="num-txt">a × b = b × a</span> · <span class="num-txt">n × 0 = 0</span> · <span class="num-txt">n × 1 = n</span></span></li>
+      <li><span class="en-only">×9 = ×10 minus the number · ×10 = add a zero</span>
+          <span class="ar-only">×9 = ×10 ناقص الرقم · ×10 = زوّد صفر</span></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ===== 2 : JAPANESE METHOD ===== -->
+<section class="lesson">
+  <div class="num">2</div>
+  <h2>
+    <span class="en-only">The Japanese Line Method 🇯🇵</span>
+    <span class="ar-only">طريقة الخطوط اليابانية 🇯🇵</span>
+  </h2>
+
+  <div class="hook">
+    <span class="en-only">Here you don't multiply at all — you <b>draw lines and count crossings</b>. It looks like magic, but it's the same maths wearing a costume. 🥷</span>
+    <span class="ar-only">هنا إنت مش بتضرب خالص — إنت <b>بترسم خطوط وتعُدّ نقط التقاطع</b>. شكلها سحر، بس هي نفس الحسبة لابسة تنكّرة. 🥷</span>
+  </div>
+
+  <h3><span class="en-only">How it works — <span class="num-txt">21 × 13</span></span><span class="ar-only">إزاي بتشتغل — <span class="num-txt">21 × 13</span></span></h3>
+  <ul>
+    <li><span class="en-only"><b>Step 1:</b> For the first number <span class="num-txt">21</span>, draw <b>2</b> lines, gap, then <b>1</b> line — leaning one way ↘</span>
+        <span class="ar-only"><b>خطوة ١:</b> للرقم الأول <span class="num-txt">21</span>، ارسم <b>٢</b> خط، مسافة، وبعدين <b>١</b> خط — مايلين في اتجاه ↘</span></li>
+    <li><span class="en-only"><b>Step 2:</b> For <span class="num-txt">13</span>, draw <b>1</b> line, gap, then <b>3</b> lines — leaning the other way ↙</span>
+        <span class="ar-only"><b>خطوة ٢:</b> للرقم <span class="num-txt">13</span>، ارسم <b>١</b> خط، مسافة، وبعدين <b>٣</b> خطوط — مايلين في الاتجاه التاني ↙</span></li>
+    <li><span class="en-only"><b>Step 3:</b> Split the picture into <b>3 zones</b>: left, middle, right. Count the crossing points in each.</span>
+        <span class="ar-only"><b>خطوة ٣:</b> قسّم الرسمة لـ <b>٣ مناطق</b>: شمال، نص، يمين. عُدّ نقط التقاطع في كل منطقة.</span></li>
+    <li><span class="en-only"><b>Step 4:</b> Read the counts left → right. That's your answer. If a zone has 10 or more, <b>carry</b> the tens to the zone on its left.</span>
+        <span class="ar-only"><b>خطوة ٤:</b> اقرا الأرقام من الشمال ← اليمين. دي إجابتك. لو منطقة فيها ١٠ أو أكتر، <b>رحّل</b> العشرات للمنطقة اللي على شمالها.</span></li>
+  </ul>
+
+  <div class="hook">
+    ⚠️ <span class="en-only"><b>Why it works:</b> Left zone = tens × tens. Middle = the two mixed pairs. Right = ones × ones. It's the exact same job as the column method — you're just counting instead of remembering tables.</span>
+    <span class="ar-only"><b>ليه بتشتغل:</b> المنطقة الشمال = عشرات × عشرات. النص = الجوزين المخلوطين. اليمين = آحاد × آحاد. نفس شغل الطريقة التقليدية بالظبط — إنت بس بتعُدّ بدل ما تفتكر الجدول.</span>
+  </div>
+
+  <div class="game">
+    <div class="game-title">🎮 <span class="en-only">Game: Count the Crossings</span><span class="ar-only">لعبة: عُدّ نقط التقاطع</span></div>
+    <div class="game-help">
+      <span class="en-only">Press a zone to count it. Do left, middle, right in order — then read the answer!</span>
+      <span class="ar-only">اضغط على منطقة عشان تعُدّها. اعمل شمال، نص، يمين بالترتيب — وبعدين اقرا الإجابة!</span>
+    </div>
+    <div class="jpBoard"><svg id="jpSvg" viewBox="0 0 560 320"></svg></div>
+    <div class="picks">
+      <button class="btn" data-z="0">👈 <span class="en-only">Left zone</span><span class="ar-only">المنطقة الشمال</span></button>
+      <button class="btn" data-z="1">👇 <span class="en-only">Middle zone</span><span class="ar-only">منطقة النص</span></button>
+      <button class="btn" data-z="2">👉 <span class="en-only">Right zone</span><span class="ar-only">المنطقة اليمين</span></button>
+    </div>
+    <div class="status" id="jpSt"></div>
+    <div class="sent" id="jpAns" style="margin-top:10px"></div>
+    <button class="btn go" id="jpNext">➡️ <span class="en-only">New numbers</span><span class="ar-only">أرقام جديدة</span></button>
+  </div>
+
+  <div class="quiz">
+    <h3>❓ <span class="en-only">Check you got it</span><span class="ar-only">اتأكد إنك فهمت</span></h3>
+    <div class="q" data-a="1">
+      <p>1. <span class="en-only">For <span class="num-txt">32</span>, how many lines do you draw?</span>
+         <span class="ar-only">للرقم <span class="num-txt">32</span>، بترسم كام خط؟</span></p>
+      <button class="opt"><span class="en-only">5 lines together</span><span class="ar-only">٥ خطوط مع بعض</span></button>
+      <button class="opt"><span class="en-only">3 lines, gap, then 2 lines</span><span class="ar-only">٣ خطوط، مسافة، وبعدين ٢ خط</span></button>
+      <button class="opt"><span class="en-only">32 lines</span><span class="ar-only">٣٢ خط</span></button>
+      <div class="fb"></div>
+    </div>
+    <div class="q" data-a="2">
+      <p>2. <span class="en-only">The <b>right</b> zone always gives you the…</span>
+         <span class="ar-only">المنطقة <b>اليمين</b> دايماً بتديك…</span></p>
+      <button class="opt"><span class="en-only">hundreds</span><span class="ar-only">المئات</span></button>
+      <button class="opt"><span class="en-only">tens</span><span class="ar-only">العشرات</span></button>
+      <button class="opt"><span class="en-only">ones</span><span class="ar-only">الآحاد</span></button>
+      <div class="fb"></div>
+    </div>
+    <div class="q" data-a="0">
+      <p>3. <span class="en-only">A zone counts <span class="num-txt">14</span>. What do you do?</span>
+         <span class="ar-only">منطقة عدّيتها لقيتها <span class="num-txt">14</span>. تعمل إيه؟</span></p>
+      <button class="opt"><span class="en-only">Keep 4, carry 1 to the left zone</span><span class="ar-only">سيب ٤، ورحّل ١ للمنطقة الشمال</span></button>
+      <button class="opt"><span class="en-only">Write 14 and move on</span><span class="ar-only">اكتب ١٤ وكمّل</span></button>
+      <button class="opt"><span class="en-only">Start the whole thing again</span><span class="ar-only">ابدأ من الأول تاني</span></button>
+      <div class="fb"></div>
+    </div>
+    <div class="q" data-a="1">
+      <p>4. <span class="en-only">Japanese method and column method give…</span>
+         <span class="ar-only">الطريقة اليابانية والطريقة التقليدية بيدّوا…</span></p>
+      <button class="opt"><span class="en-only">different answers</span><span class="ar-only">إجابات مختلفة</span></button>
+      <button class="opt"><span class="en-only">exactly the same answer</span><span class="ar-only">نفس الإجابة بالظبط</span></button>
+      <button class="opt"><span class="en-only">an answer only sometimes</span><span class="ar-only">إجابة أحياناً بس</span></button>
+      <div class="fb"></div>
+    </div>
+  </div>
+
+  <div class="sum">
+    <h3>📌 <span class="en-only">Quick summary</span><span class="ar-only">ملخص سريع</span></h3>
+    <ul>
+      <li><span class="en-only">Draw lines for each digit — leave a <b>gap</b> between digits.</span>
+          <span class="ar-only">ارسم خطوط لكل رقم — سيب <b>مسافة</b> بين الأرقام.</span></li>
+      <li><span class="en-only">Second number's lines cross the first at an angle.</span>
+          <span class="ar-only">خطوط الرقم التاني بتتقاطع مع الأول بزاوية.</span></li>
+      <li><span class="en-only">Count crossings in 3 zones: left = hundreds, middle = tens, right = ones.</span>
+          <span class="ar-only">عُدّ التقاطعات في ٣ مناطق: شمال = مئات، نص = عشرات، يمين = آحاد.</span></li>
+      <li><span class="en-only">10 or more in a zone? Carry the tens digit left.</span>
+          <span class="ar-only">١٠ أو أكتر في منطقة؟ رحّل رقم العشرات للشمال.</span></li>
+      <li><span class="en-only">💡 Great for small digits. For big digits like 8 and 9, the lines get messy — use the column method instead.</span>
+          <span class="ar-only">💡 حلوة للأرقام الصغيرة. الأرقام الكبيرة زي ٨ و ٩ الخطوط بتتلخبط — استخدم الطريقة التقليدية.</span></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ===== 3 : COLUMN METHOD ===== -->
+<section class="lesson">
+  <div class="num">3</div>
+  <h2>
+    <span class="en-only">The Column Method 📝</span>
+    <span class="ar-only">الطريقة التقليدية (بالأعمدة) 📝</span>
+  </h2>
+
+  <div class="hook">
+    <span class="en-only">This is the classic school method. It's faster than drawing lines once you know your tables — and it never gets messy, no matter how big the digits are. 💪</span>
+    <span class="ar-only">دي طريقة المدرسة الكلاسيكية. أسرع من رسم الخطوط لما تحفظ الجدول — وعمرها ما بتتلخبط مهما كبرت الأرقام. 💪</span>
+  </div>
+
+  <h3><span class="en-only">Rule 1: Line up the columns 🔑</span><span class="ar-only">قاعدة ١: صُفّ الأعمدة تحت بعض 🔑</span></h3>
+  <p>
+    <span class="en-only"><b>Ones under ones. Tens under tens.</b> If your columns are crooked, your answer will be wrong — even if every multiplication was right.</span>
+    <span class="ar-only"><b>الآحاد تحت الآحاد. العشرات تحت العشرات.</b> لو الأعمدة مش مظبوطة، الإجابة هتطلع غلط — حتى لو كل ضربة كانت صح.</span>
+  </p>
+
+  <h3><span class="en-only">Rule 2: Work right → left</span><span class="ar-only">قاعدة ٢: اشتغل من اليمين ← الشمال</span></h3>
+  <p>
+    <span class="en-only">Always start with the <b>ones</b> column. If the answer is 10 or more, write the ones digit down and <b>carry</b> the tens digit above the next column.</span>
+    <span class="ar-only">ابدأ دايماً بعمود <b>الآحاد</b>. لو الناتج ١٠ أو أكتر، اكتب رقم الآحاد و<b>رحّل</b> رقم العشرات فوق العمود اللي بعده.</span>
+  </p>
+
+  <h3><span class="en-only">Worked example: <span class="num-txt">34 × 2</span></span><span class="ar-only">مثال محلول: <span class="num-txt">34 × 2</span></span></h3>
+  <ul>
+    <li><span class="en-only"><span class="num-txt">4 × 2 = 8</span> → write <b>8</b> in the ones column.</span>
+        <span class="ar-only"><span class="num-txt">4 × 2 = 8</span> ← اكتب <b>٨</b> في عمود الآحاد.</span></li>
+    <li><span class="en-only"><span class="num-txt">3 × 2 = 6</span> → write <b>6</b> in the tens column.</span>
+        <span class="ar-only"><span class="num-txt">3 × 2 = 6</span> ← اكتب <b>٦</b> في عمود العشرات.</span></li>
+    <li><span class="en-only">Answer: <span class="num-txt">68</span>. No carrying needed here.</span>
+        <span class="ar-only">الإجابة: <span class="num-txt">68</span>. مافيش ترحيل هنا.</span></li>
+  </ul>
+
+  <h3><span class="en-only">Now with carrying: <span class="num-txt">27 × 3</span></span><span class="ar-only">دلوقتي بالترحيل: <span class="num-txt">27 × 3</span></span></h3>
+  <ul>
+    <li><span class="en-only"><span class="num-txt">7 × 3 = 21</span> → write <b>1</b>, carry <b>2</b> above the tens.</span>
+        <span class="ar-only"><span class="num-txt">7 × 3 = 21</span> ← اكتب <b>١</b>، ورحّل <b>٢</b> فوق العشرات.</span></li>
+    <li><span class="en-only"><span class="num-txt">2 × 3 = 6</span>, then add the carried <span class="num-txt">2</span> → <span class="num-txt">8</span>.</span>
+        <span class="ar-only"><span class="num-txt">2 × 3 = 6</span>، وبعدين زوّد الـ <span class="num-txt">2</span> المرحّلة ← <span class="num-txt">8</span>.</span></li>
+    <li><span class="en-only">Answer: <span class="num-txt">81</span>. ⚠️ Never forget to add the carry!</span>
+        <span class="ar-only">الإجابة: <span class="num-txt">81</span>. ⚠️ عمرك ما تنسى تزوّد الترحيل!</span></li>
+  </ul>
+
+  <div class="game">
+    <div class="game-title">🎮 <span class="en-only">Game: Step-by-Step Solver</span><span class="ar-only">لعبة: حُلّها خطوة خطوة</span></div>
+    <div class="game-help">
+      <span class="en-only">Tap the right digit for each step. Watch the carry appear in red!</span>
+      <span class="ar-only">اضغط الرقم الصح في كل خطوة. شوف الترحيل بيظهر بالأحمر!</span>
+    </div>
+    <div style="text-align:center"><div class="colBoard" id="colB"></div></div>
+    <div class="status" id="colHint" style="text-align:center"></div>
+    <div class="keypad" id="colPad"></div>
+    <div class="status" id="colSt"></div>
+    <button class="btn go" id="colNext">➡️ <span class="en-only">New sum</span><span class="ar-only">مسألة جديدة</span></button>
+  </div>
+
+  <div class="quiz">
+    <h3>❓ <span class="en-only">Check you got it</span><span class="ar-only">اتأكد إنك فهمت</span></h3>
+    <div class="q" data-a="1">
+      <p>1. <span class="en">43 × 2 = ?</span></p>
+      <button class="opt en">83</button><button class="opt en">86</button><button class="opt en">45</button>
+      <div class="fb"></div>
+    </div>
+    <div class="q" data-a="2">
+      <p>2. <span class="en">36 × 4 = ?</span></p>
+      <button class="opt en">124</button><button class="opt en">134</button><button class="opt en">144</button>
+      <div class="fb"></div>
+    </div>
+    <div class="q" data-a="0">
+      <p>3. <span class="en-only">In <span class="num-txt">28 × 3</span>, the ones step is <span class="num-txt">8 × 3 = 24</span>. What do you carry?</span>
+         <span class="ar-only">في <span class="num-txt">28 × 3</span>، خطوة الآحاد <span class="num-txt">8 × 3 = 24</span>. بترحّل كام؟</span></p>
+      <button class="opt en">2</button><button class="opt en">4</button><button class="opt en">24</button>
+      <div class="fb"></div>
+    </div>
+    <div class="q" data-a="2">
+      <p>4. <span class="en-only">Which column do you start with?</span>
+         <span class="ar-only">بتبدأ بأنهي عمود؟</span></p>
+      <button class="opt"><span class="en-only">Tens</span><span class="ar-only">العشرات</span></button>
+      <button class="opt"><span class="en-only">Hundreds</span><span class="ar-only">المئات</span></button>
+      <button class="opt"><span class="en-only">Ones</span><span class="ar-only">الآحاد</span></button>
+      <div class="fb"></div>
+    </div>
+  </div>
+
+  <div class="sum">
+    <h3>📌 <span class="en-only">Quick summary</span><span class="ar-only">ملخص سريع</span></h3>
+    <ul>
+      <li><span class="en-only">Line up ones under ones, tens under tens.</span>
+          <span class="ar-only">صُفّ الآحاد تحت الآحاد، والعشرات تحت العشرات.</span></li>
+      <li><span class="en-only">Start at the <b>right</b> (ones) and move left.</span>
+          <span class="ar-only">ابدأ من <b>اليمين</b> (الآحاد) واتحرك للشمال.</span></li>
+      <li><span class="en-only">Answer ≥ 10? Write the ones digit, carry the tens digit up-left.</span>
+          <span class="ar-only">الناتج ١٠ أو أكتر؟ اكتب رقم الآحاد ورحّل رقم العشرات لفوق-شمال.</span></li>
+      <li><span class="en-only">Add the carry to the <b>next</b> multiplication — don't multiply it!</span>
+          <span class="ar-only"><b>ازوّد</b> الترحيل على الضربة اللي بعدها — متضربوش فيها!</span></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ===== 4 : ADD & SUBTRACT ===== -->
+<section class="lesson">
+  <div class="num">4</div>
+  <h2>
+    <span class="en-only">Addition & Subtraction ➕➖</span>
+    <span class="ar-only">الجمع والطرح ➕➖</span>
+  </h2>
+
+  <div class="hook">
+    <span class="en-only">Adding puts things <b>together</b>. Subtracting takes things <b>away</b>. They're opposites — which means each one can <b>check</b> the other. 🕵️</span>
+    <span class="ar-only">الجمع بيحطّ الحاجات <b>مع بعض</b>. الطرح <b>بيشيل</b> منها. هما عكس بعض — يعني كل واحد فيهم يقدر <b>يتأكد</b> من التاني. 🕵️</span>
+  </div>
+
+  <h3><span class="en-only">Carrying in addition 🔑</span><span class="ar-only">الترحيل في الجمع 🔑</span></h3>
+  <p>
+    <span class="en-only">If a column adds up to <b>10 or more</b>, you can't fit two digits in one box. Write the ones digit, carry the ten to the next column. <span class="num-txt">47 + 25</span>: ones give <span class="num-txt">7+5 = 12</span> → write 2, carry 1. Tens give <span class="num-txt">4+2+1 = 7</span>. Answer <span class="num-txt">72</span>.</span>
+    <span class="ar-only">لو مجموع العمود <b>١٠ أو أكتر</b>، مش هيدخل رقمين في خانة واحدة. اكتب رقم الآحاد، ورحّل العشرة للعمود اللي بعده. <span class="num-txt">47 + 25</span>: الآحاد <span class="num-txt">7+5 = 12</span> ← اكتب ٢، رحّل ١. العشرات <span class="num-txt">4+2+1 = 7</span>. الإجابة <span class="num-txt">72</span>.</span>
+  </p>
+
+  <h3><span class="en-only">Borrowing in subtraction 🔑</span><span class="ar-only">الاستلاف في الطرح 🔑</span></h3>
+  <p>
+    <span class="en-only">If the top digit is <b>smaller</b> than the bottom one, borrow 10 from the column to its left. <span class="num-txt">52 − 27</span>: you can't do <span class="num-txt">2 − 7</span>, so borrow → <span class="num-txt">12 − 7 = 5</span>. The 5 becomes 4, so <span class="num-txt">4 − 2 = 2</span>. Answer <span class="num-txt">25</span>.</span>
+    <span class="ar-only">لو الرقم اللي فوق <b>أصغر</b> من اللي تحت، استلف ١٠ من العمود اللي على شماله. <span class="num-txt">52 − 27</span>: مينفعش <span class="num-txt">2 − 7</span>، يبقى استلف ← <span class="num-txt">12 − 7 = 5</span>. الـ ٥ بقت ٤، يبقى <span class="num-txt">4 − 2 = 2</span>. الإجابة <span class="num-txt">25</span>.</span>
+  </p>
+
+  <div class="hook">
+    ⚠️ <span class="en-only"><b>Order matters here!</b> <span class="num-txt">5 + 3 = 3 + 5</span> ✅ but <span class="num-txt">5 − 3 ≠ 3 − 5</span> ❌. You can swap when adding, never when subtracting.</span>
+    <span class="ar-only"><b>الترتيب مهم هنا!</b> <span class="num-txt">5 + 3 = 3 + 5</span> ✅ بس <span class="num-txt">5 − 3 ≠ 3 − 5</span> ❌. تقدر تبدّل في الجمع، أبداً في الطرح.</span>
+  </div>
+
+  <h3><span class="en-only">Word-problem clues 🔍</span><span class="ar-only">كلمات دليلية في المسائل 🔍</span></h3>
+  <ul>
+    <li><span class="en-only"><b>Add:</b> <span class="word en">total</span> · <span class="word en">altogether</span> · <span class="word en">in all</span> · <span class="word en">sum</span> · <span class="word en">more</span></span>
+        <span class="ar-only"><b>اجمع:</b> <span class="word en">total</span> · <span class="word en">altogether</span> · <span class="word en">in all</span> · <span class="word en">sum</span> · <span class="word en">more</span></span></li>
+    <li><span class="en-only"><b>Subtract:</b> <span class="word en">left</span> · <span class="word en">how many more</span> · <span class="word en">difference</span> · <span class="word en">fewer</span> · <span class="word en">gave away</span></span>
+        <span class="ar-only"><b>اطرح:</b> <span class="word en">left</span> · <span class="word en">how many more</span> · <span class="word en">difference</span> · <span class="word en">fewer</span> · <span class="word en">gave away</span></span></li>
+  </ul>
+
+  <div class="game">
+    <div class="game-title">🎮 <span class="en-only">Game: Sort the Clue Words</span><span class="ar-only">لعبة: رتّب الكلمات الدليلية</span></div>
+    <div class="game-help">
+      <span class="en-only">Tap a word, then tap the box it belongs in.</span>
+      <span class="ar-only">اضغط على كلمة، وبعدين اضغط على الصندوق بتاعها.</span>
+    </div>
+    <div class="bins">
+      <div class="bin" data-bin="add">
+        <b>➕ <span class="en-only">Addition words</span><span class="ar-only">كلمات الجمع</span></b>
+        <div class="chips"></div>
+      </div>
+      <div class="bin" data-bin="sub">
+        <b>➖ <span class="en-only">Subtraction words</span><span class="ar-only">كلمات الطرح</span></b>
+        <div class="chips"></div>
+      </div>
+    </div>
+    <div class="chips" id="g5pool"></div>
+    <div class="status" id="g5st"></div>
+    <button class="btn go" id="g5reset">🔄 <span class="en-only">Play again</span><span class="ar-only">العب تاني</span></button>
+  </div>
+
+  <div class="quiz">
+    <h3>❓ <span class="en-only">Check you got it</span><span class="ar-only">اتأكد إنك فهمت</span></h3>
+    <div class="q" data-a="1">
+      <p>1. <span class="en">47 + 25 = ?</span></p>
+      <button class="opt en">62</button><button class="opt en">72</button><button class="opt en">612</button>
+      <div class="fb"></div>
+    </div>
+    <div class="q" data-a="0">
+      <p>2. <span class="en">52 − 27 = ?</span></p>
+      <button class="opt en">25</button><button class="opt en">35</button><button class="opt en">31</button>
+      <div class="fb"></div>
+    </div>
+    <div class="q" data-a="2">
+      <p>3. <span class="en-only">Sara had 30 stickers and gave away 12. How many are <b>left</b>?</span>
+         <span class="ar-only">سارة كان معاها ٣٠ ستيكر وإدّت ١٢. فضل معاها كام؟</span></p>
+      <button class="opt en">42</button><button class="opt en">28</button><button class="opt en">18</button>
+      <div class="fb"></div>
+    </div>
+    <div class="q" data-a="1">
+      <p>4. <span class="en-only">Which one is <b>always</b> true?</span>
+         <span class="ar-only">أنهي واحدة <b>دايماً</b> صح؟</span></p>
+      <button class="opt en">5 − 3 = 3 − 5</button>
+      <button class="opt en">5 + 3 = 3 + 5</button>
+      <button class="opt en">5 − 0 = 0</button>
+      <div class="fb"></div>
+    </div>
+  </div>
+
+  <div class="sum">
+    <h3>📌 <span class="en-only">Quick summary</span><span class="ar-only">ملخص سريع</span></h3>
+    <ul>
+      <li><span class="en-only">Column ≥ 10 when adding → carry 1 left.</span>
+          <span class="ar-only">مجموع العمود ١٠ أو أكتر في الجمع ← رحّل ١ للشمال.</span></li>
+      <li><span class="en-only">Top digit too small when subtracting → borrow 10 from the left.</span>
+          <span class="ar-only">الرقم اللي فوق صغير في الطرح ← استلف ١٠ من الشمال.</span></li>
+      <li><span class="en-only"><span class="num-txt">a + b = b + a</span> ✅ · <span class="num-txt">a − b ≠ b − a</span> ❌</span>
+          <span class="ar-only"><span class="num-txt">a + b = b + a</span> ✅ · <span class="num-txt">a − b ≠ b − a</span> ❌</span></li>
+      <li><span class="en-only">Check subtraction by adding back: <span class="num-txt">25 + 27 = 52</span> ✅</span>
+          <span class="ar-only">اتأكد من الطرح بالجمع تاني: <span class="num-txt">25 + 27 = 52</span> ✅</span></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ===== 5 : DIVISION ===== -->
+<section class="lesson">
+  <div class="num">5</div>
+  <h2>
+    <span class="en-only">Division ➗</span>
+    <span class="ar-only">القسمة ➗</span>
+  </h2>
+
+  <div class="hook">
+    <span class="en-only">Division is <b>fair sharing</b>. You have 12 sweets and 3 friends — how many does each one get? <span class="num-txt">12 ÷ 3 = 4</span>. Nobody cries. 🍬</span>
+    <span class="ar-only">القسمة هي <b>توزيع بالعدل</b>. معاك ١٢ حلوة و٣ أصحاب — كل واحد ياخد كام؟ <span class="num-txt">12 ÷ 3 = 4</span>. مافيش حد هيزعل. 🍬</span>
+  </div>
+
+  <h3><span class="en-only">The big secret: division undoes multiplication 🔑</span><span class="ar-only">السر الكبير: القسمة بتفكّ الضرب 🔑</span></h3>
+  <p>
+    <span class="en-only">Every division question is a multiplication question in disguise. <span class="num-txt">12 ÷ 3 = ?</span> is really asking: <b>"3 times what makes 12?"</b> If you know your tables, you already know division. 🤯</span>
+    <span class="ar-only">كل سؤال قسمة هو سؤال ضرب متنكّر. <span class="num-txt">12 ÷ 3 = ?</span> معناه الحقيقي: <b>«٣ في كام يساوي ١٢؟»</b> لو حافظ الجدول، إنت أصلاً عارف القسمة. 🤯</span>
+  </p>
+
+  <h3><span class="en-only">Fact families 👨‍👩‍👧‍👦</span><span class="ar-only">عيلة الأرقام 👨‍👩‍👧‍👦</span></h3>
+  <p>
+    <span class="en-only">Three numbers, four facts. Learn one, you get all four free:</span>
+    <span class="ar-only">تلات أرقام، أربع حقائق. تحفظ واحدة، تاخد الأربعة ببلاش:</span>
+  </p>
+  <div class="fam">
+    <div class="famcell">3 × 4 = 12</div>
+    <div class="famcell">4 × 3 = 12</div>
+    <div class="famcell">12 ÷ 3 = 4</div>
+    <div class="famcell">12 ÷ 4 = 3</div>
+  </div>
+
+  <h3><span class="en-only">Remainders 🍪</span><span class="ar-only">الباقي 🍪</span></h3>
+  <p>
+    <span class="en-only">Sometimes it doesn't share evenly. <span class="num-txt">13 ÷ 4 = 3 r 1</span> — each friend gets 3, and <b>1 is left over</b>. The remainder is <b>always smaller</b> than the number you divided by.</span>
+    <span class="ar-only">أحياناً مش بتتقسم بالظبط. <span class="num-txt">13 ÷ 4 = 3 r 1</span> — كل صاحب ياخد ٣، و<b>واحدة فاضلة</b>. الباقي <b>دايماً أصغر</b> من الرقم اللي قسمت عليه.</span>
+  </p>
+
+  <div class="hook">
+    ⚠️ <span class="en-only"><b>Order matters!</b> <span class="num-txt">12 ÷ 3 = 4</span> but <span class="num-txt">3 ÷ 12</span> is not 4. And you can <b>never</b> divide by zero — sharing between zero friends makes no sense!</span>
+    <span class="ar-only"><b>الترتيب مهم!</b> <span class="num-txt">12 ÷ 3 = 4</span> بس <span class="num-txt">3 ÷ 12</span> مش ٤. و<b>عمرك ما</b> تقسم على صفر — توزّع على صفر أصحاب؟ مالهاش معنى!</span>
+  </div>
+
+  <div class="game">
+    <div class="game-title">🎮 <span class="en-only">Game: Fact Family Detective</span><span class="ar-only">لعبة: محقق عيلة الأرقام</span></div>
+    <div class="game-help">
+      <span class="en-only">Turn the division into a multiplication question, then pick the answer.</span>
+      <span class="ar-only">حوّل القسمة لسؤال ضرب، وبعدين اختار الإجابة.</span>
+    </div>
+    <div class="sent" id="g6s"></div>
+    <div class="status" id="g6think" style="text-align:center;color:#5d6a85;margin-top:-6px"></div>
+    <div class="picks" id="g6p"></div>
+    <div class="status" id="g6st"></div>
+    <button class="btn go" id="g6next">➡️ <span class="en-only">Next case</span><span class="ar-only">قضية تانية</span></button>
+  </div>
+
+  <div class="quiz">
+    <h3>❓ <span class="en-only">Check you got it</span><span class="ar-only">اتأكد إنك فهمت</span></h3>
+    <div class="q" data-a="1">
+      <p>1. <span class="en">42 ÷ 6 = ?</span></p>
+      <button class="opt en">6</button><button class="opt en">7</button><button class="opt en">8</button>
+      <div class="fb"></div>
+    </div>
+    <div class="q" data-a="2">
+      <p>2. <span class="en">17 ÷ 5 = ?</span></p>
+      <button class="opt en">3 r 5</button><button class="opt en">4 r 1</button><button class="opt en">3 r 2</button>
+      <div class="fb"></div>
+    </div>
+    <div class="q" data-a="0">
+      <p>3. <span class="en-only"><span class="num-txt">8 × 5 = 40</span>, so <span class="num-txt">40 ÷ 8 = ?</span></span>
+         <span class="ar-only"><span class="num-txt">8 × 5 = 40</span>، يبقى <span class="num-txt">40 ÷ 8 = ?</span></span></p>
+      <button class="opt en">5</button><button class="opt en">8</button><button class="opt en">32</button>
+      <div class="fb"></div>
+    </div>
+    <div class="q" data-a="1">
+      <p>4. <span class="en-only">24 pencils shared between 4 kids. Each gets…</span>
+         <span class="ar-only">٢٤ قلم موزّعين على ٤ أطفال. كل واحد ياخد…</span></p>
+      <button class="opt en">4</button><button class="opt en">6</button><button class="opt en">28</button>
+      <div class="fb"></div>
+    </div>
+  </div>
+
+  <div class="sum">
+    <h3>📌 <span class="en-only">Quick summary</span><span class="ar-only">ملخص سريع</span></h3>
+    <ul>
+      <li><span class="en-only">Division = fair sharing into equal groups.</span>
+          <span class="ar-only">القسمة = توزيع بالعدل لمجموعات متساوية.</span></li>
+      <li><span class="en-only"><span class="num-txt">a ÷ b = ?</span> means <b>"b times what = a?"</b></span>
+          <span class="ar-only"><span class="num-txt">a ÷ b = ?</span> معناها <b>«b في كام = a؟»</b></span></li>
+      <li><span class="en-only">Fact family: <span class="num-txt">3×4=12</span> · <span class="num-txt">4×3=12</span> · <span class="num-txt">12÷3=4</span> · <span class="num-txt">12÷4=3</span></span>
+          <span class="ar-only">عيلة الأرقام: <span class="num-txt">3×4=12</span> · <span class="num-txt">4×3=12</span> · <span class="num-txt">12÷3=4</span> · <span class="num-txt">12÷4=3</span></span></li>
+      <li><span class="en-only">Remainder = what's left over, always smaller than the divisor.</span>
+          <span class="ar-only">الباقي = اللي فضل، ودايماً أصغر من المقسوم عليه.</span></li>
+      <li><span class="en-only">Never divide by 0. Order matters!</span>
+          <span class="ar-only">عمرك ما تقسم على صفر. والترتيب مهم!</span></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ===== 6 : GRAMS ===== -->
+<section class="lesson">
+  <div class="num">6</div>
+  <h2>
+    <span class="en-only">Grams & Mass ⚖️</span>
+    <span class="ar-only">الجرامات والكتلة ⚖️</span>
+  </h2>
+
+  <div class="hook">
+    <span class="en-only">Mass tells you <b>how heavy</b> something is. A paperclip is 1 gram. A bag of sugar is 1000 grams. Same idea, different sizes. 🪶🧱</span>
+    <span class="ar-only">الكتلة بتقولك الحاجة <b>تقيلة قد إيه</b>. مشبك الورق ١ جرام. كيس السكر ١٠٠٠ جرام. نفس الفكرة، أحجام مختلفة. 🪶🧱</span>
+  </div>
+
+  <h3><span class="en-only">The only number you must remember 🔑</span><span class="ar-only">الرقم الوحيد اللي لازم تحفظه 🔑</span></h3>
+  <p>
+    <span class="en-only"><b><span class="num-txt">1 kilogram (kg) = 1000 grams (g)</span></b>. That's it. Everything else comes from this one fact.</span>
+    <span class="ar-only"><b><span class="num-txt">1 كيلوجرام (kg) = 1000 جرام (g)</span></b>. خلاص. كل حاجة تانية بتطلع من الحقيقة دي.</span>
+  </p>
+  <ul>
+    <li><span class="en-only"><b>kg → g:</b> multiply by 1000. <span class="num-txt">3 kg = 3000 g</span></span>
+        <span class="ar-only"><b>من كجم ← جم:</b> اضرب في ١٠٠٠. <span class="num-txt">3 kg = 3000 g</span></span></li>
+    <li><span class="en-only"><b>g → kg:</b> divide by 1000. <span class="num-txt">5000 g = 5 kg</span></span>
+        <span class="ar-only"><b>من جم ← كجم:</b> اقسم على ١٠٠٠. <span class="num-txt">5000 g = 5 kg</span></span></li>
+    <li><span class="en-only">Half a kilo? <span class="num-txt">500 g</span>. Quarter? <span class="num-txt">250 g</span>.</span>
+        <span class="ar-only">نص كيلو؟ <span class="num-txt">500 g</span>. ربع؟ <span class="num-txt">250 g</span>.</span></li>
+  </ul>
+
+  <h3><span class="en-only">Which unit do I use? 🤔</span><span class="ar-only">أستخدم أنهي وحدة؟ 🤔</span></h3>
+  <table>
+    <thead><tr>
+      <th><span class="en-only">Thing</span><span class="ar-only">الحاجة</span></th>
+      <th><span class="en-only">Rough mass</span><span class="ar-only">الكتلة تقريباً</span></th>
+      <th><span class="en-only">Best unit</span><span class="ar-only">أنسب وحدة</span></th>
+    </tr></thead>
+    <tbody>
+      <tr><td><span class="en-only">Paperclip</span><span class="ar-only">مشبك ورق</span></td><td class="en">1 g</td><td class="en">g</td></tr>
+      <tr><td><span class="en-only">Apple</span><span class="ar-only">تفاحة</span></td><td class="en">150 g</td><td class="en">g</td></tr>
+      <tr><td><span class="en-only">Football</span><span class="ar-only">كورة قدم</span></td><td class="en">450 g</td><td class="en">g</td></tr>
+      <tr><td><span class="en-only">Bag of sugar</span><span class="ar-only">كيس سكر</span></td><td class="en">1 kg</td><td class="en">kg</td></tr>
+      <tr><td><span class="en-only">A kid your age</span><span class="ar-only">طفل في سنّك</span></td><td class="en">30 kg</td><td class="en">kg</td></tr>
+    </tbody>
+  </table>
+
+  <div class="hook">
+    ⚠️ <span class="en-only"><b>Golden rule:</b> before you add or compare, make both sides the <b>same unit</b>! <span class="num-txt">2 kg + 300 g</span> is not "2 + 300". Turn the kg into g first: <span class="num-txt">2000 g + 300 g = 2300 g</span>.</span>
+    <span class="ar-only"><b>القاعدة الذهبية:</b> قبل ما تجمع أو تقارن، خلّي الطرفين <b>نفس الوحدة</b>! <span class="num-txt">2 kg + 300 g</span> مش «٢ + ٣٠٠». حوّل الكجم لجم الأول: <span class="num-txt">2000 g + 300 g = 2300 g</span>.</span>
+  </div>
+
+  <div class="game">
+    <div class="game-title">🎮 <span class="en-only">Game: Balance the Scale</span><span class="ar-only">لعبة: وازن الميزان</span></div>
+    <div class="game-help">
+      <span class="en-only">Convert to grams and pick the matching side. Watch the beam tip!</span>
+      <span class="ar-only">حوّل لجرامات واختار الطرف المساوي. بُصّ على الميزان وهو بيميل!</span>
+    </div>
+    <div class="scale">
+      <div class="beam" id="beam"></div>
+      <div class="pans">
+        <div class="pan" id="panL">
+          <div class="lbl"><span class="en-only">Left</span><span class="ar-only">شمال</span></div>
+          <div class="val" id="valL">—</div>
+        </div>
+        <div class="pan" id="panR">
+          <div class="lbl"><span class="en-only">Right</span><span class="ar-only">يمين</span></div>
+          <div class="val" id="valR">?</div>
+        </div>
+      </div>
+    </div>
+    <div class="picks" id="g7p"></div>
+    <div class="status" id="g7st"></div>
+    <button class="btn go" id="g7next">➡️ <span class="en-only">Next weight</span><span class="ar-only">وزن تاني</span></button>
+  </div>
+
+  <div class="quiz">
+    <h3>❓ <span class="en-only">Check you got it</span><span class="ar-only">اتأكد إنك فهمت</span></h3>
+    <div class="q" data-a="1">
+      <p>1. <span class="en">4 kg = ___ g</span></p>
+      <button class="opt en">400</button><button class="opt en">4000</button><button class="opt en">40</button>
+      <div class="fb"></div>
+    </div>
+    <div class="q" data-a="0">
+      <p>2. <span class="en">2500 g = ___ kg</span></p>
+      <button class="opt en">2 kg 500 g</button><button class="opt en">25 kg</button><button class="opt en">250 kg</button>
+      <div class="fb"></div>
+    </div>
+    <div class="q" data-a="2">
+      <p>3. <span class="en-only">Which is <b>heavier</b>?</span><span class="ar-only">أنهي <b>أتقل</b>؟</span></p>
+      <button class="opt en">900 g</button><button class="opt en">1/2 kg</button><button class="opt en">1 kg</button>
+      <div class="fb"></div>
+    </div>
+    <div class="q" data-a="1">
+      <p>4. <span class="en-only">A melon is <span class="num-txt">1 kg 200 g</span>. In grams that's…</span>
+         <span class="ar-only">شمّامة وزنها <span class="num-txt">1 kg 200 g</span>. بالجرام تبقى…</span></p>
+      <button class="opt en">120 g</button><button class="opt en">1200 g</button><button class="opt en">10200 g</button>
+      <div class="fb"></div>
+    </div>
+  </div>
+
+  <div class="sum">
+    <h3>📌 <span class="en-only">Quick summary</span><span class="ar-only">ملخص سريع</span></h3>
+    <ul>
+      <li><span class="en-only"><b><span class="num-txt">1 kg = 1000 g</span></b> — the one fact to memorise.</span>
+          <span class="ar-only"><b><span class="num-txt">1 kg = 1000 g</span></b> — الحقيقة الوحيدة اللي تتحفظ.</span></li>
+      <li><span class="en-only">kg → g: <b>× 1000</b> · g → kg: <b>÷ 1000</b></span>
+          <span class="ar-only">كجم ← جم: <b>× 1000</b> · جم ← كجم: <b>÷ 1000</b></span></li>
+      <li><span class="en-only">Light things → grams · Heavy things → kilograms</span>
+          <span class="ar-only">الحاجات الخفيفة ← جرام · التقيلة ← كيلوجرام</span></li>
+      <li><span class="en-only">Always match the units <b>before</b> you add or compare.</span>
+          <span class="ar-only">وحّد الوحدات <b>قبل</b> ما تجمع أو تقارن.</span></li>
+    </ul>
+  </div>
+</section>
+
+<div class="finale">
+  <div class="medal">🏅</div>
+  <h2><span class="en-only">You finished the whole adventure!</span><span class="ar-only">إنت خلّصت المغامرة كلها!</span></h2>
+  <p>
+    <span class="en-only">Tables, Japanese lines, columns, add, subtract, divide, and grams — that's a lot of brain power for one day. Come back tomorrow and beat your own score! 🚀</span>
+    <span class="ar-only">جدول الضرب، الخطوط اليابانية، الأعمدة، الجمع، الطرح، القسمة، والجرامات — ده مجهود عقلي كبير في يوم واحد. ارجع بكرة واكسر رقمك القياسي! 🚀</span>
+  </p>
+</div>
+
+</div>
+
+<script>
+const sh=a=>[...a].sort(()=>Math.random()-.5);
+const rnd=(a,b)=>a+Math.floor(Math.random()*(b-a+1));
+const isAR=()=>document.documentElement.lang==='ar';
+const T=(en,ar)=>isAR()?ar:en;
+
+/* ---------- LANGUAGE TOGGLE ---------- */
+(()=>{
+  const H=document.documentElement, bE=document.getElementById('btnEN'), bA=document.getElementById('btnAR');
+  function set(l){
+    H.lang=l; H.dir = l==='ar' ? 'rtl' : 'ltr';
+    bE.classList.toggle('on', l==='en');
+    bA.classList.toggle('on', l==='ar');
+    document.dispatchEvent(new Event('langchange'));
+  }
+  bE.onclick=()=>set('en');
+  bA.onclick=()=>set('ar');
+})();
+
+/* ---------- shared quiz engine ---------- */
+document.querySelectorAll('.quiz .q').forEach(q=>{
+  const ans=+q.dataset.a, fb=q.querySelector('.fb');
+  [...q.querySelectorAll('.opt')].forEach((o,i)=>{
+    o.onclick=()=>{
+      q.querySelectorAll('.opt').forEach(x=>x.classList.remove('right','wrong'));
+      if(i===ans){o.classList.add('right');fb.style.color='#42a86b';
+        fb.textContent=T('✅ Correct! Well done.','✅ صح! برافو عليك.');}
+      else{o.classList.add('wrong');fb.style.color='#e8604c';
+        fb.textContent=T('❌ Not quite — read the rule again and retry.','❌ لأ — اقرا القاعدة تاني وحاول.');}
+    };
+  });
+});
+
+/* ---------- 1a : demo array ---------- */
+(()=>{
+  const g=document.getElementById('demoArray'), l=document.getElementById('demoLbl');
+  const R=3,C=4;
+  g.style.gridTemplateColumns=`repeat(${C},1fr)`;
+  for(let i=0;i<R*C;i++){const d=document.createElement('div');d.className='dot';g.appendChild(d);}
+  const draw=()=>l.innerHTML=T(
+    '<span class="num-txt">3 rows × 4 columns = 12 dots</span>  →  <b class="num-txt">3 × 4 = 12</b>',
+    '<span class="num-txt">3 صفوف × 4 أعمدة = 12 نقطة</span>  ←  <b class="num-txt">3 × 4 = 12</b>');
+  draw(); document.addEventListener('langchange',draw);
+})();
+
+/* ---------- G1 : build the array ---------- */
+(()=>{
+  const grid=document.getElementById('g1grid'), s=document.getElementById('g1s'),
+        p=document.getElementById('g1p'), st=document.getElementById('g1st');
+  let R,C,ans;
+  function show(){
+    R=rnd(2,6); C=rnd(2,6); ans=R*C;
+    grid.style.gridTemplateColumns=`repeat(${C},1fr)`; grid.innerHTML='';
+    for(let i=0;i<R*C;i++){const d=document.createElement('div');d.className='dot';grid.appendChild(d);}
+    s.innerHTML=`${R} × ${C} = <span class="blank">?</span>`;
+    st.textContent=''; p.innerHTML='';
+    const wrong=new Set();
+    while(wrong.size<2){const w=ans+[-1,1,-2,2,R,C][rnd(0,5)]; if(w!==ans&&w>0)wrong.add(w);}
+    sh([ans,...wrong]).forEach(o=>{
+      const b=document.createElement('button'); b.className='btn'; b.textContent=o;
+      b.onclick=()=>{
+        if(o===ans){st.style.color='#42a86b';
+          st.textContent=T(`✅ Yes! ${R} rows of ${C} dots = ${ans}`,`✅ أيوة! ${R} صفوف فيهم ${C} نقط = ${ans}`);
+          s.innerHTML=`${R} × ${C} = <b style="color:#42a86b">${ans}</b>`;}
+        else{st.style.color='#e8604c';
+          st.textContent=T('❌ Count the dots row by row and try again.','❌ عُدّ النقط صف صف وحاول تاني.');}
+      };
+      p.appendChild(b);
+    });
+  }
+  document.getElementById('g1next').onclick=show;
+  show();
+})();
+
+/* ---------- G2 : Japanese lines ---------- */
+(()=>{
+  const svg=document.getElementById('jpSvg'), st=document.getElementById('jpSt'),
+        ansEl=document.getElementById('jpAns');
+  const NS='http://www.w3.org/2000/svg';
+  const PAIRS=[[21,13],[12,21],[23,12],[31,12],[22,13],[13,22],[32,11],[21,23],[11,32],[13,31]];
+  let A,B,counts,zones=[],step=0,zoneNodes=[[],[],[]];
+
+  const mk=(t,at)=>{const e=document.createElementNS(NS,t);for(const k in at)e.setAttribute(k,at[k]);return e;};
+
+  function build(){
+    const P=PAIRS[rnd(0,PAIRS.length-1)];
+    A=P[0]; B=P[1]; step=0; zoneNodes=[[],[],[]];
+    const a1=Math.floor(A/10), a0=A%10, b1=Math.floor(B/10), b0=B%10;
+    counts=[a1*b1, a1*b0+a0*b1, a0*b0];
+    svg.innerHTML='';
+
+    // geometry: A lines go ↘ (down-right), B lines go ↗ (up-right)
+    const cx=280, cy=160, sp=15, gap=52, len=190;
+    // A group offsets (perpendicular positions)
+    const aOff=[], bOff=[];
+    for(let i=0;i<a1;i++) aOff.push(-gap/2 - i*sp);
+    for(let i=0;i<a0;i++) aOff.push(  gap/2 + i*sp);
+    for(let i=0;i<b1;i++) bOff.push(-gap/2 - i*sp);
+    for(let i=0;i<b0;i++) bOff.push(  gap/2 + i*sp);
+
+    // A line: direction (1,1)/√2 ; offset along (1,-1)/√2
+    const r2=Math.SQRT1_2;
+    const Aline=o=>{const ox=o*r2, oy=-o*r2;
+      return [cx+ox-len*r2, cy+oy-len*r2, cx+ox+len*r2, cy+oy+len*r2];};
+    // B line: direction (1,-1)/√2 ; offset along (1,1)/√2
+    const Bline=o=>{const ox=o*r2, oy=o*r2;
+      return [cx+ox-len*r2, cy+oy+len*r2, cx+ox+len*r2, cy+oy-len*r2];};
+
+    aOff.forEach(o=>{const[x1,y1,x2,y2]=Aline(o);
+      svg.appendChild(mk('line',{x1,y1,x2,y2,class:'jpline jpA'}));});
+    bOff.forEach(o=>{const[x1,y1,x2,y2]=Bline(o);
+      svg.appendChild(mk('line',{x1,y1,x2,y2,class:'jpline jpB'}));});
+
+    // intersections: A(oa) x B(ob)  →  point
+    const cross=(oa,ob)=>({x:cx+(oa+ob)*r2, y:cy+(ob-oa)*r2});
+    aOff.forEach((oa,ia)=>{
+      bOff.forEach((ob,ib)=>{
+        const isA_tens = ia < a1, isB_tens = ib < b1;
+        const z = (isA_tens&&isB_tens) ? 0 : (!isA_tens&&!isB_tens) ? 2 : 1;
+        const P=cross(oa,ob);
+        const c=mk('circle',{cx:P.x,cy:P.y,r:4.5,class:'jpNode'});
+        svg.appendChild(c); zoneNodes[z].push(c);
+      });
+    });
+
+    // zone hint ellipses — sized to the real crossing spread in each zone
+    zones=[];
+    const zc=[];
+    for(let z=0;z<3;z++){
+      const xs=zoneNodes[z].map(n=>+n.getAttribute('cx'));
+      const ys=zoneNodes[z].map(n=>+n.getAttribute('cy'));
+      const mx=(Math.min(...xs)+Math.max(...xs))/2, my=(Math.min(...ys)+Math.max(...ys))/2;
+      const rx=(Math.max(...xs)-Math.min(...xs))/2+20, ry=(Math.max(...ys)-Math.min(...ys))/2+20;
+      zc.push({x:mx,y:my,ry});
+      const e=mk('ellipse',{cx:mx,cy:my,rx,ry,class:'jpZone'});
+      svg.appendChild(e); zones.push(e);
+    }
+
+    // labels
+    svg.appendChild(mk('text',{x:cx,y:24,class:'jpTxt','text-anchor':'middle','font-size':19}))
+       .textContent=`${A} × ${B}`;
+    ['H','T','O'].forEach((t,i)=>{
+      const e=mk('text',{x:zc[i].x,y:zc[i].y+zc[i].ry+16,class:'jpTxt','text-anchor':'middle','font-size':12,opacity:.5});
+      e.textContent=t; svg.appendChild(e);
+    });
+
+    st.style.color='#1d2b4a';
+    st.textContent=T('👉 Start with the LEFT zone.','👉 ابدأ بالمنطقة الشمال.');
+    ansEl.innerHTML='<span style="opacity:.35">? ? ?</span>';
+  }
+
+  function reveal(z){
+    zones[z].classList.add('hot');
+    zoneNodes[z].forEach(n=>n.classList.add('hot'));
+    const names=[T('Left (hundreds)','الشمال (مئات)'),T('Middle (tens)','النص (عشرات)'),T('Right (ones)','اليمين (آحاد)')];
+    st.style.color='#42a86b';
+    st.textContent=T(`✅ ${names[z]}: ${counts[z]} crossings.`,`✅ ${names[z]}: ${counts[z]} نقطة تقاطع.`);
+    step++;
+    if(step===3){
+      let o=counts[2], t=counts[1], h=counts[0];
+      let c1=Math.floor(o/10); o%=10; t+=c1;
+      let c2=Math.floor(t/10); t%=10; h+=c2;
+      const total=A*B;
+      ansEl.innerHTML=`${counts[0]} | ${counts[1]} | ${counts[2]} &nbsp;→&nbsp; <b style="color:#42a86b">${total}</b>`;
+      const carryNote=(c1||c2)?T(' (after carrying!)',' (بعد الترحيل!)'):'';
+      st.textContent=T(`🎉 ${A} × ${B} = ${total}${carryNote}`,`🎉 ${A} × ${B} = ${total}${carryNote}`);
+    }
+  }
+
+  document.querySelectorAll('#jpSt').forEach(()=>{});
+  document.querySelectorAll('.jpBoard ~ .picks .btn').forEach(b=>{
+    b.onclick=()=>{
+      const z=+b.dataset.z;
+      if(z!==step){st.style.color='#e8604c';
+        st.textContent=T('❌ Do the zones in order: left → middle → right.','❌ خُد المناطق بالترتيب: شمال ← نص ← يمين.');return;}
+      reveal(z);
+    };
+  });
+  document.getElementById('jpNext').onclick=build;
+  document.addEventListener('langchange',()=>{ if(step===0) st.textContent=T('👉 Start with the LEFT zone.','👉 ابدأ بالمنطقة الشمال.'); });
+  build();
+})();
+
+/* ---------- G3 : column method solver ---------- */
+(()=>{
+  const board=document.getElementById('colB'), hint=document.getElementById('colHint'),
+        pad=document.getElementById('colPad'), st=document.getElementById('colSt');
+  let A,B,steps,step,carry,onesD,tensD;
+
+  function build(){
+    A=rnd(12,49); B=rnd(2,5); step=0;
+    const a0=A%10, a1=Math.floor(A/10);
+    const p0=a0*B; onesD=p0%10; carry=Math.floor(p0/10);
+    const p1=a1*B+carry; tensD=p1%10;
+    const hund=Math.floor(p1/10);
+    steps=[
+      {ask:T(`Ones: ${a0} × ${B} = ?`,`الآحاد: ${a0} × ${B} = ?`), val:p0,
+       why:T(`Write ${onesD}, carry ${carry}`,`اكتب ${onesD}، رحّل ${carry}`)},
+      {ask:carry?T(`Tens: ${a1} × ${B} + ${carry} carried = ?`,`العشرات: ${a1} × ${B} + ${carry} مرحّلة = ?`)
+                :T(`Tens: ${a1} × ${B} = ?`,`العشرات: ${a1} × ${B} = ?`), val:p1,
+       why:T(`That gives the rest`,`ده بيدّي الباقي`)}
+    ];
+    render(); ask();
+  }
+
+  function render(done){
+    const carryTxt = step>0 && carry ? carry : '';
+    board.innerHTML=
+      `<div class="carry">${carryTxt?`<span style="margin-inline-end:14px">${carryTxt}</span>`:'&nbsp;'}</div>`+
+      `<div>${A}</div>`+
+      `<div>× &nbsp;${B}</div>`+
+      `<div class="rule"></div>`+
+      `<div>${done?`<span class="hl">${A*B}</span>`:(step>0?`<span style="opacity:.3">?</span>${onesD}`:'<span style="opacity:.3">??</span>')}</div>`;
+  }
+
+  function ask(){
+    if(step>=steps.length){
+      render(true); hint.textContent='';
+      pad.innerHTML='';
+      st.style.color='#42a86b';
+      st.textContent=T(`🎉 Done! ${A} × ${B} = ${A*B}`,`🎉 خلصت! ${A} × ${B} = ${A*B}`);
+      return;
+    }
+    const c=steps[step];
+    hint.style.color='#3b7fd4'; hint.textContent=c.ask;
+    st.textContent='';
+    pad.innerHTML='';
+    const opts=new Set([c.val]);
+    while(opts.size<5){const d=c.val+rnd(-6,6); if(d>0&&d!==c.val)opts.add(d);}
+    sh([...opts]).forEach(o=>{
+      const b=document.createElement('button'); b.className='btn'; b.textContent=o;
+      b.onclick=()=>{
+        if(o===c.val){
+          st.style.color='#42a86b'; st.textContent='✅ '+c.why;
+          step++; render(); setTimeout(ask,650);
+        }else{st.style.color='#e8604c';
+          st.textContent=T('❌ Check your times table and try again.','❌ راجع جدول الضرب وحاول تاني.');}
+      };
+      pad.appendChild(b);
+    });
+  }
+
+  document.getElementById('colNext').onclick=build;
+  build();
+})();
+
+/* ---------- G4 : clue-word sort ---------- */
+(()=>{
+  const D=[{n:'total',b:'add'},{n:'altogether',b:'add'},{n:'in all',b:'add'},{n:'sum',b:'add'},
+           {n:'left',b:'sub'},{n:'difference',b:'sub'},{n:'fewer',b:'sub'},{n:'gave away',b:'sub'}];
+  const pool=document.getElementById('g5pool'), st=document.getElementById('g5st'),
+        bins=[...pool.closest('.game').querySelectorAll('.bin')];
+  let sel=null, score=0;
+  function build(){
+    pool.innerHTML=''; sel=null; score=0; st.textContent='';
+    bins.forEach(b=>{b.querySelector('.chips').innerHTML='';b.classList.remove('hot');});
+    sh(D).forEach(d=>{
+      const c=document.createElement('div'); c.className='chip'; c.dataset.b=d.b;
+      c.innerHTML='<span class="en">'+d.n+'</span>';
+      c.onclick=()=>{ if(c.classList.contains('done'))return;
+        pool.querySelectorAll('.chip').forEach(x=>x.style.outline='');
+        sel=c; c.style.outline='3px solid #1d2b4a'; };
+      pool.appendChild(c);
+    });
+  }
+  bins.forEach(b=>{
+    b.onclick=()=>{
+      if(!sel){st.style.color='#e8604c';
+        st.textContent=T('👆 Pick a word first','👆 اختار كلمة الأول');return;}
+      if(sel.dataset.b===b.dataset.bin){
+        const c=sel; c.style.outline=''; c.classList.add('done');
+        b.querySelector('.chips').appendChild(c);
+        b.classList.add('hot'); setTimeout(()=>b.classList.remove('hot'),400);
+        sel=null; score++; st.style.color='#42a86b';
+        st.textContent = score===8
+          ? T('🎉 Perfect! All sorted correctly.','🎉 ممتاز! رتّبتهم كلهم صح')
+          : T(`✅ Right! ${8-score} to go`,`✅ صح! فاضل ${8-score}`);
+      }else{st.style.color='#e8604c';
+        st.textContent=T('❌ Wrong box — does that word add or take away?','❌ مش الصندوق ده — الكلمة دي بتجمع ولا بتشيل؟');}
+    };
+  });
+  document.getElementById('g5reset').onclick=build;
+  build();
+})();
+
+/* ---------- G5 : fact family detective ---------- */
+(()=>{
+  const s=document.getElementById('g6s'), think=document.getElementById('g6think'),
+        p=document.getElementById('g6p'), st=document.getElementById('g6st');
+  let a,b,ans;
+  function show(){
+    b=rnd(2,9); ans=rnd(2,9); a=b*ans;
+    s.innerHTML=`${a} ÷ ${b} = <span class="blank">?</span>`;
+    think.textContent=T(`🤔 Ask yourself: ${b} times what makes ${a}?`,`🤔 اسأل نفسك: ${b} في كام يساوي ${a}؟`);
+    st.textContent=''; p.innerHTML='';
+    const wrong=new Set();
+    while(wrong.size<2){const w=ans+rnd(-3,3); if(w>0&&w!==ans)wrong.add(w);}
+    sh([ans,...wrong]).forEach(o=>{
+      const btn=document.createElement('button'); btn.className='btn'; btn.textContent=o;
+      btn.onclick=()=>{
+        if(o===ans){st.style.color='#42a86b';
+          st.textContent=T(`✅ Yes! Because ${b} × ${ans} = ${a}`,`✅ أيوة! لأن ${b} × ${ans} = ${a}`);
+          s.innerHTML=`${a} ÷ ${b} = <b style="color:#42a86b">${ans}</b>`;}
+        else{st.style.color='#e8604c';
+          st.textContent=T(`❌ No — ${b} × ${o} = ${b*o}, not ${a}. Try again.`,`❌ لأ — ${b} × ${o} = ${b*o}، مش ${a}. حاول تاني.`);}
+      };
+      p.appendChild(btn);
+    });
+  }
+  document.getElementById('g6next').onclick=show;
+  show();
+})();
+
+/* ---------- G6 : balance scale ---------- */
+(()=>{
+  const beam=document.getElementById('beam'), panL=document.getElementById('panL'),
+        panR=document.getElementById('panR'), valL=document.getElementById('valL'),
+        valR=document.getElementById('valR'), p=document.getElementById('g7p'),
+        st=document.getElementById('g7st');
+  let grams, label;
+  function show(){
+    const kind=rnd(0,2);
+    if(kind===0){const k=rnd(1,5); grams=k*1000; label=`${k} kg`;}
+    else if(kind===1){const k=rnd(1,3), g=[250,500,750][rnd(0,2)]; grams=k*1000+g; label=`${k} kg ${g} g`;}
+    else {const k=rnd(1,4); grams=k*500; label=(k*500)+' g';}
+    valL.textContent=label; valR.textContent='?';
+    beam.style.transform='rotate(0deg)';
+    panL.style.transform='translateY(0)'; panR.style.transform='translateY(0)';
+    st.textContent=''; p.innerHTML='';
+    const opts=new Set([grams]);
+    while(opts.size<3){const d=[grams/10, grams*10, grams+1000, grams-500, grams+100][rnd(0,4)];
+      if(d>0&&d!==grams&&Number.isInteger(d))opts.add(d);}
+    sh([...opts]).forEach(o=>{
+      const b=document.createElement('button'); b.className='btn'; b.textContent=o+' g';
+      b.onclick=()=>{
+        if(o===grams){
+          valR.textContent=o+' g';
+          beam.style.transform='rotate(0deg)';
+          panL.style.transform='translateY(0)'; panR.style.transform='translateY(0)';
+          st.style.color='#42a86b';
+          st.textContent=T(`⚖️ Balanced! ${label} = ${grams} g`,`⚖️ اتوازن! ${label} = ${grams} جرام`);
+        }else{
+          const heavier = o>grams;
+          beam.style.transform=`rotate(${heavier?6:-6}deg)`;
+          panL.style.transform=`translateY(${heavier?-10:10}px)`;
+          panR.style.transform=`translateY(${heavier?10:-10}px)`;
+          st.style.color='#e8604c';
+          st.textContent=T(`❌ Too ${heavier?'heavy':'light'}! Remember: 1 kg = 1000 g`,
+                           `❌ ${heavier?'تقيل':'خفيف'} أوي! افتكر: 1 كجم = 1000 جرام`);
+        }
+      };
+      p.appendChild(b);
+    });
+  }
+  document.getElementById('g7next').onclick=show;
+  show();
+})();
+</script>
+</body>
+</html>
