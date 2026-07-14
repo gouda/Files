@@ -158,6 +158,37 @@ body{
 }
 .rule p{font-size:.86rem;color:var(--muted);line-height:1.7}
 
+/* ---------- PORTIONS TABLE ---------- */
+.ptable{
+  border:1px solid var(--rule);
+  background:var(--paper-2);
+  overflow-x:auto;
+}
+.ptable table{border-collapse:collapse;width:100%;min-width:440px}
+.ptable th{
+  font-family:'IBM Plex Sans Arabic';
+  font-size:.66rem;letter-spacing:.12em;font-weight:600;
+  color:var(--muted);text-align:right;
+  padding:11px 16px;border-bottom:1px solid var(--rule);
+  background:rgba(31,92,75,.06);white-space:nowrap;
+}
+.ptable td{
+  padding:10px 16px;
+  border-bottom:1px dashed var(--rule);
+  font-size:.88rem;
+}
+.ptable tr:last-child td{border-bottom:none}
+.ptable td:first-child{font-weight:500}
+.ptable .g{
+  font-family:'Reem Kufi';font-weight:600;
+  white-space:nowrap;color:var(--stamp);
+}
+.ptable .k{
+  font-family:'Reem Kufi';font-size:.82rem;
+  color:var(--muted);white-space:nowrap;
+}
+.ptable .eye{font-size:.8rem;color:var(--muted)}
+
 /* ---------- PREP / RECIPES ---------- */
 .prep{
   border:1px solid var(--rule);
@@ -491,7 +522,7 @@ footer{
     <div class="rule"><h4>النوم</h4><p>٧ ساعات مينفعش أقل. قلة النوم بترفع الجوع فعلياً وبتخليك تفشل حتى لو الأكل مظبوط.</p></div>
     <div class="rule"><h4>يوم التمرين</h4><p>أربع ١٥ / سبت ١٨ / اتنين ٢٠. في الأيام دي كل الرز والبطاطس بيتحطوا <b>بعد التمرين</b>، مش قبله.</p></div>
     <div class="rule"><h4>لو جعت أوي</h4><p>خيارة + ملعقة جبنة قريش. مسموح في أي وقت، مش هتفرق. متجوعش نفسك — الجوع بيكسر الخطة.</p></div>
-    <div class="rule"><h4>الوجبات الجاهزة (٣ علب)</h4><p>موزعين على ٣ أيام. شيل نص البطاطس اللي فيها — اللحمة والخضار هما المطلوب.</p></div>
+    <div class="rule"><h4>الوجبات الجاهزة (٣ علب)</h4><p>العلبة ٢٠٠ جم = <b>~٣٥٧ سعر</b> (١٢٠ لحمة + ٣٠ بطاطس + ٥٠ خضار). كلها كاملة — البطاطس ٢٧ سعر بس، متشيلهاش.</p></div>
     <div class="rule"><h4>العسل والفشار</h4><p>العسل: معلقة واحدة صغيرة في اليوم بحد أقصى. الفشار: مسموح <b>مرتين في الأسبوع بس</b> بزيت جوز الهند.</p></div>
   </div>
 </section>
@@ -606,6 +637,38 @@ footer{
   </details>
 </section>
 
+<!-- ================= PORTIONS ================= -->
+<section class="sec">
+  <div class="sec__head"><h2>الكميات بالجرام</h2></div>
+  <p class="sec__note">دي المرجع لكل الوجبات تحت. لو مش هتوزن كل مرة، حفظ عمود «تقريبها إزاي» — دقته كفاية.</p>
+  <div class="ptable">
+    <table>
+      <thead><tr><th>الصنف</th><th>الكمية</th><th>تقريبها إزاي</th><th>سعرات</th></tr></thead>
+      <tbody>
+        <tr><td>العلبة الجاهزة</td><td class="g">٢٠٠ جم</td><td class="eye">العلبة كاملة زي ما هي</td><td class="k">٣٥٧</td></tr>
+        <tr><td>سبانخ مطبوخة</td><td class="g">٢٥٠ جم</td><td class="eye">طبق شوربة ملیان</td><td class="k">١٢١</td></tr>
+        <tr><td>فاصوليا مطبوخة</td><td class="g">٢٥٠ جم</td><td class="eye">طبق شوربة ملیان</td><td class="k">١٦٥</td></tr>
+        <tr><td>بامية مطبوخة</td><td class="g">٢٥٠ جم</td><td class="eye">طبق شوربة ملیان</td><td class="k">١٤٠</td></tr>
+        <tr><td>لحمة رقبة مطبوخة</td><td class="g">١٥٠–٢٠٠ جم</td><td class="eye">٤–٥ مكعبات كبيرة</td><td class="k">٣٧٥–٥٠٠</td></tr>
+        <tr><td>موزة مطبوخة</td><td class="g">١٨٠–٢٠٠ جم</td><td class="eye">شريحتين بالعضم</td><td class="k">٣٥٠–٣٩٠</td></tr>
+        <tr><td>فرخة مسلوقة مفصصة</td><td class="g">٢٠٠ جم</td><td class="eye">كف اليد ونص</td><td class="k">٣٣٠</td></tr>
+        <tr><td>صدور فرخة مشوية</td><td class="g">١٨٠ جم</td><td class="eye">صدر واحد متوسط</td><td class="k">٢٩٥</td></tr>
+        <tr><td>جمبري</td><td class="g">٢٥٠ جم</td><td class="eye">نص الربع كيلو اللي عندك</td><td class="k">٢٤٠</td></tr>
+        <tr><td>جبنة قريش</td><td class="g">١٠٠ جم</td><td class="eye">٤ معالق كبيرة مكومة</td><td class="k">٩٨</td></tr>
+        <tr><td>رز مسلوق ومبرّد</td><td class="g">١٢٠ جم</td><td class="eye">كوباية شاي صغيرة</td><td class="k">١٥٦</td></tr>
+        <tr><td>بطاطس مشوية</td><td class="g">١٥٠ جم</td><td class="eye">بطاطسة متوسطة</td><td class="k">١٣٠</td></tr>
+        <tr><td>أفوكادو</td><td class="g">نص ثمرة · ٧٠ جم</td><td class="eye">نص الثمرة بالظبط</td><td class="k">١١٢</td></tr>
+        <tr><td>زيت زيتون</td><td class="g">٥ جم</td><td class="eye">معلقة صغيرة مسحوحة</td><td class="k">٤٤</td></tr>
+        <tr><td>عنب</td><td class="g">١٠٠ جم</td><td class="eye">١٥ حبة · كف مقفول</td><td class="k">٦٩</td></tr>
+        <tr><td>زبادي</td><td class="g">علبة ١٠٠ جم</td><td class="eye">العلبة كاملة</td><td class="k">٦١</td></tr>
+        <tr><td>ذرة فشار</td><td class="g">٢٠ جم ني</td><td class="eye">٢ معلقة كبيرة</td><td class="k">١٥٠ بالزيت</td></tr>
+        <tr><td>عسل نحل</td><td class="g">٧ جم</td><td class="eye">معلقة صغيرة</td><td class="k">٢١</td></tr>
+        <tr><td>سلطة خيار وطماطم</td><td class="g">٢٠٠ جم</td><td class="eye">خيارتين + طماطمة</td><td class="k">٣٠ + الزيت</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
 <!-- ================= DAYS ================= -->
 <section class="sec">
   <div class="sec__head"><h2>الأسبوع</h2></div>
@@ -654,7 +717,7 @@ const DAYS = [
   {n:"الأربع", date:"١٥ يوليو", tag:"تمرين", train:true, meals:[
     {t:"الفطار · ٩ ص", d:"٣ بيض بلدي أومليت بمعلقة زيت زيتون + ٢ خيار مقطع + كوباية شاي بمعلقتين سكر", k:340},
     {t:"سناك · ١٢ ظ", d:"١٠٠ جم جبنة قريش + نص أفوكادو + رشة ملح وفلفل", k:250},
-    {t:"الغدا · ٣ ع", d:"وجبة العلبة الجاهزة (اللحمة والخضار — شيل نص البطاطس) + طبق سبانخ", k:450},
+    {t:"الغدا · ٣ ع", d:"العلبة الجاهزة كاملة (٢٠٠ جم — كلها من غير ما تشيل حاجة) + ٢٥٠ جم سبانخ مطبوخة", k:478},
     {t:"قبل التمرين · ٦ م", d:"كابتشينو بسكر دايت + معلقة عسل صغيرة", k:60},
     {t:"التمرين · ٧ م", d:"كيك بوكسينج — ٤٥ دقيقة متواصلة", k:-336},
     {t:"العشا · ٩ م", d:"١٥٠ جم لحمة رقبة + علبة الرز (اللي بردته) + صلصة الأفوكادو والزبادي", k:520}
@@ -676,7 +739,7 @@ const DAYS = [
   {n:"السبت", date:"١٨ يوليو", tag:"تمرين", train:true, meals:[
     {t:"الفطار · ٩ ص", d:"٣ بيض بلدي مقلي بزيت جوز الهند + ٢ خيار + شاي بمعلقتين سكر", k:350},
     {t:"سناك · ١٢ ظ", d:"١٠٠ جم جبنة قريش + طماطم مقطعة + زيت زيتون", k:200},
-    {t:"الغدا · ٣ ع", d:"وجبة العلبة الجاهزة (شيل نص البطاطس) + طبق سبانخ", k:450},
+    {t:"الغدا · ٣ ع", d:"العلبة الجاهزة كاملة (٢٠٠ جم) + ٢٥٠ جم سبانخ مطبوخة", k:478},
     {t:"قبل التمرين · ٦ م", d:"كابتشينو بسكر دايت + معلقة عسل صغيرة", k:60},
     {t:"التمرين · ٧ م", d:"كيك بوكسينج — ٤٥ دقيقة متواصلة", k:-336},
     {t:"العشا · ٩ م", d:"٢٥٠ جم جمبري سوتيه بالتوم وزيت الزيتون + البطاطس المشوية + سلطة", k:530}
@@ -691,7 +754,7 @@ const DAYS = [
   {n:"الاتنين", date:"٢٠ يوليو", tag:"تمرين", train:true, meals:[
     {t:"الفطار · ٩ ص", d:"٣ بيض بلدي أومليت بالسبانخ + شاي بمعلقتين سكر", k:330},
     {t:"سناك · ١٢ ظ", d:"١٠٠ جم جبنة قريش + نص أفوكادو", k:250},
-    {t:"الغدا · ٣ ع", d:"وجبة العلبة الجاهزة الأخيرة (شيل نص البطاطس) + سلطة كبيرة", k:430},
+    {t:"الغدا · ٣ ع", d:"العلبة الجاهزة الأخيرة كاملة (٢٠٠ جم) + سلطة ٢٠٠ جم خيار وطماطم بمعلقة صغيرة زيت زيتون", k:475},
     {t:"قبل التمرين · ٦ م", d:"كابتشينو بسكر دايت + معلقة عسل صغيرة", k:60},
     {t:"التمرين · ٧ م", d:"كيك بوكسينج — ٤٥ دقيقة متواصلة", k:-336},
     {t:"العشا · ٩ م", d:"١٨٠ جم موزة + علبة الرز الأخيرة + بامية", k:560}
