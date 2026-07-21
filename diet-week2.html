@@ -1,0 +1,966 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>خطة الأسبوع ٢ — نسخة الفرن · من 94.0 إلى 92.8</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Reem+Kufi:wght@400;500;600;700&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#12100E;
+  --paper:#EDE7DC;
+  --paper-2:#E3DCCD;
+  --rule:#C8BFA9;
+  --stamp:#1F5C4B;
+  --stamp-soft:#3D8571;
+  --alarm:#A8341F;
+  --muted:#6B6455;
+  --shadow:rgba(18,16,14,.08);
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+
+html{scroll-behavior:smooth}
+
+body{
+  background:var(--paper);
+  background-image:
+    repeating-linear-gradient(0deg, transparent, transparent 27px, rgba(200,191,169,.28) 27px, rgba(200,191,169,.28) 28px);
+  color:var(--ink);
+  font-family:'IBM Plex Sans Arabic',system-ui,sans-serif;
+  font-weight:400;
+  line-height:1.75;
+  -webkit-font-smoothing:antialiased;
+}
+
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px 100px}
+
+/* ---------- HERO : the ledger head ---------- */
+.hero{
+  padding:56px 0 30px;
+  border-bottom:3px double var(--ink);
+  margin-bottom:38px;
+}
+.hero__eyebrow{
+  font-family:'IBM Plex Sans Arabic';
+  font-size:.72rem;
+  letter-spacing:.22em;
+  font-weight:600;
+  color:var(--muted);
+  margin-bottom:20px;
+}
+.scale{
+  display:flex;
+  align-items:baseline;
+  gap:18px;
+  flex-wrap:wrap;
+  font-family:'Reem Kufi';
+  line-height:1;
+}
+.scale__from,.scale__to{
+  font-size:clamp(3.4rem,11vw,6.2rem);
+  font-weight:700;
+  letter-spacing:-.02em;
+}
+.scale__from{color:var(--ink)}
+.scale__to{color:var(--stamp)}
+.scale__arrow{
+  font-size:clamp(2rem,6vw,3.4rem);
+  color:var(--rule);
+  font-weight:400;
+  transform:translateY(-.1em);
+}
+.scale__unit{
+  font-family:'IBM Plex Sans Arabic';
+  font-size:1rem;
+  font-weight:500;
+  color:var(--muted);
+  letter-spacing:.05em;
+}
+.hero__sub{
+  margin-top:22px;
+  font-size:1.02rem;
+  max-width:62ch;
+  color:var(--ink);
+  line-height:1.85;
+}
+.hero__meta{
+  margin-top:26px;
+  display:flex;
+  gap:0;
+  flex-wrap:wrap;
+  border:1px solid var(--rule);
+  background:var(--paper-2);
+}
+.hero__meta div{
+  padding:12px 18px;
+  border-left:1px solid var(--rule);
+  font-size:.82rem;
+}
+.hero__meta div:last-child{border-left:none}
+.hero__meta b{
+  display:block;
+  font-family:'Reem Kufi';
+  font-size:1.15rem;
+  font-weight:600;
+  letter-spacing:.01em;
+}
+.hero__meta span{color:var(--muted);font-size:.72rem;letter-spacing:.08em}
+
+/* ---------- SECTION ---------- */
+.sec{margin-bottom:52px}
+.sec__head{
+  display:flex;
+  align-items:center;
+  gap:14px;
+  margin-bottom:8px;
+}
+.sec__head h2{
+  font-family:'Reem Kufi';
+  font-size:1.5rem;
+  font-weight:600;
+  letter-spacing:-.01em;
+  white-space:nowrap;
+}
+.sec__head::after{
+  content:"";
+  flex:1;
+  height:1px;
+  background:var(--rule);
+}
+.sec__note{
+  color:var(--muted);
+  font-size:.9rem;
+  margin-bottom:22px;
+  max-width:70ch;
+}
+
+/* ---------- RULES CARDS ---------- */
+.rules{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:0;
+  border:1px solid var(--rule);
+  background:var(--paper-2);
+}
+.rule{
+  padding:18px 20px;
+  border-left:1px solid var(--rule);
+  border-bottom:1px solid var(--rule);
+}
+.rule h4{
+  font-family:'Reem Kufi';
+  font-size:1rem;
+  font-weight:600;
+  margin-bottom:6px;
+}
+.rule p{font-size:.86rem;color:var(--muted);line-height:1.7}
+
+/* ---------- PORTIONS TABLE ---------- */
+.ptable{
+  border:1px solid var(--rule);
+  background:var(--paper-2);
+  overflow-x:auto;
+}
+.ptable table{border-collapse:collapse;width:100%;min-width:440px}
+.ptable th{
+  font-family:'IBM Plex Sans Arabic';
+  font-size:.66rem;letter-spacing:.12em;font-weight:600;
+  color:var(--muted);text-align:right;
+  padding:11px 16px;border-bottom:1px solid var(--rule);
+  background:rgba(31,92,75,.06);white-space:nowrap;
+}
+.ptable td{
+  padding:10px 16px;
+  border-bottom:1px dashed var(--rule);
+  font-size:.88rem;
+}
+.ptable tr:last-child td{border-bottom:none}
+.ptable td:first-child{font-weight:500}
+.ptable .g{
+  font-family:'Reem Kufi';font-weight:600;
+  white-space:nowrap;color:var(--stamp);
+}
+.ptable .k{
+  font-family:'Reem Kufi';font-size:.82rem;
+  color:var(--muted);white-space:nowrap;
+}
+.ptable .eye{font-size:.8rem;color:var(--muted)}
+
+/* ---------- PREP / RECIPES ---------- */
+.prep{
+  border:1px solid var(--rule);
+  background:var(--paper-2);
+  margin-bottom:14px;
+  overflow:hidden;
+}
+.prep__head{
+  width:100%;
+  text-align:right;
+  background:none;
+  border:none;
+  padding:16px 20px;
+  cursor:pointer;
+  display:flex;
+  align-items:center;
+  gap:14px;
+  font-family:'Reem Kufi';
+  font-size:1.05rem;
+  font-weight:600;
+  color:var(--ink);
+  transition:background .15s;
+}
+.prep__head:hover{background:rgba(31,92,75,.06)}
+.prep__head:focus-visible{outline:2px solid var(--stamp);outline-offset:-2px}
+.prep__idx{
+  font-family:'Reem Kufi';
+  font-size:.75rem;
+  font-weight:700;
+  color:var(--paper);
+  background:var(--stamp);
+  width:26px;height:26px;
+  display:grid;place-items:center;
+  flex-shrink:0;
+}
+.prep__when{
+  margin-inline-start:auto;
+  font-family:'IBM Plex Sans Arabic';
+  font-size:.72rem;
+  font-weight:500;
+  color:var(--muted);
+  letter-spacing:.04em;
+  white-space:nowrap;
+}
+.prep__chev{
+  color:var(--rule);
+  font-size:1.1rem;
+  transition:transform .2s;
+  flex-shrink:0;
+}
+.prep[open] .prep__chev{transform:rotate(180deg)}
+.prep__body{
+  padding:4px 20px 22px;
+  border-top:1px dashed var(--rule);
+  margin-top:0;
+}
+.prep__body h5{
+  font-size:.72rem;
+  letter-spacing:.14em;
+  font-weight:600;
+  color:var(--muted);
+  margin:18px 0 8px;
+}
+.prep__body ul,.prep__body ol{padding-inline-start:20px}
+.prep__body li{font-size:.9rem;margin-bottom:5px;line-height:1.7}
+.prep__body ol li::marker{font-weight:600;color:var(--stamp)}
+.yield{
+  display:inline-block;
+  margin-top:14px;
+  font-size:.78rem;
+  border:1px solid var(--stamp);
+  color:var(--stamp);
+  padding:4px 10px;
+  font-weight:600;
+}
+
+/* ---------- DAY ---------- */
+.day{
+  border:1px solid var(--rule);
+  background:var(--paper-2);
+  margin-bottom:16px;
+}
+.day__head{
+  display:flex;
+  align-items:center;
+  gap:14px;
+  padding:14px 18px;
+  border-bottom:1px solid var(--rule);
+  flex-wrap:wrap;
+}
+.day__num{
+  font-family:'Reem Kufi';
+  font-size:1.9rem;
+  font-weight:700;
+  line-height:1;
+  color:var(--rule);
+  min-width:38px;
+}
+.day__name{
+  font-family:'Reem Kufi';
+  font-size:1.2rem;
+  font-weight:600;
+}
+.day__date{
+  font-family:'Reem Kufi';
+  font-size:.78rem;
+  font-weight:500;
+  color:var(--muted);
+  letter-spacing:.03em;
+}
+.day--today{
+  border-color:var(--stamp);
+  border-width:2px;
+  box-shadow:0 0 0 4px rgba(31,92,75,.09);
+}
+.day--today .day__num{color:var(--stamp)}
+.day__today{
+  font-size:.62rem;
+  letter-spacing:.14em;
+  font-weight:700;
+  color:var(--paper);
+  background:var(--stamp);
+  padding:4px 8px;
+}
+.day__tag{
+  font-size:.68rem;
+  letter-spacing:.1em;
+  font-weight:600;
+  padding:4px 9px;
+  border:1px solid currentColor;
+}
+.tag--train{color:var(--alarm)}
+.tag--rest{color:var(--muted)}
+.day__bar{
+  margin-inline-start:auto;
+  display:flex;
+  align-items:center;
+  gap:9px;
+}
+.day__track{
+  width:78px;height:5px;
+  background:var(--rule);
+  overflow:hidden;
+}
+.day__fill{
+  height:100%;width:0;
+  background:var(--stamp);
+  transition:width .3s ease;
+}
+.day__count{
+  font-family:'Reem Kufi';
+  font-size:.78rem;
+  font-weight:600;
+  color:var(--muted);
+  min-width:32px;
+}
+
+.meal{
+  display:flex;
+  align-items:flex-start;
+  gap:14px;
+  padding:13px 18px;
+  border-bottom:1px dashed var(--rule);
+}
+.meal:last-of-type{border-bottom:none}
+
+.meal__box{
+  appearance:none;-webkit-appearance:none;
+  width:21px;height:21px;
+  flex-shrink:0;
+  margin-top:3px;
+  border:1.5px solid var(--muted);
+  background:var(--paper);
+  cursor:pointer;
+  position:relative;
+  transition:.15s;
+}
+.meal__box:hover{border-color:var(--stamp)}
+.meal__box:focus-visible{outline:2px solid var(--stamp);outline-offset:2px}
+.meal__box:checked{background:var(--stamp);border-color:var(--stamp)}
+.meal__box:checked::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:var(--paper);
+  clip-path:polygon(16% 52%, 38% 74%, 84% 26%, 92% 36%, 38% 90%, 8% 60%);
+}
+.meal__body{flex:1;min-width:0}
+.meal__when{
+  font-size:.68rem;
+  letter-spacing:.12em;
+  font-weight:600;
+  color:var(--muted);
+  margin-bottom:2px;
+}
+.meal__what{
+  font-size:.94rem;
+  line-height:1.65;
+  transition:.15s;
+}
+.meal.done .meal__what{
+  text-decoration:line-through;
+  text-decoration-color:var(--stamp-soft);
+  text-decoration-thickness:1.5px;
+  opacity:.42;
+}
+.meal.done .meal__when{opacity:.42}
+.meal__kcal{
+  font-family:'Reem Kufi';
+  font-size:.76rem;
+  font-weight:600;
+  color:var(--muted);
+  white-space:nowrap;
+  padding-top:3px;
+}
+
+.day__foot{
+  padding:11px 18px;
+  border-top:1px solid var(--rule);
+  background:rgba(31,92,75,.05);
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:12px;
+  flex-wrap:wrap;
+  font-size:.78rem;
+  color:var(--muted);
+}
+.day__foot b{font-family:'Reem Kufi';color:var(--ink);font-size:.92rem}
+
+/* ---------- WEIGH-IN ---------- */
+.weigh{
+  border:2px solid var(--ink);
+  padding:26px 24px;
+  display:grid;
+  gap:18px;
+}
+.weigh__row{display:flex;gap:14px;flex-wrap:wrap;align-items:flex-end}
+.weigh label{
+  font-size:.7rem;letter-spacing:.12em;font-weight:600;color:var(--muted);
+  display:block;margin-bottom:6px;
+}
+.weigh input{
+  font-family:'Reem Kufi';
+  font-size:1.5rem;font-weight:600;
+  width:130px;padding:8px 12px;
+  border:1px solid var(--rule);
+  background:var(--paper);
+  color:var(--ink);
+  text-align:center;
+}
+.weigh input:focus{outline:2px solid var(--stamp);outline-offset:-1px}
+.weigh__out{
+  font-family:'Reem Kufi';
+  font-size:1.5rem;font-weight:700;
+  padding:8px 16px;
+  border:1px dashed var(--rule);
+  min-width:130px;text-align:center;
+  color:var(--muted);
+}
+.weigh__out.win{color:var(--stamp);border-color:var(--stamp);border-style:solid}
+.weigh__out.miss{color:var(--alarm);border-color:var(--alarm);border-style:solid}
+
+/* ---------- RESET ---------- */
+.reset{
+  background:none;
+  border:1px solid var(--rule);
+  color:var(--muted);
+  padding:9px 18px;
+  font-family:'IBM Plex Sans Arabic';
+  font-size:.78rem;font-weight:500;
+  cursor:pointer;letter-spacing:.05em;
+  transition:.15s;
+}
+.reset:hover{border-color:var(--alarm);color:var(--alarm)}
+.reset:focus-visible{outline:2px solid var(--alarm);outline-offset:2px}
+
+footer{
+  margin-top:56px;padding-top:22px;
+  border-top:1px solid var(--rule);
+  font-size:.76rem;color:var(--muted);
+  display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
+}
+
+@media(max-width:640px){
+  .hero{padding:38px 0 24px}
+  .day__num{font-size:1.5rem;min-width:28px}
+  .meal__kcal{display:none}
+  .hero__meta div{border-left:none;border-bottom:1px solid var(--rule);flex:1 1 50%}
+}
+@media(prefers-reduced-motion:reduce){
+  *{transition:none!important;animation:none!important}
+  html{scroll-behavior:auto}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<!-- ================= HERO ================= -->
+<header class="hero">
+  <div class="hero__eyebrow">دفتر الأسبوع الثاني · ٢٢ ← ٢٨ يوليو ٢٠٢٦ · نسخة الفرن</div>
+  <div class="scale">
+    <span class="scale__from">94.0</span>
+    <span class="scale__arrow">←</span>
+    <span class="scale__to">92.8</span>
+    <span class="scale__unit">كجم · ٧ أيام</span>
+  </div>
+  <p class="hero__sub">
+    اتعدلت بناءً على كلامك، وكلامك كان صح في حتة مهمة: <b>النشويات مش ممنوعة والمنع الكامل غلط فعلاً</b>.
+    اللي بينزل الدهون هو العجز السعري الكلي — والنشويات جوه الحساب بتحسّن التمرين والشبع والالتزام. عشان كده كل يوم فيه حصة نشويات حقيقية، ويوم التمرين فيه اتنين.
+    <b>مفيش حاجة مسلوقة في الخطة</b> — كل حاجة فرن وشوي. والكوارع اتشالت ودخلت مكانها كفتة فرن، والكابتشينو بقى <b>٣ كوبايات في اليوم</b>.
+    <b>عدّل رقم البداية تحت بعد انبودي النهاردة.</b>
+  </p>
+  <div class="hero__meta">
+    <div><span>وزن البداية (تقديري)</span><b>94.0 كجم</b></div>
+    <div><span>الهدف</span><b>−١.٢ كجم</b></div>
+    <div><span>سعرات اليوم</span><b>~1510</b></div>
+    <div><span>البروتين</span><b>145–165 جم</b></div>
+  </div>
+</header>
+
+<!-- ================= RULES ================= -->
+<section class="sec">
+  <div class="sec__head"><h2>قواعد الأسبوع</h2></div>
+  <p class="sec__note">تلات تعديلات كبيرة: فرن بدل السلق، نشويات كل يوم، وموزة دخلت الخطة. وتعديلات الأسبوع اللي فات (كابتشينو ١٥٠ مل وشاي بمعلقة) زي ما هي.</p>
+  <div class="rules">
+    <div class="rule"><h4>النشويات · كل يوم</h4><p>حصة نشويات <b>يومياً</b>: رز مبرّد ١٢٠ جم، أو بطاطس فرن ١٥٠ جم، أو نص رغيف عيش بر، أو تورتيلا. <b>يوم التمرين حصتين</b> والتانية بعد التمرين. هي محسوبة جوه السعرات — فمفيش سبب نخاف منها. اللي كان غلط الأسبوع اللي فات إنها كانت شبه معدومة، مش إنها موجودة.</p></div>
+    <div class="rule"><h4>كل حاجة فرن وشوي</h4><p>مفيش سلق خالص: الفراخ شيش طاووق وشاورما وصواني فرن، البيض شكشوكة وأومليت، الموزة في القصدير، والجمبري صينية بالتوم. الفرن مش بيزود سعرات — بالعكس، الدهن بينزل في الصاج بدل ما يتشرب.</p></div>
+    <div class="rule"><h4>الكفتة بدل الكوارع</h4><p>الكوارع اتشالت زي ما طلبت. بدالها: <b>كفتة ضاني/بقري قليلة الدهن في الفرن</b> — نص كيلو مفروم بيدي وجبتين (الخميس والتلات)، بتتشوي على شبكة من غير نقطة سمن، وطعمها أضمن بكتير من مغامرة الكوارع.</p></div>
+    <div class="rule"><h4>٣ كابتشينو · ١٥٠ مل الكوباية</h4><p>زي ما طلبت: كوباية تالتة دخلت، واللبن نزل لـ<b>١٥٠ مل خالي الدسم</b> + سكر دايت = <b>٥٥ سعر للكوباية</b> · ١٦٥ في اليوم — أكتر بـ٢٥ سعر بس من نظام الكوبايتين. المواعيد: الصبح، والعصر (أو بعد التمرين في أيام التمرين)، والليل.</p></div>
+    <div class="rule"><h4>الشاي · معلقة × ٣</h4><p>معلقة سكر صغيرة = ١٦ سعر. ٣ كوبايات في اليوم — اللي محسوب في الجدول كوبايتين، والتالتة اشربها في أي وقت من غير تفكير، الـ١٦ سعر جوه الهامش.</p></div>
+    <div class="rule"><h4>ريش وموزة الضاني</h4><p>الريش (النص كيلو بتاعك) عشا الأربع: فرن على شبكة، الدهن الظاهر يتشال قبلها. الموزة الجديدة عشا الاتنين: في القصدير ٣ ساعات على نار هادية فتطلع مشوية بتفتّت من غير معلقة زيت. الاتنين أيام تمرين — اللحمة التقيلة في مكانها الصح.</p></div>
+    <div class="rule"><h4>مكسرات · ٢٠ جم</h4><p>كف صغير مقفول ني غير مملح (~١٥ لوزة) = ١٢٠ سعر. مرتين محسوبين في الجدول، والتالتة اختيارية بدل حصة الفشار لو حبيت — نفس السعرات تقريباً.</p></div>
+    <div class="rule"><h4>مية كتير</h4><p>٣ لتر على الأقل، نص لتر قبل كل وجبة بـ٢٠ دقيقة. يوليو في الرياض — العطش بيتنكر في شكل جوع.</p></div>
+    <div class="rule"><h4>يوم التمرين</h4><p>أربع ٢٢ / سبت ٢٥ / اتنين ٢٧. حصة النشويات التانية <b>بعد</b> التمرين مش قبله.</p></div>
+    <div class="rule"><h4>بعد التمرين · كابتشينو مش جاتوريد</h4><p>الجاتوريد (~١٣٠ سعر سكر سايح للزجاجة) معمول لتمرين أطول من ساعة–ساعة ونص متواصلين — الـ٤٥ دقيقة بتوعك مية عادية كفاية جداً ليهم. كابتشينو التمرين فيه بروتين ونص السعرات، وعشاك بعده بساعة فيه النشويات اللي بترجّع الجليكوجين. ودلوقتي بوجود الكوباية التالتة، يوم التمرين فيه كابتشينو الصبح وبعد التمرين <b>والليل كمان</b>. لو مشتاق لطعم الجاتوريد: النسخ الـzero من مشروبات الإلكتروليتس تمشي من غير حساب.</p></div>
+    <div class="rule"><h4>لو جعت أوي</h4><p>خيارة + معلقة جبنة قريش في أي وقت من غير حساب. الجوع الشديد هو عدو الخطة الأول.</p></div>
+  </div>
+</section>
+
+<!-- ================= SHOPPING CHECKLIST ================= -->
+<section class="sec">
+  <div class="sec__head"><h2>مشتريات النهاردة — علّم وأنت بتشتري</h2></div>
+  <p class="sec__note">لفتين: <b>الجزار</b> (٣ حاجات) وبعدها <b>سوبرماركت كبير</b> — الدانوب أو التميمي أو لولو أو كارفور، كله متوفر فيهم. العلامات بتتحفظ لوحدها زي وجبات الأسبوع.</p>
+  <div class="day" id="shopping"></div>
+</section>
+
+<!-- ================= PREP ================= -->
+<section class="sec">
+  <div class="sec__head"><h2>تجهيزات قبل ما تبدأ</h2></div>
+  <p class="sec__note">النهاردة بالليل بعد ما ترجع من السوق: الكوارع على النار (شغل فعلي ربع ساعة)، والفراخ تتقسم وتتتبل. باقي الحاجات كلها بتتعمل طازة في يومها — ده أصلاً أطعم.</p>
+
+  <details class="prep" open>
+    <summary class="prep__head"><span class="prep__idx">١</span> الفرختين — تقسيم وتلات تتبيلات<span class="prep__when">~٣٠ دقيقة النهاردة</span><span class="prep__chev">▾</span></summary>
+    <div class="prep__body">
+      <h5>التقسيم</h5>
+      <ul>
+        <li><b>صدور الفرخة الأولى</b> ← مكعبات شيش طاووق (وجبتين × ١٨٠ جم)</li>
+        <li><b>صدور الفرخة التانية</b> ← شرايح رفيعة شاورما (وجبة ١٥٠ جم + الزيادة تتجمد)</li>
+        <li><b>الوراك والأفخاذ كلها</b> منزوعة الجلد ← صواني الفرن (وجبتين × ٢٠٠ جم)</li>
+      </ul>
+      <h5>التتبيلات — كله في أكياس في التلاجة والفريزر</h5>
+      <ol>
+        <li><b>شيش طاووق:</b> ٣ معالق زبادي + معلقة صلصة + توم + بابريكا وشطة وليمون. وقت الأكل: أسياخ أو صينية، فرن ٢٢٠° لمدة ١٥–١٨ دقيقة.</li>
+        <li><b>شاورما:</b> كمون وكزبرة وبابريكا وقرفة رشة صغيرة + خل وليمون وتوم. فرن ٢٢٠° لمدة ١٢–١٥ دقيقة وتقلبها في نصها.</li>
+        <li><b>صينية الوراك:</b> ملح وفلفل وبابريكا وليمون وتوم. فرن ٢٠٠° لمدة ٣٥–٤٠ دقيقة على شبكة أو فوق الخضار.</li>
+      </ol>
+      <span class="yield">٥ وجبات فراخ · كلها فرن</span>
+    </div>
+  </details>
+
+  <details class="prep">
+    <summary class="prep__head"><span class="prep__idx">٢</span> الكفتة — نص كيلو يدي وجبتين<span class="prep__when">~١٥ دقيقة النهاردة</span><span class="prep__chev">▾</span></summary>
+    <div class="prep__body">
+      <h5>المكونات</h5>
+      <ul>
+        <li>نص كيلو مفروم قليل الدهن (ضاني أو بقري)</li>
+        <li>بصلة مبشورة <b>ومعصورة كويس</b> (سر الكفتة اللي متفرطش) + شوية بقدونس مفروم</li>
+        <li>ملح، فلفل، كمون، بابريكا، رشة قرفة صغيرة — من غير سمن ولا زيت</li>
+      </ul>
+      <h5>الطريقة</h5>
+      <ol>
+        <li>اعجن كله واتركه في التلاجة نص ساعة يتماسك.</li>
+        <li>شكّله صوابع وقسّمه نصين: نص للخميس ونص يتجمد نيّ لغدا التلات.</li>
+        <li>وقت الأكل: <b>على شبكة في الفرن ٢٢٠° لمدة ١٢–١٥ دقيقة</b> (أو الإير فراير) وتحتها صاج — الدهن ينزل تحت والكفتة تتحمر.</li>
+      </ol>
+      <span class="yield">وجبتين × ١٥٠ جم · الخميس والتلات</span>
+    </div>
+  </details>
+
+  <details class="prep">
+    <summary class="prep__head"><span class="prep__idx">٣</span> ريش الضاني — يوم الأربع نفسه<span class="prep__when">~٢٥ دقيقة</span><span class="prep__chev">▾</span></summary>
+    <div class="prep__body">
+      <ol>
+        <li>شيل الدهن السميك من حروف الريش وسيب الرقيق اللي جوه اللحم.</li>
+        <li>تتبيلة قبلها بساعة: ملح وفلفل وكمون وتوم وليمون — من غير زيت.</li>
+        <li>فرن ٢٠٠° أو إير فراير <b>على شبكة وتحتها صاج</b>: ١٠–١٢ دقيقة لكل وش. الدهن اللي في الصاج يترمي وأنت مبسوط.</li>
+      </ol>
+      <span class="yield">عشا الأربع · النص كيلو كله</span>
+    </div>
+  </details>
+
+  <details class="prep">
+    <summary class="prep__head"><span class="prep__idx">٤</span> الموزة في القصدير — مشوية بتفتّت<span class="prep__when">٣ ساعات في الفرن · شغل فعلي ١٠ دقايق</span><span class="prep__chev">▾</span></summary>
+    <div class="prep__body">
+      <ol>
+        <li>تبّل الموزة: ملح وفلفل وكمون وحبهان مطحون وتوم وبصلة شرايح وشرايح طماطم — من غير زيت، دهنها مكفيها.</li>
+        <li>لفّها في قصدير محكم قوي (طبقتين) وحطها في الفرن على <b>١٥٠–١٦٠°</b> لمدة <b>٣ ساعات</b>. متستعجلش — السحر كله في النار الهادية.</li>
+        <li>آخر ربع ساعة افتح القصدير وارفع الحرارة ٢٢٠° عشان تتحمر من فوق.</li>
+        <li>الدهن السايح في القصدير يترمي، واللحمة هتبقى بتقع من على العضم.</li>
+      </ol>
+      <span class="yield">عشا الاتنين · حطها في الفرن العصر وهي هتظبط نفسها</span>
+    </div>
+  </details>
+
+  <details class="prep">
+    <summary class="prep__head"><span class="prep__idx">٥</span> السالمون — طازة في يومه<span class="prep__when">١٥ دقيقة وقت الأكل</span><span class="prep__chev">▾</span></summary>
+    <div class="prep__body">
+      <ol>
+        <li><b>الخميس (بالليمون):</b> ملح وفلفل وشرايح ليمون وشبت، فرن ٢٠٠° لمدة ١٢–١٥ دقيقة بس.</li>
+        <li><b>الحد (خردل وعسل):</b> معلقة صغيرة خردل + نص معلقة عسل + توم، تتدهن على الوش وتتحمر آخر ٣ دقايق على الشواية العلوية. جرّبها — دي أحلى طريقة سالمون هتاكلها.</li>
+        <li>أول ما يتفتت بالشوكة يبقى استوى — الزيادة بتنشّفه.</li>
+      </ol>
+      <span class="yield">وجبتين × ٢٠٠ جم</span>
+    </div>
+  </details>
+
+  <details class="prep">
+    <summary class="prep__head"><span class="prep__idx">٦</span> أقراص التونة في الفرن — جديدة ومشبعة<span class="prep__when">~٢٠ دقيقة يوم السبت</span><span class="prep__chev">▾</span></summary>
+    <div class="prep__body">
+      <h5>المكونات</h5>
+      <ul>
+        <li>علبة تونة بالمية معصورة كويس</li>
+        <li>بيضة + ٢ معلقة شوفان + بصلة صغيرة مبشورة ومعصورة + بقدونس + كمون وفلفل وليمون</li>
+      </ul>
+      <ol>
+        <li>اخلط كله واعجنه وشكّله ٤ أقراص.</li>
+        <li>فرن ٢٠٠° على ورق زبدة ١٠ دقايق وقلبهم ٥ دقايق كمان (أو إير فراير) — من غير نقطة زيت.</li>
+      </ol>
+      <span class="yield">غدا السبت · ~٢٨٠ سعر و٣٥ جم بروتين</span>
+    </div>
+  </details>
+
+  <details class="prep">
+    <summary class="prep__head"><span class="prep__idx">٧</span> النشويات والخضار والصوصات<span class="prep__when">~٤٠ دقيقة</span><span class="prep__chev">▾</span></summary>
+    <div class="prep__body">
+      <h5>النشويات</h5>
+      <ol>
+        <li><b>رز:</b> اطبخ ربع كيلو وبرّده ليلة في التلاجة (نشا مقاوم = شبع أطول). حصتين × ١٢٠ جم للسبت والاتنين.</li>
+        <li><b>بطاطس:</b> ودجز في الفرن أو الإير فراير برشة زيت زيتون وبابريكا — تتعمل طازة يوم الخميس.</li>
+        <li><b>عيش البر:</b> قسّم الأرغفة نصاص وربَاع وحطهم في الفريزر — تطلع اللي عليك بس.</li>
+      </ol>
+      <h5>الخضار — صواني فرن بدل الشوربة</h5>
+      <ol>
+        <li>كوسة + فلفل ألوان + بصل + بروكلي مقطعين، معلقة زيت زيتون للصينية كلها + ملح وفلفل وزعتر، فرن ٢٢٠° لمدة ٢٠–٢٥ دقيقة. ممكن تتشوي تحت الفراخ فتاخد طعمها.</li>
+      </ol>
+      <h5>الصوصات</h5>
+      <ol>
+        <li><b>زبادي بالخيار والتوم</b> (للشاورما والشيش): زبادي + خيارة مبشورة معصورة + توم ونعناع.</li>
+        <li><b>صلصة الأفوكادو والزبادي</b> زي الأسبوع اللي فات — تتعمل مرتين لأنها بتعيش ٣ أيام.</li>
+      </ol>
+      <span class="yield">الخضار ١٣٠ سعر للطبق · الصوصات ~٤٠–٦٠ للحصة</span>
+    </div>
+  </details>
+</section>
+
+<!-- ================= PORTIONS ================= -->
+<section class="sec">
+  <div class="sec__head"><h2>الكميات بالجرام</h2></div>
+  <p class="sec__note">المرجع لكل الوجبات. لاحظ إن أكل الفرن سعراته زي المسلوق تقريباً أو أقل — لأن الدهن بينزل مش بيتشرب.</p>
+  <div class="ptable">
+    <table>
+      <thead><tr><th>الصنف</th><th>الكمية</th><th>تقريبها إزاي</th><th>سعرات</th></tr></thead>
+      <tbody>
+        <tr><td>شيش طاووق في الفرن</td><td class="g">١٨٠ جم</td><td class="eye">٦–٧ مكعبات كبيرة</td><td class="k">٣٠٠</td></tr>
+        <tr><td>شاورما فراخ بيتي</td><td class="g">١٥٠ جم</td><td class="eye">كف مليان شرايح</td><td class="k">٢٦٠</td></tr>
+        <tr><td>وراك فراخ فرن بدون جلد</td><td class="g">٢٠٠ جم</td><td class="eye">ورك ودبوس كبار</td><td class="k">٣٦٠</td></tr>
+        <tr><td>ريش ضاني مشوية بالعظم</td><td class="g">٥٠٠ جم <b>بالعظم</b></td><td class="eye">الطبق اللي عندك كله</td><td class="k">~٦٨٠</td></tr>
+        <tr><td>موزة ضاني في القصدير</td><td class="g">٢٥٠ جم <b>بالعظم</b></td><td class="eye">موزة واحدة متوسطة</td><td class="k">٤٢٠</td></tr>
+        <tr><td>كفتة في الفرن</td><td class="g">١٥٠ جم</td><td class="eye">٣ صوابع كبار</td><td class="k">٣٠٠</td></tr>
+        <tr><td>طحينة</td><td class="g">معلقة صغيرة · ٨ جم</td><td class="eye">معلقة مسحوحة</td><td class="k">٤٥</td></tr>
+        <tr><td>سالمون في الفرن</td><td class="g">٢٠٠ جم</td><td class="eye">قطعة قد كف اليد</td><td class="k">٤٢٠–٤٥٠</td></tr>
+        <tr><td>أقراص التونة في الفرن</td><td class="g">علبة + بيضة + شوفان</td><td class="eye">٤ أقراص</td><td class="k">٢٨٠</td></tr>
+        <tr><td>جمبري صينية بالتوم</td><td class="g">٢٥٠ جم</td><td class="eye">طبق متوسط</td><td class="k">٢٨٠</td></tr>
+        <tr><td>حلوم لايت مشوي</td><td class="g">٨٠ جم</td><td class="eye">٤ شرايح ضلع صباع</td><td class="k">١٩٠</td></tr>
+        <tr><td>شكشوكة / أومليت ٣ بيض</td><td class="g">٣ بيضات</td><td class="eye">طاسة صغيرة</td><td class="k">٢٦٠–٢٨٠</td></tr>
+        <tr><td>جبنة قريش</td><td class="g">١٠٠ جم</td><td class="eye">٤ معالق كبيرة</td><td class="k">٩٨</td></tr>
+        <tr><td>زبادي يوناني لايت</td><td class="g">علبة ١٧٠ جم</td><td class="eye">العلبة كاملة</td><td class="k">١٠٠</td></tr>
+        <tr><td>مكسرات ني</td><td class="g">٢٠ جم</td><td class="eye">كف صغير · ~١٥ لوزة</td><td class="k">١٢٠</td></tr>
+        <tr><td>رز مسلوق مبرّد</td><td class="g">١٢٠ جم</td><td class="eye">كوباية شاي صغيرة</td><td class="k">١٥٦</td></tr>
+        <tr><td>بطاطس ودجز فرن</td><td class="g">١٥٠ جم</td><td class="eye">بطاطسة متوسطة</td><td class="k">١٤٠</td></tr>
+        <tr><td>عيش بر</td><td class="g">نص رغيف</td><td class="eye">نص رغيف بالظبط</td><td class="k">١٣٠</td></tr>
+        <tr><td>تورتيلا / صاج</td><td class="g">واحدة متوسطة</td><td class="eye">قد الكف بصوابعه</td><td class="k">١٥٠</td></tr>
+        <tr><td>صينية خضار فرن</td><td class="g">٢٥٠ جم</td><td class="eye">طبق مليان</td><td class="k">١٣٠</td></tr>
+        <tr><td>كابتشينو</td><td class="g">١٥٠ مل خالي الدسم</td><td class="eye">كوباية متوسطة</td><td class="k">٥٥</td></tr>
+        <tr><td>شاي بمعلقة سكر</td><td class="g">٤ جم سكر</td><td class="eye">معلقة صغيرة واحدة</td><td class="k">١٦</td></tr>
+        <tr><td>بطيخ</td><td class="g">٢٠٠ جم</td><td class="eye">شريحة متوسطة</td><td class="k">٦٠</td></tr>
+        <tr><td>أفوكادو</td><td class="g">نص ثمرة · ٧٠ جم</td><td class="eye">نص الثمرة بالظبط</td><td class="k">١١٢</td></tr>
+        <tr><td>فشار</td><td class="g">٢٠ جم ني</td><td class="eye">٢ معلقة كبيرة</td><td class="k">١٥٠ بالزيت</td></tr>
+        <tr><td>عسل نحل</td><td class="g">٧ جم</td><td class="eye">معلقة صغيرة</td><td class="k">٢١</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ================= DAYS ================= -->
+<section class="sec">
+  <div class="sec__head"><h2>الأسبوع</h2></div>
+  <p class="sec__note">علّم على كل وجبة أول ما تخلصها. لاحظ حصة النشويات موجودة كل يوم — ويوم التمرين مرتين.</p>
+
+  <div id="days"></div>
+</section>
+
+<!-- ================= WEIGH IN ================= -->
+<section class="sec">
+  <div class="sec__head"><h2>الانبودي الجاي</h2></div>
+  <p class="sec__note"><b>التلات ٢٨ يوليو · ٦:٣٠ مساءً</b> — نفس الميعاد ونفس الظروف. أول حاجة: بعد انبودي النهاردة اكتب وزنك الحقيقي في «وزن البداية».</p>
+  <div class="weigh">
+    <div class="weigh__row">
+      <div>
+        <label for="w1">وزن البداية</label>
+        <input type="number" id="w1" value="94.0" step="0.1">
+      </div>
+      <div>
+        <label for="w2">وزن النهاية</label>
+        <input type="number" id="w2" placeholder="—" step="0.1">
+      </div>
+      <div>
+        <label>الفرق</label>
+        <div class="weigh__out" id="diff">—</div>
+      </div>
+    </div>
+    <div style="display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap;border-top:1px dashed var(--rule);padding-top:16px">
+      <p style="font-size:.82rem;color:var(--muted);max-width:52ch">
+        الأسبوع التاني أبطأ من الأول لأن مية الجسم استقرت — <b>١ كيلو نضيف أحسن من ٢ بالمية</b>. ورجوع النشويات ممكن يمسّك شوية مية أول يومين، متتخضش من الميزان في نص الأسبوع.
+      </p>
+      <button class="reset" id="reset">مسح كل العلامات والبدء من جديد</button>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span>الأسبوع ٢ · نسخة الفرن · ٢٢ ← ٢٨ يوليو</span>
+  <span id="total">—</span>
+</footer>
+
+</div>
+
+<script>
+const SHOP = [
+  {t:"الجزار", d:"موزة ضاني بالعظم ~٣٠٠ جم — قوله للفرن مش للطبيخ"},
+  {t:"الجزار", d:"نص كيلو لحمة مفرومة قليلة الدهن (ضاني أو بقري) — للكفتة"},
+  {t:"ركن السمك", d:"سالمون فيليه ٤٠٠ جم — قطعتين ٢٠٠ جم (طازة أو مجمد نرويجي)"},
+  {t:"الدواجن", d:"فرختين تجاري ١١٠٠–١٣٠٠ جم (الوطنية / رضوى / اليوسر)"},
+  {t:"الألبان", d:"لبن خالي الدسم ٤ لتر (المراعي / نادك) — ٣ كابتشينو في اليوم"},
+  {t:"الألبان", d:"٤ علب زبادي يوناني لايت + زبادي عادي للصوصات والتتبيلة"},
+  {t:"الألبان", d:"جبنة قريش + حلوم لايت"},
+  {t:"البقالة", d:"٢ علبة تونة بالمية (مش زيت)"},
+  {t:"البقالة", d:"مكسرات ني غير مملحة (لوز وجوز) ~١٠٠ جم"},
+  {t:"البقالة", d:"شوفان كيس صغير (لأقراص التونة) + خردل (لصوص السالمون)"},
+  {t:"المخبز", d:"عيش بر ٢–٣ أرغفة (تتقسم وتتجمد) + تورتيلا أو صاج للشاورما"},
+  {t:"الخضار", d:"كوسة + فلفل ألوان + بصل + بروكلي (طازة أو مجمد) — لصواني الفرن"},
+  {t:"الخضار", d:"خيار + طماطم + خس + جرجير + ليمون كتير + توم + بقدونس وشبت"},
+  {t:"الخضار", d:"٣ أفوكادو + علبة مشروم + سبانخ (طازة أو مجمدة) للأومليت"},
+  {t:"الفاكهة", d:"بطيخة صغيرة"},
+  {t:"لو ناقص", d:"طبق بيض ٣٠ + بطاطس ٢–٣ حبات + بهارات: بابريكا، كمون، حبهان، ورق لورا، مستكة"}
+];
+
+const DAYS = [
+  {n:"الأربع", date:"٢٢ يوليو", tag:"تمرين", train:true, meals:[
+    {t:"الفطار · ٩ ص", d:"كابتشينو ١٥٠ مل لبن خالي الدسم وسكر دايت + شكشوكة ٣ بيض بالطماطم والفلفل الرومي + ربع رغيف عيش بر", k:400},
+    {t:"سناك · ١٢ ظ", d:"شاي بمعلقة سكر + ١٠٠ جم جبنة قريش بخيار مقطع", k:114},
+    {t:"الغدا · ٣ ع", d:"شيش طاووق في الفرن ١٨٠ جم + صينية خضار فرن + سلطة خضرا بليمون", k:465},
+    {t:"قبل التمرين · ٦ م", d:"شاي بمعلقة سكر + معلقة عسل صغيرة", k:37},
+    {t:"التمرين · ٧ م", d:"كيك بوكسينج — ٤٥ دقيقة متواصلة", k:-336},
+    {t:"بعد التمرين · ٧:٥٠ م", d:"كابتشينو التمرين — ١٥٠ مل لبن خالي الدسم وسكر دايت (بدل الجاتوريد)", k:55},
+    {t:"العشا · ٩ م", d:"ريش الضاني — النص كيلو بالعظم على شبكة في الفرن + سلطة خضرا كبيرة بليمون من غير زيت", k:715},
+    {t:"كابتشينو الليل · ١٠:٣٠ م", d:"كابتشينو ١٥٠ مل لبن خالي الدسم وسكر دايت — الكوباية التالتة", k:55}
+  ]},
+  {n:"الخميس", date:"٢٣ يوليو", tag:"راحة · يوم الكفتة", train:false, meals:[
+    {t:"الفطار · ٩ ص", d:"كابتشينو ١٥٠ مل خالي الدسم + أومليت ٢ بيض بالمشروم + خيار", k:253},
+    {t:"سناك · ١٢ ظ", d:"شاي بمعلقة سكر + علبة زبادي يوناني لايت + ٢٠٠ جم بطيخ", k:176},
+    {t:"الغدا · ٣ ع", d:"كفتة من الفرن ١٥٠ جم (٣ صوابع) + معلقة طحينة صغيرة بليمون + سلطة خضرا كبيرة", k:380},
+    {t:"كابتشينو العصر · ٥ م", d:"كابتشينو ١٥٠ مل لبن خالي الدسم وسكر دايت — الكوباية التانية", k:55},
+    {t:"سناك · ٦:٣٠ م", d:"شاي بمعلقة سكر + خيارة", k:26},
+    {t:"العشا · ٩ م", d:"سالمون في الفرن ٢٠٠ جم بالليمون والشبت + بطاطس ودجز فرن ١٥٠ جم + سلطة", k:585},
+    {t:"كابتشينو الليل · ١٠:٣٠ م", d:"كابتشينو ١٥٠ مل لبن خالي الدسم وسكر دايت", k:55}
+  ]},
+  {n:"الجمعة", date:"٢٤ يوليو", tag:"راحة", train:false, meals:[
+    {t:"الفطار · ١٠ ص", d:"كابتشينو ١٥٠ مل خالي الدسم + شكشوكة ٣ بيض بالطماطم والفلفل + خيار", k:335},
+    {t:"سناك · ١ ظ", d:"شاي بمعلقة سكر + ٢٠ جم مكسرات ني (١ من ٢)", k:136},
+    {t:"الغدا · ٤ ع", d:"شاورما فراخ بيتي من الفرن ١٥٠ جم + تورتيلا + صوص زبادي بالخيار والتوم + طماطم وخس جوه اللفة", k:470},
+    {t:"كابتشينو العصر · ٦ م", d:"كابتشينو ١٥٠ مل لبن خالي الدسم وسكر دايت — الكوباية التانية", k:55},
+    {t:"سناك · ٧ م", d:"شاي بمعلقة سكر + فشار (٢٠ جم ذرة) — الحصة الأولى من اتنين", k:166},
+    {t:"العشا · ٩:٣٠ م", d:"حلوم لايت مشوي ٨٠ جم + علبة زبادي يوناني لايت + طماطم وخيار", k:315},
+    {t:"كابتشينو الليل · ١١ م", d:"كابتشينو ١٥٠ مل لبن خالي الدسم وسكر دايت", k:55}
+  ]},
+  {n:"السبت", date:"٢٥ يوليو", tag:"تمرين", train:true, meals:[
+    {t:"الفطار · ٩ ص", d:"كابتشينو ١٥٠ مل خالي الدسم + أومليت ٣ بيض + ٢ خيار", k:331},
+    {t:"سناك · ١٢ ظ", d:"شاي بمعلقة سكر + ١٠٠ جم جبنة قريش + ٢٠ جم مكسرات ني (٢ من ٢)", k:234},
+    {t:"الغدا · ٣ ع", d:"أقراص التونة من الفرن (٤ أقراص) + سلطة كبيرة بنص أفوكادو وليمون", k:427},
+    {t:"قبل التمرين · ٦ م", d:"شاي بمعلقة سكر + معلقة عسل صغيرة", k:37},
+    {t:"التمرين · ٧ م", d:"كيك بوكسينج — ٤٥ دقيقة متواصلة", k:-336},
+    {t:"بعد التمرين · ٧:٥٠ م", d:"كابتشينو التمرين — ١٥٠ مل لبن خالي الدسم وسكر دايت (بدل الجاتوريد)", k:55},
+    {t:"العشا · ٩ م", d:"صينية وراك الفراخ من الفرن ٢٠٠ جم + علبة الرز المبرّد الأولى + خضار فرن من نفس الصينية", k:646},
+    {t:"كابتشينو الليل · ١٠:٣٠ م", d:"كابتشينو ١٥٠ مل لبن خالي الدسم وسكر دايت — الكوباية التالتة", k:55}
+  ]},
+  {n:"الحد", date:"٢٦ يوليو", tag:"راحة", train:false, meals:[
+    {t:"الفطار · ٩ ص", d:"كابتشينو ١٥٠ مل خالي الدسم + أومليت ٢ بيض + علبة زبادي يوناني لايت + خيار", k:343},
+    {t:"سناك · ١٢ ظ", d:"شاي بمعلقة سكر + ٢٠٠ جم بطيخ", k:76},
+    {t:"الغدا · ٣ ع", d:"سالمون بالخردل والعسل من الفرن ٢٠٠ جم (جرّبه!) + علبة الرز المبرّد التانية + سلطة خضرا بليمون", k:641},
+    {t:"كابتشينو العصر · ٥ م", d:"كابتشينو ١٥٠ مل لبن خالي الدسم وسكر دايت — الكوباية التانية", k:55},
+    {t:"سناك · ٦:٣٠ م", d:"شاي بمعلقة سكر + خيارة بمعلقة جبنة قريش", k:51},
+    {t:"العشا · ٩ م", d:"صينية جمبري بالتوم والليمون في الفرن ٢٥٠ جم + سلطة خضرا بليمون", k:315},
+    {t:"كابتشينو الليل · ١٠:٣٠ م", d:"كابتشينو ١٥٠ مل لبن خالي الدسم وسكر دايت", k:55}
+  ]},
+  {n:"الاتنين", date:"٢٧ يوليو", tag:"تمرين", train:true, meals:[
+    {t:"الفطار · ٩ ص", d:"كابتشينو ١٥٠ مل خالي الدسم + أومليت ٣ بيض بالسبانخ + ربع رغيف عيش بر", k:390},
+    {t:"سناك · ١٢ ظ", d:"شاي بمعلقة سكر + ١٠٠ جم جبنة قريش + نص أفوكادو", k:226},
+    {t:"الغدا · ٣ ع", d:"شيش طاووق في الفرن ١٨٠ جم (الحصة التانية) + صينية خضار فرن + سلطة", k:465},
+    {t:"قبل التمرين · ٦ م", d:"شاي بمعلقة سكر + معلقة عسل صغيرة", k:37},
+    {t:"التمرين · ٧ م", d:"كيك بوكسينج — ٤٥ دقيقة متواصلة", k:-336},
+    {t:"بعد التمرين · ٧:٥٠ م", d:"كابتشينو التمرين — ١٥٠ مل لبن خالي الدسم وسكر دايت (بدل الجاتوريد)", k:55},
+    {t:"العشا · ٩ م", d:"موزة الضاني من القصدير ٢٥٠ جم بالعظم + رز مبرّد ١٢٠ جم + سلطة خضرا بليمون", k:611},
+    {t:"كابتشينو الليل · ١٠:٣٠ م", d:"كابتشينو ١٥٠ مل لبن خالي الدسم وسكر دايت — الكوباية التالتة", k:55}
+  ]},
+  {n:"التلات", date:"٢٨ يوليو", tag:"راحة · انبودي", train:false, meals:[
+    {t:"الفطار · ٩ ص", d:"كابتشينو ١٥٠ مل خالي الدسم + شكشوكة ٢ بيض بالطماطم والفلفل", k:255},
+    {t:"سناك · ١٢ ظ", d:"شاي بمعلقة سكر + علبة زبادي يوناني لايت + ٢٠٠ جم بطيخ", k:176},
+    {t:"الغدا · ٣ ع", d:"الكفتة التانية من الفرن ١٥٠ جم + نص رغيف عيش بر + صوص زبادي بالخيار والتوم + سلطة", k:525},
+    {t:"سناك · ٥ م", d:"شاي بمعلقة سكر + فشار (٢٠ جم ذرة) — الحصة التانية", k:166},
+    {t:"الانبودي · ٦:٣٠ م", d:"نفس الميعاد ونفس الظروف — على معدة شبه فاضية وبعد مية عادي", k:0},
+    {t:"كابتشينو بعد الانبودي · ٧ م", d:"كابتشينو ١٥٠ مل لبن خالي الدسم وسكر دايت — الكوباية التانية، استحقيتها", k:55},
+    {t:"العشا · ٩ م", d:"سلطة تونة: علبة تونة مصفاة + نص أفوكادو + خس وجرجير وليمون", k:262},
+    {t:"كابتشينو الليل · ١٠:٣٠ م", d:"كابتشينو ١٥٠ مل لبن خالي الدسم وسكر دايت", k:55}
+  ]}
+];
+
+const AR = ["١","٢","٣","٤","٥","٦","٧"];
+const KEY = "cut2kg_w2";
+const START = new Date(2026,6,22); // 22 يوليو 2026
+let state = JSON.parse(localStorage.getItem(KEY) || "{}");
+
+function save(){ localStorage.setItem(KEY, JSON.stringify(state)); }
+
+function todayIndex(){
+  const n = new Date(); n.setHours(0,0,0,0);
+  return Math.round((n - START) / 86400000);
+}
+
+function renderShop(){
+  const host = document.getElementById("shopping");
+  host.innerHTML = SHOP.map((it,i)=>{
+    const id = `s${i}`;
+    const on = !!state[id];
+    return `<label class="meal ${on?'done':''}">
+      <input type="checkbox" class="meal__box" data-id="${id}" ${on?'checked':''}>
+      <span class="meal__body">
+        <span class="meal__when">${it.t}</span>
+        <span class="meal__what">${it.d}</span>
+      </span>
+    </label>`;
+  }).join("") + `<div class="day__foot"><span>اتشترى</span><b id="shopcount">—</b></div>`;
+
+  host.querySelectorAll(".meal__box").forEach(b=>{
+    b.addEventListener("change", e=>{
+      const id = e.target.dataset.id;
+      state[id] = e.target.checked;
+      if(!e.target.checked) delete state[id];
+      e.target.closest(".meal").classList.toggle("done", e.target.checked);
+      save(); shopCount();
+    });
+  });
+  shopCount();
+}
+
+function shopCount(){
+  let d=0;
+  SHOP.forEach((_,i)=>{ if(state[`s${i}`]) d++; });
+  const c = document.getElementById("shopcount");
+  if(c) c.textContent = `${d} / ${SHOP.length}`;
+}
+
+function render(){
+  const host = document.getElementById("days");
+  const ti = todayIndex();
+  host.innerHTML = "";
+  DAYS.forEach((day, di) => {
+    const net = day.meals.reduce((s,m)=>s+m.k,0);
+    const isToday = di === ti;
+    const el = document.createElement("article");
+    el.className = "day" + (isToday ? " day--today" : "");
+    if(isToday) el.id = "today";
+    el.innerHTML = `
+      <div class="day__head">
+        <span class="day__num">${AR[di]}</span>
+        <span class="day__name">${day.n}</span>
+        <span class="day__date">${day.date}</span>
+        ${isToday ? '<span class="day__today">النهاردة</span>' : ''}
+        <span class="day__tag ${day.train?'tag--train':'tag--rest'}">${day.tag}</span>
+        <div class="day__bar">
+          <div class="day__track"><div class="day__fill" data-fill="${di}"></div></div>
+          <span class="day__count" data-count="${di}"></span>
+        </div>
+      </div>
+      ${day.meals.map((m,mi)=>{
+        const id = `d${di}m${mi}`;
+        const on = !!state[id];
+        return `<label class="meal ${on?'done':''}" data-meal="${id}">
+          <input type="checkbox" class="meal__box" data-id="${id}" ${on?'checked':''}>
+          <span class="meal__body">
+            <span class="meal__when">${m.t}</span>
+            <span class="meal__what">${m.d}</span>
+          </span>
+          <span class="meal__kcal">${m.k<0?m.k:'+'+m.k}</span>
+        </label>`;
+      }).join("")}
+      <div class="day__foot">
+        <span>صافي اليوم بعد التمرين</span>
+        <b>${net} سعر</b>
+      </div>`;
+    host.appendChild(el);
+  });
+
+  host.querySelectorAll(".meal__box").forEach(b=>{
+    b.addEventListener("change", e=>{
+      const id = e.target.dataset.id;
+      state[id] = e.target.checked;
+      if(!e.target.checked) delete state[id];
+      e.target.closest(".meal").classList.toggle("done", e.target.checked);
+      save(); bars();
+    });
+  });
+  bars();
+}
+
+function bars(){
+  let all=0, done=0;
+  DAYS.forEach((day,di)=>{
+    const total = day.meals.length;
+    let d=0;
+    day.meals.forEach((_,mi)=>{ if(state[`d${di}m${mi}`]) d++; });
+    all+=total; done+=d;
+    const f = document.querySelector(`[data-fill="${di}"]`);
+    const c = document.querySelector(`[data-count="${di}"]`);
+    if(f) f.style.width = (d/total*100)+"%";
+    if(c) c.textContent = `${d}/${total}`;
+  });
+  document.getElementById("total").textContent = `${done} / ${all} وجبة اتعلّم عليها`;
+}
+
+function diff(){
+  const a = parseFloat(document.getElementById("w1").value);
+  const b = parseFloat(document.getElementById("w2").value);
+  const out = document.getElementById("diff");
+  out.className = "weigh__out";
+  if(isNaN(a)||isNaN(b)){ out.textContent="—"; return; }
+  const d = (a-b);
+  out.textContent = (d>=0?"−":"+") + Math.abs(d).toFixed(1) + " كجم";
+  if(d >= 1) out.classList.add("win");
+  else if(d < 0.6) out.classList.add("miss");
+}
+document.getElementById("w1").addEventListener("input",diff);
+document.getElementById("w2").addEventListener("input",diff);
+
+document.getElementById("reset").addEventListener("click",()=>{
+  if(!confirm("هتمسح كل العلامات. متأكد؟")) return;
+  state = {}; save(); render(); renderShop();
+});
+
+renderShop();
+render();
+</script>
+</body>
+</html>
