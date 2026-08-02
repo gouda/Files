@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SharePoint SE Upgrade — Server Setup Checklist</title>
+<style>
+  :root{
+    --ink:#161a1d;
+    --paper:#f6f7f4;
+    --panel:#ffffff;
+    --line:#e2e6df;
+    --line-strong:#c9cfc4;
+    --muted:#6d7570;
+    --accent:#0a7d6b;
+    --accent-soft:#e5f2ee;
+    --done:#12925f;
+    --done-soft:#e6f4ec;
+    --fe:#215d9c;
+    --fe-soft:#e7f0f9;
+    --app:#7a4bb0;
+    --app-soft:#f0e9f8;
+    --farm:#b07a1f;
+    --farm-soft:#f8f0dd;
+    --mono:ui-monospace,"Cascadia Code","Cascadia Mono",Consolas,"Liberation Mono",Menlo,monospace;
+    --sans:"Segoe UI",system-ui,-apple-system,Roboto,Helvetica,Arial,sans-serif;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;background:var(--paper);color:var(--ink);
+    font-family:var(--sans);line-height:1.5;-webkit-font-smoothing:antialiased;
+  }
+
+  /* ---------- Header ---------- */
+  header{
+    background:var(--ink);color:#eef1ec;
+    padding:26px clamp(16px,4vw,44px) 22px;
+    position:sticky;top:0;z-index:50;
+    border-bottom:3px solid var(--accent);
+  }
+  .eyebrow{
+    font-family:var(--mono);font-size:11px;letter-spacing:.22em;
+    text-transform:uppercase;color:#8fb8ae;margin:0 0 6px;
+  }
+  h1{
+    margin:0;font-size:clamp(20px,3.4vw,30px);font-weight:700;letter-spacing:-.01em;
+  }
+  .sub{margin:6px 0 0;color:#a6ada6;font-size:13.5px;max-width:70ch}
+
+  .bar-wrap{margin-top:18px;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+  .progress{
+    flex:1 1 260px;height:10px;background:#2b3137;border-radius:20px;overflow:hidden;min-width:180px;
+  }
+  .progress > i{
+    display:block;height:100%;width:0%;background:linear-gradient(90deg,var(--accent),#25b393);
+    border-radius:20px;transition:width .4s ease;
+  }
+  .pct{font-family:var(--mono);font-size:14px;color:#cfe6df;min-width:52px;text-align:right}
+  .hbtns{display:flex;gap:8px}
+  button.ctl{
+    font-family:var(--mono);font-size:11.5px;letter-spacing:.05em;text-transform:uppercase;
+    background:#242a30;color:#cdd4cd;border:1px solid #3a424a;border-radius:6px;
+    padding:8px 12px;cursor:pointer;transition:.15s;
+  }
+  button.ctl:hover{background:#2f363d;color:#fff;border-color:var(--accent)}
+
+  /* ---------- Layout ---------- */
+  main{max-width:1080px;margin:0 auto;padding:28px clamp(14px,4vw,40px) 80px}
+
+  /* ---------- Server legend / naming ---------- */
+  .servers{
+    background:var(--panel);border:1px solid var(--line);border-radius:12px;
+    padding:18px 20px;margin-bottom:28px;
+    box-shadow:0 1px 2px rgba(20,24,20,.04);
+  }
+  .servers h2{margin:0 0 4px;font-size:14px;letter-spacing:.02em}
+  .servers p.hint{margin:0 0 14px;font-size:12.5px;color:var(--muted)}
+  .server-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:10px}
+  .server-field{display:flex;flex-direction:column;gap:4px}
+  .server-field label{
+    font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;
+    display:flex;align-items:center;gap:6px;color:var(--muted);
+  }
+  .tag{
+    display:inline-block;font-family:var(--mono);font-size:9.5px;font-weight:600;
+    padding:2px 6px;border-radius:4px;letter-spacing:.04em;
+  }
+  .tag.fe{background:var(--fe-soft);color:var(--fe)}
+  .tag.app{background:var(--app-soft);color:var(--app)}
+  .server-field input{
+    font-family:var(--mono);font-size:13px;padding:7px 9px;
+    border:1px solid var(--line-strong);border-radius:6px;background:#fbfcfa;color:var(--ink);
+  }
+  .server-field input:focus{outline:2px solid var(--accent-soft);border-color:var(--accent)}
+
+  /* ---------- Phase ---------- */
+  .phase{margin-bottom:30px}
+  .phase-head{
+    display:flex;align-items:baseline;gap:12px;padding:0 2px 10px;
+    border-bottom:2px solid var(--ink);margin-bottom:2px;
+  }
+  .phase-num{font-family:var(--mono);font-size:13px;color:var(--accent);font-weight:700}
+  .phase-head h3{margin:0;font-size:17px;letter-spacing:-.01em;flex:1}
+  .phase-count{font-family:var(--mono);font-size:11.5px;color:var(--muted)}
+
+  /* ---------- Task row ---------- */
+  .task{
+    background:var(--panel);border:1px solid var(--line);border-top:none;
+    padding:14px 16px;display:flex;gap:14px;align-items:flex-start;
+  }
+  .task:first-of-type{border-top:1px solid var(--line);border-radius:0}
+  .phase .task:nth-of-type(2){border-top:none}
+  .task .body{flex:1;min-width:0}
+  .task .txt{font-size:14.5px}
+  .task .meta{font-size:12.5px;color:var(--muted);margin-top:3px}
+  .task code, .cmd{
+    font-family:var(--mono);font-size:12.5px;background:#eef1ec;color:#2c3a35;
+    padding:1.5px 6px;border-radius:4px;border:1px solid #e0e5dd;word-break:break-all;
+  }
+  .cmd{display:inline-block;margin-top:6px;padding:5px 9px}
+
+  /* scope + checkboxes */
+  .scope{flex:0 0 auto;display:flex;flex-direction:column;align-items:flex-end;gap:7px;min-width:132px}
+  .scope-label{
+    font-family:var(--mono);font-size:9.5px;letter-spacing:.06em;text-transform:uppercase;
+    padding:2px 7px;border-radius:4px;font-weight:600;white-space:nowrap;
+  }
+  .scope-label.all{background:var(--accent-soft);color:var(--accent)}
+  .scope-label.fe{background:var(--fe-soft);color:var(--fe)}
+  .scope-label.app{background:var(--app-soft);color:var(--app)}
+  .scope-label.farm{background:var(--farm-soft);color:var(--farm)}
+
+  .checks{display:flex;gap:5px;flex-wrap:wrap;justify-content:flex-end}
+  .chk{
+    position:relative;width:34px;height:34px;flex:0 0 auto;cursor:pointer;
+    border:1.5px solid var(--line-strong);border-radius:7px;background:#fbfcfa;
+    display:flex;align-items:center;justify-content:center;
+    font-family:var(--mono);font-size:9.5px;font-weight:700;color:var(--muted);
+    transition:.14s;user-select:none;
+  }
+  .chk small{line-height:1;pointer-events:none}
+  .chk:hover{border-color:var(--accent);background:var(--accent-soft)}
+  .chk.on{background:var(--done);border-color:var(--done);color:#fff;}
+  .chk.on::after{
+    content:"✓";position:absolute;font-size:16px;color:#fff;
+  }
+  .chk.on small{opacity:0;}
+  .chk.single{width:auto;min-width:46px;padding:0 12px;border-radius:7px;height:34px}
+  .chk.single::after{position:static;margin-right:2px}
+
+  /* done row styling */
+  .task.complete{background:var(--done-soft);border-color:#cfe6d7}
+  .task.complete .txt{color:#2c4a3a}
+
+  footer{
+    text-align:center;color:var(--muted);font-size:12px;padding:20px;
+    font-family:var(--mono);letter-spacing:.03em;
+  }
+
+  /* ---------- Print ---------- */
+  @media print{
+    header{position:static;color:#000;background:#fff;border-bottom:2px solid #000}
+    .eyebrow,.sub{color:#333}
+    .hbtns,.progress,.pct{display:none}
+    body{background:#fff}
+    .chk{border-color:#888}
+    .chk.on{background:#fff;color:#000;border-color:#000}
+    .chk.on::after{color:#000}
+    .task,.servers{box-shadow:none;break-inside:avoid}
+    .phase{break-inside:avoid-page}
+    button.ctl{display:none}
+    header{position:static}
+  }
+</style>
+</head>
+<body>
+<header>
+  <p class="eyebrow">ZATCA · Anaam eServices · SharePoint Subscription Edition</p>
+  <h1>Upgrade &amp; Server Setup Checklist</h1>
+  <p class="sub">In-place upgrade roadmap across 3 front-end and 3 application servers. Tick each server as its step completes — progress is saved in this browser automatically.</p>
+  <div class="bar-wrap">
+    <div class="progress"><i id="bar"></i></div>
+    <span class="pct" id="pct">0%</span>
+    <div class="hbtns">
+      <button class="ctl" onclick="window.print()">Print / PDF</button>
+      <button class="ctl" onclick="resetAll()">Reset</button>
+    </div>
+  </div>
+</header>
+
+<main>
+  <!-- Server naming -->
+  <section class="servers">
+    <h2>Server inventory</h2>
+    <p class="hint">Name your six servers here — labels flow into every "all servers" step below. Do the application servers first so Central Administration lands there.</p>
+    <div class="server-grid" id="serverGrid"></div>
+  </section>
+
+  <div id="phases"></div>
+
+  <footer>SharePoint SE upgrade runbook · keep this tab open while you work</footer>
+</main>
+
+<script>
+/* ---------------- Data model ---------------- */
+const SERVERS = [
+  {id:"app1", role:"app", def:"App Server 1"},
+  {id:"app2", role:"app", def:"App Server 2"},
+  {id:"app3", role:"app", def:"App Server 3"},
+  {id:"fe1",  role:"fe",  def:"Front-End 1"},
+  {id:"fe2",  role:"fe",  def:"Front-End 2"},
+  {id:"fe3",  role:"fe",  def:"Front-End 3"},
+];
+
+// scope: "all" (6), "app" (3), "fe" (3), "farm" (1 once)
+const PHASES = [
+  {
+    title:"Old Environment Preparation",
+    tasks:[
+      {t:"Install latest Cumulative Update on the existing farm — SharePoint and Language Pack.", scope:"all", m:"Bring old environment fully patched before migration."},
+    ]
+  },
+  {
+    title:"Prerequisites (SharePoint SE)",
+    tasks:[
+      {t:'Copy SharePoint setup <code>OfficeServer.iso</code> to <code>E:\\Sources</code>.', scope:"all"},
+      {t:'Copy <code>NDP48-x86-x64-AllOS-ENU.exe</code> &amp; <code>VC_redist.x64.exe</code> to <code>E:\\Sources\\SP_Prereqs</code>.', scope:"all"},
+      {t:'Mount <code>OfficeServer.iso</code>.', scope:"all"},
+      {t:'Run <code>prerequisiteinstaller.exe</code> as administrator.', scope:"all"},
+      {t:"Restart server.", scope:"all"},
+    ]
+  },
+  {
+    title:"Binary Installation",
+    tasks:[
+      {t:"Grant the Farm admin service account local administration on the server and DB ownership on the SQL server.", scope:"all"},
+      {t:"Log in to the server with the Farm admin service account.", scope:"all"},
+      {t:'Mount <code>OfficeServer.iso</code> and run <code>setup.exe</code> as administrator.', scope:"all"},
+      {t:'Enter product key <code>VW2FM-FN9FT-H22J4-WV9GT-H8VKF</code>. Re-activate with the official key after setup.', scope:"all", m:"Trial/eval key — replace with licensed key post-install."},
+      {t:"Restart server after binaries install.", scope:"all"},
+    ]
+  },
+  {
+    title:"Farm Configuration Wizard",
+    tasks:[
+      {t:"Run the SharePoint Products Configuration Wizard as admin — <strong>application servers first</strong> so Central Administration is hosted there. Memorize the pass phrase for the remaining servers.", scope:"app", m:"App servers create/join the farm before front-ends."},
+      {t:"Run the configuration wizard on the front-end servers, joining the same farm with the pass phrase.", scope:"fe"},
+      {t:"Run the Service Application Wizard from Central Administration.", scope:"farm", m:"Once, from the farm's Central Admin."},
+    ]
+  },
+  {
+    title:"Root Site & Language Pack",
+    tasks:[
+      {t:"Create the root site collection using the Farm admin account.", scope:"farm"},
+      {t:'Mount the Server Language Pack and run <code>setup.exe</code>.', scope:"all"},
+      {t:"Re-run the configuration wizard on all servers once the language pack finishes installing everywhere.", scope:"all", m:"Wizard re-triggers across the farm."},
+    ]
+  },
+  {
+    title:"Security Update",
+    tasks:[
+      {t:'Install the latest security update on all servers — <code>uber-subscription-kb5002882-fullfile-x64-glb</code>.', scope:"all"},
+      {t:"Re-run the configuration wizard on all servers after the update completes farm-wide.", scope:"all"},
+      {t:"Run the PowerShell command provided by the configuration wizard, then run the wizard again.", scope:"farm", m:"Post-update PSConfig command from the wizard prompt."},
+      {t:"Check farm information / build version.", scope:"farm"},
+    ]
+  },
+  {
+    title:"Content Database Migration",
+    tasks:[
+      {t:"Mount the old content database into the new farm.", scope:"farm"},
+      {t:"Remove the current (placeholder) content database.", scope:"farm"},
+      {t:"Update the site collection administrators.", scope:"farm"},
+      {t:"Configure Alternate Access Mappings (AAM).", scope:"farm"},
+    ]
+  },
+  {
+    title:"Solution Deployment",
+    tasks:[
+      {t:"Reset IIS on both front-end and application servers.", scope:"all"},
+      {t:"Deploy all WSP solutions.", scope:"farm"},
+      {t:"Deploy global solutions manually.", scope:"farm"},
+      {t:"Copy common assemblies to the GAC (all versions), then stop IIS &amp; the SharePoint Timer service.", scope:"all", m:"Stop services before swapping GAC assemblies."},
+      {t:"Start IIS &amp; the SharePoint Timer service.", scope:"all"},
+    ]
+  },
+  {
+    title:"Web.config / Farm Post-Config",
+    tasks:[
+      {t:"Apply machine key &amp; membership provider entries with the correct connection string.", scope:"farm", m:"FBA membership/role providers + machineKey."},
+      {t:'Update connection strings — replace DB server name; set <code>SiteUrl</code> and form data-source entries.', scope:"farm"},
+      {t:"Configure the DB user on the SQL server and update OWS config.", scope:"farm"},
+      {t:'Copy DGA files, images (<code>...\\LAYOUTS\\1025\\IMAGES</code>), control templates and master pages.', scope:"all", m:"App_GlobalResources, CONTROLTEMPLATES\\MasterPage, CONTROLTEMPLATES\\Common."},
+      {t:'Copy <code>ZATCALogin.ar-SA</code> and Security Token web service files.', scope:"all"},
+    ]
+  },
+];
+
+/* ---------------- State ---------------- */
+const KEY = "sp_se_checklist_v1";
+let state = load();
+function load(){
+  try{ return JSON.parse(localStorage.getItem(KEY)) || {checks:{}, names:{}}; }
+  catch(e){ return {checks:{}, names:{}}; }
+}
+function save(){ try{ localStorage.setItem(KEY, JSON.stringify(state)); }catch(e){} }
+
+/* ---------------- Render server inventory ---------------- */
+const grid = document.getElementById("serverGrid");
+SERVERS.forEach(s=>{
+  const wrap = document.createElement("div");
+  wrap.className="server-field";
+  const roleTag = s.role==="fe"?'<span class="tag fe">Front-End</span>':'<span class="tag app">App</span>';
+  wrap.innerHTML = `<label>${s.id.toUpperCase()} ${roleTag}</label>
+    <input type="text" data-sid="${s.id}" placeholder="${s.def}" value="${state.names[s.id]||""}">`;
+  grid.appendChild(wrap);
+});
+grid.addEventListener("input", e=>{
+  const sid = e.target.dataset.sid;
+  if(sid){ state.names[sid]=e.target.value; save(); refreshLabels(); }
+});
+function serverLabel(s){ return (state.names[s.id]&&state.names[s.id].trim()) || s.def; }
+function shortLabel(s){
+  const n = serverLabel(s);
+  return n.length>10 ? n.slice(0,9)+"…" : n;
+}
+
+/* ---------------- Render phases ---------------- */
+const phasesEl = document.getElementById("phases");
+let taskCounter = 0;
+const allCheckIds = [];
+
+PHASES.forEach((ph, pi)=>{
+  const sec = document.createElement("section");
+  sec.className="phase";
+  const head = document.createElement("div");
+  head.className="phase-head";
+  head.innerHTML = `<span class="phase-num">${String(pi+1).padStart(2,"0")}</span>
+    <h3>${ph.title}</h3><span class="phase-count" data-pcount="${pi}"></span>`;
+  sec.appendChild(head);
+
+  ph.tasks.forEach(task=>{
+    const tid = "t"+(taskCounter++);
+    const row = document.createElement("div");
+    row.className="task";
+    row.dataset.tid = tid;
+
+    let scopeCls, scopeTxt, targets;
+    if(task.scope==="all"){ scopeCls="all"; scopeTxt="All 6 servers"; targets=SERVERS; }
+    else if(task.scope==="app"){ scopeCls="app"; scopeTxt="App servers"; targets=SERVERS.filter(s=>s.role==="app"); }
+    else if(task.scope==="fe"){ scopeCls="fe"; scopeTxt="Front-end"; targets=SERVERS.filter(s=>s.role==="fe"); }
+    else { scopeCls="farm"; scopeTxt="Farm · once"; targets=[{id:"farm",farm:true}]; }
+
+    let checksHtml="";
+    targets.forEach(s=>{
+      const cid = tid+"_"+s.id;
+      allCheckIds.push(cid);
+      const on = state.checks[cid] ? "on":"";
+      if(s.farm){
+        checksHtml += `<div class="chk single ${on}" data-cid="${cid}"><small>DONE</small></div>`;
+      }else{
+        checksHtml += `<div class="chk ${on}" data-cid="${cid}" data-sid="${s.id}"><small class="cl">${s.id.toUpperCase()}</small></div>`;
+      }
+    });
+
+    row.innerHTML = `
+      <div class="scope">
+        <span class="scope-label ${scopeCls}">${scopeTxt}</span>
+        <div class="checks">${checksHtml}</div>
+      </div>
+      <div class="body">
+        <div class="txt">${task.t}</div>
+        ${task.m?`<div class="meta">${task.m}</div>`:""}
+      </div>`;
+    sec.appendChild(row);
+  });
+  phasesEl.appendChild(sec);
+});
+
+/* ---------------- Interaction ---------------- */
+phasesEl.addEventListener("click", e=>{
+  const chk = e.target.closest(".chk");
+  if(!chk) return;
+  const cid = chk.dataset.cid;
+  state.checks[cid] = !state.checks[cid];
+  chk.classList.toggle("on", state.checks[cid]);
+  save(); updateProgress(); markRow(chk.closest(".task"));
+});
+
+function markRow(row){
+  const boxes = [...row.querySelectorAll(".chk")];
+  const done = boxes.every(b=>b.classList.contains("on"));
+  row.classList.toggle("complete", done);
+}
+
+function refreshLabels(){
+  document.querySelectorAll(".chk[data-sid] .cl").forEach(el=>{
+    // keep short id label on the box; tooltip carries full name
+    const box = el.closest(".chk");
+    const sid = box.dataset.sid;
+    const s = SERVERS.find(x=>x.id===sid);
+    if(s) box.title = serverLabel(s);
+  });
+}
+
+function updateProgress(){
+  const total = allCheckIds.length;
+  const done = allCheckIds.filter(id=>state.checks[id]).length;
+  const p = total? Math.round(done/total*100):0;
+  document.getElementById("bar").style.width = p+"%";
+  document.getElementById("pct").textContent = p+"%";
+  // per-phase counts
+  document.querySelectorAll("[data-pcount]").forEach(el=>{
+    const sec = el.closest(".phase");
+    const boxes = [...sec.querySelectorAll(".chk")];
+    const d = boxes.filter(b=>b.classList.contains("on")).length;
+    el.textContent = d+" / "+boxes.length;
+  });
+}
+
+function resetAll(){
+  if(!confirm("Clear all ticked items? Server names are kept.")) return;
+  state.checks = {}; save();
+  document.querySelectorAll(".chk.on").forEach(b=>b.classList.remove("on"));
+  document.querySelectorAll(".task.complete").forEach(r=>r.classList.remove("complete"));
+  updateProgress();
+}
+
+/* ---------------- Init ---------------- */
+document.querySelectorAll(".task").forEach(markRow);
+refreshLabels();
+updateProgress();
+</script>
+</body>
+</html>
