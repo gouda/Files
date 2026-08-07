@@ -36,6 +36,84 @@ body{
 
 .wrap{max-width:1080px;margin:0 auto;padding:0 20px 100px}
 
+/* ---------- TOP NAV ---------- */
+.topnav{
+  position:sticky;
+  top:0;
+  z-index:60;
+  background:var(--paper);
+  border-bottom:2px solid var(--ink);
+  box-shadow:0 2px 0 rgba(200,191,169,.35);
+}
+.topnav__inner{
+  max-width:1080px;
+  margin:0 auto;
+  padding:0 20px;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  min-height:52px;
+  flex-wrap:wrap;
+}
+.topnav__brand{
+  font-family:'Reem Kufi';
+  font-weight:700;
+  font-size:.95rem;
+  color:var(--stamp);
+  white-space:nowrap;
+  letter-spacing:.02em;
+}
+.topnav__toggle{
+  display:none;
+  margin-inline-start:auto;
+  background:none;
+  border:1.5px solid var(--ink);
+  color:var(--ink);
+  font-family:'IBM Plex Sans Arabic';
+  font-size:.82rem;
+  font-weight:600;
+  padding:7px 14px;
+  cursor:pointer;
+}
+.topnav__toggle:active{background:var(--paper-2)}
+.topnav__links{
+  display:flex;
+  gap:2px;
+  flex-wrap:wrap;
+  margin-inline-start:auto;
+}
+.topnav__links a{
+  font-size:.78rem;
+  font-weight:600;
+  color:var(--muted);
+  text-decoration:none;
+  padding:8px 10px;
+  border-bottom:2px solid transparent;
+  transition:.15s;
+}
+.topnav__links a:hover{color:var(--stamp);border-bottom-color:var(--stamp)}
+@media(max-width:760px){
+  .topnav__toggle{display:block}
+  .topnav__links{
+    display:none;
+    flex-direction:column;
+    width:100%;
+    gap:6px;
+    padding:4px 0 12px;
+    margin-inline-start:0;
+  }
+  .topnav__links.open{display:flex}
+  .topnav__links a{
+    border:1px solid var(--rule);
+    background:var(--paper-2);
+    padding:12px 14px;
+    font-size:.9rem;
+    border-bottom:1px solid var(--rule);
+  }
+  .topnav__links a:hover{border-color:var(--stamp)}
+}
+.sec, .hero{scroll-margin-top:64px}
+
 /* ---------- HERO ---------- */
 .hero{
   padding:48px 0 26px;
@@ -660,6 +738,7 @@ CONTEXT / HISTORY BLOCK — مخفي عن العرض. لو الملف اترفع
 كبدة وقوانص: اسكندراني (الأسبوع 4) · كبدة بدبس الرمان · قوانص مقرمشة — سلقة واحدة يومين. الكبدة مرة أسبوعياً.
 حمام: مفرود قلاية (الأسبوع 4) · محشي فريك بسلق قبل الفرن · حلة على البصل بالمستكة (12–15 د) · شوربة بالليمون. فرنساوي للشوي، بلدي للشوربة.
 بطاطا حلوة: ودجز قلاية · مشوية بالقرفة · للمستقبل: بيوريه بالقرفة جنب البط/الحمام · محشية تونة أو وراك.
+خضار مشكل سوتيه (اتضافت كوصفة 12 بطلبه 7/8 — التكنيك الثابت): طاسة واسعة أعلى نار، من المجمد مباشرة بدون تسييح، طبقة واحدة ومتزحمش، أول دقيقتين من غير لمس، التوم في النص مش الأول، الملح آخر حاجة (بدري = سلق)، عصرة ليمون. 200 جم = ~60.
 سالمون: كرسبي قلاية (نجح 5/8) · بالشبت والليمون فرن · بصوص الطحينة فرن.
 فواكه بيحبها: بطيخ، موز، تفاح، رمان، برقوق، مشمش.
 
@@ -684,6 +763,21 @@ CONTEXT / HISTORY BLOCK — مخفي عن العرض. لو الملف اترفع
 【 قواعد ثابتة 】
 3 أيام تمرين (أربع/سبت/اتنين) · هدف ~−1.2/أسبوع · سعرات صافي 1350–1500 · بروتين 145–165 جم · شنطة عازلة + آيس باك · الكبدة مرة أسبوعياً · الجاهز يتاكل الأول · بخة سبراي مش زيت · الجلد يتشال قبل التتبيل · البطاطا بديل نشويات مش زيادة · فاكهة كاملة والعصير ممنوع · 3 لتر مية.
 ═══════════════════════════════════════════════════════════════ -->
+<nav class="topnav">
+  <div class="topnav__inner">
+    <span class="topnav__brand">٩٢٫٧ ← ٩١٫٥</span>
+    <button class="topnav__toggle" id="navToggle" aria-expanded="false" aria-controls="navLinks">☰ الأقسام</button>
+    <div class="topnav__links" id="navLinks">
+      <a href="#sec-week">الأسبوع</a>
+      <a href="#sec-map">خريطة التلاجة</a>
+      <a href="#sec-rules">القواعد</a>
+      <a href="#sec-recipes">الوصفات</a>
+      <a href="#sec-portions">الكميات</a>
+      <a href="#sec-chess">الشطرنج</a>
+      <a href="#sec-weigh">الانبودي</a>
+    </div>
+  </div>
+</nav>
 <div class="wrap">
 <!-- ================= HERO ================= -->
 <header class="hero">
@@ -729,7 +823,7 @@ CONTEXT / HISTORY BLOCK — مخفي عن العرض. لو الملف اترفع
 </div>
 
 <!-- ================= DAYS / CALENDAR ================= -->
-<section class="sec">
+<section class="sec" id="sec-week">
   <div class="sec__head"><h2>الأسبوع — دوس على اليوم</h2></div>
   <p class="sec__note">التقويم بيعرض يوم واحد بس — النهاردة بيتفتح لوحده، والشريط تحت كل يوم بيوريك قد إيه اتعلم عليه. السطور الخضرا = الوصفات الجديدة، والسطر الأزرق الأخير = تجهيزة بكرة.</p>
   <div class="cal" id="cal"></div>
@@ -741,7 +835,7 @@ CONTEXT / HISTORY BLOCK — مخفي عن العرض. لو الملف اترفع
 </section>
 
 <!-- ================= MAP ================= -->
-<section class="sec">
+<section class="sec" id="sec-map">
   <div class="sec__head"><h2>خريطة التلاجة والفريزر</h2></div>
   <p class="sec__note">الصورة بعد الجرد والشراء — كل صنف مكتوب جنبه يومه.</p>
   <div class="rules">
@@ -753,7 +847,7 @@ CONTEXT / HISTORY BLOCK — مخفي عن العرض. لو الملف اترفع
 </section>
 
 <!-- ================= RULES ================= -->
-<section class="sec">
+<section class="sec" id="sec-rules">
   <div class="sec__head"><h2>قواعد الأسبوع</h2></div>
   <div class="rules">
     <div class="rule"><h4>الجاهز الأول · فلسفة ثابتة</h4><p>اللي متطبخ ومتعلب بياكل قبل أي طبخ جديد — دي القاعدة اللي نجّحت الأسبوع اللي فات. أول ٣ أيام كلها من الرصيد الجاهز.</p></div>
@@ -774,9 +868,9 @@ CONTEXT / HISTORY BLOCK — مخفي عن العرض. لو الملف اترفع
 </section>
 
 <!-- ================= PREP ================= -->
-<section class="sec">
-  <div class="sec__head"><h2>وصفات الأسبوع — ١١ وصفة · مفيش طريقة بتتكرر</h2></div>
-  <p class="sec__note">قصدير فرن بطيء · حلة ضغط ×٢ · طاجن بوتوجاز · قلاية هوائية ×٢ · فرن ×٣ · طاسة ×٣ · لفافة تنور — ومفيش زيت غير بخة سبراي. (السالمون الكرسبي في القلاية اتعمل الأربع ونجح ✓ — اتشال من القايمة ومحفوظ في البنك). <b>علّم في المربع جنب أي وصفة أول ما تعملها.</b></p>
+<section class="sec" id="sec-recipes">
+  <div class="sec__head"><h2>وصفات الأسبوع — ١٢ وصفة · مفيش طريقة بتتكرر</h2></div>
+  <p class="sec__note">قصدير فرن بطيء · حلة ضغط ×٢ · طاجن بوتوجاز · قلاية هوائية ×٢ · فرن ×٣ · طاسة ×٤ · لفافة تنور — ومفيش زيت غير بخة سبراي. (السالمون الكرسبي في القلاية اتعمل الأربع ونجح ✓ — اتشال من القايمة ومحفوظ في البنك). <b>علّم في المربع جنب أي وصفة أول ما تعملها.</b></p>
 
   <details class="prep" open>
     <summary class="prep__head"><input type="checkbox" class="prep__check" title="اتعملت"><span class="prep__idx">١</span> موزة ضاني في حلة الضغط — السبت · أول خطوة في الباتش<span class="prep__when">٤٥ دقيقة ضغط</span><span class="prep__chev">▾</span></summary>
@@ -932,13 +1026,25 @@ CONTEXT / HISTORY BLOCK — مخفي عن العرض. لو الملف اترفع
         <li>صينية بورق زبدة، فرن مسخن <b>٢٠٠° لمدة ٢٠–٢٥ دقيقة</b> — من غير تقليب. آخر ٣ دقايق شواية علوية الجلد ياخد قرمشة.</li>
         <li>علامة الاستواء: <b>العين تبيض واللحم يسيب العظم بالشوكة</b> — عصرة ليمون كبيرة وهي سخنة.</li>
       </ol>
-      <span class="yield">عشا الحد · حصتك من السمكة ~٤٠٠ سعر مع الخضار · ~٣٥ جم بروتين</span>
+  <details class="prep">
+    <summary class="prep__head"><input type="checkbox" class="prep__check" title="اتعملت"><span class="prep__idx">١٢</span> خضار مشكل سوتيه — الطبق الجانبي الثابت<span class="prep__when">طاسة · ٨–١٠ دقايق</span><span class="prep__chev">▾</span></summary>
+    <div class="prep__body">
+      <p style="font-size:.86rem;color:var(--muted);padding-top:12px">ده اللي بيقعد جنب السالمون الجمعة والدنيس الحد وجوه رز الاتنين — والفرق بين خضار مسلوق طري وخضار سوتيه محمر هو ٣ حاجات: نار عالية، طاسة واسعة، ومتقلبش كتير. من المجمد على طول من غير تسييح.</p>
+      <ol>
+        <li>طاسة <b>واسعة</b> على <b>أعلى نار</b> تسخن فاضية دقيقتين — لازم تكون سخنة جداً قبل ما أي حاجة تنزل فيها. بخة سبراي.</li>
+        <li>الخضار <b>مجمد زي ما هو</b> (٢٠٠ جم ≈ نص كيس): افرده <b>طبقة واحدة</b> ومتزحمش الطاسة — لو كتير اعمله دفعتين. الزحمة = المية تطلع والخضار يتسلق بدل ما يتحمر.</li>
+        <li><b>أول دقيقتين من غير أي لمس</b> — سيب المية اللي طالعة من التلج تتبخر والوش اللي على الطاسة ياخد لون. بعدها قلبة كل دقيقة، مش تقليب مستمر.</li>
+        <li>لما المية تخلص والخضار يبدأ ياخد حواف بنية (٥–٦ دقايق): فص توم مفروم + كمون وبابريكا وفلفل — التوم دلوقتي مش من الأول عشان ميتحرقش.</li>
+        <li><b>الملح آخر حاجة</b> — لو نزل بدري بيسحب المية ويرجّعك للسلق. طفي النار وعصرة ليمون.</li>
+        <li>نفس الطريقة بالظبط للبروكلي لوحده — بس البروكلي استحمل دقيقة زيادة من غير تقليب ياخد تحمير أحلى.</li>
+      </ol>
+      <span class="yield">حصة ٢٠٠ جم = ~٦٠ سعر · جاهزة تتكرر مع أي عشا</span>
     </div>
   </details>
 </section>
 
 <!-- ================= PORTIONS ================= -->
-<section class="sec">
+<section class="sec" id="sec-portions">
   <div class="sec__head"><h2>الكميات بالجرام</h2></div>
   <div class="ptable">
     <table>
@@ -984,7 +1090,7 @@ CONTEXT / HISTORY BLOCK — مخفي عن العرض. لو الملف اترفع
 </section>
 
 <!-- ================= CHESS ================= -->
-<section class="sec">
+<section class="sec" id="sec-chess">
   <div class="sec__head"><h2>الشطرنج · ٩ – ١٠ م · أسبوع الغلطة المتكررة</h2></div>
   <p class="sec__note">قفلت الأسبوع اللي فات بسؤال: إيه أكتر غلطة بتتكرر في نوتتك؟ إجابتك هي مشروع الأسبوع — كل جلسة مبنية عليها. وكل حاجة هنا مكتوبة بالبلدي، ومكانها في chess.com بالخطوات في الدليل اللي تحت.</p>
   <div class="rules">
@@ -1012,7 +1118,7 @@ CONTEXT / HISTORY BLOCK — مخفي عن العرض. لو الملف اترفع
 </section>
 
 <!-- ================= WEIGH IN ================= -->
-<section class="sec">
+<section class="sec" id="sec-weigh">
   <div class="sec__head"><h2>الانبودي — بداية وقفلة</h2></div>
   <p class="sec__note"><b>البداية اتسجلت ✓: 92.7</b> (الأربع ٥/٨ · ٦:١١ م — متكتبة في الخانة). <b>القفلة: الأربع ١٢ أغسطس</b> نفس الجهاز نفس الظروف (~٦ م · معدة شبه فاضية · الكافيين الصبح بس) — الهدف: <b>91.5 أو أقل</b>.</p>
   <div class="weigh">
@@ -1269,6 +1375,22 @@ function diff(){
 document.getElementById("w1").addEventListener("input",diff);
 document.getElementById("w2").addEventListener("input",diff);
 diff();
+
+/* ---------- TOP NAV (mobile toggle) ---------- */
+const navToggle = document.getElementById("navToggle");
+const navLinks = document.getElementById("navLinks");
+navToggle.addEventListener("click", ()=>{
+  const open = navLinks.classList.toggle("open");
+  navToggle.setAttribute("aria-expanded", open ? "true" : "false");
+  navToggle.textContent = open ? "✕ اقفل" : "☰ الأقسام";
+});
+navLinks.querySelectorAll("a").forEach(a=>{
+  a.addEventListener("click", ()=>{
+    navLinks.classList.remove("open");
+    navToggle.setAttribute("aria-expanded","false");
+    navToggle.textContent = "☰ الأقسام";
+  });
+});
 
 /* ---------- RECIPE CHECKS ---------- */
 const RKEY = "cut2kg_w4_recipes_v2";
