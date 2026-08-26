@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>مقترح اعتماد GitHub Copilot لفريق تطوير البوابة الإلكترونية</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=Readex+Pro:wght@500;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#14213D;
+    --ink-2:#3B4761;
+    --muted:#6B7488;
+    --paper:#F5F7FA;
+    --card:#FFFFFF;
+    --line:#DDE2EA;
+    --teal:#0F766E;
+    --teal-soft:#E3F3F1;
+    --amber:#B5720A;
+    --amber-soft:#FBF1DC;
+    --red:#B42318;
+    --red-soft:#FCEBE9;
+    --radius:10px;
+    --body:'IBM Plex Sans Arabic','Segoe UI',Tahoma,system-ui,sans-serif;
+    --display:'Readex Pro','IBM Plex Sans Arabic','Segoe UI',sans-serif;
+    --mono:'IBM Plex Mono',Consolas,monospace;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.85}
+  a{color:var(--teal)}
+  h1,h2,h3,h4{font-family:var(--display);line-height:1.35;margin:0}
+  p{margin:0 0 12px}
+  code,.mono{font-family:var(--mono);font-size:.88em;direction:ltr;unicode-bidi:embed;background:#EEF1F5;padding:1px 6px;border-radius:5px;color:var(--ink)}
+  pre{font-family:var(--mono);direction:ltr;text-align:left;background:#101828;color:#E6EAF0;padding:16px 18px;border-radius:var(--radius);overflow:auto;font-size:.84rem;line-height:1.6;margin:12px 0}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 28px}
+
+  /* ---------- header / cover ---------- */
+  .cover{background:var(--card);border-bottom:1px solid var(--line)}
+  .cover .wrap{padding-top:48px;padding-bottom:40px}
+  .eyebrow{display:inline-block;font-size:.8rem;font-weight:600;letter-spacing:.02em;color:var(--teal);background:var(--teal-soft);padding:4px 12px;border-radius:999px;margin-bottom:18px}
+  .cover h1{font-size:2.2rem;font-weight:700;max-width:820px;margin-bottom:12px}
+  .cover .lead{font-size:1.1rem;color:var(--ink-2);max-width:760px}
+  
+  /* ---------- nav ---------- */
+  .toc{position:sticky;top:0;z-index:5;background:rgba(245,247,250,.92);backdrop-filter:blur(6px);border-bottom:1px solid var(--line)}
+  .toc .wrap{display:flex;gap:6px;overflow-x:auto;padding-top:10px;padding-bottom:10px;scrollbar-width:none}
+  .toc a{white-space:nowrap;font-size:.84rem;text-decoration:none;color:var(--ink-2);padding:6px 12px;border-radius:999px;border:1px solid transparent}
+  .toc a:hover,.toc a:focus-visible{border-color:var(--line);background:var(--card);outline:none}
+
+  /* ---------- sections ---------- */
+  section{padding:48px 0 8px}
+  .sec-head{display:flex;align-items:baseline;gap:14px;margin-bottom:22px}
+  .sec-head h2{font-size:1.55rem;font-weight:700}
+  .sec-head .num{font-family:var(--mono);font-size:.8rem;color:var(--muted);border:1px solid var(--line);border-radius:6px;padding:2px 8px;direction:ltr}
+  .intro{color:var(--ink-2);max-width:820px;margin-bottom:22px}
+
+  .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:22px 24px;margin-bottom:16px}
+  .card h3{font-size:1.08rem;font-weight:700;margin-bottom:10px}
+  .grid{display:grid;gap:16px}
+  .grid-2{grid-template-columns:repeat(2,1fr)}
+  .grid-3{grid-template-columns:repeat(3,1fr)}
+  .grid-4{grid-template-columns:repeat(4,1fr)}
+  @media (max-width:820px){.grid-2,.grid-3,.grid-4{grid-template-columns:1fr}}
+
+  .kpi{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:18px 20px}
+  .kpi .v{font-family:var(--display);font-size:1.6rem;font-weight:700;color:var(--teal);direction:ltr;text-align:right}
+  .kpi .l{font-size:.86rem;color:var(--muted);margin-top:2px}
+
+  ul{padding-right:22px;margin:6px 0 12px}
+  li{margin-bottom:6px}
+  .tight li{margin-bottom:3px}
+
+  table{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;font-size:.93rem;margin:10px 0 18px}
+  th,td{padding:12px 14px;border-bottom:1px solid var(--line);vertical-align:top;text-align:right}
+  th{background:#F0F3F7;font-weight:600;color:var(--ink-2);font-size:.86rem}
+  tr:last-child td{border-bottom:none}
+  td .mono{white-space:nowrap}
+  .tbl-wrap{overflow-x:auto}
+
+  .tag{display:inline-block;font-size:.76rem;font-weight:600;padding:2px 9px;border-radius:999px;white-space:nowrap}
+  .tag.t{background:var(--teal-soft);color:var(--teal)}
+  .tag.a{background:var(--amber-soft);color:var(--amber)}
+  .tag.r{background:var(--red-soft);color:var(--red)}
+  .tag.g{background:#EEF1F5;color:var(--ink-2)}
+
+  .note{border-right:4px solid var(--amber);background:var(--amber-soft);padding:14px 18px;border-radius:8px;margin:14px 0;font-size:.94rem}
+  .note.ok{border-right-color:var(--teal);background:var(--teal-soft)}
+  .note.bad{border-right-color:var(--red);background:var(--red-soft)}
+  .note b{font-weight:700}
+
+  /* ---------- pipeline (signature) ---------- */
+  .pipe{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:26px 22px 18px;overflow-x:auto}
+  .rail{display:flex;align-items:flex-start;gap:0;min-width:900px}
+  .stage{flex:1;position:relative;padding:0 6px;text-align:center}
+  .stage::before{content:"";position:absolute;top:22px;right:0;left:0;height:2px;background:var(--line)}
+  .stage:first-child::before{right:50%}
+  .stage:last-child::before{left:50%}
+  .dot{position:relative;z-index:1;width:46px;height:46px;border-radius:50%;margin:0 auto;background:var(--card);border:2px solid var(--ink-2);display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:.7rem;color:var(--ink-2);direction:ltr}
+  .stage.env .dot{border-color:var(--muted);border-style:dashed}
+  .stage .name{font-weight:600;font-size:.86rem;margin-top:10px}
+  .stage .who{font-size:.74rem;color:var(--muted)}
+  .stage .ai{margin-top:10px;font-size:.74rem;line-height:1.5;background:var(--teal-soft);color:var(--teal);border-radius:8px;padding:6px 8px;min-height:56px}
+  .stage .ai.none{background:#F0F3F7;color:var(--muted)}
+  .stage .ai.partial{background:var(--amber-soft);color:var(--amber)}
+  .legend{display:flex;gap:18px;flex-wrap:wrap;margin-top:18px;font-size:.8rem;color:var(--muted)}
+  .legend span::before{content:"";display:inline-block;width:12px;height:12px;border-radius:3px;margin-left:6px;vertical-align:-1px}
+  .legend .l1::before{background:var(--teal-soft);border:1px solid var(--teal)}
+  .legend .l2::before{background:var(--amber-soft);border:1px solid var(--amber)}
+  .legend .l3::before{background:#F0F3F7;border:1px solid var(--muted)}
+
+  /* ---------- layers (security) ---------- */
+  .layers{display:grid;gap:10px}
+  .layer{display:grid;grid-template-columns:120px 1fr;gap:16px;background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:16px 18px}
+  .layer .lv{font-family:var(--display);font-weight:700;color:var(--teal);font-size:.95rem}
+  .layer .lv small{display:block;font-family:var(--body);font-weight:500;color:var(--muted);font-size:.76rem}
+  @media (max-width:640px){.layer{grid-template-columns:1fr}}
+
+  /* ---------- timeline ---------- */
+  .phases{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+  @media (max-width:820px){.phases{grid-template-columns:1fr}}
+  .phase{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:18px}
+  .phase .w{font-family:var(--mono);font-size:.74rem;color:var(--muted);direction:ltr;text-align:right}
+  .phase h3{font-size:1rem;margin:4px 0 8px}
+  .phase ul{font-size:.88rem;padding-right:18px}
+
+  footer{margin-top:40px;padding:28px 0 48px;border-top:1px solid var(--line);font-size:.84rem;color:var(--muted)}
+  footer ol{padding-right:20px}
+  footer li{margin-bottom:4px}
+  footer a{word-break:break-all;direction:ltr;unicode-bidi:embed}
+
+  @media print{
+    .toc{display:none}
+    body{background:#fff;font-size:13px}
+    .card,.kpi,.phase,.layer,.pipe,table{break-inside:avoid;box-shadow:none}
+    section{padding:24px 0 0}
+    .cover .wrap{padding-top:20px}
+    pre{white-space:pre-wrap}
+  }
+</style>
+</head>
+<body>
+
+<header class="cover">
+  <div class="wrap">
+    <span class="eyebrow">مقترح تقني للإدارة</span>
+    <h1>اعتماد GitHub Copilot كمساعد برمجي لفريق تطوير البوابة الإلكترونية (SharePoint)</h1>
+    <p class="lead">تسريع تنفيذ الـ CRs من داخل Visual Studio دون المساس بالبيانات الحساسة، مع خطة Subscription واضحة، ومعايير مشتركة للفريق، وضوابط Governance قابلة للتدقيق.</p>
+  </div>
+</header>
+
+<nav class="toc" aria-label="محتويات التقرير">
+  <div class="wrap">
+    <a href="#summary">الملخص</a>
+    <a href="#current">الوضع الحالي</a>
+    <a href="#where">أين يسرّع العمل</a>
+    <a href="#admin">الـ Administration</a>
+    <a href="#metrics">قياس الأثر</a>
+    <a href="#plans">الـ Plans</a>
+    <a href="#setup">خطوات التفعيل</a>
+    <a href="#skills">المعايير المشتركة</a>
+    <a href="#security">حماية البيانات</a>
+    <a href="#roadmap">خطة التنفيذ</a>
+    <a href="#risks">المخاطر</a>
+  </div>
+</nav>
+
+<main class="wrap">
+
+<!-- ===================== 1. الملخص ===================== -->
+<section id="summary">
+  <div class="sec-head"><span class="num">01</span><h2>الملخص التنفيذي</h2></div>
+  <p class="intro">يقترح الفريق تفعيل <b>GitHub Copilot Business</b> على نطاق Pilot لمدة 8 أسابيع، ثم التوسع بناءً على أرقام مقاسة. الخطة لا تغيّر أدوات الفريق (Visual Studio + Azure DevOps + Jira) ولا مكان الكود، بل تضيف مساعدًا داخل الـ IDE تحكمه Policies مركزية.</p>
+
+  <div class="grid grid-4">
+    <div class="kpi"><div class="v">$19</div><div class="l">لكل Seat شهريًا (Copilot Business)</div></div>
+    <div class="kpi"><div class="v">0</div><div class="l">استخدام كود الجهة لتدريب الـ Models (تعاقديًا في خطة Business)</div></div>
+    <div class="kpi"><div class="v">8 أسابيع</div><div class="l">مدة مرحلة الـ Pilot قبل قرار التوسع</div></div>
+    <div class="kpi"><div class="v">3 طبقات</div><div class="l">ضوابط لمنع تسريب المستندات والـ Secrets</div></div>
+  </div>
+
+  <div class="card" style="margin-top:16px">
+    <h3>ما الذي نطلبه من الإدارة</h3>
+    <ul class="tight">
+      <li>الموافقة على Pilot Subscription بعدد <b>5 Seats</b> (≈ $95 شهريًا ≈ 360 ريال) لمدة شهرين.</li>
+      <li>السماح لفريق الـ Network بفتح Domains GitHub Copilot المعتمدة على الـ Firewall لأجهزة الفريق فقط.</li>
+      <li>اعتماد الـ Acceptable Use Policy المرفقة في القسم 09.</li>
+      <li>تكليف Admin واحد من الفريق بإدارة الـ Organization على GitHub وقواعد الـ Content Exclusion.</li>
+    </ul>
+  </div>
+
+  <div class="note"><b>ملاحظة:</b> الأسعار والميزات الواردة في التقرير مأخوذة من صفحات GitHub الرسمية ومصادر متخصصة كما في أغسطس 2026، وتُراجع قبل التعاقد لأن GitHub انتقلت في يونيو 2026 إلى نموذج Billing جديد (AI Credits).</div>
+</section>
+
+<!-- ===================== 2. الوضع الحالي ===================== -->
+<section id="current">
+  <div class="sec-head"><span class="num">02</span><h2>الوضع الحالي ودورة حياة الـ CR</h2></div>
+  <p class="intro">كل CR يبدأ بوثيقة متطلبات (BRD) على Jira، ويمر بتصميم Figma ثم تحويله إلى HTML/CSS/JS، ثم يقوم فريقنا بتركيب التصميم على SharePoint وبناء المنطق والـ Integrations (نفاذ وأنظمة الجهة). الشكل التالي يوضح المسار الحالي ومواضع تدخّل Copilot فيه.</p>
+
+  <div class="pipe" role="img" aria-label="مسار الـ CR من Jira إلى الـ Production مع مواضع استخدام Copilot">
+    <div class="rail">
+      <div class="stage"><div class="dot">BRD</div><div class="name">Jira / BRD</div><div class="who">فريق الـ Business</div><div class="ai partial">تحويل المتطلبات إلى مهام وAcceptance Criteria (بنسخة منزوعة الحساسية)</div></div>
+      <div class="stage"><div class="dot">UI</div><div class="name">Figma</div><div class="who">فريق الـ UI/UX</div><div class="ai none">خارج نطاق فريقنا</div></div>
+      <div class="stage"><div class="dot">FE</div><div class="name">HTML / CSS / JS</div><div class="who">فريق الـ Front-end</div><div class="ai none">خارج نطاق فريقنا (يمكن ضمهم لاحقًا)</div></div>
+      <div class="stage"><div class="dot">DEV</div><div class="name">تركيب التصميم + المنطق</div><div class="who">فريقنا · VS</div><div class="ai">أعلى عائد: توليد صفحات ASPX / User Controls والـ Code-behind والـ Tests وشرح الكود القديم</div></div>
+      <div class="stage"><div class="dot">INT</div><div class="name">استدعاء الـ Common DLL</div><div class="who">فريق Integration يبنيها · نحن نستدعيها</div><div class="ai">الـ Mapping بين حقول الصفحة ونماذج الـ DLL، ومعالجة الاستجابات والأخطاء بنمط موحّد</div></div>
+      <div class="stage"><div class="dot">PR</div><div class="name">Merge → Test</div><div class="who">Azure DevOps</div><div class="ai">مراجعة الـ Diff وكتابة وصف الـ PR والـ Commit Messages</div></div>
+      <div class="stage env"><div class="dot">QA</div><div class="name">QA → UAT</div><div class="who">فريق الـ QA</div><div class="ai partial">تحليل الأخطاء المبلّغة وتحديد الـ Root Cause أسرع</div></div>
+      <div class="stage env"><div class="dot">PRD</div><div class="name">PreProd → Prod</div><div class="who">بعد الـ Approval</div><div class="ai none">لا تدخل — يبقى الـ Approval بشريًا</div></div>
+    </div>
+    <div class="legend">
+      <span class="l1">تسريع مباشر داخل الـ IDE</span>
+      <span class="l2">مساعدة جزئية بشروط</span>
+      <span class="l3">لا يُستخدم / خارج النطاق</span>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:16px">
+    <h3>لماذا GitHub Copilot تحديدًا؟</h3>
+    <ul class="tight">
+      <li><b>مدمج في Visual Studio</b> (2022 من Version 17.10، و2026) دون إضافات خارجية، ويعمل مع Repositories على Azure DevOps مباشرة؛ لا حاجة لنقل الكود إلى GitHub.</li>
+      <li><b>إدارة مركزية</b>: Policies، Content Exclusion، Audit Log، وتحديد الـ Models المسموح بها من لوحة واحدة.</li>
+      <li><b>التزام تعاقدي</b> بعدم استخدام بيانات عملاء Business/Enterprise لتدريب الـ Models، مع اتفاقية حماية بيانات (DPA).</li>
+      <li><b>معايير مشتركة</b> تُحفظ كملفات داخل الـ Repository (Instructions / Skills / Agents) فتصل لكل عضو مع كل Branch تلقائيًا.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ===================== 3. أين يسرّع ===================== -->
+<section id="where">
+  <div class="sec-head"><span class="num">03</span><h2>أين يسرّع Copilot العمل فعليًا؟</h2></div>
+  <p class="intro">الجدول يربط كل نشاط يومي للفريق بالـ Feature المقابلة في Copilot، مع تقدير أولي للأثر. التقديرات مبنية على طبيعة العمل (كود متكرر وواجهات وIntegrations) وستُستبدل بأرقام مقاسة بعد مرحلة الـ Pilot.</p>
+
+  <div class="tbl-wrap">
+  <table>
+    <thead><tr><th style="width:24%">النشاط الحالي</th><th style="width:34%">كيف يساعد Copilot</th><th style="width:18%">الـ Feature المستخدمة</th><th>الأثر المتوقع</th></tr></thead>
+    <tbody>
+      <tr><td>تحويل HTML/CSS/JS المستلم من فريق الـ Front-end إلى صفحات ASP.NET WebForms على SharePoint (<code>.aspx</code> / <code>.ascx</code> / Master Pages) مع الـ Code-behind</td><td>تحويل الـ Markup إلى Server Controls المناسبة، توليد أحداث الـ Code-behind وربط البيانات (DataBinding)، وضبط <code>runat="server"</code> والـ ViewState/UpdatePanel وفق نمط الفريق والـ Naming Convention المعتمد</td><td>Chat + Agent mode + Skill خاص بالفريق</td><td><span class="tag t">مرتفع</span> عمل متكرر ومنمّط</td></tr>
+      <tr><td>كتابة منطق الأعمال في الـ Code-behind (Server Object Model / CSOM / REST / JavaScript)</td><td>إكمال الكود سطرًا بسطر، اقتراح استدعاءات SharePoint الصحيحة والـ Dispose، معالجة الـ Exceptions، وكتابة الـ LINQ/CAML بسرعة</td><td>Code completions + Chat</td><td><span class="tag t">مرتفع</span></td></tr>
+      <tr><td>استدعاء Integrations نفاذ والأنظمة الداخلية عبر الـ Common DLL الذي يوفره فريق Integration</td><td>توليد كود الـ Mapping بين حقول الصفحة ونماذج الـ DLL (وبالعكس)، اقتراح الاستدعاء الصحيح من الـ DLL بالاعتماد على توقيعات الدوال (IntelliSense)، ومعالجة الاستجابات والأخطاء بالنمط الموحّد للفريق</td><td>Completions + Skill خاص بالـ DLL</td><td><span class="tag t">مرتفع</span> عمل mapping متكرر وقابل للتنميط</td></tr>
+      <tr><td>فهم الكود القديم عند استلام CR على وحدة لم يكتبها المطوّر</td><td>شرح الملف/الدالة، رسم تدفق الاستدعاءات، اقتراح مواضع التعديل</td><td>Chat (/explain)</td><td><span class="tag t">مرتفع</span> يقلّص وقت الاستيعاب</td></tr>
+      <tr><td>الـ Unit Tests</td><td>توليد اختبارات للطرق الحرجة (خاصة منطق الـ Integrations) قبل الـ Merge على Test</td><td>Chat (/tests)</td><td><span class="tag t">متوسط–مرتفع</span> يقلل الأخطاء المكتشفة في QA</td></tr>
+      <tr><td>إعداد الـ Pull Request عند الـ Merge على Test / QA / UAT</td><td>مراجعة الـ Diff محليًا قبل الرفع، كتابة وصف الـ PR وCommit Messages تحمل رقم الـ CR</td><td>Chat + Git integration في VS</td><td><span class="tag t">متوسط</span> يرفع جودة المراجعة</td></tr>
+      <tr><td>تحليل أخطاء QA / UAT</td><td>لصق الـ stack trace (بعد إزالة أي بيانات مستخدمين) والحصول على السبب المحتمل والإصلاح</td><td>Chat + Debugger agent</td><td><span class="tag a">متوسط</span></td></tr>
+      <tr><td>تحويل BRD إلى مهام تقنية</td><td>استخلاص قائمة مهام وAcceptance Criteria من <b>ملخص تقني للـ BRD</b> يكتبه المطوّر دون أسماء أو بيانات حساسة</td><td>Chat</td><td><span class="tag a">متوسط</span> بشرط عدم لصق الوثيقة الأصلية</td></tr>
+      <tr><td>الـ Documentation والـ Release Notes</td><td>توليد ملخص التغييرات لكل CR من الـ Diff لإرفاقه على Jira</td><td>Chat</td><td><span class="tag t">متوسط</span> توفير وقت إداري</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h3 style="font-size:1.15rem;margin:8px 0 12px">الجزء المتكرر في كل CR: هنا العائد الأكبر</h3>
+  <p class="intro">كل CR يعيد نفس العمل تقريبًا: نفس الـ Validations، نفس الـ Controls، نفس هيكل الكود، ونفس الـ Security Checks. هذا النوع من العمل هو أفضل ما يجيده Copilot <b>بشرط</b> أن يُكتب المعيار مرة واحدة كملف في الـ Repository (القسم 08) بدل أن يعيد كل مطوّر شرحه. الفكرة: Copilot لا "يخترع" الـ Control أو الـ Validation، بل <b>يستخدم ما هو موجود</b> بالطريقة الموحّدة.</p>
+
+  <div class="tbl-wrap">
+  <table>
+    <thead><tr><th style="width:20%">العنصر المتكرر</th><th style="width:34%">كيف يُستخدم Copilot فيه</th><th style="width:26%">ما يُكتب مرة واحدة في الـ Repository</th><th>النتيجة</th></tr></thead>
+    <tbody>
+      <tr><td><b>Form Validations الثابتة</b><br><small>الهوية، الجوال، البريد، التواريخ الهجرية…</small></td><td>عند كتابة أي Form يقترح Copilot تلقائيًا الـ Validators الموحّدة من مكتبة الفريق (Server + Client) بدل كتابة Regex جديد في كل CR</td><td>ملف Instructions يقول: "لا تكتب validation جديدًا؛ استخدم <code>Portal.Validation.*</code>" + Skill يشرح كل validator ومتى يُستخدم</td><td>توحيد الرسائل والسلوك، وإزالة سبب شائع لأخطاء QA</td></tr>
+      <tr><td><b>Controls المتكررة</b><br><small>اختيار المدينة، رفع المرفقات، عرض حالة الطلب…</small></td><td>يميّز Copilot متى يقابل تصميم Figma/HTML أحد الـ User Controls الجاهزة ويضعه بدل بناء Markup من الصفر</td><td>Skill <code>common-controls-catalog</code>: اسم كل Control، خصائصه، مثال استخدام، وصورة/وصف لشكله في التصميم</td><td>CR جديد = تركيب Controls جاهزة، لا إعادة بناء</td></tr>
+      <tr><td><b>التصميم الموحّد</b></td><td>يلتزم Copilot بالـ CSS classes ومكوّنات الـ Design System المعتمد، ويرفض inline styles أو ألوانًا خارج الـ Tokens</td><td>ملف Instructions للـ Front-end: قائمة الـ Classes المعتمدة، قواعد RTL، وممنوعات (inline style، ألوان hex مباشرة)</td><td>اتساق بصري بين الصفحات دون مراجعة تصميم مطوّلة</td></tr>
+      <tr><td><b>هيكل الكود الموحّد</b><br><small>الـ Folders، الـ Layers، الـ Naming</small></td><td>أمر واحد (Prompt file) <code>/new-cr-scaffold CR-1042</code> يولّد الهيكل الكامل: الصفحة، الـ Code-behind، الـ Service Layer، الـ Mapping للـ DLL، وملف الـ Test بالأسماء المعتمدة</td><td>Skill <code>cr-scaffold</code> يحدد الهيكل خطوة بخطوة + قالب لكل ملف</td><td>كل CR يبدأ بنفس الشكل، والمراجعة تركّز على المنطق لا على الترتيب</td></tr>
+      <tr><td><b>Security Checks الموحّدة</b><br><small>التحقق من الـ Permissions، تنقية المدخلات، الـ Anti-Forgery، عدم كشف الأخطاء…</small></td><td>Custom Agent <code>@security-reviewer</code> يفحص الـ Diff قبل فتح الـ PR مقابل قائمة الفريق ويُخرج تقريرًا بالبنود الناقصة، مع اقتراح الإصلاح</td><td>ملف <code>security-reviewer.agent.md</code> يحوي القائمة الكاملة كبنود قابلة للفحص + تعليمات دائمة تمنع الأنماط الخطرة أثناء الكتابة</td><td>الفحص يحدث عند المطوّر قبل الـ PR، والمراجع البشري يؤكد فقط</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="note ok"><b>تنبيه مهم للإدارة:</b> الـ Security Agent داخل Copilot يقلّل ما يصل للمراجعة يدويًا، لكنه <b>لا يستبدل</b> الـ Security Gate في الـ CI/CD. التوصية أن تبقى الفحوصات الملزمة (Static analysis / Secret scanning / OWASP dependency check) خطوة إلزامية في Pipeline الـ Test، وأن يكون Copilot أداة "تصحيح مبكر" قبل الوصول إليها.</div>
+
+  <div class="grid grid-2">
+    <div class="card">
+      <h3>ما الذي لن يحلّه Copilot</h3>
+      <ul class="tight">
+        <li>قرارات الأعمال والموافقات: تبقى مع فريق الـ Business وفريق الـ QA.</li>
+        <li>خصوصيات SharePoint في بيئة الجهة (Farm Solutions، إعدادات الخادم، صلاحيات AD): يقترح، لكن الخبرة البشرية هي الحكم.</li>
+        <li>لن يصل إلى البيانات الفعلية أو الـ Production أبدًا؛ يعمل على الكود فقط.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>قاعدة ذهبية للفريق</h3>
+      <p>Copilot <b>يقترح</b> والمطوّر <b>يقرر</b>. كل كود مولّد يخضع لنفس الـ Review Flow الحالي (PR → Test → QA → UAT) دون أي اختصار. الأداة ترفع سرعة الكتابة والفهم، أما ضمان الجودة فيبقى في مسار الفريق كما هو.</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ===================== الأثر على مهام الـ Administration ===================== -->
+<section id="admin">
+  <div class="sec-head"><span class="num">04</span><h2>الأثر على مهام الـ SharePoint Administration</h2></div>
+  <p class="intro">إلى جانب تنفيذ الـ CRs، يتحمّل الفريق مهام تشغيلية دورية على الـ Farm: الترقية لنسخة أحدث، تنزيل الـ Security Updates، تثبيت الـ Workflow Manager، ضبط الـ Search Service Application، وإدارة الـ Timer Jobs. Copilot لا يتصل بالخوادم ولا ينفّذ شيئًا عليها، لكنه يسرّع الجزء الذي يستهلك معظم الوقت في هذه المهام: كتابة الـ PowerShell Scripts، قراءة الـ Logs، وبناء الـ Runbooks والـ Checklists.</p>
+
+  <div class="tbl-wrap">
+  <table>
+    <thead><tr><th style="width:20%">المهمة</th><th style="width:44%">كيف يساعد Copilot</th><th>ما الذي يبقى بشريًا</th></tr></thead>
+    <tbody>
+      <tr><td><b>الترقية لنسخة أحدث</b><br><small>2016 → 2019 → Subscription Edition</small></td><td>توليد Pre-upgrade Checklist مخصّص لنسختنا الحالية والهدف؛ كتابة Scripts جرد الـ Customizations (<code>Get-SPSolution</code>، <code>Get-SPFeature</code>، الـ WSPs المنشورة)؛ تشغيل وقراءة مخرجات <code>Test-SPContentDatabase</code> وتحويلها إلى قائمة إجراءات؛ فحص الكود في الـ Repository بحثًا عن APIs مهملة (Deprecated) في النسخة الجديدة؛ شرح أخطاء الـ Upgrade Logs.</td><td>قرار توقيت الترقية، التنفيذ على الـ Test Farm أولًا، الـ Approval، والتحقق بعد الترقية.</td></tr>
+      <tr><td><b>الـ Security Updates / CUs</b></td><td>توليد Patch Runbook بالترتيب الصحيح (إيقاف الخدمات، تثبيت الـ Update على كل Server، <code>PSConfig</code> / <code>Upgrade-SPFarm</code>، إعادة التشغيل)؛ Script للتحقق من الـ Build Number على كل الـ Servers بعد التثبيت؛ Rollback Plan موثّق؛ تفسير أخطاء الـ ULS والـ Event Viewer بعد الـ Patch.</td><td>تنفيذ الـ Runbook، نافذة الصيانة، والتأكد من الـ Backups قبل البدء.</td></tr>
+      <tr><td><b>الـ Workflow Manager</b></td><td>Scripts التثبيت والتسجيل (<code>Register-SPWorkflowService</code>)، تشخيص أخطاء التسجيل والشهادات، وكتابة أو تعديل الـ Workflows المخصصة وترحيل الـ Workflows القديمة (2010 → 2013 Platform) بكود صحيح.</td><td>اختيار البنية (Farm منفصلة أم لا)، الـ Certificates الحقيقية، والتحقق من الـ Workflows الحرجة بعد التثبيت.</td></tr>
+      <tr><td><b>الـ Search Service Application</b></td><td>Scripts إنشاء الـ Service Application والـ Topology (<code>New-SPEnterpriseSearchTopology</code>، توزيع الـ Components على الـ Servers)، إعداد الـ Content Sources والـ Crawl Schedules والـ Managed Properties، تفسير أخطاء الـ Crawl Log، وكتابة الـ Display Templates المخصصة للبوابة.</td><td>حجم الـ Index والـ Sizing، جدولة الـ Full Crawl، ومراجعة نتائج البحث بعد التغيير.</td></tr>
+      <tr><td><b>الـ Timer Jobs</b><br><small>الأقرب لعمل الفريق</small></td><td>كتابة Custom Timer Jobs كاملة بـ C# (<code>SPJobDefinition</code>، الـ Schedule، الـ Feature Receiver للتسجيل)، Scripts لإدارتها (<code>Get-SPTimerJob</code>، <code>Start-SPTimerJob</code>، تعديل الـ Schedule)، وتشخيص مشاكل الـ OWSTIMER وتعليق الـ Jobs.</td><td>تحديد ما يجب أن يعمل كـ Timer Job أصلًا، وأثره على أداء الـ Farm.</td></tr>
+      <tr><td><b>التشخيص اليومي</b></td><td>لصق مقتطف من الـ ULS Log (بعد إزالة أسماء الـ Servers والحسابات) والحصول على تفسير وخطوات الحل؛ Scripts لقراءة الـ Health Analyzer وتنبيهات الـ Farm؛ توثيق الإجراءات المتكررة كـ Runbooks في الـ Wiki.</td><td>التحقق من التشخيص على البيئة الفعلية.</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="grid grid-2">
+    <div class="card">
+      <h3>الـ Skills المقترحة لهذا الجزء</h3>
+      <ul class="tight">
+        <li><code>sharepoint-farm-admin</code> — الـ Version الحالية بالضبط، وحدات الـ PowerShell المعتمدة، قاعدة "Test Farm أولًا"، واستخدام Placeholders بدل أسماء الـ Servers.</li>
+        <li><code>patch-runbook</code> (Prompt) — يولّد Runbook كامل لأي Update: ترتيب الـ Servers، أوامر التحقق، وخطة الـ Rollback.</li>
+        <li><code>custom-timer-job</code> — قالب Timer Job بمعايير الفريق (Logging، Error Handling، Schedule، Feature Receiver).</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>الأداة المناسبة</h3>
+      <p style="font-size:.94rem">Copilot يعمل على ملفات <code>.ps1</code> داخل Visual Studio، لكن تجربة الـ PowerShell أفضل في <b>VS Code</b> مع نفس الـ Seat ونفس الـ Policies (الـ Content Exclusion يُطبّق على الاثنين). يُنصح أن يستخدم من يتولى مهام الـ Administration VS Code لهذا الجزء تحديدًا.</p>
+    </div>
+  </div>
+
+  <div class="note bad"><b>ضوابط خاصة بهذا الجزء:</b> مهام الـ Administration تلمس معلومات أكثر حساسية من الكود: الـ Farm Topology، أسماء الـ Servers، الـ Service Accounts، الـ Passphrase، وإعدادات الـ Certificates. لا يُلصق أي من ذلك في الـ Chat؛ تُكتب الـ Scripts بـ Placeholders وتُعبَّأ القيم الفعلية على الـ Server وقت التنفيذ. كذلك قد يقترح Copilot بثقة Cmdlets غير موجودة في نسختنا أو تختلف بين 2016 و2019 و Subscription Edition؛ لذلك يُثبَّت الـ Version في ملف الـ Instructions، ويُتحقق من كل Cmdlet بـ <code>Get-Command</code> على الـ Test Farm قبل اعتماده. أي Script ناتج يمر بمسار الـ Change Management المعتاد ولا يُنفَّذ على الـ Production مباشرة.</div>
+</section>
+
+<!-- ===================== 4. قياس الأثر ===================== -->
+<section id="metrics">
+  <div class="sec-head"><span class="num">05</span><h2>كيف نقيس تحسّن الأداء؟</h2></div>
+  <p class="intro">لكي يكون قرار التوسع مبنيًا على أرقام، نقيس الـ KPIs التالية على آخر 10 CRs قبل التجربة، ثم على الـ CRs خلال مرحلة الـ Pilot. جميع الأرقام متاحة من Jira وAzure DevOps دون أدوات إضافية.</p>
+
+  <div class="tbl-wrap">
+  <table>
+    <thead><tr><th>الـ KPI</th><th>المصدر</th><th>التعريف</th><th>الهدف في التجربة</th></tr></thead>
+    <tbody>
+      <tr><td>الـ Lead Time لكل CR</td><td>Jira</td><td>من "In Progress" إلى الـ Merge على Test</td><td>انخفاض 20% أو أكثر</td></tr>
+      <tr><td>الـ PR Cycle Time</td><td>Azure DevOps</td><td>من فتح الـ PR إلى الـ Merge</td><td>انخفاض 15%</td></tr>
+      <tr><td>الـ QA Rejection Rate</td><td>Jira</td><td>عدد الأخطاء المفتوحة على الـ CR في QA/UAT</td><td>انخفاض أو ثبات (لا تدهور)</td></tr>
+      <tr><td>الـ Acceptance Rate</td><td>الـ Copilot Usage Dashboard</td><td>الـ Accepted ÷ الـ Shown Suggestions</td><td>مؤشر تبنٍّ، ليس هدفًا بحد ذاته</td></tr>
+      <tr><td>الـ Developer Satisfaction</td><td>Survey قصير</td><td>5 أسئلة في نهاية الأسبوع 4 و8</td><td>تحديد المهام الأعلى نفعًا</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="note ok"><b>مهم:</b> لا نقيس "عدد الأسطر المولّدة". المقياس الوحيد الذي يهم الإدارة هو زمن تسليم الـ CR بجودة لا تقل عن الحالية.</div>
+</section>
+
+<!-- ===================== 5. الـ Plans ===================== -->
+<section id="plans">
+  <div class="sec-head"><span class="num">06</span><h2>خطط الـ Subscription المتاحة والخطة الموصى بها</h2></div>
+  <p class="intro">تنقسم خطط Copilot إلى خطط أفراد وخطط Organizations. الفرق الجوهري ليس السعر بل <b>من يملك البيانات ومن يتحكم بالـ Policies</b>: الخطط الفردية قد تستخدم تفاعلات المستخدم للتدريب افتراضيًا منذ أبريل 2026، بينما خطتا Business وEnterprise مستثناتان تعاقديًا.</p>
+
+  <div class="tbl-wrap">
+  <table>
+    <thead><tr><th>الخطة</th><th>السعر</th><th>الفئة</th><th>تدريب على بياناتك؟</th><th>إدارة مركزية / Content Exclusion</th><th>ملاحظة</th></tr></thead>
+    <tbody>
+      <tr><td>Free</td><td class="mono">$0</td><td>أفراد</td><td><span class="tag r">نعم افتراضيًا</span></td><td><span class="tag r">لا</span></td><td>Code Completions محدودة شهريًا — غير مناسبة للعمل الحكومي</td></tr>
+      <tr><td>Pro</td><td class="mono">$10 / شهر</td><td>أفراد</td><td><span class="tag r">نعم (قابل للإيقاف يدويًا)</span></td><td><span class="tag r">لا</span></td><td>مرتبط بحساب شخصي، لا Audit Log</td></tr>
+      <tr><td>Pro+</td><td class="mono">$39 / شهر</td><td>أفراد</td><td><span class="tag r">نعم (قابل للإيقاف يدويًا)</span></td><td><span class="tag r">لا</span></td><td>AI Credits أكبر للأفراد</td></tr>
+      <tr><td>Max</td><td class="mono">$100 / شهر</td><td>أفراد</td><td><span class="tag r">نعم (قابل للإيقاف يدويًا)</span></td><td><span class="tag r">لا</span></td><td>للاستخدام الآلي المكثف؛ التسجيل الجديد متوقف مؤقتًا</td></tr>
+      <tr style="background:var(--teal-soft)"><td><b>Business</b> <span class="tag t">الموصى بها</span></td><td class="mono"><b>$19 / Seat / شهر</b></td><td>Organizations</td><td><span class="tag t">لا — تعاقديًا</span></td><td><span class="tag t">نعم</span></td><td>Policies مركزية، Content Exclusion، Audit Log، IP Indemnity، وAI Credits مجمّعة للـ Organization</td></tr>
+      <tr><td>Enterprise</td><td class="mono">$39 / Seat / شهر</td><td>Organizations</td><td><span class="tag t">لا — تعاقديًا</span></td><td><span class="tag t">نعم</span></td><td>يتطلب GitHub Enterprise Cloud (≈ $21 إضافية للمستخدم) والـ Features الخاصة به مرتبطة بـ Repositories على GitHub.com — لا تفيدنا لأن الكود على Azure DevOps</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="grid grid-2">
+    <div class="card">
+      <h3>لماذا Business وليس Enterprise؟</h3>
+      <ul class="tight">
+        <li>الـ Features الإضافية في Enterprise (الـ Code Indexing على GitHub.com، الـ Chat داخل الموقع) تفترض أن الـ Repositories على GitHub؛ الـ Repositories لدينا على Azure DevOps.</li>
+        <li>Business يوفر كل ما نحتاجه للحوكمة: الـ Policies، الـ Content Exclusion، الـ Audit Log، والالتزام بعدم التدريب.</li>
+        <li>فرق التكلفة يتيح مضاعفة عدد الـ Seats بنفس الميزانية.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>تقدير التكلفة السنوية (Business)</h3>
+      <table style="margin:0">
+        <thead><tr><th>عدد الـ Seats</th><th>شهريًا</th><th>سنويًا (تقريبًا بالريال)</th></tr></thead>
+        <tbody>
+          <tr><td>5 (Pilot)</td><td class="mono">$95</td><td>≈ 4,300 ريال</td></tr>
+          <tr><td>10</td><td class="mono">$190</td><td>≈ 8,550 ريال</td></tr>
+          <tr><td>15</td><td class="mono">$285</td><td>≈ 12,800 ريال</td></tr>
+        </tbody>
+      </table>
+      <p style="font-size:.84rem;color:var(--muted);margin-top:8px">الـ Code Completions غير محدودة في الخطط المدفوعة. الـ Chat والـ Agents تستهلك من رصيد AI Credits المجمّع (≈ $19 لكل Seat شهريًا) ويمكن للـ Admin وضع Spending Limit يمنع أي تجاوز.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== 6. خطوات التفعيل ===================== -->
+<section id="setup">
+  <div class="sec-head"><span class="num">07</span><h2>خطوات الـ Subscription والتفعيل</h2></div>
+  <p class="intro">الترتيب مهم: الشبكة والـ Policies أولًا، ثم الـ Seats، ثم المطوّرون. بهذا الترتيب لا يفتح أي مطوّر الأداة قبل أن تكون الضوابط قائمة.</p>
+
+  <div class="grid grid-2">
+    <div class="card">
+      <h3>أ. على مستوى الجهة (مرة واحدة)</h3>
+      <ol class="tight" style="padding-right:22px">
+        <li>إنشاء <b>Organization</b> على GitHub باسم الجهة وبريد رسمي، وتفعيل الـ 2FA إلزاميًا لجميع الأعضاء.</li>
+        <li>تفعيل <b>Copilot Business</b> من إعدادات الـ Organization وشراء عدد الـ Seats المعتمد (Monthly Billing قابلة للإلغاء).</li>
+        <li>ضبط <b>الـ Policies</b> قبل تعيين أي Seat: إيقاف الـ Suggestions المطابقة للـ Public Code، تحديد الـ Models المسموح بها، منع الـ MCP Servers غير المعتمدة، وإيقاف الـ Web Search من الـ Chat.</li>
+        <li>إدخال قواعد <b>Content Exclusion</b> (القسم 09) على مستوى الـ Organization.</li>
+        <li>وضع <b>Spending Limit</b> لرصيد AI Credits الإضافي = صفر خلال التجربة.</li>
+        <li>تنسيق مع فريق الـ Network لفتح Domains GitHub Copilot المنشورة في وثائق GitHub (Network settings) لأجهزة الفريق فقط، مع دعم الـ Proxy إن وُجد.</li>
+      </ol>
+    </div>
+    <div class="card">
+      <h3>ب. على مستوى كل مطوّر</h3>
+      <ol class="tight" style="padding-right:22px">
+        <li>إنشاء حساب GitHub بالبريد الرسمي والانضمام للـ Organization (لا حسابات شخصية).</li>
+        <li>يعيّن الـ Admin Seat للمطوّر.</li>
+        <li>في Visual Studio: تسجيل الدخول بحساب GitHub من <b>File → Account Settings</b>؛ Copilot مضمّن في VS 2022 (17.10+) و VS 2026 دون تثبيت.</li>
+        <li>فتح الـ Solution من Repository على Azure DevOps كالمعتاد؛ ستُطبّق قواعد الـ Content Exclusion تلقائيًا لأن الـ IDE يرسل عنوان الـ Repository للتحقق من الـ Policy.</li>
+        <li>التحقق: فتح ملف داخل الـ Content Exclusion (مثل <code>web.config</code>) والتأكد من ظهور أيقونة التعطيل وعدم ظهور اقتراحات.</li>
+        <li>توقيع الـ Acceptable Use Policy وحضور Onboarding Session (ساعتان).</li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="note"><b>نقطة تحتاج قرارًا:</b> خطة Business تعتمد على حسابات GitHub عادية داخل الـ Organization (مع إلزام 2FA). ربط الحسابات بـ SSO/Entra ID أو حسابات مُدارة (EMU) يتطلب GitHub Enterprise. إذا اشترطت Policy الجهة الربط الكامل بالـ SSO / Entra ID، فسيغيّر ذلك الخطة والتكلفة، ويستحسن حسمه مع الـ InfoSec مبكرًا.</div>
+</section>
+
+<!-- ===================== 7. المعايير المشتركة ===================== -->
+<section id="skills">
+  <div class="sec-head"><span class="num">08</span><h2>كيف تصبح المعايير والـ Skills مشتركة بين الفريق؟</h2></div>
+  <p class="intro">الميزة الأهم للفريق ليست في الـ Suggestions الذكية بل في <b>توحيد طريقة العمل</b>. Copilot يقرأ ملفات Instructions من داخل الـ Repository؛ وبما أن كل مطوّر يأخذ Branch من نفس الـ Repository، فإن هذه الملفات تصل للجميع تلقائيًا وتُراجع وتُحدّث عبر PR مثل أي كود.</p>
+
+  <div class="tbl-wrap">
+  <table>
+    <thead><tr><th style="width:26%">النوع</th><th style="width:30%">الموقع في الـ Repository</th><th>الغرض</th></tr></thead>
+    <tbody>
+      <tr><td><b>Custom Instructions</b><br><small>قواعد دائمة</small></td><td><code>.github/copilot-instructions.md</code></td><td>تُطبّق على كل تفاعل: لغة الـ Comments، الـ Naming Convention، استخدام الـ Common Controls والـ Validators الجاهزة بدل إعادة كتابتها، حظر تخزين الـ Secrets في الكود، رقم الـ CR في كل Commit.</td></tr>
+      <tr><td><b>Scoped Instructions</b><br><small>قواعد حسب نوع الملف</small></td><td><code>.github/instructions/*.instructions.md</code></td><td>قواعد لملفات JavaScript فقط أو لطبقة الـ Integration Mapping فقط (مثال: كل استدعاء يمر عبر الـ Common DLL ولا يستدعي أي API خارجي مباشرة).</td></tr>
+      <tr><td><b>Agent Skills</b><br><small>Skills لمهام محددة</small></td><td><code>.github/skills/&lt;name&gt;/SKILL.md</code></td><td>يُحمَّل عند الحاجة فقط: خطوات تحويل HTML إلى User Control، قالب الـ Mapping مع الـ Common DLL، Checklist قبل الـ PR.</td></tr>
+      <tr><td><b>Custom Agents</b><br><small>شخصيات بأدوات محددة</small></td><td><code>.github/agents/*.agent.md</code></td><td>مثل Agent باسم "Merge Reviewer" الذي يفحص الـ Diff مقابل قائمة الفريق فقط، أو Agent باسم "SharePoint Assistant" المقيّد بالأدوات الآمنة.</td></tr>
+      <tr><td><b>Prompt Files</b><br><small>أوامر جاهزة</small></td><td><code>.github/prompts/*.prompt.md</code></td><td>أوامر متكررة بضغطة واحدة: "ولّد الـ Release Notes لهذا الـ CR"، "اكتب اختبارات لهذه الدالة".</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="card">
+    <h3>من "Copilot Memories" الفردية إلى معايير الفريق</h3>
+    <p>بعض أعضاء الفريق يستخدمون حاليًا ميزة <b>Copilot Memories</b> في Visual Studio: أثناء الـ Chat يلتقط Copilot تفضيلات المطوّر ("استخدم الـ Repository Pattern"، "لا تكتب inline styles") ويطلب الإذن لحفظها. المهم إدراكه أن هذه الميزة <b>لا تخزّن شيئًا سحريًا</b>؛ هي تكتب القاعدة في أحد ملفين:</p>
+    <div class="tbl-wrap">
+    <table style="margin:8px 0 12px">
+      <thead><tr><th style="width:34%">وجهة الحفظ</th><th style="width:22%">النطاق</th><th>الأثر على الفريق</th></tr></thead>
+      <tbody>
+        <tr><td><code>%USERPROFILE%\copilot-instructions.md</code></td><td>شخصي — جهاز المطوّر فقط</td><td><span class="tag a">لا يُشارك</span> يختفي مع تغيير الجهاز، لا يراه الزملاء، ولا يخضع لمراجعة</td></tr>
+        <tr><td><code>.github/copilot-instructions.md</code> داخل الـ Repository</td><td>الـ Repository — كل من يأخذ Branch منه</td><td><span class="tag t">مشترك ومُراجَع</span> يصل للجميع مع كل Branch، ويُحدَّث عبر PR مثل الكود</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p style="margin-bottom:6px"><b>الخطوة العملية:</b> جمع القواعد المتراكمة في الملفات الشخصية لدى أعضاء الفريق، تنقيحها، ونقلها إلى ملف الـ Repository في أول أسبوع من التجربة. بعدها يبقى الملف الشخصي للتفضيلات الفردية فقط (مثل أسلوب التعليقات)، وكل ما يخص "كيف يبني الفريق البوابة" يعيش في الـ Repository. عند ظهور Memory جديدة لاحقًا يختار المطوّر "Repository" بدل "Personal" إن كانت قاعدة فريق.</p>
+    <div class="note" style="margin-bottom:0"><b>تمييز مهم:</b> توجد أيضًا خدمة باسم مشابه، <b>Copilot Memory</b> المستضافة على GitHub (تخزّن حقائق عن الـ Repository على خوادم GitHub وتنتهي صلاحيتها بعد 28 يومًا، وتُستخدم مع الـ Cloud Agent والـ Code Review). هذه <b>غير مطلوبة</b> لخطتنا لأن الـ Repositories لدينا على Azure DevOps، ويُنصح بإبقائها معطّلة من Policies الـ Organization حتى لا يخرج أي سياق إضافي عن الأداة.</div>
+  </div>
+
+  <div class="grid grid-2">
+    <div class="card">
+      <h3>Skills مقترحة للبدء بها</h3>
+      <ul class="tight">
+        <li><code>cr-scaffold</code> — يولّد هيكل CR كامل (Page، Code-behind، Service، Mapping، Test) بالأسماء والمجلدات المعتمدة.</li>
+        <li><code>html-to-aspx-usercontrol</code> — خطوات نقل Markup فريق الـ Front-end إلى <code>.aspx</code>/<code>.ascx</code> مع استبدال الأجزاء المتكررة بالـ Controls الجاهزة.</li>
+        <li><code>common-controls-catalog</code> — فهرس الـ User Controls الموحّدة: الاسم، الخصائص، مثال، ومتى يُستخدم.</li>
+        <li><code>form-validation-standard</code> — الـ Validators المعتمدة (Server + Client) ورسائلها، وقاعدة "لا validation جديد".</li>
+        <li><code>integration-dll-mapping</code> — كيف يُستدعى الـ Common DLL لكل Integration (نفاذ وغيره)، نمط الـ Mapping، ومعالجة الاستجابة والأخطاء.</li>
+        <li><code>cr-branch-workflow</code> — تسمية الـ Branch برقم الـ CR، ترتيب الـ Merge Test → QA → UAT → Production، وقالب وصف الـ PR.</li>
+        <li><code>security-reviewer</code> (Agent) — قائمة الـ Security Checks الموحّدة كبنود يفحصها الـ Agent على الـ Diff قبل الـ PR.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>آلية الـ Governance على المعايير</h3>
+      <ul class="tight">
+        <li>تُحفظ كل ملفات الـ Instructions في مجلد <code>.github/</code> داخل Repository البوابة، وتُحمى بـ Branch Policy تتطلب مراجعًا واحدًا على الأقل.</li>
+        <li>Skill جديدة = PR جديد، يراجعه قائد الفريق. هكذا لا يغيّر أحد سلوك الأداة للجميع دون علم.</li>
+        <li>للـ Repositories المتعددة: Repository مركزي <code>team-copilot-standards</code> يُنسخ منه المجلد عبر خطوة في الـ CI/CD أو Git submodule.</li>
+        <li>مراجعة ربع سنوية للـ Skills لحذف ما لم يعد يُستخدم.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>مثال: هيكل المجلد ومقتطف من ملف الـ Instructions</h3>
+<pre>portal-repo/
+└── .github/
+    ├── copilot-instructions.md
+    ├── instructions/
+    │   └── integrations.instructions.md
+    ├── skills/
+    │   ├── cr-scaffold/SKILL.md
+    │   ├── html-to-aspx-usercontrol/SKILL.md
+    │   ├── common-controls-catalog/SKILL.md
+    │   ├── form-validation-standard/SKILL.md
+    │   ├── integration-dll-mapping/SKILL.md
+    │   └── cr-branch-workflow/SKILL.md
+    ├── agents/
+    │   └── security-reviewer.agent.md
+    └── prompts/
+        ├── new-cr-scaffold.prompt.md
+        └── release-notes.prompt.md
+
+# copilot-instructions.md (excerpt)
+- Target: SharePoint on-prem portal, ASP.NET WebForms (.aspx / .ascx / master pages)
+  with C# code-behind on .NET Framework 4.x; jQuery for client-side.
+- Structure per CR: Pages/<Area>/<CR>.aspx + .aspx.cs, Services/<Area>Service.cs,
+  Mapping/<Area>Mapper.cs, Tests/<Area>Tests.cs. Do not deviate.
+- Reuse first: check Controls/ (user controls) and Portal.Validation.* before
+  writing any new markup or validation. Never write a new Regex validator.
+- Integrations: never call external systems directly. Always go through the
+  Integration team's Common DLL (Portal.Integration.*); write only the mapping
+  between page models and DLL models, and handle IntegrationResult uniformly.
+- Security (every CR): check SPContext user permissions before any data access,
+  validate and encode all input/output, keep AntiForgery on postbacks, never
+  expose exception details to the UI, never log personal data.
+- Design: use only the approved CSS classes / design tokens; no inline styles,
+  no raw hex colors; all UI strings Arabic and RTL-safe.
+- Dispose SPSite/SPWeb objects you create; never dispose SPContext.Current objects.
+- Never hard-code secrets, connection strings or certificates; read from web.config.
+- Every commit message starts with the CR number, e.g. "CR-1042: ...".
+- Branch flow: CR-branch -> Test -> QA -> UAT -> Production. Never suggest skipping a stage.</pre>
+    <div class="note" style="margin-bottom:0"><b>متطلب Version:</b> الـ Custom Instructions مدعومة في VS 2022 (17.14+)، أما Agent Skills والـ Custom Agents فتحتاج <b>Visual Studio 2026</b> (18.4+). ينبغي التأكد من Version الـ VS المستخدم لدى الفريق قبل الاعتماد على الـ Skills.</div>
+  </div>
+</section>
+
+<!-- ===================== 8. حماية البيانات ===================== -->
+<section id="security">
+  <div class="sec-head"><span class="num">09</span><h2>حماية المستندات والبيانات الحساسة</h2></div>
+  <p class="intro">الهدف: استخدام الأداة على الكود فقط، ومنع وصولها إلى وثائق المتطلبات (BRD)، والـ Secrets، وبيانات المواطنين. نعتمد ثلاث طبقات مستقلة بحيث لا يكفي فشل طبقة واحدة لحدوث تسريب.</p>
+
+  <div class="layers">
+    <div class="layer">
+      <div class="lv">الطبقة 1<small>تعاقدية</small></div>
+      <div>
+        <b>الخطة الصحيحة تمنع التدريب أصلًا.</b> في Copilot Business لا تُستخدم المدخلات أو المخرجات أو مقتطفات الكود لتدريب الـ Models، ولا يظهر خيار "السماح بالتدريب" لأن البيانات محمية باتفاقية حماية بيانات. تمر الطلبات عبر Proxy لدى GitHub على Azure مع فحص مسبق، ولا يُحتفظ بالمقتطفات لأغراض التدريب.
+      </div>
+    </div>
+    <div class="layer">
+      <div class="lv">الطبقة 2<small>تقنية مركزية</small></div>
+      <div>
+        <b>Content Exclusion على مستوى الـ Organization.</b> يحدد الـ Admin ملفات ومسارات لا يقرؤها Copilot إطلاقًا: لا اقتراحات داخلها، ولا تُستخدم كسياق لملفات أخرى، ولا تُقرأ في الـ Chat. القواعد تُطبّق على Repositories على Azure DevOps بذكر عنوان الـ Repository، وعلى أي ملف خارج Git بنمط <code>*:</code>، وكل تغيير في القواعد يُسجّل في الـ Audit Log. أمثلة القواعد أدناه.
+      </div>
+    </div>
+    <div class="layer">
+      <div class="lv">الطبقة 3<small>سلوكية وتنظيمية</small></div>
+      <div>
+        <b>الـ Acceptable Use Policy وفصل المستندات عن الكود.</b> وثائق BRD تبقى على Jira/SharePoint ولا تُنسخ إلى الـ Repository أو إلى نافذة الـ Chat؛ الـ Secrets تبقى في ملفات الـ Config داخل الـ Content Exclusion أو في Key Vault؛ وأي stack trace يُنظَّف من بيانات المستخدمين قبل لصقه. الفريق يوقّع الـ Policy، ويُفعّل Secret Scanning في Azure DevOps كشبكة أمان إضافية.
+      </div>
+    </div>
+  </div>
+
+  <div class="grid grid-2" style="margin-top:16px">
+    <div class="card">
+      <h3>قواعد الـ Content Exclusion المقترحة (على مستوى الـ Organization)</h3>
+<pre># Any repo (Git or not): secrets & config
+"*":
+  - "**/web.config"
+  - "**/appsettings*.json"
+  - "**/*.pfx"
+  - "**/*.pem"
+  - "**/*.cer"
+  - "**/secrets/**"
+  - "**/*.env"
+
+# Portal repo on Azure DevOps
+"https://dev.azure.com/&lt;org&gt;/&lt;project&gt;/_git/portal":
+  - "/docs/**"          # BRDs, SRS, meeting notes
+  - "/integrations/nafath/config/**"
+  - "/data/**"          # sample exports
+  - "**/*.bak"</pre>
+      <p style="font-size:.84rem;color:var(--muted)">تُختبر كل قاعدة بفتح الملف في VS والتأكد من ظهور أيقونة التعطيل قبل توسيع الاستخدام.</p>
+    </div>
+    <div class="card">
+      <h3>ما يُسمح وما لا يُسمح بمشاركته مع الأداة</h3>
+      <table style="margin:0;font-size:.88rem">
+        <thead><tr><th>مسموح</th><th>ممنوع</th></tr></thead>
+        <tbody>
+          <tr><td>كود المصدر للبوابة (C#, JS, CSS)</td><td>وثائق BRD/SRS الأصلية أو أي وثيقة مصنّفة</td></tr>
+          <tr><td>ملخص تقني بلا أسماء ولا بيانات فعلية</td><td>API Keys، Certificates، Connection Strings، Nafath Tokens</td></tr>
+          <tr><td>رسائل خطأ بعد إزالة بيانات المستخدمين</td><td>بيانات مواطنين أو موظفين (حتى كأمثلة)</td></tr>
+          <tr><td>عينات JSON وهمية لبناء DTO</td><td>عناوين الخوادم الداخلية وبيانات البنية التحتية</td></tr>
+          <tr><td>أسئلة عامة عن SharePoint / WebForms / نفاذ</td><td>أي محتوى من أنظمة الجهة الأخرى غير مصرّح به</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>إعدادات الـ Policy الموصى بها في لوحة الـ Organization</h3>
+    <div class="tbl-wrap">
+    <table style="margin:0">
+      <thead><tr><th>الإعداد</th><th>القيمة</th><th>السبب</th></tr></thead>
+      <tbody>
+        <tr><td>Suggestions matching public code</td><td>Blocked</td><td>تجنّب إدراج كود عام بترخيص غير معروف في نظام حكومي</td></tr>
+        <tr><td>Copilot in GitHub.com / Mobile / CLI</td><td>Disabled خلال التجربة</td><td>حصر الاستخدام في Visual Studio حيث تُطبّق قواعد الـ Content Exclusion</td></tr>
+        <tr><td>Web search in chat</td><td>Disabled</td><td>منع خروج أجزاء من السياق إلى محرّك بحث خارجي</td></tr>
+        <tr><td>MCP servers</td><td>Allowlist فارغة</td><td>لا اتصال بأي مصدر بيانات خارجي إلا بموافقة</td></tr>
+        <tr><td>Agent mode / Edit mode</td><td>مؤجّل حتى الـ Phase الأخيرة</td><td>لا يحترمان قواعد الـ Content Exclusion حاليًا حسب وثائق GitHub؛ يُفعّلان بعد نقل كل المستندات خارج الـ Repository</td></tr>
+        <tr><td>Copilot Memory (المستضافة على GitHub)</td><td>Disabled</td><td>لا نحتاجها مع Azure DevOps؛ المعايير تعيش في ملفات الـ Repository لا على خوادم GitHub</td></tr>
+        <tr><td>Models</td><td>قائمة محددة</td><td>ثبات السلوك وضبط التكلفة</td></tr>
+        <tr><td>Audit log review</td><td>شهريًا</td><td>مراجعة من عيّن الـ Seats ومن غيّر قواعد الـ Content Exclusion</td></tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
+
+  <div class="note bad"><b>قيود يجب أن تعرفها الإدارة:</b> الـ Content Exclusion لا يمنع المطوّر من <i>لصق</i> محتوى يدويًا في الـ Chat، ولا يغطي الـ Symlinks أو الـ Remote / Network Drives، وقد يستدل الـ IDE على معلومات دلالية (أسماء الأنواع مثلًا) من ملفات داخل الـ Content Exclusion. لهذا الطبقة الثالثة (الـ Policy والتدريب) ليست اختيارية.</div>
+</section>
+
+<!-- ===================== 9. خطة التنفيذ ===================== -->
+<section id="roadmap">
+  <div class="sec-head"><span class="num">10</span><h2>خطة التنفيذ على مراحل</h2></div>
+  <div class="phases">
+    <div class="phase">
+      <div class="w">Weeks 1–2</div>
+      <h3>التهيئة والموافقات</h3>
+      <ul>
+        <li>اعتماد التقرير والـ Acceptable Use Policy</li>
+        <li>إنشاء الـ Organization وشراء 5 Seats</li>
+        <li>فتح الـ Domains على الـ Firewall</li>
+        <li>إدخال قواعد الـ Content Exclusion واختبارها</li>
+        <li>قياس الـ Baseline</li>
+      </ul>
+    </div>
+    <div class="phase">
+      <div class="w">Weeks 3–10</div>
+      <h3>مرحلة الـ Pilot</h3>
+      <ul>
+        <li>5 مطوّرين، Code Completions + Chat فقط</li>
+        <li>أول 3 معايير مشتركة: <code>cr-scaffold</code>، <code>common-controls-catalog</code>، <code>security-reviewer</code></li>
+        <li>اجتماع أسبوعي 30 دقيقة لتبادل الخبرات</li>
+        <li>تسجيل الـ KPIs لكل CR</li>
+        <li>Survey في الأسبوع 4 و8</li>
+      </ul>
+    </div>
+    <div class="phase">
+      <div class="w">Week 11</div>
+      <h3>التقييم والقرار</h3>
+      <ul>
+        <li>تقرير أرقام قبل/بعد للإدارة</li>
+        <li>مراجعة الـ Audit Log وأي حوادث</li>
+        <li>قرار: توسيع / تعديل / إيقاف</li>
+      </ul>
+    </div>
+    <div class="phase">
+      <div class="w">Weeks 12+</div>
+      <h3>التوسع والتعميق</h3>
+      <ul>
+        <li>Rollout على بقية الفريق (وربما فريق الـ Front-end)</li>
+        <li>تفعيل Agent mode بعد إخراج المستندات من الـ Repository</li>
+        <li>Custom Agents لمراجعة الـ Merge</li>
+        <li>مراجعة ربع سنوية للـ Policies والتكلفة</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== 10. المخاطر ===================== -->
+<section id="risks">
+  <div class="sec-head"><span class="num">11</span><h2>المخاطر وكيف نعالجها</h2></div>
+  <div class="tbl-wrap">
+  <table>
+    <thead><tr><th style="width:30%">الخطر</th><th style="width:12%">الاحتمال</th><th>المعالجة</th></tr></thead>
+    <tbody>
+      <tr><td>رفض الـ InfoSec فتح أي Domain خارجي لأدوات الـ AI</td><td><span class="tag a">متوسط</span></td><td>تقديم هذا التقرير لهم أولًا؛ الفتح مقتصر على Domains GitHub المنشورة ولأجهزة الفريق فقط، مع دعم الـ Proxy والتسجيل. البديل إن رُفض: Models مستضافة داخل Azure Subscription خاص بالجهة، بتكلفة وجهد أعلى.</td></tr>
+      <tr><td>اشتراط الربط بالـ SSO / Entra ID</td><td><span class="tag a">متوسط</span></td><td>يُحسم مبكرًا؛ قد يستلزم GitHub Enterprise بتكلفة أعلى، أو القبول بحسابات Organization مع 2FA إلزامي وإزالة الأعضاء عند مغادرة الجهة.</td></tr>
+      <tr><td>مطوّر يلصق وثيقة حساسة في الـ Chat</td><td><span class="tag a">منخفض–متوسط</span></td><td>Policy موقّعة + تدريب + إبقاء الوثائق خارج الـ Repository + مراجعة دورية. الخطة تمنع التدريب على البيانات، فأثر الحادثة محدود لكنه يُعامل كمخالفة.</td></tr>
+      <tr><td>كود مقترح لا يناسب Version الـ SharePoint لدينا</td><td><span class="tag t">مرتفع لكن أثره بسيط</span></td><td>ملف الـ Instructions يحدد الـ Version والـ Libraries؛ الـ Review Flow والـ Testing الحالي يلتقط الباقي.</td></tr>
+      <tr><td>تجاوز الميزانية بسبب استهلاك الـ Premium Models</td><td><span class="tag t">منخفض</span></td><td>Spending Limit = صفر للرصيد الإضافي؛ الـ Code Completions غير محدودة أصلًا.</td></tr>
+      <tr><td>الاعتماد المفرط وتراجع الفهم لدى المطوّرين الجدد</td><td><span class="tag a">متوسط على المدى الطويل</span></td><td>استخدام ميزة الـ Explain كأداة تعلّم، والـ Peer Review للكود المولّد، وعدم السماح بدمج كود لا يستطيع صاحبه شرحه.</td></tr>
+      <tr><td>تغيّر الـ Pricing أو الـ Policies لدى GitHub</td><td><span class="tag a">متوسط</span></td><td>الـ Subscription شهري قابل للإلغاء؛ المعايير المشتركة مكتوبة بصيغة مفتوحة (Markdown) قابلة للنقل لأداة أخرى.</td></tr>
+    </tbody>
+  </table>
+  </div>
+</section>
+
+<footer>
+  <p><b>المصادر الرئيسية (تمت مراجعتها في أغسطس 2026):</b></p>
+  <ol>
+    <li>GitHub Docs — Content exclusion for GitHub Copilot: <a href="https://docs.github.com/en/copilot/concepts/context/content-exclusion">docs.github.com/en/copilot/concepts/context/content-exclusion</a></li>
+    <li>GitHub Docs — Excluding content from GitHub Copilot (org / repo / Azure DevOps): <a href="https://docs.github.com/en/copilot/how-tos/configure-content-exclusion/exclude-content-from-copilot">docs.github.com/.../exclude-content-from-copilot</a></li>
+    <li>GitHub Docs — Hosting of models & training policy: <a href="https://docs.github.com/en/copilot/reference/ai-models/model-hosting">docs.github.com/en/copilot/reference/ai-models/model-hosting</a></li>
+    <li>GitHub Blog — Updates to Copilot interaction data usage policy (Mar 2026): <a href="https://github.blog/news-insights/company-news/updates-to-github-copilot-interaction-data-usage-policy/">github.blog/.../updates-to-github-copilot-interaction-data-usage-policy</a></li>
+    <li>Microsoft Learn — Agent Skills in Visual Studio: <a href="https://learn.microsoft.com/en-us/visualstudio/ide/copilot-agent-skills?view=visualstudio">learn.microsoft.com/.../copilot-agent-skills</a></li>
+    <li>Microsoft Learn — Custom agents in Visual Studio: <a href="https://learn.microsoft.com/en-us/visualstudio/ide/copilot-specialized-agents?view=visualstudio">learn.microsoft.com/.../copilot-specialized-agents</a></li>
+    <li>Visual Studio Blog — Copilot Memories (Jan 2026): <a href="https://devblogs.microsoft.com/visualstudio/copilot-memories/">devblogs.microsoft.com/visualstudio/copilot-memories</a></li>
+    <li>Visual Studio Blog — Copilot Content Exclusion in VS 2022 17.11: <a href="https://devblogs.microsoft.com/visualstudio/copilot-content-exclusion-in-visual-studio/">devblogs.microsoft.com/visualstudio/copilot-content-exclusion-in-visual-studio</a></li>
+    <li>Microsoft Tech Community — Demystifying GitHub Copilot Security Controls: <a href="https://techcommunity.microsoft.com/blog/azuredevcommunityblog/demystifying-github-copilot-security-controls-easing-concerns-for-organizational/4468193">techcommunity.microsoft.com/...</a></li>
+    <li>الأسعار: صفحة خطط GitHub Copilot الرسمية (github.com/features/copilot/plans) ومقارنات محدثة لأغسطس 2026.</li>
+  </ol>
+</footer>
+
+</main>
+</body>
+</html>
