@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>NAUSS Strategic Technology Partnership Program</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --primary:#2e6066; --primary-dark:#234a4f; --primary-tint:#e8f0f0;
+  --gold:#c6aa76; --gold-tint:#f6f0e4;
+  --blue:#385676; --rose:#895b60; --stone:#8a7e78;
+  --ink:#1f2b2d; --muted:#5f6b6d; --line:#dde4e4;
+  --bg:#f7f9f9; --surface:#ffffff;
+  --r-sm:8px; --r-md:14px; --r-lg:22px;
+  --shadow:0 1px 2px rgba(46,96,102,.06),0 8px 24px rgba(46,96,102,.08);
+  --s1:8px; --s2:16px; --s3:24px; --s4:40px; --s5:64px; --s6:96px;
+  --max:1120px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:84px}
+body{font-family:"Cairo",system-ui,"Segoe UI",Tahoma,sans-serif;color:var(--ink);background:var(--bg);line-height:1.7;font-size:17px;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+img{max-width:100%;display:block}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 var(--s3)}
+:focus-visible{outline:3px solid var(--gold);outline-offset:3px;border-radius:4px}
+
+/* Header */
+.topbar{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);padding-top:env(safe-area-inset-top,0px)}
+.topbar .wrap{display:flex;align-items:center;justify-content:space-between;height:72px;gap:var(--s3)}
+.logo img{height:46px;width:auto}
+.nav{display:flex;gap:4px;list-style:none}
+.nav a{display:block;padding:8px 14px;border-radius:var(--r-sm);text-decoration:none;font-weight:600;font-size:15px;color:var(--muted);transition:background .2s,color .2s}
+.nav a:hover{background:var(--primary-tint);color:var(--primary)}
+.nav a.active{background:var(--primary);color:#fff}
+.menu-btn{display:none;background:none;border:1px solid var(--line);border-radius:var(--r-sm);width:44px;height:44px;cursor:pointer;color:var(--primary)}
+
+/* Hero */
+.hero{background:var(--primary);color:#fff;position:relative;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:0;background:
+  repeating-linear-gradient(135deg,transparent 0 46px,rgba(198,170,118,.07) 46px 47px);pointer-events:none}
+.hero .wrap{position:relative;padding-top:var(--s6);padding-bottom:var(--s5)}
+.hero-sub{color:var(--gold);font-weight:700;font-size:18px;margin-bottom:var(--s2)}
+.hero h1{font-size:clamp(34px,5.4vw,60px);line-height:1.15;font-weight:800;max-width:15ch;letter-spacing:-.01em}
+.hero p.lead{margin-top:var(--s3);max-width:58ch;font-size:19px;color:rgba(255,255,255,.85)}
+.thesis{margin-top:var(--s5);display:grid;grid-template-columns:1fr 1fr;border-top:1px solid rgba(255,255,255,.18)}
+.thesis div{padding:var(--s3) var(--s3) 0 0}
+.thesis div+div{padding-left:var(--s3);border-left:1px solid rgba(255,255,255,.18)}
+.thesis small{display:block;font-size:14px;color:rgba(255,255,255,.65);margin-bottom:4px}
+.thesis .no{font-size:clamp(20px,2.4vw,26px);font-weight:600;color:rgba(255,255,255,.6);text-decoration:line-through;text-decoration-color:var(--rose);text-decoration-thickness:2px}
+.thesis .yes{font-size:clamp(20px,2.4vw,26px);font-weight:700;color:var(--gold)}
+
+/* Sections */
+section.block{padding:var(--s6) 0;border-bottom:1px solid var(--line)}
+section.block:nth-of-type(even){background:var(--surface)}
+.head{display:grid;grid-template-columns:280px 1fr;gap:var(--s4);align-items:start}
+.head h2{font-size:30px;line-height:1.25;font-weight:800;color:var(--primary);position:relative;padding-top:var(--s2)}
+.head h2::before{content:"";position:absolute;top:0;left:0;width:40px;height:4px;background:var(--gold);border-radius:2px}
+.prose p{max-width:66ch;color:var(--muted)}
+.prose p+p{margin-top:var(--s2)}
+.callout{margin-top:var(--s3);padding:var(--s3);border-left:4px solid var(--gold);background:var(--gold-tint);border-radius:0 var(--r-md) var(--r-md) 0;color:var(--ink);font-weight:600;font-size:18px;max-width:66ch}
+
+/* Program */
+.series{margin-top:var(--s3);display:flex;align-items:center;gap:var(--s2);padding:var(--s3);border-radius:var(--r-md);background:var(--primary-tint);max-width:66ch}
+.series svg{flex:none;width:44px;height:44px;color:var(--primary)}
+.series b{display:block;color:var(--primary);font-size:19px}
+.series span{color:var(--muted);font-size:15px}
+.domains{margin-top:var(--s3);display:flex;flex-wrap:wrap;gap:10px}
+.chip{padding:8px 16px;border-radius:999px;border:1px solid var(--line);background:var(--surface);font-weight:600;font-size:15px;color:var(--primary);display:inline-flex;align-items:center;gap:8px}
+.chip i{width:8px;height:8px;border-radius:50%;background:var(--gold)}
+
+/* Targets */
+.targets{display:grid;grid-template-columns:1fr 1fr;gap:var(--s3)}
+.tgroup{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-lg);padding:var(--s3);box-shadow:var(--shadow)}
+.tgroup h3{font-size:18px;font-weight:700;display:flex;align-items:center;gap:10px;margin-bottom:var(--s2)}
+.tgroup h3 svg{width:24px;height:24px}
+.tgroup.acad h3{color:var(--blue)} .tgroup.tech h3{color:var(--primary)}
+.tgroup ul{list-style:none}
+.tgroup li{padding:12px 0;border-top:1px solid var(--line);font-weight:700;font-size:20px;color:var(--ink)}
+.more{margin-top:var(--s3);color:var(--muted);font-size:15px}
+.more strong{color:var(--ink)}
+
+/* Outcomes */
+.outcomes{display:grid;grid-template-columns:repeat(2,1fr);gap:0 var(--s4);list-style:none}
+.outcomes li{display:flex;gap:14px;align-items:flex-start;padding:16px 0;border-top:1px solid var(--line);font-weight:600}
+.outcomes li svg{flex:none;width:22px;height:22px;color:var(--primary);margin-top:4px}
+
+/* Engagement model */
+.flow{list-style:none;display:grid;grid-template-columns:repeat(5,1fr);gap:var(--s2);counter-reset:step}
+.flow li{position:relative;background:var(--surface);border:1px solid var(--line);border-radius:var(--r-md);padding:var(--s3) var(--s2);counter-increment:step;transition:border-color .2s,transform .2s}
+.flow li:hover{border-color:var(--primary);transform:translateY(-2px)}
+.flow li::before{content:counter(step);display:grid;place-items:center;width:34px;height:34px;border-radius:50%;background:var(--primary-tint);color:var(--primary);font-weight:800;margin-bottom:12px}
+.flow li:last-child{background:var(--primary);border-color:var(--primary);color:#fff}
+.flow li:last-child::before{background:var(--gold);color:var(--primary-dark)}
+.flow li:not(:last-child)::after{content:"";position:absolute;top:40px;right:-13px;width:10px;height:10px;border-top:2px solid var(--gold);border-right:2px solid var(--gold);transform:rotate(45deg);z-index:1}
+.flow b{display:block;font-size:17px;line-height:1.35}
+.flow span{display:block;margin-top:6px;font-size:14px;color:var(--muted)}
+.flow li:last-child span{color:rgba(255,255,255,.8)}
+.rule{margin-top:var(--s3);display:flex;gap:12px;align-items:center;color:var(--ink);font-weight:600}
+.rule svg{width:22px;height:22px;color:var(--rose);flex:none}
+
+/* KPIs */
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--s3)}
+.kpi{border-top:4px solid var(--primary);padding-top:var(--s2)}
+.kpi:nth-child(2){border-color:var(--blue)} .kpi:nth-child(3){border-color:var(--gold)} .kpi:nth-child(4){border-color:var(--rose)}
+.kpi .n{font-size:64px;font-weight:800;line-height:1;color:var(--primary)}
+.kpi .n sup{font-size:22px;font-weight:700;color:var(--stone);margin-left:2px}
+.kpi p{margin-top:var(--s1);color:var(--muted);font-weight:600;font-size:16px;max-width:22ch}
+
+/* Outcome band */
+.closing{background:var(--primary-dark);color:#fff;padding:var(--s6) 0;text-align:center}
+.closing p{max-width:60ch;margin:0 auto;color:rgba(255,255,255,.82);font-size:19px}
+.verbs{margin:var(--s4) 0;display:flex;flex-wrap:wrap;justify-content:center;gap:var(--s1) var(--s3);font-size:clamp(28px,4.4vw,48px);font-weight:800;line-height:1.2}
+.verbs span{opacity:0;transform:translateY(12px);transition:opacity .6s ease,transform .6s ease}
+.verbs span:nth-child(odd){color:var(--gold)}
+.verbs.in span{opacity:1;transform:none}
+.verbs.in span:nth-child(2){transition-delay:.12s}.verbs.in span:nth-child(3){transition-delay:.24s}
+.verbs.in span:nth-child(4){transition-delay:.36s}.verbs.in span:nth-child(5){transition-delay:.48s}
+.tagline{font-size:22px!important;font-weight:700;color:#fff!important}
+
+footer{background:var(--surface);border-top:1px solid var(--line);padding:var(--s3) 0 calc(var(--s3) + env(safe-area-inset-bottom,0px))}
+footer .wrap{display:flex;justify-content:space-between;align-items:center;gap:var(--s2);flex-wrap:wrap;color:var(--muted);font-size:15px}
+footer strong{color:var(--primary)}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:10px 18px;border-radius:var(--r-sm);border:1px solid var(--primary);background:var(--primary);color:#fff;font:inherit;font-weight:700;font-size:15px;cursor:pointer;transition:background .2s}
+.btn:hover{background:var(--primary-dark)}
+.btn svg{width:18px;height:18px}
+
+/* Responsive */
+@media (max-width:960px){
+  .head{grid-template-columns:1fr;gap:var(--s3)}
+  .flow{grid-template-columns:1fr 1fr}
+  .flow li:not(:last-child)::after{display:none}
+  .flow li:last-child{grid-column:1/-1}
+  .kpis{grid-template-columns:1fr 1fr}
+}
+@media (max-width:760px){
+  body{font-size:16px}
+  .menu-btn{display:grid;place-items:center}
+  .nav{position:absolute;top:100%;left:0;right:0;flex-direction:column;background:#fff;border-bottom:1px solid var(--line);padding:var(--s1) var(--s2) var(--s2);display:none}
+  .nav.open{display:flex}
+  .targets,.outcomes,.thesis{grid-template-columns:1fr}
+  .thesis div+div{border-left:0;padding-left:0}
+  section.block{padding:var(--s5) 0}
+  .hero .wrap{padding-top:var(--s5)}
+  .kpi .n{font-size:48px}
+}
+@media (max-width:440px){.flow,.kpis{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *{transition:none!important}
+  .verbs span{opacity:1;transform:none}
+}
+@media print{
+  .topbar,.btn{display:none}
+  body{background:#fff}
+  section.block,.hero,.closing{break-inside:avoid}
+  .verbs span{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="wrap">
+    <a class="logo" href="#top" aria-label="Naif Arab University for Security Sciences">
+      <img src="https://nauss.edu.sa/Style%20Library/ar-sa/Styles/images/home/Logo.svg" alt="Naif Arab University for Security Sciences">
+    </a>
+    <button class="menu-btn" aria-label="Open menu" aria-expanded="false" aria-controls="nav">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </button>
+    <ul class="nav" id="nav">
+      <li><a href="#why">Why now</a></li>
+      <li><a href="#program">Program</a></li>
+      <li><a href="#targets">Targets</a></li>
+      <li><a href="#model">Engagement</a></li>
+      <li><a href="#goals">12-month goals</a></li>
+    </ul>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap">
+      <p class="hero-sub">From global engagement to strategic impact</p>
+      <h1>NAUSS Strategic Technology Partnership Program</h1>
+      <p class="lead">A structured program that brings the world's leading technology companies, universities, research centers and security institutions to NAUSS, and turns each engagement into a partnership with measurable outcomes.</p>
+      <div class="thesis">
+        <div><small>The objective is not</small><span class="no">to organize visits</span></div>
+        <div><small>The objective is</small><span class="yes">to convert engagement into partnerships and outcomes</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="why">
+    <div class="wrap head">
+      <h2>Why now</h2>
+      <div class="prose">
+        <p>The recent HUMAIN leadership visit demonstrated the value of focused, high-level engagement with global technology leaders.</p>
+        <p>NAUSS has an opportunity to build on this momentum and establish a structured program that brings together the world's leading technology companies, universities, research centers and security institutions.</p>
+        <div class="callout">Every engagement should leave NAUSS with a partnership, not a photo opportunity.</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="program">
+    <div class="wrap head">
+      <h2>The program</h2>
+      <div class="prose">
+        <p>Launch the NAUSS Strategic Technology Partnership Program, supported by a flagship engagement platform:</p>
+        <div class="series">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 16.4 6.8 19.1l1-5.8-4.3-4.1 5.9-.9z"/></svg>
+          <div><b>NAUSS Technology Leaders Series</b><span>The flagship platform for hosting selected global institutions and leaders</span></div>
+        </div>
+        <p style="margin-top:24px">Focus domains:</p>
+        <div class="domains">
+          <span class="chip"><i></i>Artificial Intelligence</span>
+          <span class="chip"><i></i>Cybersecurity</span>
+          <span class="chip"><i></i>National Security</span>
+          <span class="chip"><i></i>Advanced Research</span>
+          <span class="chip"><i></i>Emerging Technologies</span>
+          <span class="chip"><i></i>Digital Transformation</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="targets">
+    <div class="wrap head">
+      <h2>First strategic targets</h2>
+      <div>
+        <div class="targets">
+          <div class="tgroup acad">
+            <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 9l10-5 10 5-10 5z"/><path d="M6 11v5c3 2 9 2 12 0v-5"/></svg>Global research and academia</h3>
+            <ul><li>MIT CSAIL</li><li>Stanford HAI</li><li>Carnegie Mellon CyLab</li></ul>
+          </div>
+          <div class="tgroup tech">
+            <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="5" width="14" height="14" rx="2"/><rect x="9" y="9" width="6" height="6"/><path d="M9 2v3M15 2v3M9 19v3M15 19v3M2 9h3M2 15h3M19 9h3M19 15h3"/></svg>Global technology leaders</h3>
+            <ul><li>NVIDIA</li><li>Microsoft</li><li>Google</li></ul>
+          </div>
+        </div>
+        <p class="more">Additional strategic targets may include <strong>AWS, Cisco, Palo Alto Networks, Oracle, IBM</strong> and other high-impact institutions.</p>
+
+        <h3 style="margin:64px 0 8px;font-size:22px;color:var(--primary)">What NAUSS seeks</h3>
+        <p style="color:var(--muted);margin-bottom:16px">Each engagement should produce at least one tangible outcome:</p>
+        <ul class="outcomes">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg>Joint research programs</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg>AI and cybersecurity projects</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg>Technology pilots</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg>Specialized training programs</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg>Researcher and faculty exchange</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg>Joint innovation labs</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg>Research commercialization opportunities</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg>Strategic access to global expertise</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="model">
+    <div class="wrap">
+      <div class="head" style="margin-bottom:40px">
+        <h2>Engagement model</h2>
+        <div class="prose"><p>Each strategic engagement follows the same five-stage structure, from first meeting to a committed plan.</p></div>
+      </div>
+      <ol class="flow">
+        <li><b>Executive meeting</b><span>Leadership alignment on shared priorities</span></li>
+        <li><b>Research and technology dialogue</b><span>Experts map areas for collaboration</span></li>
+        <li><b>Student and researcher engagement</b><span>Direct exchange with NAUSS talent</span></li>
+        <li><b>Partnership workshop</b><span>Shape concrete joint initiatives</span></li>
+        <li><b>30-day action plan</b><span>Owners, timelines and next steps agreed</span></li>
+      </ol>
+      <p class="rule"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Every visit ends with defined owners, timelines and measurable next steps.</p>
+    </div>
+  </section>
+
+  <section class="block" id="goals">
+    <div class="wrap">
+      <div class="head" style="margin-bottom:48px">
+        <h2>12-month target</h2>
+        <div class="prose"><p>Within the first year, the program should aim to achieve:</p></div>
+      </div>
+      <div class="kpis">
+        <div class="kpi"><div class="n">6</div><p>High-level strategic engagements</p></div>
+        <div class="kpi"><div class="n">3</div><p>Joint research or technology initiatives</p></div>
+        <div class="kpi"><div class="n">2</div><p>Specialized training or capability-building programs</p></div>
+        <div class="kpi"><div class="n">1<sup>+</sup></div><p>Technology pilot or joint innovation initiative</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="closing" aria-labelledby="outcome-title">
+    <div class="wrap">
+      <h2 id="outcome-title" style="font-size:20px;color:var(--gold);margin-bottom:16px">Strategic outcome</h2>
+      <p>Position NAUSS as a regional platform where global leaders in technology, security and research come not simply to visit, but to:</p>
+      <div class="verbs" id="verbs"><span>Collaborate.</span><span>Research.</span><span>Develop.</span><span>Pilot.</span><span>Build.</span></div>
+      <p class="tagline">Turning strategic relationships into measurable impact.</p>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>Prepared by: <strong>Dr. Yasser Al Juhani</strong></span>
+    <button class="btn" onclick="window.print()">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V3h12v6M6 18H4v-7h16v7h-2M8 14h8v7H8z"/></svg>
+      Print or save as PDF
+    </button>
+  </div>
+</footer>
+
+<script>
+// Mobile menu
+const btn=document.querySelector('.menu-btn'),nav=document.getElementById('nav');
+btn.addEventListener('click',()=>{const o=nav.classList.toggle('open');btn.setAttribute('aria-expanded',o)});
+nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{nav.classList.remove('open');btn.setAttribute('aria-expanded',false)}));
+
+// Active nav link on scroll
+const links=[...nav.querySelectorAll('a')];
+const spy=new IntersectionObserver(es=>es.forEach(e=>{
+  if(e.isIntersecting){links.forEach(l=>l.classList.toggle('active',l.getAttribute('href')==='#'+e.target.id))}
+}),{rootMargin:'-45% 0px -50% 0px'});
+document.querySelectorAll('section[id]').forEach(s=>spy.observe(s));
+
+// One reveal: the closing verbs
+const verbs=document.getElementById('verbs');
+new IntersectionObserver((es,o)=>{if(es[0].isIntersecting){verbs.classList.add('in');o.disconnect()}},{threshold:.4}).observe(verbs);
+</script>
+</body>
+</html>
