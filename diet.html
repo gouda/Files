@@ -1,39 +1,18 @@
-
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>الأسبوع ٣ · الخميس ٣/٩ ← الأربع ٩/٩ · الدهون ٢٤٫٧ ← ٢٤٫٠</title>
+<title>الرجوع · الجمعة ١٦/١٠ ← الأربع ٢١/١٠ · بالموازين</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Reem+Kufi:wght@400;500;600;700&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
-:root{
-  --ink:#12100E;
-  --paper:#EDE7DC;
-  --paper-2:#E3DCCD;
-  --rule:#C8BFA9;
-  --stamp:#1F5C4B;
-  --stamp-soft:#3D8571;
-  --alarm:#A8341F;
-  --muted:#6B6455;
-  --water:#2A4A7A;
-  --meat:#7A3B2E;
-}
+:root{--ink:#12100E;--paper:#EDE7DC;--paper-2:#E3DCCD;--rule:#C8BFA9;--stamp:#1F5C4B;--stamp-soft:#3D8571;--alarm:#A8341F;--muted:#6B6455;--water:#2A4A7A;--meat:#7A3B2E;}
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
-body{
-  background:var(--paper);
-  background-image:repeating-linear-gradient(0deg, transparent, transparent 27px, rgba(200,191,169,.28) 27px, rgba(200,191,169,.28) 28px);
-  color:var(--ink);
-  font-family:'IBM Plex Sans Arabic',system-ui,sans-serif;
-  line-height:1.75;
-  -webkit-font-smoothing:antialiased;
-}
+body{background:var(--paper);background-image:repeating-linear-gradient(0deg,transparent,transparent 27px,rgba(200,191,169,.28) 27px,rgba(200,191,169,.28) 28px);color:var(--ink);font-family:'IBM Plex Sans Arabic',system-ui,sans-serif;line-height:1.75;-webkit-font-smoothing:antialiased}
 .wrap{max-width:980px;margin:0 auto;padding:0 20px 100px}
-
-/* NAV */
 .topnav{position:sticky;top:0;z-index:60;background:var(--paper);border-bottom:2px solid var(--ink);box-shadow:0 2px 0 rgba(200,191,169,.35)}
 .topnav__inner{max-width:980px;margin:0 auto;padding:0 20px;display:flex;align-items:center;gap:10px;min-height:52px;flex-wrap:wrap}
 .topnav__brand{font-family:'Reem Kufi';font-weight:700;font-size:.95rem;color:var(--stamp);white-space:nowrap}
@@ -41,21 +20,13 @@ body{
 .topnav__links{display:flex;gap:2px;flex-wrap:wrap;margin-inline-start:auto}
 .topnav__links a{font-size:.78rem;font-weight:600;color:var(--muted);text-decoration:none;padding:8px 10px;border-bottom:2px solid transparent;transition:.15s}
 .topnav__links a:hover{color:var(--stamp);border-bottom-color:var(--stamp)}
-@media(max-width:760px){
-  .topnav__toggle{display:block}
-  .topnav__links{display:none;flex-direction:column;width:100%;gap:6px;padding:4px 0 12px;margin-inline-start:0}
-  .topnav__links.open{display:flex}
-  .topnav__links a{border:1px solid var(--rule);background:var(--paper-2);padding:12px 14px;font-size:.9rem}
-}
+@media(max-width:760px){.topnav__toggle{display:block}.topnav__links{display:none;flex-direction:column;width:100%;gap:6px;padding:4px 0 12px;margin-inline-start:0}.topnav__links.open{display:flex}.topnav__links a{border:1px solid var(--rule);background:var(--paper-2);padding:12px 14px;font-size:.9rem}}
 .sec,.hero{scroll-margin-top:64px}
-
-/* HERO */
 .hero{padding:44px 0 24px;border-bottom:3px double var(--ink);margin-bottom:30px}
 .hero__eyebrow{font-size:.72rem;letter-spacing:.22em;font-weight:600;color:var(--muted);margin-bottom:18px}
 .scale{display:flex;align-items:baseline;gap:18px;flex-wrap:wrap;font-family:'Reem Kufi';line-height:1}
 .scale__from,.scale__to{font-size:clamp(3.2rem,10vw,5.6rem);font-weight:700;letter-spacing:-.02em}
-.scale__from{color:var(--ink)}
-.scale__to{color:var(--stamp)}
+.scale__from{color:var(--ink)}.scale__to{color:var(--stamp)}
 .scale__arrow{font-size:clamp(1.8rem,5vw,3rem);color:var(--rule);transform:translateY(-.1em)}
 .scale__unit{font-size:1rem;font-weight:500;color:var(--muted);letter-spacing:.05em}
 .hero__sub{margin-top:18px;font-size:1rem;max-width:64ch;line-height:1.85}
@@ -64,18 +35,6 @@ body{
 .hero__meta div:last-child{border-left:none}
 .hero__meta b{display:block;font-family:'Reem Kufi';font-size:1.15rem;font-weight:600}
 .hero__meta span{color:var(--muted);font-size:.72rem;letter-spacing:.08em}
-
-/* WIN STRIP */
-.win-strip{border:2px solid var(--stamp);background:rgba(31,92,75,.06);padding:16px 20px;margin-bottom:20px}
-.win-strip h4{font-family:'Reem Kufi';font-size:1rem;font-weight:600;color:var(--stamp);margin-bottom:8px}
-.win-strip__grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:2px;margin-top:6px}
-.win-strip__grid div{padding:8px 10px;background:var(--paper);border:1px solid var(--rule)}
-.win-strip__grid span{display:block;font-size:.64rem;letter-spacing:.08em;color:var(--muted)}
-.win-strip__grid b{font-family:'Reem Kufi';font-size:1.2rem;font-weight:700;color:var(--stamp)}
-.win-strip__grid small{font-size:.7rem;color:var(--muted);font-weight:600}
-.win-strip p{font-size:.86rem;margin-top:10px}
-
-/* BOXES */
 .alert{border:2px solid var(--meat);background:rgba(122,59,46,.05);padding:16px 20px;margin-bottom:34px}
 .alert h4{font-family:'Reem Kufi';font-size:1rem;font-weight:600;color:var(--meat);margin-bottom:6px}
 .alert p{font-size:.9rem}
@@ -85,41 +44,22 @@ body{
 .shop li{font-size:.88rem;padding:7px 10px;background:var(--paper);border:1px solid var(--rule)}
 .shop li b{color:var(--alarm)}
 .shop p{font-size:.84rem;color:var(--muted);margin-top:10px}
-
-/* SECTION */
 .sec{margin-bottom:44px}
 .sec__head{display:flex;align-items:center;gap:14px;margin-bottom:8px}
 .sec__head h2{font-family:'Reem Kufi';font-size:1.5rem;font-weight:600;white-space:nowrap}
 .sec__head::after{content:"";flex:1;height:1px;background:var(--rule)}
 .sec__note{color:var(--muted);font-size:.9rem;margin-bottom:22px;max-width:70ch}
-
-/* STOCK / RULES */
 .rules{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));border:1px solid var(--rule);background:var(--paper-2)}
 .rule{padding:18px 20px;border-left:1px solid var(--rule);border-bottom:1px solid var(--rule)}
 .rule h4{font-family:'Reem Kufi';font-size:1rem;font-weight:600;margin-bottom:6px}
 .rule p{font-size:.88rem;color:var(--muted);line-height:1.7}
-
-/* ANALYSIS TABLE */
-.cmp{border:1px solid var(--rule);background:var(--paper-2);overflow-x:auto;margin-bottom:20px}
-.cmp table{border-collapse:collapse;width:100%;min-width:420px}
-.cmp th{font-size:.66rem;letter-spacing:.12em;font-weight:600;color:var(--muted);text-align:right;padding:10px 14px;border-bottom:1px solid var(--rule);background:rgba(31,92,75,.06);white-space:nowrap}
-.cmp td{padding:9px 14px;border-bottom:1px dashed var(--rule);font-size:.88rem;font-family:'Reem Kufi';font-weight:500}
-.cmp td:first-child{font-family:'IBM Plex Sans Arabic';font-weight:500}
-.cmp tr:last-child td{border-bottom:none}
-.cmp .up{color:var(--stamp);font-weight:700}
-.cmp .dn{color:var(--alarm);font-weight:700}
-.cmp .flat{color:var(--muted)}
-
-/* THAW STRIP */
 .thaw{border:2px solid var(--water);background:rgba(42,74,122,.06);padding:16px 20px;margin-bottom:34px}
 .thaw h4{font-family:'Reem Kufi';font-size:1rem;font-weight:600;color:var(--water);margin-bottom:8px}
 .thaw ul{list-style:none;padding:0}
 .thaw li{font-size:.9rem;padding:5px 0;border-bottom:1px dashed var(--rule)}
 .thaw li:last-child{border-bottom:none}
 .thaw b{color:var(--water)}
-
-/* TABLE */
-.ptable{border:1px solid var(--rule);background:var(--paper-2);overflow-x:auto}
+.ptable{border:1px solid var(--rule);background:var(--paper-2);overflow-x:auto;margin-bottom:18px}
 .ptable table{border-collapse:collapse;width:100%;min-width:520px}
 .ptable th{font-size:.66rem;letter-spacing:.12em;font-weight:600;color:var(--muted);text-align:right;padding:11px 16px;border-bottom:1px solid var(--rule);background:rgba(31,92,75,.06);white-space:nowrap}
 .ptable td{padding:10px 16px;border-bottom:1px dashed var(--rule);font-size:.88rem}
@@ -129,13 +69,14 @@ body{
 .ptable .k{font-family:'Reem Kufi';font-size:.82rem;color:var(--muted);white-space:nowrap}
 .ptable .p{font-family:'Reem Kufi';font-size:.82rem;color:var(--stamp);white-space:nowrap;font-weight:600}
 .ptable .eye{font-size:.8rem;color:var(--muted)}
-
-/* RECIPES */
+.ptable .w{font-family:'Reem Kufi';font-weight:700;color:var(--water);white-space:nowrap}
+.ptable .sub td:first-child{padding-inline-start:34px;font-weight:400;color:var(--muted)}
 .prep{border:1px solid var(--rule);background:var(--paper-2);margin-bottom:14px;overflow:hidden}
 .prep__head{width:100%;text-align:right;background:none;border:none;padding:16px 20px;cursor:pointer;display:flex;align-items:center;gap:14px;font-family:'Reem Kufi';font-size:1.05rem;font-weight:600;color:var(--ink);transition:background .15s}
 .prep__head:hover{background:rgba(31,92,75,.06)}
 .prep__idx{font-family:'Reem Kufi';font-size:.75rem;font-weight:700;color:var(--paper);background:var(--stamp);width:26px;height:26px;display:grid;place-items:center;flex-shrink:0}
 .prep--meat .prep__idx{background:var(--meat)}
+.prep--opt .prep__idx{background:var(--muted)}
 .prep__when{margin-inline-start:auto;font-size:.72rem;font-weight:500;color:var(--muted);white-space:nowrap}
 .prep__chev{color:var(--rule);font-size:1.1rem;transition:transform .2s;flex-shrink:0}
 .prep[open] .prep__chev{transform:rotate(180deg)}
@@ -144,18 +85,17 @@ body{
 .prep__body li{font-size:.9rem;margin-bottom:5px;line-height:1.7}
 .prep__body ol li::marker{font-weight:600;color:var(--stamp)}
 .prep--meat .prep__body ol li::marker{color:var(--meat)}
+.prep__body .lead{font-size:.86rem;color:var(--muted);padding-top:12px}
 .yield{display:inline-block;margin-top:14px;font-size:.78rem;border:1px solid var(--stamp);color:var(--stamp);padding:4px 10px;font-weight:600}
 .prep--meat .yield{border-color:var(--meat);color:var(--meat)}
 .prep__check{appearance:none;-webkit-appearance:none;width:22px;height:22px;flex-shrink:0;border:1.5px solid var(--muted);background:var(--paper);cursor:pointer;position:relative;transition:.15s}
 .prep__check:hover{border-color:var(--stamp)}
 .prep__check:checked{background:var(--stamp);border-color:var(--stamp)}
-.prep__check:checked::after{content:"";position:absolute;inset:0;background:var(--paper);clip-path:polygon(16% 52%, 38% 74%, 84% 26%, 92% 36%, 38% 90%, 8% 60%)}
+.prep__check:checked::after{content:"";position:absolute;inset:0;background:var(--paper);clip-path:polygon(16% 52%,38% 74%,84% 26%,92% 36%,38% 90%,8% 60%)}
 .prep--done{opacity:.45}
 .prep--done .prep__idx{background:var(--muted)}
 .prep--done .prep__head{text-decoration:line-through;text-decoration-color:var(--stamp-soft);text-decoration-thickness:1.5px}
-
-/* CALENDAR */
-.cal{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:6px;margin-bottom:16px}
+.cal{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:6px;margin-bottom:16px}
 .cal__cell{border:1px solid var(--rule);background:var(--paper-2);padding:9px 4px 7px;text-align:center;cursor:pointer;transition:.15s;position:relative;min-width:0}
 .cal__cell:hover{border-color:var(--stamp-soft)}
 .cal__cell.active{border-color:var(--stamp);border-width:2px;background:rgba(31,92,75,.09);padding:8px 3px 6px}
@@ -167,8 +107,6 @@ body{
 .cal__track{height:4px;background:var(--rule);margin-top:6px;overflow:hidden}
 .cal__fill{height:100%;width:0;background:var(--stamp);transition:width .3s ease}
 .cal__today-dot{position:absolute;top:4px;inset-inline-end:4px;width:7px;height:7px;border-radius:50%;background:var(--alarm)}
-
-/* DAY */
 .day{border:1px solid var(--rule);background:var(--paper-2);margin-bottom:16px}
 .day--today{border-color:var(--stamp);border-width:2px;box-shadow:0 0 0 4px rgba(31,92,75,.09)}
 .day__head{display:flex;align-items:center;gap:14px;padding:14px 18px;border-bottom:1px solid var(--rule);flex-wrap:wrap}
@@ -177,40 +115,52 @@ body{
 .day__date{font-family:'Reem Kufi';font-size:.78rem;font-weight:500;color:var(--muted)}
 .day__today{font-size:.62rem;letter-spacing:.14em;font-weight:700;color:var(--paper);background:var(--stamp);padding:4px 8px}
 .day__tag{font-size:.68rem;letter-spacing:.1em;font-weight:600;padding:4px 9px;border:1px solid currentColor}
-.tag--train{color:var(--alarm)}
-.tag--rest{color:var(--muted)}
+.tag--train{color:var(--alarm)}.tag--rest{color:var(--muted)}
 .day__bar{margin-inline-start:auto;display:flex;align-items:center;gap:9px}
 .day__count{font-family:'Reem Kufi';font-size:.78rem;font-weight:600;color:var(--muted);min-width:32px}
+.water{padding:12px 18px;border-bottom:1px solid var(--rule);background:rgba(42,74,122,.07)}
+.water__head{display:flex;align-items:center;gap:10px;font-size:.7rem;letter-spacing:.12em;font-weight:600;color:var(--water);margin-bottom:8px;flex-wrap:wrap}
+.water__head b{font-family:'Reem Kufi';font-size:.95rem;margin-inline-start:auto;color:var(--ink);letter-spacing:0}
+.water__head b.ok{color:var(--stamp)}
+.water__grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:4px}
+.water__slot{display:flex;align-items:center;gap:8px;padding:7px 9px;background:var(--paper);border:1px solid var(--rule);cursor:pointer;font-size:.78rem;line-height:1.35}
+.water__slot input{appearance:none;-webkit-appearance:none;width:17px;height:17px;flex-shrink:0;border:1.5px solid var(--water);background:var(--paper);cursor:pointer;position:relative}
+.water__slot input:checked{background:var(--water)}
+.water__slot input:checked::after{content:"";position:absolute;inset:0;background:var(--paper);clip-path:polygon(16% 52%,38% 74%,84% 26%,92% 36%,38% 90%,8% 60%)}
+.water__slot.done{opacity:.45}
+.water__txt{flex:1;min-width:0}
+.water__txt small{display:block;color:var(--muted);font-size:.64rem}
+.water__ml{font-family:'Reem Kufi';font-weight:700;color:var(--water);white-space:nowrap}
+.water__track{height:5px;background:var(--rule);margin-top:8px;overflow:hidden}
+.water__fill{height:100%;width:0;background:var(--water);transition:width .3s ease}
 .meal{display:flex;align-items:flex-start;gap:14px;padding:13px 18px;border-bottom:1px dashed var(--rule)}
 .meal:last-of-type{border-bottom:none}
-.meal--prep{background:rgba(30,60,120,.05)}
-.meal--prep .meal__when{color:#2A4A7A}
-.meal--fix{background:rgba(168,52,31,.06)}
-.meal--fix .meal__when{color:var(--alarm)}
-.meal--new{background:rgba(31,92,75,.07)}
-.meal--new .meal__when{color:var(--stamp)}
-.meal--meat{background:rgba(122,59,46,.07)}
-.meal--meat .meal__when{color:var(--meat)}
+.meal--prep{background:rgba(30,60,120,.05)}.meal--prep .meal__when{color:#2A4A7A}
+.meal--fix{background:rgba(168,52,31,.06)}.meal--fix .meal__when{color:var(--alarm)}
+.meal--new{background:rgba(31,92,75,.07)}.meal--new .meal__when{color:var(--stamp)}
+.meal--meat{background:rgba(122,59,46,.07)}.meal--meat .meal__when{color:var(--meat)}
 .meal__box{appearance:none;-webkit-appearance:none;width:21px;height:21px;flex-shrink:0;margin-top:3px;border:1.5px solid var(--muted);background:var(--paper);cursor:pointer;position:relative;transition:.15s}
 .meal__box:hover{border-color:var(--stamp)}
 .meal__box:checked{background:var(--stamp);border-color:var(--stamp)}
-.meal__box:checked::after{content:"";position:absolute;inset:0;background:var(--paper);clip-path:polygon(16% 52%, 38% 74%, 84% 26%, 92% 36%, 38% 90%, 8% 60%)}
+.meal__box:checked::after{content:"";position:absolute;inset:0;background:var(--paper);clip-path:polygon(16% 52%,38% 74%,84% 26%,92% 36%,38% 90%,8% 60%)}
 .meal__body{flex:1;min-width:0}
 .meal__when{font-size:.68rem;letter-spacing:.12em;font-weight:600;color:var(--muted);margin-bottom:2px}
 .meal__what{font-size:.94rem;line-height:1.65}
+.meal__w{margin-top:5px;font-family:'Reem Kufi';font-size:.78rem;font-weight:600;color:var(--stamp);background:var(--paper);border:1px solid var(--rule);border-inline-start:3px solid var(--stamp);padding:5px 9px;line-height:1.6}
+.meal--meat .meal__w{color:var(--meat);border-inline-start-color:var(--meat)}
+.meal--prep .meal__w,.meal--fix .meal__w{color:var(--water);border-inline-start-color:var(--water)}
 .meal.done .meal__what{text-decoration:line-through;text-decoration-color:var(--stamp-soft);text-decoration-thickness:1.5px;opacity:.42}
-.meal.done .meal__when{opacity:.42}
+.meal.done .meal__when,.meal.done .meal__w{opacity:.42}
 .meal__kcal{font-family:'Reem Kufi';font-size:.76rem;font-weight:600;color:var(--muted);white-space:nowrap;padding-top:3px;text-align:left;line-height:1.4}
 .meal__kcal small{display:block;color:var(--stamp);font-size:.68rem}
 .day__foot{padding:11px 18px;border-top:1px solid var(--rule);background:rgba(31,92,75,.05);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-size:.78rem;color:var(--muted)}
 .day__foot b{font-family:'Reem Kufi';color:var(--ink);font-size:.92rem}
 .day__foot b.lowp{color:var(--alarm)}
+.day__foot b.wtr{color:var(--water)}
 .day-nav{display:flex;justify-content:space-between;gap:10px;margin-top:12px}
 .day-nav button{background:none;border:1px solid var(--rule);color:var(--muted);padding:8px 16px;font-family:'IBM Plex Sans Arabic';font-size:.8rem;cursor:pointer;transition:.15s}
 .day-nav button:hover:not(:disabled){border-color:var(--stamp);color:var(--stamp)}
 .day-nav button:disabled{opacity:.3;cursor:default}
-
-/* WEIGH */
 .weigh{border:2px solid var(--ink);padding:26px 24px;display:grid;gap:18px}
 .weigh__row{display:flex;gap:14px;flex-wrap:wrap;align-items:flex-end}
 .weigh label{font-size:.7rem;letter-spacing:.12em;font-weight:600;color:var(--muted);display:block;margin-bottom:6px}
@@ -222,155 +172,103 @@ body{
 .reset{background:none;border:1px solid var(--rule);color:var(--muted);padding:9px 18px;font-family:'IBM Plex Sans Arabic';font-size:.78rem;cursor:pointer;transition:.15s}
 .reset:hover{border-color:var(--alarm);color:var(--alarm)}
 footer{margin-top:48px;padding-top:22px;border-top:1px solid var(--rule);font-size:.76rem;color:var(--muted);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
-@media(max-width:640px){
-  .hero{padding:32px 0 20px}
-  .meal__kcal{display:none}
-  .hero__meta div{border-left:none;border-bottom:1px solid var(--rule);flex:1 1 50%}
-  .cal{gap:4px;grid-template-columns:repeat(4,minmax(0,1fr))}
-  .cal__cell{padding:7px 2px 6px}
-  .cal__name{font-size:.72rem}
-  .cal__date{display:none}
-}
+@media(max-width:640px){.hero{padding:32px 0 20px}.meal__kcal{display:none}.hero__meta div{border-left:none;border-bottom:1px solid var(--rule);flex:1 1 50%}.cal{gap:4px;grid-template-columns:repeat(3,minmax(0,1fr))}.cal__cell{padding:7px 2px 6px}.cal__name{font-size:.72rem}.cal__date{display:none}.water__grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(prefers-reduced-motion:reduce){*{transition:none!important}html{scroll-behavior:auto}}
 </style>
 </head>
 <body>
 <!-- ═══════════════════════════════════════════════════════════════
 CONTEXT / HISTORY BLOCK — مخفي عن العرض. لو الملف اترفع لكلود تاني: ده الهيستوري الكامل.
-★ نسخة "الأسبوع ٣" — اتعملت الأربع ٢/٩/٢٠٢٦ بعد ورقة الانبودي، واتعدلت ليلة الأربع: الأربع ٢/٩ اتقفل ✓ (تمرين + اتعشى وكله تمام). الوراك لسه متعملتش. الريش الجاهزة ٢٠٠ جم ← غدا الخميس + ٥٠ جم مكرونة ني معاها (استثناء محسوب بطلب منه). الوراك ← عشا الخميس (وركين) والباقي غدا الجمعة. الملف يغطي الخميس ٣/٩ ← الأربع ٩/٩ (القفلة).
-مفاتيح التخزين: الوجبات cut3_w3_v1 · الوصفات cut3_w3_recipes_v1.
-═══════════════════════════════════════════════════════════════
+★ نسخة "الرجوع" v3 — الجمعة ١٦/١٠/٢٠٢٦. (v2 = جدول المية · v3 = الموازين بالجرام جنب كل وجبة + الجمعة اتبنت على الأكل الفعلي).
+الشخص وقف النظام ولغبط من بعد قفلة ٢/٩ لحد ١٦/١٠ (~شهر)، ووقف كيك بوكسينج ٣ حصص. رجع بنفس المعايير + طلب: مفيش جوع نهائي + تنوع طبخات + ★ كل صنف لازم يبقى جنبه الوزن بالجرام (مش "علبة تونة" — العلبة ممكن تكون كبيرة أو صغيرة).
+★ أكل الجمعة الفعلي: الفطار اتاخد ١:٠٠ م (أومليت ٣ بيض بالمشروم + كابتشينو) + ٢٠ جم مكسرات لوز وفستق. باقي اليوم اتبنى من ٤:٣٠ م، والمية بدأت متأخر (١٧٠٠ مل بدل ٣٠٠٠ — يوم ناقص بحكم الوقت).
+الملف يغطي الجمعة ١٦/١٠ ← الأربع ٢١/١٠ (انبودي ورقة الأساس ~٣:٣٠ م — مش حكم، نقطة بداية جديدة).
+مفاتيح التخزين: الوجبات والمية cut3_return_v3 · الوصفات cut3_return_recipes_v1.
 
 【 بيانات الشخص 】
-- ذكر، مواليد 1992، الطول 171 سم. (ورقة الانبودي مكتوب فيها 34 — البروفايل على الجهاز 34 مش 33).
-- ★★ عامل عملية تكميم معدة (2023). الوجبة الواحدة ≤ ~400 جم. القواعد: ① البروتين أول حاجة في أي وجبة ② أي عشا كبير يتقسم قعدتين (بروتين+خضار ← النشوية بعد ~ساعة) ③ سناكات القريش والزبادي = طريقة تجميع الـ160–175 بروتين.
-- متمرن كيك بوكسينج ~3 سنين. مرحلة تنشيف: تثبيت العضل مش زيادته.
-- المعدات: قلاية هوائية + فرن كويس + بوتوجاز + حلة ضغط سمارت + خلاط.
-- بيطبخ كويس وبيطلب طرق "مش تقليدية". بيفضّل الفرن. كل طبخة على أحسن طريقة ليها.
-- وصفات مفضلة مؤكدة: السالمون بالشبت والليمون فرن · السالمون الكرسبي في القلاية (200° · 7–8 د، جلد لفوق، تنشيف كامل قبلها) · موزة الضاني في القصدير · طاجن البامية بالموزة · كبدة وقوانص اسكندراني · كاليماري سوتيه · حمام مفرود في القلاية · باراموندي فرن بالشبت · ريش فرن على شبكة.
-- ★ الجمبري الصغير: طاسة نار عالية 2–3 د أو جوه أكلة، مش فرن. زهقان منه. الكاليماري = 1.5–2 د نار عالية.
-- ★ السمك المدوّب يتاكل تاني يوم بحد أقصى، والفك في التلاجة.
-- ★ الكافيين: الصبح كابتشينو (بيتي 55) ← نص اليوم إسبريسو سادة مع الشاي ← العصر والليل كابتشينو. آخر إسبريسو قبل 4–5 م. يوم الانبودي الكافيين الصبح بس.
-- ★ غدا الشغل: أيام الشغل حد←خميس. غدا الشغل يتجهز قبلها بيوم أو يتجمع بارد. مفيش طبخ غدا يوم شغل. الجمعة والسبت يومين المطبخ.
-- ★ اللحوم الحمرا: فرن / قلاية / تشويح ببخة سبراي — بلاش سلق. الموزة بالعظم = فرن بطيء بالقصدير 150° ~3 ساعات.
-- ★ الرز والنشويات بالوزن المطبوخ. 100 جم رز مطبوخ = ~35–40 ني = ~130 سعر. الرز المطبوخ يتسخن كويس مرة واحدة بس.
-- ★ الفراخ: الجلد يتشال قبل التتبيل. الوراك في القلاية 190° ~18–20 د.
+- ذكر، مواليد 1992، الطول 171 سم. (البروفايل على جهاز الانبودي 34).
+- ★★ عامل عملية تكميم معدة (2023). الوجبة الواحدة ≤ ~400 جم. القواعد: ① البروتين أول حاجة ② العشا الكبير يتقسم قعدتين ③ سناكات القريش والزبادي = تجميع الـ160–175 بروتين ④ مفيش مية مع الأكل ولا ٣٠ د قبله/بعده، رشفات.
+- متمرن كيك بوكسينج ~3 سنين (وقف ٣ حصص في أكتوبر). مرحلة تنشيف: تثبيت العضل مش زيادته.
+- المعدات: قلاية هوائية + فرن كويس + بوتوجاز + حلة ضغط سمارت + خلاط + ★ ميزان مطبخ (أساسي في النسخة دي).
+- بيطبخ كويس وبيطلب طرق "مش تقليدية". بيفضّل الفرن.
+- وصفات مفضلة مؤكدة: السالمون بالشبت والليمون فرن · السالمون الكرسبي في القلاية (200° · 7–8 د، جلد لفوق) · موزة الضاني في القصدير · طاجن البامية بالموزة · كبدة وقوانص اسكندراني · كاليماري سوتيه · حمام مفرود في القلاية · باراموندي فرن بالشبت · ريش فرن على شبكة.
+- ★ الفراخ: مش حابب طعمها — لو هيرجعها: برين + تتبيلة زبادي ليلة + فرن 220°.
+- ★ السمك المدوّب يتاكل تاني يوم بحد أقصى. ★ الكافيين: كابتشينو الصبح ← إسبريسو نص اليوم ← كابتشينو العصر/الليل، آخر إسبريسو 4–5 م، يوم الانبودي الصبح بس.
+- ★ غدا الشغل (حد←خميس) يتجهز قبلها بيوم. الجمعة والسبت يومين المطبخ.
+- ★ اللحوم الحمرا: فرن/قلاية/تشويح — بلاش سلق. حلة الضغط للعجالي (تحمير الأول) والشوربة تتحفظ كسناك جوع.
+- ★★ قاعدة الموازين: اللحوم والسمك بالوزن **الني** · التونة والفول بالوزن **المصفى** · الرز والمكرونة بالوزن **المطبوخ** · الفاكهة بدون قشر.
 
-【 هيستوري الانبودي — InBody 270 · ID 2460653450 · البروفايل 34 سنة · 171 】
-(★ من ٢/٩ الحكم = أرقام الورقة المطبوعة. أرقام قفلة ٢٦/٨ في ملف الأسبوع اللي فات (90.6/25.8/36.4 · 18:18) كانت مختلفة شوية عن الورقة — الورقة هي الصح.)
-- سجل الجهاز القديم: 2023.12.14: 126.3 · 2024.01.14: 121.6 · 2024.02.14: 116.5 · 2024.04.09: 109.4 · 2024.05.02: 108.4 (نسبة دهون 38.5%).
-- 2026.08.12 · 15:19: وزن 91.4 · SMM 36.1 · دهون 29.8%.
-- 2026.08.26 · 15:31: وزن 90.4 · SMM 36.6 · دهون 25.4 · 28.1% · مية 47.6 · بروتين 12.8 · معادن 4.58 · BMI 30.9 · حشوية 9 · خصر–ورك 0.86 · كتلة خالية من الدهون 65.0 · BMR 1773 · نقطة 76 · الوزن المطلوب 76.4 (تحكم دهون −14.0).
-- ★ 2026.09.02 · 15:31 (القفلة): وزن 90.3 · SMM 36.9 · دهون 24.7 · 27.4% · مية 48.0 · بروتين 12.9 · معادن 4.69 · BMI 30.9 · حشوية 9 · خصر–ورك 0.86 · كتلة خالية من الدهون 65.6 · BMR 1786 · نقطة 78 · الوزن المطلوب 77.1 (تحكم دهون −13.2 · عضل 0.0). دهون الجذع 13.1←12.8.
-   ► الأسبوع ٢٦/٨←٢/٩: وزن −0.1 بس · دهون −0.7 · SMM +0.3 · مية +0.4 · نقطة +2. يعني الميزان اتغطى بمية الجليكوجين بعد يومين العك (الخميس ٢٧ + الجمعة ٢٨) بس الدهون نزلت الحقيقة. أحسن أسبوع من مايو.
-► قرار جدولة: يوم القياس الأربع، ~٣:٣٠ م (ده الوقت الفعلي في الورقتين — يثبت زي ما هو)، معدة شبه فاضية، كافيين الصبح بس، مفيش نشويات تقيلة قبله. القفلة الجاية الأربع ٩/٩. الهدف: كتلة دهون ~24.0 (−0.6/−0.8) والوزن 89.5–89.8.
+【 هيستوري الانبودي — InBody 270 · ID 2460653450 · 34 سنة · 171 】
+- 2023.12.14: 126.3 · 2024.01.14: 121.6 · 2024.02.14: 116.5 · 2024.04.09: 109.4 · 2024.05.02: 108.4 (38.5%).
+- 2026.08.12 · 15:19: 91.4 · SMM 36.1 · دهون 29.8%.
+- 2026.08.26 · 15:31: 90.4 · SMM 36.6 · دهون 25.4 · 28.1% · مية 47.6 · حشوية 9 · نقطة 76.
+- ★ 2026.09.02 · 15:31 (آخر ورقة): وزن 90.3 · SMM 36.9 · دهون 24.7 · 27.4% · مية 48.0 · بروتين 12.9 · معادن 4.69 · BMI 30.9 · حشوية 9 · خصر–ورك 0.86 · كتلة خالية من الدهون 65.6 · BMR 1786 · نقطة 78 · الوزن المطلوب 77.1 · دهون الجذع 12.8.
+- ★ من ٢/٩ لـ١٦/١٠: مفيش قياسات — شهر لغبطة. ورقة الأربع ٢١/١٠ = ورقة الأساس الجديدة. متوقع وزن أعلى (مية) — الحكم كتلة الدهون.
 
-【 قرارات المرحلة (سارية) 】
-① تنشيف مستمر بنفس العجز — الوزن تحت 90 والدهون تحت 24.
-② السعرات 1350–1500 صافي · البروتين 160–175.
-③ التمرين: السبت + الاتنين + الأربع.
-④ ميزان البيت اتجاه مش رقم — الانبودي الحكم، والحكم كتلة الدهون مش الوزن.
-⑤ النشويات وقود أيام التمرين بس (قعدة تانية).
-⑥ ★ قاعدة التكميم: البروتين الأول · الوجبة ≤400 جم · العشا الكبير يتقسم قعدتين.
-⑦ الملف بيحسب البروتين لكل يوم — أي يوم تحت 150 يتقفل بزبادي + قريش.
+【 قرارات المرحلة 】① نفس العجز ② 1350–1500 صافي · بروتين 160–175 ③ تمرين سبت/اتنين/أربع ④ الانبودي الحكم ⑤ النشويات أيام التمرين بس ⑥ قاعدة التكميم ⑦ أي يوم بروتين تحت 150 يتقفل بزبادي + قريش ⑧ الجوع صفر = حجم (شوربة/فاكهة/قريش) ⑨ المية ٣٠٠٠ مل بجدول (٣١٠٠ أيام التمرين) ⑩ ★ كل صنف بالميزان.
 
-【 ★★ الجرد الفعلي — الأربع ٢/٩ 】
-- تلاجة: وركين مطبوخين ~٢٨٠ جم (غدا + عشا الخميس) · جبنة قريش · زبادي يوناني · مشروم · طماطم شيري · خيار · موز · بيض · تونة (علب) · فول.
-- فريزر: وركين فراخ ٤٠٠ جم ني (للسبت) · كيلو لحم موزة بالعظم · خضار مجمد ~١٥٠ جم باقي (= عشا الخميس بس).
-- نشويات: رز · بطاطا · مكرونة.
-- ★ ناقص ومحتاج شرا يوم الجمعة ٤/٩: خضار مجمد (٢–٣ أكياس) · خيار وطماطم · سمك (سالمون أو باراموندي ~٤٠٠ جم) لعشا الاتنين والتلات · زبادي · قريش · ليمون وشبت · موز. البدائل من المخزون لو مشترتش: مكرونة بالتونة في الفرن / أومليت + قريش.
-
-【 المنتجات المعتمدة 】
-زبادي يوناني 0% علبة ١٧٠ جم: 16 بروتين / ~95 · قريش ~100 جم = ~90 سعر / ~12 بروتين · تونة بالمياه علبة مصفاة ~130 سعر / ~30 بروتين · فول ~180 جم بالخلاط = ~140 / 11 بروتين · ماسل ميلك علبة ~160 / ~40 بروتين · بيضة ~95 / ~6.5 بروتين · ورك فرخة منزوع الجلد ٢٠٠ جم ني ← ~١٤٠ جم مستوي = ~250 / ~36 بروتين · موزة بالعظم مطبوخة ٢٠٠ جم = ~300 / ~55 بروتين · ريش مستوية ٢٠٠ جم = ~360 / ~45 بروتين · رز مطبوخ 100 جم ~130 / 3 · بطاطا حلوة حبة ~150 / 2 · مكرونة مطبوخة 100 جم ~150 / 5 · خضار سوتيه 150 جم ~55 / 3 · كابتشينو بيتي 55 · إسبريسو 0 · شاي بمعلقة سكر 16.
-
-【 وصف التمرين 】كيك بوكسينج 9 جولات × 3 د، ~50–60 د فعلي. الرقم −336 محافظ عمداً.
-
-【 قواعد ثابتة 】
-3 أيام تمرين (سبت/اتنين/أربع) · هدف ~−0.6 لـ−1.0 كجم دهون/أسبوع · سعرات صافي 1350–1500 · بروتين 160–175 جم · شنطة عازلة + آيس باك · الجاهز يتاكل الأول · بخة سبراي مش زيت · الجلد يتشال قبل التتبيل · النشويات وقود أيام التمرين بس · فاكهة كاملة والعصير ممنوع · 3 لتر مية · السمك المدوّب يتاكل تاني يوم بحد أقصى · اللحوم الحمرا فرن/قلاية/تشويح — بلاش سلق · بعد أي عك: رجوع عادي من غير تجويع تعويضي · ★ التكميم: بروتين الأول + تقسيم العشا الكبير قعدتين.
+【 ★★ الجرد — الجمعة ١٦/١٠ 】
+- تلاجة: ٣ قطع سالمون · دنيس · رز بخاري مطبوخ · ضاني متسوي جاهز · مفروم · عجالي · بيض · مشروم · فول · تونة · زبادي يوناني · قريش · طماطم شيري · توم وبصل · كمثرى · موز · تفاح · بطاطا ني · مكسرات لوز وفستق.
+- فريزر: خضار مشكل (بسلة وجزر وفاصوليا) · بامية.
+- ناقص: خيار ×٦ · ليمون + شبت + بقدونس · مسطردة ديجون · ماسل ميلك لو خلص · زبادي لو أقل من ٦ · فراخ اختياري.
 ═══════════════════════════════════════════════════════════════ -->
 <nav class="topnav">
   <div class="topnav__inner">
-    <span class="topnav__brand">الأسبوع ٣ · القفلة الأربع ٩/٩</span>
+    <span class="topnav__brand">الرجوع · بالموازين · القفلة الأربع ٢١/١٠</span>
     <button class="topnav__toggle" id="navToggle" aria-expanded="false" aria-controls="navLinks">☰ الأقسام</button>
     <div class="topnav__links" id="navLinks">
-      <a href="#sec-analysis">ورقة ٢/٩</a>
       <a href="#sec-week">الأيام</a>
-      <a href="#sec-shop">مشتريات الجمعة</a>
-      <a href="#sec-thaw">التنزيل من الفريزر</a>
+      <a href="#sec-water">المية</a>
+      <a href="#sec-portions">الموازين</a>
+      <a href="#sec-shop">المشتريات</a>
+      <a href="#sec-thaw">جدول السمك</a>
       <a href="#sec-stock">المخزون</a>
       <a href="#sec-rules">القواعد</a>
       <a href="#sec-recipes">الوصفات</a>
-      <a href="#sec-portions">الكميات</a>
       <a href="#sec-weigh">الانبودي</a>
     </div>
   </div>
 </nav>
 <div class="wrap">
 
-<!-- HERO -->
 <header class="hero">
-  <div class="hero__eyebrow">الأسبوع ٣ · الخميس ٣ سبتمبر ← الأربع ٩ سبتمبر · القفلة الأربع ~٣:٣٠ م</div>
+  <div class="hero__eyebrow">أسبوع الرجوع · الجمعة ١٦ أكتوبر ← الأربع ٢١ أكتوبر · كل صنف بالجرام</div>
   <div class="scale">
     <span class="scale__from">٢٤٫٧</span>
     <span class="scale__arrow">←</span>
-    <span class="scale__to">٢٤٫٠</span>
-    <span class="scale__unit">كتلة الدهون (كجم) · ورقة ٢/٩ ← هدف ورقة ٩/٩</span>
+    <span class="scale__to">؟</span>
+    <span class="scale__unit">كتلة الدهون (كجم) · آخر ورقة ٢/٩ ← ورقة الأساس ٢١/١٠</span>
   </div>
   <p class="hero__sub">
-    الميزان قال <b>−٠٫١ بس</b> والجهاز قال الحقيقة: <b>الدهون نزلت ٠٫٧ كجم</b> في أسبوع فيه يومين عك، والعضل طلع ٠٫٣ والمية طلعت ٠٫٤.
-    ده أحسن أسبوع من مايو. من النهاردة الرقم الوحيد في الهيرو هو <b>كتلة الدهون</b> — الوزن هيتحرك لما المية تنزل، وده مش شغلك.
-    القاعدة زي ما هي: <b>نفس العجز، البروتين الأول، والعشا الكبير قعدتين</b>.
+    شهر وقفة مش بيتعالج بتجويع — بيتعالج بالرجوع لنفس المعايير على طول. ورقة الأربع <b>مش حكم</b>، هي نقطة البداية الجديدة.
+    الجديد في النسخة دي: <b>تحت كل وجبة سطر الموازين بالجرام</b> — ني ولا مصفى ولا مطبوخ، محدد. "علبة تونة" مش وحدة قياس:
+    العلبة الصغيرة ٩٥ جم بتطلع ~٧٠ مصفاة والكبيرة ١٨٥ بتطلع ~١٣٠، والفرق بينهم <b>١٦ جم بروتين</b>.
+    والمية بمواعيد جوه كل يوم، والجوع عنده علاج ثابت: <b>شوربة العجالي، القريش، والتفاح</b>.
   </p>
   <div class="hero__meta">
-    <div><span>الوزن ٢/٩</span><b>90.3</b></div>
+    <div><span>آخر وزن ٢/٩</span><b>90.3</b></div>
     <div><span>العضل SMM</span><b>36.9</b></div>
     <div><span>نسبة الدهون</span><b>27.4%</b></div>
-    <div><span>النقطة</span><b>78</b></div>
     <div><span>البروتين اليومي</span><b>160–175 جم</b></div>
+    <div><span>المية اليومية</span><b>٣٠٠٠ مل</b></div>
+    <div><span>التمرين</span><b>سبت · اتنين · أربع</b></div>
   </div>
 </header>
 
-<!-- ANALYSIS -->
-<section class="sec" id="sec-analysis">
-  <div class="sec__head"><h2>ورقة ٢/٩ قصاد ورقة ٢٦/٨</h2></div>
-  <p class="sec__note">نفس الجهاز، نفس الساعة (٣:٣١ م في الورقتين) — يعني المقارنة نضيفة. الأخضر = في صالحك.</p>
-  <div class="cmp">
-    <table>
-      <thead><tr><th>البند</th><th>٢٦/٨</th><th>٢/٩</th><th>الفرق</th><th>يعني إيه</th></tr></thead>
-      <tbody>
-        <tr><td>الوزن</td><td>90.4</td><td>90.3</td><td class="flat">−0.1</td><td class="eye" style="font-family:'IBM Plex Sans Arabic';font-size:.8rem;font-weight:400;color:var(--muted)">اتغطى بمية الجليكوجين بعد الخميس والجمعة</td></tr>
-        <tr><td>كتلة الدهون</td><td>25.4</td><td>24.7</td><td class="up">−0.7</td><td style="font-family:'IBM Plex Sans Arabic';font-size:.8rem;font-weight:400;color:var(--muted)">الرقم الحقيقي — فوق المعدل المستهدف</td></tr>
-        <tr><td>نسبة الدهون</td><td>28.1%</td><td>27.4%</td><td class="up">−0.7</td><td style="font-family:'IBM Plex Sans Arabic';font-size:.8rem;font-weight:400;color:var(--muted)">كانت 38.5% في مايو ٢٠٢٤</td></tr>
-        <tr><td>العضل SMM</td><td>36.6</td><td>36.9</td><td class="up">+0.3</td><td style="font-family:'IBM Plex Sans Arabic';font-size:.8rem;font-weight:400;color:var(--muted)">أغلبه مية جوه العضل — المهم إنه مش نازل</td></tr>
-        <tr><td>مية الجسم</td><td>47.6</td><td>48.0</td><td class="flat">+0.4</td><td style="font-family:'IBM Plex Sans Arabic';font-size:.8rem;font-weight:400;color:var(--muted)">ده اللي خبّى نزول الدهون على الميزان</td></tr>
-        <tr><td>دهون الجذع</td><td>13.1</td><td>12.8</td><td class="up">−0.3</td><td style="font-family:'IBM Plex Sans Arabic';font-size:.8rem;font-weight:400;color:var(--muted)">الكرش هو اللي بينزل</td></tr>
-        <tr><td>حشوية</td><td>9</td><td>9</td><td class="flat">=</td><td style="font-family:'IBM Plex Sans Arabic';font-size:.8rem;font-weight:400;color:var(--muted)">تحت ١٠ = مستوى طبيعي</td></tr>
-        <tr><td>النقطة</td><td>76</td><td>78</td><td class="up">+2</td><td style="font-family:'IBM Plex Sans Arabic';font-size:.8rem;font-weight:400;color:var(--muted)">الوزن المطلوب بقى 77.1 · فاضل ١٣٫٢ دهون</td></tr>
-      </tbody>
-    </table>
-  </div>
-  <div class="win-strip">
-    <h4>الخلاصة في سطرين</h4>
-    <p>١) اللي حصل الأسبوع ده هو بالظبط "الميزان اتجاه مش رقم": يومين عك ملوا الجليكوجين والمية (+٠٫٤) فالميزان وقف، بس الجسم كان بيحرق دهون طول الوقت (−٠٫٧). لو كنت جوّعت نفسك تعويض كنت هتخسر عضل مش دهون.<br>
-    ٢) ٠٫٧ كجم دهون في أسبوع رقم ممتاز، وجزء منه ممكن يكون ضوضاء الجهاز (±٠٫٣). عشان كده هدف الورقة الجاية <b>24.0 (−٠٫٧)</b> ولو جت 24.2–24.3 برضه شغل نضيف. الوزن المتوقع لما المية تنزل: <b>89.5–89.8</b>.</p>
-  </div>
-</section>
-
-<!-- ALERT -->
 <div class="alert">
-  <h4>٤ سطور وبس — خطة الأسبوع</h4>
+  <h4>٥ سطور وبس — خطة الأسبوع</h4>
   <p>
-    <b>١) الأربع اتقفل ✓.</b> الريش الجاهزة ٢٠٠ جم = غدا الخميس + ٥٠ جم مكرونة ني معاها (استثناء محسوب لأن الريش لوحدها صغيرة — تتجهز الليلة). الوراك = عشا الخميس.<br>
-    <b>٢) الفراخ لغدا الشغل.</b> ٤ وراك = ٤ وجبات: وركين الخميس بالليل (عشا الخميس + غدا الجمعة)، ووركين السبت العصر (غدا الأحد والاتنين). الجلد يتشال قبل التتبيل.<br>
-    <b>٣) الموزة بالعظم = طبخة الجمعة.</b> كيلو في القصدير ١٥٠° لمدة ٣ ساعات ← ~٦٠٠ جم لحمة مسحوبة = ٣ عشاوات (جمعة/سبت/أحد). تنزل من الفريزر ليلة الخميس.<br>
-    <b>٤) مشتريات الجمعة إجبارية.</b> ٣٠٠ جم خضار = عشاءين بس، ومفيش بروتين لعشا الاتنين والتلات. القايمة تحت — والبدائل من المخزون مكتوبة لو معملتش المشوار.
+    <b>١) النهاردة.</b> الفطار اتاخد ١:٠٠ م (أومليت ٣ بيض + كابتشينو) و٢٠ جم مكسرات = ٤٦٠ سعر و٢٨ بروتين اتسجلوا. باقي اليوم من ٥:٣٠ — الغدا التونة والفول، والعشا الدنيس من الفرن.<br>
+    <b>٢) طبخة الليلة.</b> العجالي في حلة الضغط ← الشوربة في برطمان + طاجن بامية علبتين (الأحد والاتنين)، والدنيس يدخل الفرن ٨:٤٠.<br>
+    <b>٣) السمك بالجدول.</b> قطعتين سالمون للفريزر الليلة، قطعة للسبت. نص المفروم للفريزر للأربع.<br>
+    <b>٤) النشويات أيام التمرين بس.</b> السبت رز بخاري ١٠٠ جم مطبوخ · الاتنين بطاطا ١٥٠ جم ني · الأربع بطاطا ١٢٠ جم جوه طبق الكفتة.<br>
+    <b>٥) الميزان على الرخامة.</b> كل سطر أخضر تحت الوجبة = حطه على الميزان. من غير ده الحسبة كلها تقدير، والتقدير بعد شهر وقفة بيغلط لفوق.
   </p>
 </div>
 
-<!-- WEEK -->
 <section class="sec" id="sec-week">
   <div class="sec__head"><h2>الأيام — دوس على اليوم</h2></div>
-  <p class="sec__note">الخميس ٣/٩ ← الأربع ٩/٩ (الأربع ٢/٩ اتقفل ✓ — الريش والرز اتاكلوا). الخضرا = طبخة اليوم · <b>البنية = لحمة حمرا</b> · الزرقا = تجهيزة بكرة · الحمرا = تثبيت وقواعد. <b>★ جديد: كل يوم بيحسب البروتين تحت</b> — لو الرقم أحمر (تحت ١٥٠) يتقفل بزبادي + قريش قبل النوم. القريش سناك الجوع المفتوح: ~١٠٠ جم براحتك بين الوجبات.</p>
+  <p class="sec__note">الشريط الأزرق فوق كل يوم = <b>المية بالمواعيد</b> · السطر الأخضر تحت كل وجبة = <b>الموازين بالجرام</b>. الخضرا = طبخة اليوم · <b>البنية = لحمة حمرا</b> · الزرقا = تجهيزة بكرة · الحمرا = تثبيت وقواعد.</p>
   <div class="cal" id="cal"></div>
   <div id="dayHost"></div>
   <div class="day-nav">
@@ -379,224 +277,258 @@ CONTEXT / HISTORY BLOCK — مخفي عن العرض. لو الملف اترفع
   </div>
 </section>
 
-<!-- SHOP -->
-<div class="shop" id="sec-shop">
-  <h4>مشتريات الجمعة ٤/٩ — الصبح قبل الطبخ</h4>
-  <ul>
-    <li><b>خضار مجمد</b> بروكلي وزهرة وجزر ×٢–٣ أكياس (الموجود ٣٠٠ جم بيخلص الخميس)</li>
-    <li><b>سمك</b> ~٤٠٠ جم: سالمون فيليه قطعتين ٢٠٠ (للقلاية الكرسبي) أو باراموندي — عشا الاتنين والتلات</li>
-    <li><b>خيار ×٦ + طماطم شيري</b> — سلطات الشغل ٥ أيام</li>
-    <li><b>زبادي يوناني ×٦</b> — علبة كل ليلة</li>
-    <li><b>جبنة قريش ×٢</b> — سناك الجوع</li>
-    <li><b>ليمون + شبت + موز</b> — السمك والفاكهة قبل التمرين</li>
-    <li><b>تونة</b> — الخطة محتاجة ٣ علب (جمعة · تلات · أربع) لو الموجود أقل</li>
-  </ul>
-  <p>لو المشوار مجاش: عشا الاتنين = مكرونة بالتونة في الفرن (وصفة ٧) · عشا التلات = أومليت ٣ بيض بالمشروم + قريش. الخضار مفيهاش بديل — لازم تتشري.</p>
-</div>
-
-<!-- THAW -->
-<div class="thaw" id="sec-thaw">
-  <h4>التنزيل من الفريزر — عشان محدش يقعد على الرخامة</h4>
-  <ul>
-    <li><b>ليلة الأربع (الليلة):</b> وركين فراخ (~٤٠٠ جم) ينزلوا التلاجة — عشا الخميس. وعلبة غدا الخميس تتجهز: الريش + مكرونة ٥٠ جم ني تتسلق وتتشوّح مع طماطم شيري ومشروم.</li>
-    <li><b>ليلة الخميس:</b> كيلو الموزة بالعظم ينزل التلاجة — محتاج ٢٤ ساعة، طبخة الجمعة العصر.</li>
-    <li><b>ليلة الجمعة:</b> الوركين الباقيين ينزلوا التلاجة — يتطبخوا السبت العصر لغدا الأحد والاتنين.</li>
-    <li><b>ليلة الأحد:</b> السمك لو اتشرى مجمد ينزل التلاجة — عشا الاتنين والتلات (تاني يوم بحد أقصى ✓).</li>
-  </ul>
-</div>
-
-<!-- STOCK -->
-<section class="sec" id="sec-stock">
-  <div class="sec__head"><h2>المخزون — الأربع ٢/٩</h2></div>
-  <p class="sec__note">الخطة مبنية على الجرد ده + مشتريات الجمعة. الأيام قبل الجمعة (أربع/خميس) كلها من الموجود.</p>
+<section class="sec" id="sec-portions">
+  <div class="sec__head"><h2>الموازين — المرجع لكل صنف</h2></div>
+  <p class="sec__note">★ القاعدة: <b>اللحوم والسمك بالوزن الني</b> (قبل الطبخ) · <b>التونة والفول بالوزن المصفى</b> · <b>الرز والمكرونة بالوزن المطبوخ</b> · <b>الفاكهة بدون قشر</b>. عمود "يتوزن إزاي" هو اللي بيمنع الغلط.</p>
+  <div class="ptable">
+    <table>
+      <thead><tr><th>الصنف</th><th>الحصة</th><th>يتوزن إزاي</th><th>سعرات</th><th>بروتين</th></tr></thead>
+      <tbody>
+        <tr><td>★ تونة بالمياه</td><td class="g">١٠٠ جم مصفاة</td><td class="eye"><b>بعد التصفية</b> — مش وزن العلبة</td><td class="k">١١٥</td><td class="p">٢٦</td></tr>
+        <tr class="sub"><td>علبة صغيرة ٩٥ جم</td><td class="g">← ~٧٠ جم مصفاة</td><td class="eye">علبة كاملة</td><td class="k">٨٠</td><td class="p">١٨</td></tr>
+        <tr class="sub"><td>علبة كبيرة ١٨٥ جم</td><td class="g">← ~١٣٠ جم مصفاة</td><td class="eye">علبة كاملة</td><td class="k">١٥٠</td><td class="p">٣٤</td></tr>
+        <tr><td>بيضة L</td><td class="g">حبة ~٦٠ جم بالقشر</td><td class="eye">٣ بيض أومليت ببخة = ٢٧٠ / ٢٠</td><td class="k">٩٠</td><td class="p">٦٫٥</td></tr>
+        <tr><td>فول مطبوخ / معلب</td><td class="g">١٠٠ جم مصفى</td><td class="eye">مصفى من ميته قبل الوزن</td><td class="k">٨٠</td><td class="p">٦</td></tr>
+        <tr><td>جبنة قريش</td><td class="g">١٠٠ جم</td><td class="eye">بالميزان — الـ١٠٠ أقل مما تتخيل</td><td class="k">٩٠</td><td class="p">١٢</td></tr>
+        <tr><td>زبادي يوناني 0%</td><td class="g">علبة ١٧٠ جم</td><td class="eye">لو العلبة ٢٠٠ جم: ١١٠ / ١٩</td><td class="k">٩٥</td><td class="p">١٦</td></tr>
+        <tr><td>★ سالمون فيليه</td><td class="g">٢٠٠ جم <b>ني</b></td><td class="eye">ني قبل الطبخ — بيخس ~٢٠٪ (← ١٦٠ مستوي)</td><td class="k">٤٠٠</td><td class="p">٤٢</td></tr>
+        <tr><td>دنيس كامل</td><td class="g">٤٠٠ جم بالعظم</td><td class="eye">اللحم ~نص وزن السمكة (~٢٠٠ جم)</td><td class="k">٢٠٠</td><td class="p">٤٠</td></tr>
+        <tr><td>★ لحم عجالي</td><td class="g">٢٠٠ جم <b>ني</b></td><td class="eye">ني قبل الحلة — بيخس ~٣٠٪ (← ١٤٠ مطبوخ)</td><td class="k">٣٢٠</td><td class="p">٥٠</td></tr>
+        <tr><td>★ لحم مفروم</td><td class="g">٢٠٠ جم <b>ني</b></td><td class="eye">ني قبل الفرن — بيخس ~٢٥٪ (← ١٥٠ كفتة)</td><td class="k">٣٢٠</td><td class="p">٣٥</td></tr>
+        <tr><td>ضاني جاهز مطبوخ</td><td class="g">١٥٠ جم مطبوخ</td><td class="eye">بالميزان وقت الأكل</td><td class="k">٢٤٠</td><td class="p">٣٨</td></tr>
+        <tr><td>★ رز بخاري (بسمن)</td><td class="g">١٠٠ جم <b>مطبوخ</b></td><td class="eye">مطبوخ — تسخين مرة واحدة بس</td><td class="k">١٨٠</td><td class="p">٤</td></tr>
+        <tr><td>بطاطا</td><td class="g">١٥٠ جم ني</td><td class="eye">ني بعد التقشير · ويدجز قلاية ١٩٠°</td><td class="k">١٣٠</td><td class="p">٣</td></tr>
+        <tr><td>خضار مشكل مجمد</td><td class="g">١٥٠ جم</td><td class="eye">مجمد قبل الطاسة</td><td class="k">٥٥</td><td class="p">٣</td></tr>
+        <tr><td>بامية مجمدة</td><td class="g">١٥٠ جم</td><td class="eye">مجمدة — جوه الطاجن</td><td class="k">٥٠</td><td class="p">٣</td></tr>
+        <tr><td>خيار</td><td class="g">١٥٠ جم (~حبتين)</td><td class="eye">جنب علبة الشغل مش مخلوط</td><td class="k">٢٠</td><td class="p">١</td></tr>
+        <tr><td>طماطم شيري</td><td class="g">١٠٠ جم (~١٠ حبات)</td><td class="eye">نصين في الطاسة أو سلطة</td><td class="k">٢٠</td><td class="p">١</td></tr>
+        <tr><td>مشروم</td><td class="g">٥٠ جم</td><td class="eye">شرايح — جوه الأومليت</td><td class="k">١٥</td><td class="p">١٫٥</td></tr>
+        <tr><td>شوربة العجالي ★ سناك الجوع</td><td class="g">٢٥٠ مل</td><td class="eye">كوباية — أي وقت بين الوجبات</td><td class="k">٤٠</td><td class="p">٥</td></tr>
+        <tr><td>تفاحة / كمثرى</td><td class="g">~١٥٠ جم</td><td class="eye">الحبة كاملة · كاملة مش عصير</td><td class="k">٨٠</td><td class="p">١</td></tr>
+        <tr><td>موزة</td><td class="g">~١٠٠ جم بدون قشر</td><td class="eye">قبل التمرين بس</td><td class="k">٩٠</td><td class="p">١</td></tr>
+        <tr><td>★ مكسرات لوز وفستق</td><td class="g">٢٠ جم</td><td class="eye"><b>بالميزان</b> — كف صغير · أغلى حاجة لكل جرام</td><td class="k">١٢٠</td><td class="p">٤</td></tr>
+        <tr><td>ماسل ميلك</td><td class="g">علبة ٣٣٠ مل</td><td class="eye">بعد التمرين (سبت/اتنين/أربع)</td><td class="k">١٦٠</td><td class="p">٤٠</td></tr>
+        <tr><td>كابتشينو بيتي</td><td class="g">١٥٠ مل خالي الدسم</td><td class="eye">كوباية متوسطة</td><td class="k">٥٥</td><td class="p">٥</td></tr>
+        <tr><td>إسبريسو سادة</td><td class="g">شوت / دوبل</td><td class="eye">من غير حساب — قبل ٥ م</td><td class="k">٠–٥</td><td class="p">٠</td></tr>
+        <tr><td>شاي بمعلقة سكر</td><td class="g">٤ جم سكر</td><td class="eye">معلقة صغيرة مسحوبة</td><td class="k">١٦</td><td class="p">٠</td></tr>
+        <tr><td>★ مية — يوم راحة</td><td class="w">٣٠٠٠ مل</td><td class="eye">٧ خانات · إزازة ٧٥٠ × ٤</td><td class="k">٠</td><td class="p">—</td></tr>
+        <tr><td>★ مية — يوم تمرين</td><td class="w">٣١٠٠ مل</td><td class="eye">٨ خانات · ٥٠٠ منها بين الجولات</td><td class="k">٠</td><td class="p">—</td></tr>
+      </tbody>
+    </table>
+  </div>
   <div class="rules">
-    <div class="rule"><h4>★ الجاهز في التلاجة</h4><p><b>وركين مطبوخين ~٢٨٠ جم</b> ← غدا الخميس (~١٥٠) + عشا الخميس (~١٣٠). الريش اتاكلت الأربع ✓.<br><b>بيض · تونة · فول · قريش · زبادي</b> ← البروتين البارد لغدا الشغل والسناكات.</p></div>
-    <div class="rule"><h4>الفريزر — بيتاكل الأسبوع ده كله</h4><p><b>وركين فراخ ٤٠٠ جم</b> (الباقيين) ← السبت العصر (غدا أحد + اتنين)<br><b>موزة بالعظم كيلو</b> ← طبخة الجمعة (~٦٠٠ جم لحمة = عشا جمعة/سبت/أحد)<br><b>خضار مجمد ~١٥٠ جم</b> (الباقي) ← الخميس بس ← الجمعة شرا</p></div>
-    <div class="rule"><h4>النشويات — أيام التمرين بس</h4><p><b>رز</b> ← الاتنين (١٠٠ جم مطبوخ قعدة تانية)<br><b>بطاطا</b> ← السبت (حبة متوسطة قعدة تانية)<br><b>مكرونة</b> ← الأربع ٩/٩ بعد القفلة (١٠٠ جم مطبوخة جوه طبق التونة)</p></div>
-    <div class="rule"><h4>الطازة</h4><p><b>مشروم + طماطم شيري + خيار</b> ← الأومليت والسلطات (الخيار هيخلص — في القايمة)<br><b>موز</b> ← قبل التمرين بس</p></div>
-    <div class="rule"><h4>من مشتريات الجمعة</h4><p><b>سمك ~٤٠٠ جم</b> ← عشا الاتنين (سالمون كرسبي قلاية + رز بعدها) وعشا التلات (فرن بالشبت، من غير نشوية قبل القياس)<br><b>خضار مجمد</b> ← جنب كل عشا من الجمعة للأربع</p></div>
+    <div class="rule"><h4>الميزان مرة واحدة في اليوم</h4><p>مش هتقف توزن ٨ مرات. <b>التجهيزة هي اللي بتتوزن</b>: الكفتة بتتقسم ١٥٠ جم وهي ني، الطاجن بيتقسم علبتين، الفول ٣ علب ١٠٠ جم. بعد كده بتاكل علبة من غير تفكير.</p></div>
+    <div class="rule"><h4>ليه ني مش مستوي</h4><p>اللحمة والسمك بيخسوا مية بنسب مختلفة كل مرة (٢٠–٣٠٪) حسب الحرارة والوقت. الوزن الني ثابت ودقيق، والمستوي تقدير. العكس في الرز: المطبوخ هو اللي بتاكله.</p></div>
+    <div class="rule"><h4>الحاجات اللي لازم تتوزن فعلاً</h4><p><b>المكسرات · القريش · الرز · الزيت (لو استعملت) · اللحوم.</b> دول اللي الغلط فيهم بيكلّف ١٠٠+ سعر. الخيار والخس والخضار الورقي قدّرهم براحتك.</p></div>
+    <div class="rule"><h4>العلبة مش وحدة قياس</h4><p>تونة صغيرة ولا كبيرة = فرق ١٦ جم بروتين و٧٠ سعر. زبادي ١٧٠ ولا ٢٠٠ = فرق ٣ جم بروتين. اقرا الوزن على العلبة أول مرة بس، وبعدها تعرفها.</p></div>
   </div>
 </section>
 
-<!-- RULES -->
+<section class="sec" id="sec-water">
+  <div class="sec__head"><h2>المية — ٣ لتر بمواعيد مش بالنية</h2></div>
+  <p class="sec__note">المشكلة مش إنك مش بتحب المية — إن مفيش ميعاد ليها. الجدول مبني على قاعدة التكميم: <b>مفيش مية من نص ساعة قبل الوجبة لنص ساعة بعدها</b>، فكل خانة واقعة في "الفراغ" بين وجبتين.</p>
+  <div class="rules">
+    <div class="rule"><h4>★ إزازة واحدة بعلامات</h4><p>إزازة <b>٧٥٠ مل</b> × ٤ في اليوم = ٣ لتر. اعمل عليها ٣ خطوط بالماركر (٢٥٠ · ٥٠٠ · ٧٥٠) — كل خانة في الجدول = خط أو اتنين.</p></div>
+    <div class="rule"><h4>★★ رشفات مش كوبايات</h4><p>بعد التكميم الكوباية الكاملة مرة واحدة بتوجع وبتخلّيك تبطّل. <b>١٥٠–٢٠٠ مل كل ربع ساعة</b> جوه الخانة. خانة الـ٥٠٠ = ساعة ونص رشف هادي.</p></div>
+    <div class="rule"><h4>★★ قاعدة ٣٠ / ٣٠</h4><p>المية تقف <b>نص ساعة قبل</b> الوجبة وترجع <b>نص ساعة بعدها</b>. الكابتشينو والشاي والشوربة سوائل بس مش بتتحسب من الـ٣ لتر.</p></div>
+    <div class="rule"><h4>الصبح هو النص</h4><p>٤٠٠ على الريق + ٥٠٠ قبل الضهر + ٥٠٠ قبل الغدا = <b>١٤٠٠ قبل ٢:١٥</b>. اللي بيسيب المية لبعد الشغل عمره ما بيوصل ٣ لتر.</p></div>
+    <div class="rule"><h4>أيام التمرين +١٠٠</h4><p>٥٠٠ مل بين الجولات (رشفة كل جولة ~٥٠ مل) — خانة لوحدها. اليوم اللي بتعرق فيه وما بتشربش هو اليوم اللي بتجوع فيه بالليل.</p></div>
+    <div class="rule"><h4>آخر مية ١٠:١٥ م</h4><p>٣٠٠ بعد العشا وخلاص — أكتر من كده بيقطّع النوم، والنوم المقطّع بيعلّي الجوع تاني يوم. <b>النهاردة استثناء</b>: بدأت ٤:٣٠ فالهدف ١٧٠٠ مل مش ٣٠٠٠.</p></div>
+  </div>
+</section>
+
+<div class="shop" id="sec-shop">
+  <h4>المشتريات — بكرة السبت أو الأحد</h4>
+  <ul>
+    <li><b>خيار ١ كجم</b> — سلطات الشغل ٤ أيام + العشا</li>
+    <li><b>ليمون + شبت + بقدونس</b> — السمك والكفتة والطاجن</li>
+    <li><b>مسطردة ديجون</b> — قشرة سالمون الاتنين (علبة صغيرة تكفي شهر)</li>
+    <li><b>ماسل ميلك ×٣</b> — لو خلص (سبت · اتنين · أربع)</li>
+    <li><b>زبادي يوناني</b> — لو الموجود أقل من ٦ علب (وزن العلبة ١٧٠ ولا ٢٠٠؟ شوفه)</li>
+    <li><b>ميزان مطبخ</b> — لو مش موجود، ده أهم سطر في القايمة</li>
+    <li><b>فراخ — اختياري</b> — فرخة واحدة بس لو هتجرب المفرودة بالبرين (وصفة ٩)</li>
+  </ul>
+  <p>موجود ومش محتاج شرا: قريش · طماطم شيري · توم وبصل · بيض · تونة · فول · مشروم · فاكهة · بطاطا · مكسرات. <b>متشتريش رز</b> — البخاري الموجود للسبت والبطاطا تغطي الباقي.</p>
+</div>
+
+<div class="thaw" id="sec-thaw">
+  <h4>جدول السمك واللحمة — عشان محدش يبوظ في التلاجة</h4>
+  <ul>
+    <li><b>الليلة (الجمعة):</b> الدنيس يتاكل · <b>قطعتين سالمون ← الفريزر</b> · قطعة تفضل في التلاجة للسبت · <b>نص المفروم (~٢٠٠ جم) ← الفريزر</b> للأربع · الضاني الجاهز = غدا السبت.</li>
+    <li><b>ليلة الأحد:</b> سالمون رقم ٢ ينزل التلاجة — عشا الاتنين.</li>
+    <li><b>ليلة الاتنين:</b> سالمون رقم ٣ ينزل التلاجة — عشا التلات (تاني يوم بحد أقصى ✓).</li>
+    <li><b>ليلة التلات:</b> نص المفروم ينزل التلاجة — كفتة الأربع بعد الجهاز.</li>
+    <li><b>طاجن البامية:</b> اتعمل الجمعة ← الأحد (يوم ٢) والاتنين (يوم ٣) وخلاص — مفيش رابع يوم.</li>
+  </ul>
+</div>
+
+<section class="sec" id="sec-stock">
+  <div class="sec__head"><h2>المخزون — الجمعة ١٦/١٠ · الحكم على كل حاجة</h2></div>
+  <p class="sec__note">الخطة مبنية على اللي عندك فعلاً. كل صنف ليه يوم.</p>
+  <div class="rules">
+    <div class="rule"><h4>★ السمك — ٤ عشاوات</h4><p><b>دنيس</b> ← الليلة (فرن على سرير بصل)<br><b>سالمون ×٣ (٢٠٠ جم ني للقطعة)</b> ← السبت كرسبي قلاية · الاتنين فرن بالمسطردة · التلات فرن بالشبت خفيف</p></div>
+    <div class="rule"><h4>اللحوم الحمرا</h4><p><b>عجالي ٤٠٠ جم ني</b> ← حلة ضغط الجمعة ← طاجن بامية (أحد + اتنين) + شوربة<br><b>مفروم ٤٠٠ جم ني</b> ← ٢٠٠ كفتة السبت · ٢٠٠ للأربع<br><b>ضاني جاهز ١٥٠ جم</b> ← غدا السبت، الأول قبل أي حاجة</p></div>
+    <div class="rule"><h4>الرز البخاري</h4><p>١٠٠ جم <b>مطبوخ</b> = ~١٨٠ سعر (بسمن) مش ١٣٠. <b>السبت قعدة ٢</b>، يتسخن مرة واحدة في طاسة. اللي يفضل بعد الاتنين يترمي.</p></div>
+    <div class="rule"><h4>البطاطا</h4><p><b>١٥٠ جم ني</b> الاتنين قعدة ٢ · <b>١٢٠ جم ني</b> الأربع جوه طبق الكفتة. مش قبل الأربع ٣:٣٠.</p></div>
+    <div class="rule"><h4>البارد — بروتين الشغل والسناك</h4><p><b>بيض · تونة · فول · قريش · زبادي</b> ← الفطار وعلبة التلات وقفل الليل. الفول دفعة الجمعة بالخلاط (٣ علب × ١٠٠ جم).</p></div>
+    <div class="rule"><h4>المكسرات</h4><p>٢٠ جم = ١٢٠ سعر — تمام كسناك <b>مرة واحدة</b> في اليوم وبالميزان. مش حاجة تتاكل بالعين من الكيس وأنت بتتفرج.</p></div>
+  </div>
+</section>
+
 <section class="sec" id="sec-rules">
   <div class="sec__head"><h2>القواعد</h2></div>
   <div class="rules">
-    <div class="rule"><h4>★★ قاعدة التكميم: البروتين الأول + قعدتين</h4><p>سقف القعدة الواحدة <b>~٤٠٠ جم</b>. الترتيب: <b>البروتين ← الخضار ← النشوية</b>. عشا يوم التمرين مقسوم رسمياً: بروتين + خضار ٩ م ← النشوية قعدة لوحدها ١٠–١٠:٣٠.</p></div>
-    <div class="rule"><h4>★ البروتين رقم يتجمع مش يتحشر</h4><p>الملف بيحسب بروتين كل يوم تحت. أيام الراحة بتطلع طبيعي ١٤٥–١٥٥ لأن مفيش ماسل ميلك — القفل: <b>زبادي + ~١٠٠ جم قريش قبل النوم = +٢٨ بروتين بأقل من ٢٠٠ سعر</b>. أي يوم رقمه أحمر ده الحل.</p></div>
-    <div class="rule"><h4>★ الحكم كتلة الدهون</h4><p>الأسبوع ده أثبتها: الميزان وقف والدهون نزلت ٠٫٧. متتوزنش كل يوم لو الرقم بيضايقك — ورقة الأربع ~٣:٣٠ م هي الحكم، وفيها بصّ على سطر "كتلة الدهون في الجسم" الأول.</p></div>
-    <div class="rule"><h4>الجاهز يتاكل الأول</h4><p>الريش الخميس. وغدا الشغل دايماً من علبة اتجهزت قبلها بيوم — الفراخ من القلاية بتستحمل ٣ أيام في التلاجة بحد أقصى.</p></div>
-    <div class="rule"><h4>اللحوم الحمرا · بلاش سلق</h4><p>الموزة بالعظم = قصدير مقفول ١٥٠° لمدة ٣ ساعات — اللحمة بتسيب العظم لوحدها، ومفيش مية سلق. الريش الجاهزة تتسخن في القلاية مش الميكروويف.</p></div>
-    <div class="rule"><h4>النشويات وقود أيام التمرين بس</h4><p>السبت (بطاطا) · الاتنين (رز) · الأربع ٩/٩ (مكرونة بعد القفلة). خميس/جمعة/أحد/تلات عشا بروتين وخضار بس.</p></div>
-    <div class="rule"><h4>التلات = خفيف قبل القياس</h4><p>الأربع ٩/٩ ~٣:٣٠ م: نفس الجهاز، فطار عادي وغدا خفيف، كافيين الصبح بس، مفيش نشويات من التلات. عشا التلات سمك وخضار.</p></div>
-    <div class="rule"><h4>بعد أي عك: رجوع عادي</h4><p>الأسبوع اللي فات هو الدليل: يومين عك + رجوع عادي = −٠٫٧ دهون. التجويع التعويضي والتمرين الزيادة ممنوعين — بيكسروا العضل اللي واقف ٣٦٫٩.</p></div>
+    <div class="rule"><h4>★★ أسبوع الرجوع مش أسبوع التعويض</h4><p>نفس السعرات ونفس البروتين ونفس ٣ حصص. التجويع والتمرين الزيادة بيكسروا العضل اللي واقف ٣٦٫٩ — ومش بيرجّعوا الشهر. أول حصة السبت بجولات أخف.</p></div>
+    <div class="rule"><h4>★★ قاعدة التكميم: البروتين الأول + قعدتين</h4><p>سقف القعدة الواحدة <b>~٤٠٠ جم</b>. الترتيب: <b>البروتين ← الخضار ← النشوية</b>. عشا يوم التمرين مقسوم: بروتين + خضار ٩ م ← النشوية قعدة لوحدها ١٠.</p></div>
+    <div class="rule"><h4>★ الجوع صفر = حجم + مية</h4><p>نص الجوع اللي بتحس بيه بعد الضهر عطش. <b>شوربة ٢٥٠ مل</b> بعد الشغل · <b>تفاحة ١٥٠ جم</b> العصر · <b>قريش ١٠٠ جم</b> أي وقت. ولو جعت في وقت مش وقته: الخانة الزرقا اللي فاتت اتعلّمت ولا لأ؟</p></div>
+    <div class="rule"><h4>★ الحكم كتلة الدهون</h4><p>ورقة الأربع ٢١/١٠ ~٣:٣٠ م نقطة بداية. أي رقم ييجي — الأسبوع الجاي بيتبني عليه. ما تتوزنش كل يوم في أسبوع الرجوع.</p></div>
+    <div class="rule"><h4>السمك: الطازة الأول والمدوّب تاني يوم</h4><p>الدنيس الليلة لأنه الأقدم. السالمون المدوّب يتاكل تاني يوم بحد أقصى — الفك في التلاجة مش على الرخامة.</p></div>
+    <div class="rule"><h4>اللحوم الحمرا · بلاش سلق</h4><p>العجالي يتحمر في الحلة قبل الضغط — التحمير هو الطعم. الطاجن يكمّل في الفرن مكشوف. الضاني الجاهز يتسخن طاسة ببخة سبراي مش ميكروويف.</p></div>
+    <div class="rule"><h4>النشويات وقود أيام التمرين بس</h4><p>السبت (رز بخاري ١٠٠ مطبوخ) · الاتنين (بطاطا ١٥٠ ني) · الأربع (بطاطا ١٢٠ ني بعد الجهاز). جمعة/أحد/تلات عشا بروتين وخضار بس.</p></div>
+    <div class="rule"><h4>التلات = خفيف قبل القياس</h4><p>الأربع ٢١/١٠ ~٣:٣٠ م: فطار عادي، غدا بيضتين وسلطة، كافيين الصبح بس، مفيش نشويات من التلات. المية عادي بالجدول.</p></div>
   </div>
 </section>
 
-<!-- RECIPES -->
 <section class="sec" id="sec-recipes">
   <div class="sec__head"><h2>الوصفات — من مخزونك</h2></div>
-  <p class="sec__note">كلها من الجرد الحالي + مشتريات الجمعة. <b>علّم في المربع جنب أي وصفة أول ما تعملها.</b> البنية = لحمة حمرا.</p>
+  <p class="sec__note">كلها من اللي في التلاجة، والكميات بالجرام. <b>علّم في المربع جنب أي وصفة أول ما تعملها.</b> البنية = لحمة حمرا · الرمادية = اختياري.</p>
 
   <details class="prep">
-    <summary class="prep__head"><input type="checkbox" class="prep__check" title="اتعملت"><span class="prep__idx">١</span> وراك فراخ في القلاية — اتعمل الأربع ✓ · يتكرر السبت (وركين)<span class="prep__when">قلاية · ١٩٠° · ١٨–٢٠ دقيقة</span><span class="prep__chev">▾</span></summary>
+    <summary class="prep__head"><input type="checkbox" class="prep__check" title="اتعملت"><span class="prep__idx">١</span> دنيس في الفرن على سرير بصل — الليلة<span class="prep__when">فرن · ٢٠٠° · ١٨–٢٢ دقيقة</span><span class="prep__chev">▾</span></summary>
     <div class="prep__body">
-      <p style="font-size:.86rem;color:var(--muted);padding-top:12px">الورك ٢٠٠ جم ني منزوع الجلد بيطلع ~١٤٠ جم مستوي = ~٢٥٠ سعر و~٣٦ بروتين. <b>الجلد يتشال قبل التتبيل</b>. الوركين الأولانيين اتعملوا ليلة الأربع (غدا + عشا الخميس). نفس الطريقة السبت العصر (غدا الأحد والاتنين — علبتين بالشنطة العازلة).</p>
+      <p class="lead">السمكة مش بتتحط على الصاج مباشرة — على سرير بصل وشيري، فالبخار بيطلع من تحتها والجلد ما بيلزقش. <b>سمكة ٤٠٠ جم بالعظم ← ~٢٠٠ جم لحم = ٢٠٠ سعر و٤٠ بروتين.</b> لو سمكتك أقل من ٣٥٠ جم ضيف بيضة مسلوقة للعشا.</p>
       <ol>
-        <li>شيل الجلد، ونشّف الوراك <b>كويس جداً</b>. شرطتين خفاف في السميك عشان التتبيلة تدخل والاستواء يتساوى.</li>
-        <li>تتبيلة جافة: ملح وفلفل وبابريكا مدخنة وكمون وكزبرة وتوم بودر وزنجبيل بودر + معلقة صغيرة زبادي + عصرة ليمون — تتفرك كويس. لو في وقت، نص ساعة في التلاجة.</li>
-        <li>القلاية تسخن فاضية ٣ دقايق على ١٩٠°. بخة سبراي على السلة. الوراك <b>طبقة واحدة</b> وشهم اللي كان عليه الجلد لتحت.</li>
-        <li><b>١٠ دقايق</b> ← قلبة ← <b>٨–١٠ دقايق</b> تانية. لو عايز لون أكتر: دقيقتين على ٢٠٠° في الآخر. الاستواء: العصارة رايقة والعضم بيسيب.</li>
-        <li>يرتاح ٣ دقايق قبل التقطيع. اللي رايح للعلبة يبرد كامل قبل ما يتقفل عليه.</li>
+        <li>السمكة تتنشف <b>كويس جداً</b> من جوه وبره. شرطتين عرضيتين على كل جنب لحد العضم.</li>
+        <li>البطن يتحشى: شرايح ليمون + ٢ فص توم مهروس + شبت. بره: ملح وفلفل وكمون وبابريكا مدخنة + بخة سبراي.</li>
+        <li>صينية: بصلة <b>١٠٠ جم</b> شرايح سميكة + شيري <b>٨٠ جم</b> + بخة سبراي. السمكة فوقهم.</li>
+        <li>فرن مسخن <b>٢٠٠°</b> · ١٨–٢٢ د حسب الحجم. <b>آخر ٣ د شواية علوية</b> للجلد.</li>
+        <li>عصرة ليمون بعد الطفي. السمك الأول، والبصل والشيري المحمرين هما السلطة، والخضار السوتيه بعده.</li>
       </ol>
-      <span class="yield">وركين = عشا + غدا شغل · ~٢٥٠ سعر و~٣٦ بروتين للورك</span>
+      <span class="yield">عشا واحد · ~٢٠٠ سعر و~٤٠ بروتين (من ٢٠٠ جم لحم)</span>
     </div>
   </details>
 
   <details class="prep prep--meat">
-    <summary class="prep__head"><input type="checkbox" class="prep__check" title="اتعملت"><span class="prep__idx">٢</span> موزة بالعظم في القصدير — طبخة الجمعة ★<span class="prep__when">فرن · ١٥٠° · ٣ ساعات</span><span class="prep__chev">▾</span></summary>
+    <summary class="prep__head"><input type="checkbox" class="prep__check" title="اتعملت"><span class="prep__idx">٢</span> عجالي حلة ضغط ← طاجن بامية + شوربة الجوع — طبخة الجمعة ★<span class="prep__when">ضغط ٢٥–٣٠ د + فرن ٢٠٠° · ٣٥ د</span><span class="prep__chev">▾</span></summary>
     <div class="prep__body">
-      <p style="font-size:.86rem;color:var(--muted);padding-top:12px">وصفتك المعتمدة. كيلو بالعظم ← ~٦٠٠ جم لحمة مسحوبة = <b>٣ عشاوات ٢٠٠ جم</b> (جمعة طازة · سبت · أحد). <b>بلاش سلق</b> — القصدير المقفول بيعمل الشغل بالبخار الداخلي. تنزل الفريزر ليلة الخميس وتدخل الفرن ~٤ م الجمعة.</p>
+      <p class="lead">الطبخة بتطلع <b>حاجتين</b>: الطاجن (علبتين) + برطمان شوربة = سناك الجوع كل العشا. <b>٤٠٠ جم عجالي ني ← ~٢٨٠ جم مطبوخ = علبتين ١٤٠ جم.</b> بلاش سلق — التحمير الأول هو الطعم.</p>
       <ol>
-        <li>نشّف الموزة كويس. تتبيلة جافة تقيلة: ملح وفلفل وكمون وكزبرة وبابريكا وتوم بودر وحبهان مطحون + رشة قرفة.</li>
-        <li>طاسة على <b>أعلى نار</b> ببخة سبراي: تحمير سريع من كل الجوانب ٥–٦ دقايق لحد ما تاخد لون — دي خطوة الطعم كلها.</li>
-        <li>ورقتين قصدير كبار متقاطعين: بصلتين شرايح + ٤ فصوص توم + ورقتين لورا + عود قرفة تحت اللحمة. فوقها اللحمة + <b>نص كوباية مية أو شوربة</b> + عصرة ليمون.</li>
-        <li>اقفل القصدير <b>محكم</b> من كل الجهات. فرن مسخن <b>١٥٠° لمدة ٣ ساعات</b> من غير فتح.</li>
-        <li>افتح القصدير، ارفع الفرن ٢٢٠° مع الشواية العلوية <b>١٠–١٥ دقيقة</b> للون. تاخد نفسها ١٠ دقايق ثم اللحمة تتسحب من العظم بالشوكة.</li>
-        <li>قسّمها ٣ علب ٢٠٠ جم: واحدة عشا الليلة، واتنين في التلاجة (السبت والأحد) — التسخين في طاسة ببخة سبراي دقيقتين مش ميكروويف.</li>
+        <li><b>٤٠٠ جم عجالي ني</b> مكعبات ~٤ سم تتنشف. ملح وفلفل. الحلة على وضع التشويح ببخة سبراي: <b>طبقة واحدة</b> تاخد لون من كل الجوانب (٦–٨ د على دفعتين — متزحمش).</li>
+        <li>بصلة <b>١٠٠ جم</b> مفرومة + ٣ فصوص توم دقيقتين ← ٣ حبهان + ورقة لورا + عود قرفة + كمون وكزبرة + <b>٧٠٠ مل مية</b> تغطي اللحمة.</li>
+        <li>ضغط <b>٢٥–٣٠ د</b>. افتح البخار وصفّي: <b>الشوربة في برطمان للتلاجة</b> (~٥٠٠ مل = كوبايتين) — بتستحمل ٤ أيام.</li>
+        <li>الطاجن: طاسة نار عالية ببخة ← بصلة <b>١٠٠ جم</b> + ٣ توم + كزبرة ناشفة ← شيري <b>٢٠٠ جم</b> مضروب بالخلاط ← <b>بامية ٣٠٠ جم مجمدة</b> زي ما هي + اللحمة + <b>٢٥٠ مل</b> من الشوربة + عصرة ليمون + ملح وفلفل وشطة.</li>
+        <li>طاجن فخار ← فرن مسخن <b>٢٠٠° · ٣٥ د مكشوف</b>. يتقسم <b>علبتين متساويتين بالميزان</b> وهو سخن.</li>
       </ol>
-      <span class="yield">٣ عشاوات · ~٣٠٠ سعر و~٥٥ بروتين للحصة</span>
+      <span class="yield">علبتين (أحد · اتنين) ~٣٨٠ سعر و~٥٣ بروتين للعلبة · + شوربة ٢٥٠ مل = ٤٠ سعر</span>
+    </div>
+  </details>
+
+  <details class="prep prep--meat">
+    <summary class="prep__head"><input type="checkbox" class="prep__check" title="اتعملت"><span class="prep__idx">٣</span> كفتة فرن على شبكة — السبت (غدا الأحد) · والأربع<span class="prep__when">فرن · ٢٢٠° · ١٢ د + شواية ٣ د</span><span class="prep__chev">▾</span></summary>
+    <div class="prep__body">
+      <p class="lead"><b>٢٠٠ جم مفروم ني ← ~١٥٠ جم كفتة مستوية = ٣٢٠ سعر و٣٥ بروتين.</b> السر في حاجتين: البصل <b>يتعصر من ميته</b>، ورشة بيكنج صودا بتخليها طرية بدل ما تنشف.</p>
+      <ol>
+        <li>بصلة <b>٦٠ جم</b> مبشورة وتتعصر كويس. <b>٢٠٠ جم مفروم</b> + البصل + بقدونس + كمون + كزبرة + بابريكا + سماق + فلفل + ملح + <b>رشة بيكنج صودا</b>. يتعجن دقيقتين.</li>
+        <li>أصابع <b>رفيعة</b> (أسرع استواء وحواف محمرة أكتر). نص ساعة تلاجة لو في وقت.</li>
+        <li>شبكة فوق صينية (الدهن ينزل). فرن مسخن <b>٢٢٠° · ١٢ د</b> ← <b>شواية علوية ٣ د</b>.</li>
+        <li>الأربع: نفس الطريقة + <b>بطاطا ١٢٠ جم ني</b> في القلاية في نفس الوقت — الطبق كله ≤٤٠٠ جم، الكفتة الأول.</li>
+      </ol>
+      <span class="yield">من ٢٠٠ جم ني ← ١٥٠ جم مستوية = ~٣٢٠ سعر و~٣٥ بروتين</span>
     </div>
   </details>
 
   <details class="prep">
-    <summary class="prep__head"><input type="checkbox" class="prep__check" title="اتعملت"><span class="prep__idx">٣</span> فول بالخلاط — دفعة الجمعة<span class="prep__when">خلاط · ١٠ دقايق</span><span class="prep__chev">▾</span></summary>
+    <summary class="prep__head"><input type="checkbox" class="prep__check" title="اتعملت"><span class="prep__idx">٤</span> سالمون كرسبي في القلاية — السبت (وصفتك المعتمدة)<span class="prep__when">قلاية · ٢٠٠° · ٧–٨ دقايق</span><span class="prep__chev">▾</span></summary>
     <div class="prep__body">
-      <p style="font-size:.86rem;color:var(--muted);padding-top:12px">طبقك المعتمد: ~١٨٠ جم = ~١٤٠ سعر و١١ بروتين. دفعة ٣ حصص (غدا السبت · فطار الأحد · فطار التلات). مش بروتين أساسي — هو اللي بيرفع أيام الراحة من ١٤٠ لـ١٥٠.</p>
+      <p class="lead">زي ما هي. <b>٢٠٠ جم ني ← ~١٦٠ مستوي = ٤٠٠ سعر و٤٢ بروتين.</b> قعدة ١ بعد التمرين، والرز قعدة ٢ بعدها بساعة.</p>
       <ol>
-        <li>الفول يتصفى من ميته ويتسخن مع كوباية مية. في الخلاط: فول + عصرة ليمون كبيرة + كمون + توم مفروم + ملح + شطة.</li>
-        <li>ضربة قصيرة عشان يفضل فيه حبات — مش هريس ناعم.</li>
-        <li>يتقسم ٣ علب. بيتاكل بارد أو سخنة سريعة. فوقه طماطم شيري وبقدونس وعصرة ليمون تانية.</li>
+        <li>الفيليه <b>ينشف تماماً</b> — الجلد خصوصاً. ملح وفلفل وبابريكا وتوم بودر + رشة سكر على الجلد.</li>
+        <li>القلاية مسخنة ٢٠٠°. بخة على السلة. <b>الجلد لفوق</b>.</li>
+        <li><b>٧–٨ د من غير تقليب</b>. الوسط وردي فاتح.</li>
+        <li>ليمون وشبت بعد الطفي. السمك الأول ← الخضار ١٥٠ جم ← الرز ١٠٠ جم مطبوخ قعدة لوحده.</li>
       </ol>
-      <span class="yield">٣ حصص ١٨٠ جم · ~١٤٠ سعر و~١١ بروتين للحصة</span>
+      <span class="yield">٢٠٠ جم ني = ~٤٠٠ سعر و~٤٢ بروتين</span>
     </div>
   </details>
 
   <details class="prep">
-    <summary class="prep__head"><input type="checkbox" class="prep__check" title="اتعملت"><span class="prep__idx">٤</span> علبة التونة الباردة — غدا الجمعة والتلات<span class="prep__when">صفر طبخ · ٥ دقايق بالليل</span><span class="prep__chev">▾</span></summary>
+    <summary class="prep__head"><input type="checkbox" class="prep__check" title="اتعملت"><span class="prep__idx">٥</span> سالمون بقشرة مسطردة وشبت — الاتنين · وبالشبت العادي التلات<span class="prep__when">فرن · ٢٠٠° · ١٠–١٢ د</span><span class="prep__chev">▾</span></summary>
     <div class="prep__body">
-      <p style="font-size:.86rem;color:var(--muted);padding-top:12px">غدا الجمعة (مع الفول) وغدا التلات. علبة تونة مصفاة = ~٣٠ بروتين — أعلى بروتين لكل سعر في المخزون كله. التلات بتتضاف بيضتين مسلوقين عشان يوم راحة.</p>
+      <p class="lead">طعم تالت مختلف عن الكرسبي والشبت العادي — من غير بقسماط. التلات نفس الفرن بس شبت وليمون بس عشان يبقى أخف قبل الجهاز.</p>
       <ol>
-        <li>التونة تتصفى <b>كويس</b> من الميه. في علبة الشغل: التونة + بصلة مفرومة ناعم + عصرة ليمون + كمون + فلفل + شطة.</li>
-        <li>علبة تانية: خيارتين + طماطم شيري — <b>الخضار جنب مش مخلوط</b> عشان ميعملش مية.</li>
-        <li>الشنطة العازلة والآيس باك. تتاكل ٣ ع: التونة الأول، وبعدين السلطة.</li>
+        <li><b>٢٠٠ جم فيليه ني</b> ينشف. ملح وفلفل خفيف.</li>
+        <li>القشرة: <b>معلقة صغيرة (~١٠ جم) مسطردة ديجون</b> + فص توم مهروس + بشر نص ليمونة + شبت مفروم كتير + فلفل — طبقة رفيعة على الوش (مش الجلد).</li>
+        <li>صينية ببخة سبراي، الجلد لتحت. فرن مسخن <b>٢٠٠° · ١٠–١٢ د</b> ← <b>شواية علوية دقيقتين</b>.</li>
+        <li>عصرة ليمون. السمك الأول ← الخضار ١٥٠ جم ← الاتنين بس: بطاطا ١٥٠ جم ني قعدة ٢.</li>
       </ol>
-      <span class="yield">~١٦٠ سعر و~٣١ بروتين · بالبيضتين ~٣٥٠ و~٤٤</span>
+      <span class="yield">٢٠٠ جم ني = ~٣٨٠ سعر و~٤٢ بروتين</span>
+    </div>
+  </details>
+
+  <details class="prep prep--meat">
+    <summary class="prep__head"><input type="checkbox" class="prep__check" title="اتعملت"><span class="prep__idx">٦</span> مشروم محشي بالمفروم — بديل جوع لأي غدا<span class="prep__when">فرن · ٢٠٠° · ١٥ د</span><span class="prep__chev">▾</span></summary>
+    <div class="prep__body">
+      <p class="lead">طبق حجمه كبير وسعراته قليلة — لو الجوع ضرب في يوم راحة ده بديل الغدا. <b>١٠٠ جم مفروم ني + ٢٠٠ جم مشروم (٦ رؤوس كبيرة).</b></p>
+      <ol>
+        <li>رؤوس المشروم: السيقان تتشال وتتفرم ناعم.</li>
+        <li>طاسة نار عالية ببخة: بصلة <b>٥٠ جم</b> + السيقان ٣ د ← <b>١٠٠ جم مفروم</b> + كمون + فلفل + ملح لحد ما يجف ← بقدونس وعصرة ليمون.</li>
+        <li>الرؤوس تتحشى، صينية ببخة، فرن <b>٢٠٠° · ١٥ د</b>، آخر دقيقتين شواية.</li>
+      </ol>
+      <span class="yield">~٢٣٠ سعر و~٢٥ بروتين · + سلطة ١٥٠ جم</span>
     </div>
   </details>
 
   <details class="prep">
-    <summary class="prep__head"><input type="checkbox" class="prep__check" title="اتعملت"><span class="prep__idx">٥</span> خضار مجمد سوتيه — الجانبي الثابت<span class="prep__when">طاسة · ٨–١٠ دقايق</span><span class="prep__chev">▾</span></summary>
+    <summary class="prep__head"><input type="checkbox" class="prep__check" title="اتعملت"><span class="prep__idx">٧</span> خضار مشكل سوتيه — الجانبي الثابت<span class="prep__when">طاسة · ٨–١٠ دقايق</span><span class="prep__chev">▾</span></summary>
     <div class="prep__body">
-      <p style="font-size:.86rem;color:var(--muted);padding-top:12px">جنب كل عشا — بعد البروتين مش قبله. <b>نار عالية · طاسة واسعة · متقلبش كتير</b>. من المجمد على طول من غير تسييح. الباقي من الكيس = الخميس بس.</p>
+      <p class="lead"><b>١٥٠ جم مجمد = ٥٥ سعر.</b> البسلة والجزر والفاصوليا من المجمد على طول. <b>نار عالية · طاسة واسعة · متقلبش كتير</b>. بعد البروتين مش قبله.</p>
       <ol>
-        <li>طاسة <b>واسعة</b> على <b>أعلى نار</b> تسخن فاضية دقيقتين. بخة سبراي.</li>
-        <li>الخضار <b>مجمد زي ما هو</b>: <b>طبقة واحدة</b> ومتزحمش — الزحمة = سلق.</li>
-        <li><b>أول دقيقتين من غير أي لمس</b>. بعدها قلبة كل دقيقة.</li>
-        <li>لما ياخد حواف بنية (٥–٦ د): توم مفروم + كمون وبابريكا.</li>
-        <li><b>الملح آخر حاجة</b> + عصرة ليمون بعد الطفي.</li>
+        <li>طاسة واسعة على أعلى نار تسخن فاضية دقيقتين. بخة سبراي.</li>
+        <li><b>١٥٠ جم</b> مجمد زي ما هو، طبقة واحدة — الزحمة = سلق.</li>
+        <li>أول دقيقتين من غير لمس. بعدها قلبة كل دقيقة.</li>
+        <li>لما ياخد حواف بنية: توم مفروم + كمون وبابريكا. <b>الملح آخر حاجة</b> + عصرة ليمون.</li>
       </ol>
-      <span class="yield">حصة ١٥٠ جم = ~٥٥ سعر · تتكرر مع أي عشا</span>
+      <span class="yield">حصة ١٥٠ جم = ~٥٥ سعر و~٣ بروتين</span>
     </div>
   </details>
 
   <details class="prep">
-    <summary class="prep__head"><input type="checkbox" class="prep__check" title="اتعملت"><span class="prep__idx">٦</span> سالمون كرسبي في القلاية — عشا الاتنين (من مشتريات الجمعة)<span class="prep__when">قلاية · ٢٠٠° · ٧–٨ دقايق</span><span class="prep__chev">▾</span></summary>
+    <summary class="prep__head"><input type="checkbox" class="prep__check" title="اتعملت"><span class="prep__idx">٨</span> فول بالخلاط دفعة + ٥ بيضات مسلوقة — الجمعة والسبت<span class="prep__when">خلاط ١٠ د · حلة ٩ د</span><span class="prep__chev">▾</span></summary>
     <div class="prep__body">
-      <p style="font-size:.86rem;color:var(--muted);padding-top:12px">وصفتك المعتمدة زي ما هي. القطعة التانية للتلات بتتعمل فرن بالشبت والليمون (٢٠٠° · ١٠–١٢ د، آخر دقيقتين شواية) — عشا أخف قبل القياس. لو باراموندي بدل سالمون: نفس الفرن للقطعتين.</p>
+      <p class="lead">الفول <b>٣ علب × ١٠٠ جم مصفى</b> (الجمعة · الأحد · التلات). البيض ٥: التلات ٢ + الأربع ٢ + ١ احتياطي.</p>
       <ol>
-        <li>الفيليه <b>ينشف تماماً</b> بمناديل — الجلد خصوصاً. ملح وفلفل وبابريكا وتوم بودر + رشة سكر على الجلد للقرمشة.</li>
-        <li>القلاية مسخنة ٢٠٠°. بخة سبراي على السلة. <b>الجلد لفوق</b>.</li>
-        <li><b>٧–٨ دقايق من غير تقليب</b>. الوسط يفضل وردي فاتح — مش أكتر.</li>
-        <li>عصرة ليمون وشبت بعد الطفي. السمك الأول، والخضار بعده، والرز قعدة لوحده بعد ساعة.</li>
+        <li>الفول يتصفى <b>ويتوزن مصفى</b> (٣٠٠ جم للدفعة) ويتسخن مع ١٥٠ مل مية ← خلاط مع ليمون + كمون + توم + ملح + شطة. ضربة قصيرة عشان يفضل فيه حبات. <b>٣ علب متساوية بالميزان</b>.</li>
+        <li>البيض: مية تغلي ← البيض من التلاجة بمعلقة ← <b>٩ د</b> بالظبط ← مية تلج ٥ د. متتقشرش غير وقت الأكل.</li>
       </ol>
-      <span class="yield">٢٠٠ جم = ~٤٠٠ سعر و~٤٢ بروتين · باراموندي ~٢٠٠ و~٤٠</span>
+      <span class="yield">فول ١٠٠ جم مصفى = ٨٠ سعر و٦ بروتين · بيضة ٩٠ و٦٫٥</span>
     </div>
   </details>
 
-  <details class="prep">
-    <summary class="prep__head"><input type="checkbox" class="prep__check" title="اتعملت"><span class="prep__idx">٧</span> مكرونة بالتونة والطماطم الشيري في الفرن — عشا الأربع ٩/٩ بعد القفلة<span class="prep__when">فرن · ٢٠٠° · ١٥ دقيقة</span><span class="prep__chev">▾</span></summary>
+  <details class="prep prep--opt">
+    <summary class="prep__head"><input type="checkbox" class="prep__check" title="اتعملت"><span class="prep__idx">٩</span> فراخ بطعم تاني — اختياري لو هتشتري<span class="prep__when">فرن · ٢٢٠°</span><span class="prep__chev">▾</span></summary>
     <div class="prep__body">
-      <p style="font-size:.86rem;color:var(--muted);padding-top:12px">طبق التكميم المدمج: النشوية جوه الطبق بس الطبق كله ≤٤٠٠ جم. يوم تمرين بعد الورقة — عشا "احتفالي خفيف" من المخزون. كمان هو بديل عشا الاتنين لو السمك مجاش.</p>
+      <p class="lead">مشكلة الطعم من حاجتين: الجلد بيتشال فاللحم بيجف، والتتبيلة ما بتدخلش. الحل: <b>تمليح مسبق (برين)</b> + تتبيلة زبادي ليلة + فرن عالي. ٣ طرق — جرّب الأولى:</p>
       <ol>
-        <li><b>١٠٠ جم مكرونة مطبوخة</b> (~٣٥ جم ني) تتسلق أقل من المكتوب بدقيقتين وتتصفى.</li>
-        <li>طاسة نار عالية ببخة سبراي: مشروم شرايح ٣ دقايق ← طماطم شيري نصين + توم + كمون + شطة دقيقتين لحد ما تتفتح.</li>
-        <li>اطفي النار: علبة تونة مصفاة + المكرونة + بيضتين مخفوقين (بيربطوا الطبق) + بقدونس + عصرة ليمون + فلفل.</li>
-        <li>طاجن صغير ببخة سبراي. فرن مسخن ٢٠٠° لمدة ١٥ دقيقة، <b>آخر ٣ دقايق شواية علوية</b>.</li>
+        <li><b>فرخة مفرودة بالبرين:</b> الظهر يتقص والفرخة تتفرد. <b>ساعة في مية بملح (٢٠ جم ملح/لتر) + ليمون</b> ← تنشف ← الجلد يتشال ← تتبيلة <b>١٠٠ جم زبادي</b> + توم + بابريكا مدخنة + سماق + كركم + ليمون. شبكة فوق سرير بصل، فرن مسخن <b>٢٢٠° · ٣٥–٤٠ د</b>، آخر ٥ د شواية.</li>
+        <li><b>شاورما فرن:</b> وراك منزوعة الجلد شرايح رفيعة، تتبيلة ليلة (زبادي + خل + بهارات شاورما + ليمون + توم) ← تتراص <b>مضغوطة</b> في صينية صغيرة ← <b>٢٣٠° · ٢٠ د</b> ← شواية ٥ د.</li>
+        <li><b>في ورق الزبدة:</b> ورك أو صدر مع شرايح ليمون + توم + شبت + شيري، الورق يتقفل كيس ← <b>٢٠٠° · ٢٥ د</b>. بتستوي في بخارها فمستحيل تنشف.</li>
       </ol>
-      <span class="yield">طبق واحد ~٤٠٠ سعر و~٤٨ بروتين · النشوية جواه</span>
-    </div>
-  </details>
-
-  <details class="prep">
-    <summary class="prep__head"><input type="checkbox" class="prep__check" title="اتعملت"><span class="prep__idx">٨</span> بيض مسلوق دفعة — السبت<span class="prep__when">حلة · ٩ دقايق</span><span class="prep__chev">▾</span></summary>
-    <div class="prep__body">
-      <p style="font-size:.86rem;color:var(--muted);padding-top:12px">٥ بيضات: واحدة لغدا السبت، واتنين للتلات، واتنين للأربع (يوم القياس). بقشرها في التلاجة بتستحمل أسبوع.</p>
-      <ol>
-        <li>مية تغلي ← البيض من التلاجة على طول بمعلقة ← <b>٩ دقايق</b> بالظبط.</li>
-        <li>مية تلج ٥ دقايق — عشان تتقشر بسهولة والصفار ميخضرش.</li>
-        <li>متتقشرش غير وقت الأكل.</li>
-      </ol>
-      <span class="yield">٥ بيضات · ~٩٥ سعر و~٦٫٥ بروتين للبيضة</span>
+      <span class="yield">ورك منزوع الجلد ٢٠٠ جم ني ← ~١٤٠ مستوي = ~٢٥٠ سعر و~٣٦ بروتين</span>
     </div>
   </details>
 </section>
 
-<!-- PORTIONS -->
-<section class="sec" id="sec-portions">
-  <div class="sec__head"><h2>الكميات بالجرام</h2></div>
-  <p class="sec__note">★ كل النشويات <b>بالوزن المطبوخ</b>. سقف القعدة الواحدة ~٤٠٠ جم. عمود البروتين هو اللي بيبني رقم اليوم.</p>
-  <div class="ptable">
-    <table>
-      <thead><tr><th>الصنف</th><th>الكمية</th><th>تقريبها إزاي</th><th>سعرات</th><th>بروتين</th></tr></thead>
-      <tbody>
-        <tr><td>ريش جاهزة (تسخين)</td><td class="g">٢٠٠ جم</td><td class="eye">قلاية ١٨٠° · ٤–٥ د — مش ميكروويف</td><td class="k">~٣٦٠</td><td class="p">~٤٥</td></tr>
-        <tr><td>ورك فرخة منزوع الجلد</td><td class="g">٢٠٠ جم ني ← ~١٤٠ مستوي</td><td class="eye">قلاية ١٩٠° · ١٨–٢٠ د</td><td class="k">~٢٥٠</td><td class="p">~٣٦</td></tr>
-        <tr><td>موزة بالعظم (قصدير)</td><td class="g">~٢٠٠ جم لحمة</td><td class="eye">كيلو بالعظم = ~٦٠٠ جم لحمة = ٣ حصص</td><td class="k">~٣٠٠</td><td class="p">~٥٥</td></tr>
-        <tr><td>سالمون فيليه (قلاية)</td><td class="g">~٢٠٠ جم</td><td class="eye">٢٠٠° · ٧–٨ د · جلد لفوق</td><td class="k">~٤٠٠</td><td class="p">~٤٢</td></tr>
-        <tr><td>باراموندي فيليه (فرن)</td><td class="g">~٢٠٠ جم</td><td class="eye">٢٠٠° · ١٠–١٢ د بالشبت</td><td class="k">~٢٠٠</td><td class="p">~٤٠</td></tr>
-        <tr><td>تونة بالمياه</td><td class="g">علبة مصفاة</td><td class="eye">بارد في علبة الشغل</td><td class="k">~١٣٠</td><td class="p">~٣٠</td></tr>
-        <tr><td>فول بالخلاط</td><td class="g">~١٨٠ جم</td><td class="eye">حصة من الدفعة</td><td class="k">~١٤٠</td><td class="p">~١١</td></tr>
-        <tr><td>بيضة</td><td class="g">حبة</td><td class="eye">أومليت ٣ = ~٢٨٠ · ٢ = ~٢٠٠ ببخة سبراي</td><td class="k">~٩٥</td><td class="p">~٦٫٥</td></tr>
-        <tr><td>★ رز أبيض مطبوخ</td><td class="g">~١٠٠ جم مطبوخ</td><td class="eye"><b>بعد الطبخ</b> — ~٣٥–٤٠ جم ني = كف اليد</td><td class="k">~١٣٠</td><td class="p">~٣</td></tr>
-        <tr><td>مكرونة مطبوخة</td><td class="g">~١٠٠ جم مطبوخة</td><td class="eye">~٣٥ جم ني — جوه طبق التونة</td><td class="k">~١٥٠</td><td class="p">~٥</td></tr>
-        <tr><td>بطاطا حلوة مستوية</td><td class="g">حبة متوسطة</td><td class="eye">قلاية ٤–٥ د تترمش · قعدة تانية</td><td class="k">~١٥٠</td><td class="p">~٢</td></tr>
-        <tr><td>خضار مجمد سوتيه</td><td class="g">١٥٠ جم</td><td class="eye">طبقة واحدة نار عالية · بعد البروتين</td><td class="k">~٥٥</td><td class="p">~٣</td></tr>
-        <tr><td>سلطة خيار وطماطم شيري</td><td class="g">خيارتين + ٦ حبات</td><td class="eye">جنب علبة الشغل</td><td class="k">~٣٠</td><td class="p">~١</td></tr>
-        <tr><td>موزة</td><td class="g">حبة</td><td class="eye">قبل التمرين بس</td><td class="k">~٩٥</td><td class="p">~١</td></tr>
-        <tr><td>زبادي يوناني 0%</td><td class="g">علبة ١٧٠ جم</td><td class="eye">قفل الليل</td><td class="k">~٩٥</td><td class="p">~١٦</td></tr>
-        <tr><td>جبنة قريش ★ سناك الجوع</td><td class="g">~١٠٠ جم</td><td class="eye">أي وقت بين الوجبات</td><td class="k">~٩٠</td><td class="p">~١٢</td></tr>
-        <tr><td>ماسل ميلك</td><td class="g">علبة</td><td class="eye">بعد التمرين (سبت/اتنين/أربع)</td><td class="k">~١٦٠</td><td class="p">~٤٠</td></tr>
-        <tr><td>إسبريسو سادة</td><td class="g">شوت / دوبل</td><td class="eye">من غير حساب — قبل ٥ م</td><td class="k">٠–٥</td><td class="p">٠</td></tr>
-        <tr><td>كابتشينو بيتي</td><td class="g">١٥٠ مل خالي الدسم</td><td class="eye">كوباية متوسطة</td><td class="k">٥٥</td><td class="p">~٥</td></tr>
-        <tr><td>شاي بمعلقة سكر</td><td class="g">٤ جم سكر</td><td class="eye">معلقة صغيرة</td><td class="k">١٦</td><td class="p">٠</td></tr>
-      </tbody>
-    </table>
-  </div>
-</section>
-
-<!-- WEIGH -->
 <section class="sec" id="sec-weigh">
-  <div class="sec__head"><h2>الانبودي — القفلة الأربع ٩/٩</h2></div>
-  <p class="sec__note"><b>الأربع ٩/٩ ~٣:٣٠ م</b> (نفس الجهاز · نفس الساعة · غدا خفيف · كافيين الصبح بس · مفيش نشويات من التلات). سطر واحد يهمك في الورقة: <b>كتلة الدهون في الجسم</b>. كانت 24.7 — الهدف <b>24.0</b>، ولو 24.2–24.3 برضه شغل نضيف. والـ SMM يفضل حوالين 36.9.</p>
+  <div class="sec__head"><h2>الانبودي — ورقة الأساس الأربع ٢١/١٠</h2></div>
+  <p class="sec__note"><b>الأربع ٢١/١٠ ~٣:٣٠ م</b> (نفس الجهاز · نفس الساعة · غدا خفيف · كافيين الصبح بس · مفيش نشويات من التلات). دي <b>ورقة أساس</b> بعد شهر وقفة — أي رقم ييجي هو نقطة البداية. آخر ورقة ٢/٩: دهون <b>24.7</b> · SMM 36.9.</p>
   <div class="weigh">
     <div class="weigh__row">
       <div>
-        <label for="w1">دهون قفلة ٢/٩</label>
+        <label for="w1">دهون آخر ورقة ٢/٩</label>
         <input type="number" id="w1" value="24.7" step="0.1">
       </div>
       <div>
-        <label for="w2">دهون الأربع ٩/٩</label>
+        <label for="w2">دهون ورقة الأساس ٢١/١٠</label>
         <input type="number" id="w2" placeholder="—" step="0.1">
       </div>
       <div>
@@ -606,9 +538,8 @@ CONTEXT / HISTORY BLOCK — مخفي عن العرض. لو الملف اترفع
     </div>
     <div style="display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap;border-top:1px dashed var(--rule);padding-top:16px">
       <p style="font-size:.82rem;color:var(--muted);max-width:52ch">
-        قفلة ٢/٩: وزن <b>90.3</b> · دهون <b>24.7</b> · عضل 36.9 · نسبة <b>27.4%</b> · حشوية 9 · نقطة 78.
-        من ١٢/٨ لـ٢/٩: <b>الوزن −١٫١ والدهون نازلة كل ورقة والعضل طالع</b>.
-        الأخضر هنا = نزلت ٠٫٤ أو أكتر.
+        آخر ورقة ٢/٩: وزن <b>90.3</b> · دهون <b>24.7</b> · عضل 36.9 · نسبة <b>27.4%</b> · حشوية 9 · نقطة 78.
+        الأخضر هنا = مرجعتش فوق 24.7. الأحمر = طلعت ٠٫٨ أو أكتر — وبرضه مش نهاية الدنيا، أسبوعين عادي بيرجعوها.
       </p>
       <button class="reset" id="reset">مسح كل العلامات والبدء من جديد</button>
     </div>
@@ -616,97 +547,119 @@ CONTEXT / HISTORY BLOCK — مخفي عن العرض. لو الملف اترفع
 </section>
 
 <footer>
-  <span>الأسبوع ٣ · الخميس ٣/٩ ← الأربع ٩/٩ · الحكم كتلة الدهون</span>
+  <span>الرجوع · الجمعة ١٦/١٠ ← الأربع ٢١/١٠ · كل صنف بالجرام</span>
   <span id="total">—</span>
 </footer>
 </div>
 
 <script>
+/* ============ WATER SCHEDULES ============ */
+const WATER = {
+  rest: [
+    {t:"٧:٣٠ ص · على الريق", ml:400, n:"أول حاجة بعد ما تصحى — قبل الكابتشينو"},
+    {t:"١٠:٠٠ ← ١١:٣٠", ml:500, n:"بعد الفطار بنص ساعة · رشفات"},
+    {t:"١٢:٤٥ ← ٢:١٥", ml:500, n:"يقف قبل الغدا بنص ساعة"},
+    {t:"٣:٤٥ ← ٤:٤٥", ml:400, n:"بعد الغدا بنص ساعة"},
+    {t:"٥:٣٠ ← ٧:٠٠", ml:500, n:"بعد الكابتشينو · وأنت راجع"},
+    {t:"٧:٠٠ ← ٨:٣٠", ml:400, n:"يقف ٨:٣٠ — العشا ٩"},
+    {t:"٩:٤٥ ← ١٠:١٥", ml:300, n:"بعد العشا بنص ساعة · آخر مية"}
+  ],
+  train: [
+    {t:"٧:٣٠ ص · على الريق", ml:400, n:"أول حاجة بعد ما تصحى — قبل الكابتشينو"},
+    {t:"١٠:٠٠ ← ١١:٣٠", ml:500, n:"بعد الفطار بنص ساعة · رشفات"},
+    {t:"١٢:٤٥ ← ١:٣٠", ml:400, n:"يقف قبل الغدا بنص ساعة"},
+    {t:"٣:٤٥ ← ٤:٤٥", ml:400, n:"بعد الغدا بنص ساعة"},
+    {t:"٥:٠٠ ← ٥:٤٥", ml:400, n:"قبل الموزة والشاي — تحضير للجولات"},
+    {t:"٧:٠٠ ← ٧:٥٠ · التمرين", ml:500, n:"رشفة بين كل جولة (~٥٠ مل)"},
+    {t:"٨:٠٠ ← ٨:٣٠", ml:300, n:"بعد الماسل ميلك · يقف ٨:٣٠"},
+    {t:"١٠:٤٥ ← ١١:١٥", ml:200, n:"بعد قعدة ٢ بنص ساعة · آخر مية"}
+  ],
+  friday: [
+    {t:"٤:٣٠ ← ٥:٠٠", ml:300, n:"★ بداية متأخرة — تقف ٥:٠٠ (الغدا ٥:٣٠)"},
+    {t:"٦:٠٠ ← ٧:٣٠", ml:500, n:"رشفات وأنت بتطبخ"},
+    {t:"٨:٠٠ ← ٨:٤٥", ml:400, n:"تقف ٨:٤٥ — العشا ٩:١٥"},
+    {t:"٩:٤٥ ← ١٠:١٥", ml:300, n:"بعد العشا بنص ساعة"},
+    {t:"١١:١٥ م", ml:200, n:"اختياري لو عطشان — رشفات"}
+  ]
+};
+function waterOf(day){ return day.water ? WATER[day.water] : (day.train ? WATER.train : WATER.rest); }
+
 /* ============ DAYS ============ */
 const DAYS = [
-  {n:"الخميس", date:"٣ سبتمبر", tag:"شغل · راحة", train:false, meals:[
-    {t:"الفطار · ٩ ص", d:"كابتشينو وأنت رايح الشغل + شكشوكة ٣ بيض بالطماطم الشيري والمشروم — من غير عيش", k:335, p:24},
-    {t:"سناك · ١٢ ظ", d:"شاي بمعلقة سكر + إسبريسو سادة (صفر)", k:16, p:0},
-    {t:"الغدا · ٣ ع — علبة الشغل", d:"★ الجاهز يتاكل الأول: <b>الريش الجاهزة ٢٠٠ جم</b> + <b>مكرونة ٥٠ جم ني</b> (~١٣٠ جم مطبوخة — اتجهزت امبارح بالليل مع طماطم شيري ومشروم) + شوية خيار. سخنة في الشغل أو بارد. <b>الريش الأول</b> وبعدين المكرونة. استثناء محسوب ليوم راحة — ٥٠ جم مش أكتر", k:560, p:53, meat:true},
-    {t:"كابتشينو العصر · ٥ م", d:"كابتشينو ١٥٠ مل خالي الدسم وسكر دايت", k:55, p:5},
-    {t:"العشا · ٩ م", d:"★ <b>وركين فراخ في القلاية</b> (وصفة ١ — الجلد يتشال، ١٩٠° لمدة ١٨–٢٠ د) — كل ~٢٥٠ جم مستوي (ورك ونص) + خضار سوتيه ١٥٠ جم. من غير نشوية (المكرونة اتاخدت الضهر). الفراخ الأول — واللي يفضل يروح علبة غدا بكرة", k:455, p:63, new:true},
-    {t:"سناك بروتين · ١٠:٣٠ م", d:"علبة زبادي يوناني", k:95, p:16},
-    {t:"★ تجهيز بكرة · بالليل", d:"① نزّل <b>كيلو الموزة بالعظم</b> من الفريزر للتلاجة — محتاج ٢٤ ساعة، طبخة بكرة العصر. ② نص الورك المتبقي في علبة لغدا الجمعة. ③ آخر ١٥٠ جم خضار من الكيس اتاكلوا — بكرة شرا", k:0, p:0, prep:true}
+  {n:"الجمعة", date:"١٦ أكتوبر", tag:"مطبخ · راحة · بداية متأخرة", train:false, water:"friday", meals:[
+    {t:"الفطار · ١:٠٠ م ✓ اتاكل", d:"أومليت ٣ بيض بالمشروم + كابتشينو — اتسجل زي ما هو", g:"بيض ٣ × ٦٠ جم · مشروم ٥٠ جم · كابتشينو ١٥٠ مل خالي الدسم", k:340, p:24},
+    {t:"سناك · ٢:٣٠ م ✓ اتاكل", d:"مكسرات لوز وفستق — ٢٠ جم تمام، بس دي حصة اليوم كلها من المكسرات", g:"مكسرات ٢٠ جم بالميزان", k:120, p:4},
+    {t:"مية · ٤:٣٠ ← ٥:٠٠", d:"★ بداية المية متأخرة النهاردة — ٣٠٠ مل رشفات وتقف ٥:٠٠ عشان الغدا ٥:٣٠", g:"٣٠٠ مل", k:0, p:0, fix:true},
+    {t:"الغدا · ٥:٣٠ م", d:"تونة مصفاة + فول + شيري + بصل مفروم ناعم وعصرة ليمون وكمون. <b>التونة الأول</b>", g:"تونة ١٣٠ جم مصفاة (= علبة كبيرة ١٨٥ جم · لو طلعت ~٧٠ يبقى علبة صغيرة فافتح تانية) · فول ١٠٠ جم مصفى · شيري ٥٠ جم · بصل ٣٠ جم", k:240, p:40},
+    {t:"★ طبخة الليلة · ٥:٤٥ ← ٨:٤٠", d:"① <b>العجالي</b> يتحمر ويدخل الضغط ٥:٤٥ ← ٦:٤٥ (وصفة ٢) ② <b>الطاجن</b> في الفرن ٧:٠٠ ← ٧:٤٠ ③ <b>الفول بالخلاط</b> ٣ علب ④ <b>الدنيس</b> يدخل الفرن ٨:٤٠", g:"عجالي ٤٠٠ جم ني · بامية ٣٠٠ جم مجمدة · شيري ٢٠٠ جم · بصل ٢٠٠ جم · فول ٣٠٠ جم مصفى ← ٣ علب × ١٠٠", k:0, p:0, prep:true},
+    {t:"سناك · ٧:٣٠ م", d:"قريش + تفاحة — ريحة الفرن هتجوّعك، ده الحل مش التذوق", g:"قريش ١٠٠ جم بالميزان · تفاحة ١٥٠ جم", k:170, p:12},
+    {t:"العشا · ٩:١٥ م", d:"★ <b>دنيس في الفرن على سرير بصل وشيري</b> (وصفة ١ — ٢٠٠° · ١٨–٢٢ د، آخر ٣ د شواية) + خضار مشكل سوتيه. يوم راحة فمن غير نشوية. السمك الأول", g:"دنيس ٤٠٠ جم بالعظم ← ~٢٠٠ جم لحم · خضار ١٥٠ جم مجمد · <b>لو السمكة أقل من ٣٥٠ جم ضيف بيضة مسلوقة</b>", k:255, p:43, new:true},
+    {t:"قفل الليل · ١٠:٤٥ م", d:"زبادي يوناني + قريش — ده اللي بيوصل اليوم لـ١٥١ بروتين", g:"زبادي علبة ١٧٠ جم · قريش ١٠٠ جم", k:185, p:28},
+    {t:"★ تجهيز بكرة · بالليل", d:"① <b>قطعتين سالمون ← الفريزر</b>، قطعة تفضل للسبت ② <b>٢٠٠ جم مفروم ← الفريزر</b> (كفتة الأربع) ③ برطمان الشوربة وعلبتين الطاجن في التلاجة ④ الضاني الجاهز = غدا بكرة ⑤ <b>إزازة المية تتملى وتتحط جنب السرير</b>", g:"سالمون ٢ × ٢٠٠ جم ني ← فريزر · مفروم ٢٠٠ جم ← فريزر · إزازة ٧٥٠ مل", k:0, p:0, prep:true}
   ]},
-  {n:"الجمعة", date:"٤ سبتمبر", tag:"مطبخ + مشتريات · راحة", train:false, meals:[
-    {t:"الفطار · ١٠ ص", d:"كابتشينو بيتي + أومليت ٢ بيض بالمشروم", k:255, p:18},
-    {t:"★ المشتريات · الصبح", d:"خضار مجمد ×٢–٣ · سمك ~٤٠٠ جم (سالمون أو باراموندي) · خيار ×٦ + طماطم شيري · زبادي ×٦ · قريش ×٢ · ليمون وشبت · موز · تونة لو ناقصة — القايمة كاملة في قسم المشتريات", k:0, p:0, fix:true},
-    {t:"سناك · ١٢ ظ", d:"شاي بمعلقة سكر + إسبريسو سادة", k:16, p:0},
-    {t:"الغدا · ٢ ع", d:"نص الورك المتبقي من امبارح (~١٠٠ جم — بارد أو سخنة سريعة) + فول ١٨٠ جم من الدفعة الجديدة + سلطة. الفراخ الأول", k:320, p:36},
-    {t:"★ طبخة الجمعة · ٤ م", d:"① <b>الموزة بالعظم في القصدير</b> (وصفة ٢ — تحمير ثم ١٥٠° لمدة ٣ ساعات ← جاهزة ~٧:٣٠). ② <b>فول بالخلاط</b> دفعة ٣ حصص (وصفة ٣)", k:0, p:0, prep:true},
-    {t:"كابتشينو العصر · ٥ م", d:"كابتشينو ١٥٠ مل خالي الدسم وسكر دايت", k:55, p:5},
-    {t:"سناك قريش · لو جعت", d:"~١٠٠ جم جبنة قريش — ريحة الفرن هتجوّعك، ده الحل مش التذوق", k:90, p:12},
-    {t:"العشا · ٩ م", d:"<b>موزة بالعظم طازة من القصدير ~٢٠٠ جم</b> + خضار سوتيه ١٥٠ جم من الكيس الجديد — يوم راحة فمن غير نشوية. اللحمة الأول. الباقي (~٤٠٠ جم) علبتين للسبت والأحد", k:355, p:58, meat:true},
-    {t:"سناك بروتين · ١٠:٣٠ م", d:"علبة زبادي يوناني + ~١٠٠ جم قريش لو اليوم لسه تحت", k:185, p:28},
-    {t:"★ تجهيز بكرة · بالليل", d:"نزّل <b>الوركين الباقيين</b> من الفريزر للتلاجة — يتطبخوا بكرة العصر لغدا الأحد والاتنين", k:0, p:0, prep:true}
+  {n:"السبت", date:"١٧ أكتوبر", tag:"مطبخ · تمرين (أول حصة أخف)", train:true, meals:[
+    {t:"الفطار · ٩ ص", d:"كابتشينو بيتي + أومليت ٣ بيض بالمشروم — فطار يوم تمرين", g:"بيض ٣ × ٦٠ جم · مشروم ٥٠ جم · كابتشينو ١٥٠ مل", k:335, p:24},
+    {t:"سناك · ١٢ ظ", d:"شاي بمعلقة سكر + إسبريسو سادة + قريش", g:"قريش ١٠٠ جم · سكر ٤ جم", k:106, p:12},
+    {t:"الغدا · ٢ ع", d:"★ الجاهز يتاكل الأول: <b>ضاني جاهز</b> تسخين طاسة ببخة سبراي دقيقتين + سلطة. اللحمة الأول", g:"ضاني ١٥٠ جم مطبوخ بالميزان · خيار ١٥٠ جم · شيري ٥٠ جم", k:270, p:39, meat:true},
+    {t:"★ تجهيز الأسبوع · العصر", d:"① <b>كفتة فرن</b> (وصفة ٣) ← تبرد ← علبة غدا الأحد ② <b>٥ بيضات مسلوقة</b> (وصفة ٨) ③ البطاطا تتقطع ويدجز لعلبة في التلاجة", g:"مفروم ٢٠٠ جم ني ← ~١٥٠ جم كفتة · بيض ٥ حبات · بطاطا ٣٠٠ جم ني (١٥٠ الاتنين + ١٢٠ الأربع)", k:0, p:0, prep:true},
+    {t:"سناك العصر · ٤ م", d:"كمثرى", g:"كمثرى ١٥٠ جم", k:85, p:1},
+    {t:"قبل التمرين · ٦ م", d:"شاي بمعلقة سكر + موزة", g:"موزة ١٠٠ جم بدون قشر · سكر ٤ جم", k:106, p:1},
+    {t:"التمرين · ٧ م", d:"كيك بوكسينج — ٩ جولات، <b>أول حصة بعد الوقفة: شدة ٧٠٪</b>. الإزازة جنبك — رشفة كل جولة", g:"٥٠٠ مل بين الجولات", k:-336, p:0},
+    {t:"بعد التمرين · ٧:٥٠ م", d:"ماسل ميلك", g:"علبة ٣٣٠ مل", k:160, p:40},
+    {t:"العشا قعدة ١ · ٩ م", d:"★ <b>سالمون كرسبي في القلاية</b> (وصفة ٤ — ٢٠٠° · ٧–٨ د · جلد لفوق) + خضار سوتيه. السمك الأول ومن غير نشوية في القعدة دي", g:"سالمون ٢٠٠ جم <b>ني</b> ← ~١٦٠ مستوي · خضار ١٥٠ جم مجمد", k:455, p:45, new:true},
+    {t:"★ العشا قعدة ٢ · ١٠ م", d:"<b>رز بخاري</b> — تسخين طاسة مرة واحدة. محسوب ١٨٠ لأنه بسمن. قعدة لوحده", g:"رز ١٠٠ جم <b>مطبوخ</b> بالميزان", k:180, p:4, new:true},
+    {t:"كابتشينو الليل · ١٠:٣٠ م", d:"كابتشينو خالي الدسم وسكر دايت", g:"١٥٠ مل", k:55, p:5},
+    {t:"قفل الليل · ١١ م", d:"زبادي يوناني", g:"علبة ١٧٠ جم", k:95, p:16}
   ]},
-  {n:"السبت", date:"٥ سبتمبر", tag:"مطبخ · تمرين", train:true, meals:[
-    {t:"الفطار · ٩ ص", d:"كابتشينو بيتي + أومليت ٣ بيض بالمشروم — فطار يوم تمرين", k:335, p:24},
-    {t:"سناك · ١٢ ظ", d:"شاي بمعلقة سكر + إسبريسو سادة + ~١٠٠ جم قريش", k:106, p:12},
-    {t:"الغدا · ٢ ع", d:"فول ١٨٠ جم من الدفعة + بيضة مسلوقة + سلطة خيار وطماطم", k:265, p:18},
-    {t:"★ تجهيز الأسبوع · العصر", d:"① <b>وركين في القلاية</b> (وصفة ١) ← يبردوا ← علبتين غدا الأحد والاتنين. ② <b>٥ بيضات مسلوقة</b> (وصفة ٨) للتلات والأربع. ③ علبة الأحد تتجهز بسلطتها من دلوقتي", k:0, p:0, prep:true},
-    {t:"قبل التمرين · ٦ م", d:"شاي بمعلقة سكر + موزة", k:111, p:1},
-    {t:"التمرين · ٧ م", d:"كيك بوكسينج — ٩ جولات", k:-336, p:0},
-    {t:"بعد التمرين · ٧:٥٠ م", d:"ماسل ميلك", k:160, p:40},
-    {t:"العشا قعدة ١ · ٩ م", d:"<b>موزة بالعظم ~٢٠٠ جم</b> من علبة امبارح — تسخين في طاسة ببخة سبراي دقيقتين + خضار سوتيه ١٥٠ جم. اللحمة الأول ومن غير نشوية في القعدة دي", k:355, p:58, meat:true},
-    {t:"★ العشا قعدة ٢ · ١٠ م", d:"<b>بطاطا حلوة حبة متوسطة</b> — قلاية ٤–٥ دقايق تترمش — وقود يوم التمرين، قعدة لوحدها", k:150, p:2, new:true},
-    {t:"كابتشينو الليل · ١٠:٣٠ م", d:"كابتشينو ١٥٠ مل خالي الدسم وسكر دايت", k:55, p:5},
-    {t:"سناك بروتين · ١١ م", d:"علبة زبادي يوناني", k:95, p:16}
+  {n:"الأحد", date:"١٨ أكتوبر", tag:"شغل · راحة", train:false, meals:[
+    {t:"الفطار · ٩ ص", d:"كابتشينو وأنت رايح الشغل + شكشوكة ٢ بيض بالشيري + فول من الدفعة", g:"بيض ٢ × ٦٠ جم · شيري ١٠٠ جم · فول ١٠٠ جم مصفى · كابتشينو ١٥٠ مل", k:335, p:25},
+    {t:"سناك · ١٢ ظ", d:"شاي بمعلقة سكر + إسبريسو سادة", g:"سكر ٤ جم", k:16, p:0},
+    {t:"الغدا · ٣ ع — علبة الشغل", d:"★ <b>كفتة فرن</b> (اتعملت امبارح) + سلطة — الشنطة العازلة والآيس باك. الكفتة الأول", g:"كفتة ١٥٠ جم مستوية · خيار ١٥٠ جم · شيري ٥٠ جم", k:350, p:36, meat:true},
+    {t:"كابتشينو العصر · ٥ م", d:"كابتشينو خالي الدسم وسكر دايت", g:"١٥٠ مل", k:55, p:5},
+    {t:"★ سناك الجوع · بعد الشغل", d:"<b>شوربة العجالي</b> سخنة + تفاحة — يوم راحة والمعدة محتاجة حجم مش سعرات", g:"شوربة ٢٥٠ مل · تفاحة ١٥٠ جم", k:120, p:6},
+    {t:"العشا · ٩ م", d:"<b>طاجن بامية بالعجالي</b> علبة ١ — تسخين فرن ١٨٠° · ١٠ د. يوم راحة فمن غير نشوية. اللحمة الأول", g:"علبة الطاجن (~١٤٠ جم لحمة مطبوخة + ١٥٠ جم بامية)", k:380, p:53, meat:true},
+    {t:"قفل الليل · ١٠:٣٠ م", d:"زبادي يوناني + قريش", g:"زبادي ١٧٠ جم · قريش ١٠٠ جم", k:185, p:28},
+    {t:"★ تجهيز بكرة · بالليل", d:"① <b>سالمون رقم ٢ ينزل من الفريزر للتلاجة</b> ② علبة غدا الاتنين: الطاجن علبة ٢ + خيار ③ إزازة الشغل تتملى", g:"سالمون ٢٠٠ جم ني ← تلاجة · خيار ١٥٠ جم", k:0, p:0, prep:true}
   ]},
-  {n:"الأحد", date:"٦ سبتمبر", tag:"شغل · راحة", train:false, meals:[
-    {t:"الفطار · ٩ ص", d:"كابتشينو وأنت رايح الشغل + شكشوكة ٢ بيض بالطماطم الشيري + فول ١٨٠ جم من الدفعة (بارد أو سخنة سريعة)", k:395, p:29},
-    {t:"سناك · ١٢ ظ", d:"شاي بمعلقة سكر + إسبريسو سادة", k:16, p:0},
-    {t:"الغدا · ٣ ع — علبة الشغل", d:"★ ورك فراخ من القلاية (اتعمل امبارح) ~١٥٠ جم + سلطة خيار وطماطم شيري — الشنطة العازلة والآيس باك. الفراخ الأول", k:280, p:38, new:true},
-    {t:"كابتشينو العصر · ٥ م", d:"كابتشينو ١٥٠ مل خالي الدسم وسكر دايت", k:55, p:5},
-    {t:"سناك قريش · بعد الشغل", d:"~١٠٠ جم جبنة قريش — يوم راحة والبروتين محتاج التجميع ده", k:90, p:12},
-    {t:"العشا · ٩ م", d:"<b>آخر علبة موزة بالعظم ~٢٠٠ جم</b> (تاني يوم بعد الطبخ ✓) — تسخين طاسة + خضار سوتيه ١٥٠ جم. يوم راحة فمن غير نشوية. اللحمة الأول", k:355, p:58, meat:true},
-    {t:"سناك بروتين · ١٠:٣٠ م", d:"علبة زبادي يوناني + ~١٠٠ جم قريش — قفل يوم الراحة", k:185, p:28},
-    {t:"★ تجهيز بكرة · بالليل", d:"① علبة غدا الاتنين: الورك التاني + سلطة. ② لو السمك اتشرى مجمد: <b>ينزل التلاجة دلوقتي</b> — عشا بكرة وبعده (تاني يوم بحد أقصى)", k:0, p:0, prep:true}
+  {n:"الاتنين", date:"١٩ أكتوبر", tag:"شغل · تمرين", train:true, meals:[
+    {t:"الفطار · ٩ ص", d:"كابتشينو وأنت رايح الشغل + أومليت ٣ بيض بالمشروم والبقدونس", g:"بيض ٣ × ٦٠ جم · مشروم ٥٠ جم · كابتشينو ١٥٠ مل", k:335, p:24},
+    {t:"سناك · ١٢ ظ", d:"شاي بمعلقة سكر + إسبريسو سادة", g:"سكر ٤ جم", k:16, p:0},
+    {t:"الغدا · ٣ ع — علبة الشغل", d:"<b>طاجن بامية بالعجالي</b> علبة ٢ (يوم ٣ وآخر يوم) — سخنة في الشغل + خيار. اللحمة الأول", g:"علبة الطاجن (~١٤٠ جم لحمة + ١٥٠ بامية) · خيار ١٥٠ جم", k:380, p:53, meat:true},
+    {t:"قبل التمرين · ٦ م", d:"شاي بمعلقة سكر + موزة (وقود الجولات)", g:"موزة ١٠٠ جم بدون قشر · سكر ٤ جم", k:106, p:1},
+    {t:"التمرين · ٧ م", d:"كيك بوكسينج — ٩ جولات عادي. الإزازة جنبك — رشفة كل جولة", g:"٥٠٠ مل بين الجولات", k:-336, p:0},
+    {t:"بعد التمرين · ٧:٥٠ م", d:"ماسل ميلك", g:"علبة ٣٣٠ مل", k:160, p:40},
+    {t:"العشا قعدة ١ · ٩ م", d:"★ <b>سالمون بقشرة المسطردة والشبت في الفرن</b> (وصفة ٥ — ٢٠٠° · ١٠–١٢ د + شواية دقيقتين) + خضار سوتيه. السمك الأول", g:"سالمون ٢٠٠ جم <b>ني</b> · مسطردة ١٠ جم · خضار ١٥٠ جم مجمد", k:435, p:45, new:true},
+    {t:"★ العشا قعدة ٢ · ١٠ م", d:"<b>بطاطا ويدجز في القلاية</b> ببخة سبراي ١٩٠° · ١٨ د (تدخل القلاية وأنت بتاكل السمك) — قعدة لوحدها", g:"بطاطا ١٥٠ جم <b>ني</b> بعد التقشير", k:130, p:3, new:true},
+    {t:"كابتشينو الليل · ١٠:٣٠ م", d:"كابتشينو خالي الدسم وسكر دايت", g:"١٥٠ مل", k:55, p:5},
+    {t:"قفل الليل · ١١ م", d:"زبادي يوناني", g:"علبة ١٧٠ جم", k:95, p:16},
+    {t:"★ تجهيز بكرة · بالليل", d:"① <b>سالمون رقم ٣ ينزل من الفريزر للتلاجة</b> ② علبة غدا التلات: تونة + بيضتين مسلوقين + سلطة. <b>من بكرة مفيش نشويات لحد الأربع بعد الجهاز</b>", g:"سالمون ٢٠٠ جم ني ← تلاجة · تونة ١٣٠ جم مصفاة · بيض ٢", k:0, p:0, prep:true}
   ]},
-  {n:"الاتنين", date:"٧ سبتمبر", tag:"شغل · تمرين", train:true, meals:[
-    {t:"الفطار · ٩ ص", d:"كابتشينو وأنت رايح الشغل + أومليت ٣ بيض بالمشروم والبقدونس — فطار يوم تمرين", k:335, p:24},
-    {t:"سناك · ١٢ ظ", d:"شاي بمعلقة سكر + إسبريسو سادة", k:16, p:0},
-    {t:"الغدا · ٣ ع — علبة الشغل", d:"★ الورك الرابع ~١٥٠ جم + سلطة خيار وطماطم شيري — الفراخ الأول", k:280, p:38, new:true},
-    {t:"قبل التمرين · ٦ م", d:"شاي بمعلقة سكر + موزة (وقود الجولات)", k:111, p:1},
-    {t:"التمرين · ٧ م", d:"كيك بوكسينج — ٩ جولات", k:-336, p:0},
-    {t:"بعد التمرين · ٧:٥٠ م", d:"ماسل ميلك", k:160, p:40},
-    {t:"العشا قعدة ١ · ٩ م", d:"★ <b>سالمون كرسبي في القلاية ٢٠٠ جم</b> (وصفة ٦ — ٢٠٠° · ٧–٨ د · جلد لفوق) أو باراموندي فرن + خضار سوتيه ١٥٠ جم. السمك الأول. <b>لو السمك مجاش:</b> مكرونة بالتونة في الفرن (وصفة ٧) كطبق واحد ومفيش قعدة ٢", k:455, p:45, new:true},
-    {t:"★ العشا قعدة ٢ · ١٠ م", d:"رز <b>~١٠٠ جم مطبوخ</b> (يتطبخ جديد ~٣٥ جم ني) — وقود يوم التمرين، قعدة لوحده", k:130, p:3, new:true},
-    {t:"كابتشينو الليل · ١٠:٣٠ م", d:"كابتشينو ١٥٠ مل خالي الدسم وسكر دايت", k:55, p:5},
-    {t:"سناك بروتين · ١١ م", d:"علبة زبادي يوناني", k:95, p:16},
-    {t:"★ تجهيز بكرة · بالليل", d:"علبة غدا التلات: تونة مصفاة بالليمون والبصل + بيضتين مسلوقين (من دفعة السبت) + سلطة. <b>من بكرة مفيش نشويات لحد الأربع بعد الجهاز</b>", k:0, p:0, prep:true}
+  {n:"التلات", date:"٢٠ أكتوبر", tag:"شغل · خفيف قبل القياس", train:false, meals:[
+    {t:"الفطار · ٩ ص", d:"كابتشينو وأنت رايح الشغل + شكشوكة ٢ بيض بالشيري + فول (آخر حصة)", g:"بيض ٢ × ٦٠ جم · شيري ١٠٠ جم · فول ١٠٠ جم مصفى · كابتشينو ١٥٠ مل", k:335, p:25},
+    {t:"سناك · ١٢ ظ", d:"شاي بمعلقة سكر + إسبريسو سادة", g:"سكر ٤ جم", k:16, p:0},
+    {t:"الغدا · ٣ ع — علبة الشغل", d:"★ تونة بالليمون والبصل + بيضتين مسلوقين + سلطة — من غير نشويات، بكرة قياس. التونة والبيض الأول", g:"تونة ١٣٠ جم مصفاة · بيض ٢ × ٦٠ جم · خيار ١٥٠ جم · شيري ٥٠ جم", k:360, p:48},
+    {t:"كابتشينو العصر · ٥ م", d:"كابتشينو خالي الدسم — ★ آخر كافيين النهاردة، بكرة انبودي", g:"١٥٠ مل", k:55, p:5},
+    {t:"★ سناك الجوع · بعد الشغل", d:"قريش + كمثرى (اليوم من غير نشويات فالجوع وارد — ولو لسه جعان: شوربة ٢٥٠ مل)", g:"قريش ١٠٠ جم · كمثرى ١٥٠ جم", k:175, p:13},
+    {t:"العشا · ٩ م", d:"<b>سالمون رقم ٣ فرن بالشبت والليمون</b> (٢٠٠° · ١٠–١٢ د، آخر دقيقتين شواية) + خضار سوتيه. ★ مفيش نشويات، عشا خفيف قبل القياس", g:"سالمون ٢٠٠ جم <b>ني</b> · خضار ١٥٠ جم مجمد", k:435, p:45, new:true},
+    {t:"قفل الليل · ١٠:٣٠ م", d:"زبادي يوناني", g:"علبة ١٧٠ جم", k:95, p:16},
+    {t:"★ تجهيزة الانبودي", d:"بكرة الأربع ٢١/١٠ ~٣:٣٠ م — نفس الجهاز ونفس الساعة، الكافيين الصبح بس، الغدا بيضتين وسلطة. دي <b>ورقة الأساس</b>: أي رقم ييجي هو نقطة البداية مش حكم. <b>٢٠٠ جم المفروم ينزل التلاجة الليلة</b>", g:"مفروم ٢٠٠ جم ني ← تلاجة", k:0, p:0, fix:true}
   ]},
-  {n:"التلات", date:"٨ سبتمبر", tag:"شغل · قفلة قبل القياس", train:false, meals:[
-    {t:"الفطار · ٩ ص", d:"كابتشينو وأنت رايح الشغل + شكشوكة ٢ بيض بالطماطم + فول ١٨٠ جم (آخر حصة من الدفعة)", k:395, p:29},
-    {t:"سناك · ١٢ ظ", d:"شاي بمعلقة سكر + إسبريسو سادة", k:16, p:0},
-    {t:"الغدا · ٣ ع — علبة الشغل", d:"★ تونة بالليمون + بيضتين مسلوقين + سلطة خيار وطماطم شيري — من غير نشويات، بكرة قياس. التونة والبيض الأول", k:350, p:44},
-    {t:"كابتشينو العصر · ٥ م", d:"كابتشينو ١٥٠ مل خالي الدسم وسكر دايت — ★ آخر كافيين النهاردة، بكرة انبودي", k:55, p:5},
-    {t:"سناك قريش · بعد الشغل", d:"~١٠٠ جم جبنة قريش (اليوم من غير نشويات فالجوع وارد)", k:90, p:12},
-    {t:"العشا · ٩ م", d:"<b>القطعة التانية من السمك ٢٠٠ جم — فرن بالشبت والليمون</b> (٢٠٠° · ١٠–١٢ د، آخر دقيقتين شواية) + خضار سوتيه ١٥٠ جم. ★ مفيش نشويات، عشا خفيف قبل القياس. السمك الأول. <b>لو مفيش سمك:</b> أومليت ٣ بيض بالمشروم + ~١٠٠ جم قريش", k:300, p:43, new:true},
-    {t:"سناك بروتين · ١٠:٣٠ م", d:"علبة زبادي يوناني + ~١٠٠ جم قريش — قفل يوم الراحة", k:185, p:28},
-    {t:"★ تجهيزة الانبودي", d:"بكرة الأربع ٩/٩ ~٣:٣٠ م — نفس الجهاز ونفس الساعة، الكافيين الصبح بس، الغدا بيضتين وسلطة. الهدف كتلة دهون <b>24.0</b> (كانت 24.7)، ولو 24.2–24.3 برضه شغل نضيف. الوزن هييجي لوحده لما المية تنزل", k:0, p:0, fix:true}
-  ]},
-  {n:"الأربع", date:"٩ سبتمبر", tag:"★ انبودي القفلة · تمرين", train:true, meals:[
-    {t:"الفطار · ٩ ص", d:"كابتشينو بيتي ١٥٠ مل خالي الدسم + أومليت ٣ بيض بالمشروم — ★ كابتشينو الصبح بس، مفيش كافيين تاني لحد ما ترجع من الانبودي", k:335, p:24},
-    {t:"سناك · ١٢ ظ", d:"شاي بمعلقة سكر + ~١٠٠ جم قريش (خفيف ومش بينفخ)", k:106, p:12},
-    {t:"الغدا · ٣ ع", d:"★ خفيف عن قصد قبل الجهاز: بيضتين مسلوقين + سلطة خيار وطماطم", k:250, p:14},
-    {t:"★ الانبودي · ٣:٣٠ م", d:"القفلة — نفس الجهاز ونفس الظروف. اللي يهمك: <b>كتلة الدهون (كانت 24.7)</b> و SMM (كان 36.9). سجّل الرقم في خانة القفلة تحت — وأياً كان، الأسبوع الجاي بيتبني عليه عادي", k:0, p:0, fix:true},
-    {t:"قبل التمرين · ٦:٣٠ م", d:"موزة بعد القياس — وقود الجولات", k:95, p:1},
-    {t:"التمرين · ٧ م", d:"كيك بوكسينج — ٩ جولات", k:-336, p:0},
-    {t:"بعد التمرين · ٧:٥٠ م", d:"ماسل ميلك — وده أول يوم في الأسبوع الجديد", k:160, p:40},
-    {t:"العشا · ٩ م", d:"<b>مكرونة بالتونة والطماطم الشيري في الفرن</b> (وصفة ٧ — ١٠٠ جم مكرونة مطبوخة + تونة + مشروم + بيضتين) — طبق واحد مدمج ≤٤٠٠ جم، النشوية جواه لأنه يوم تمرين. عشا احتفالي خفيف من المخزون بعد الورقة", k:400, p:48, new:true},
-    {t:"كابتشينو الليل · ١٠:٣٠ م", d:"كابتشينو ١٥٠ مل خالي الدسم وسكر دايت — بعد ما ترجع من الانبودي (التاني والوحيد المسموح بعد الصبح)", k:55, p:5},
-    {t:"سناك بروتين · ١١ م", d:"علبة زبادي يوناني + ~١٠٠ جم قريش", k:185, p:28}
+  {n:"الأربع", date:"٢١ أكتوبر", tag:"★ انبودي ورقة الأساس · تمرين", train:true, meals:[
+    {t:"الفطار · ٩ ص", d:"كابتشينو بيتي + أومليت ٣ بيض بالمشروم — ★ كابتشينو الصبح بس، مفيش كافيين تاني لحد ما ترجع", g:"بيض ٣ × ٦٠ جم · مشروم ٥٠ جم · كابتشينو ١٥٠ مل", k:335, p:24},
+    {t:"سناك · ١٢ ظ", d:"شاي بمعلقة سكر + قريش (خفيف ومش بينفخ)", g:"قريش ١٠٠ جم · سكر ٤ جم", k:106, p:12},
+    {t:"الغدا · ١٢:٣٠ م", d:"★ خفيف عن قصد قبل الجهاز: بيضتين مسلوقين + سلطة — وبعدها مفيش أكل لحد بعد القياس", g:"بيض ٢ × ٦٠ جم · خيار ١٥٠ جم · شيري ٥٠ جم", k:210, p:14},
+    {t:"★ الانبودي · ٣:٣٠ م", d:"ورقة الأساس — نفس الجهاز ونفس الظروف. سجّل <b>كتلة الدهون</b> و SMM في الخانة تحت. الوزن هيكون أعلى من 90.3 غالباً (مية) — مش مهم. أياً كان الرقم، الأسبوع الجاي بيتبني عليه من غير تعويض", g:"معدة شبه فاضية · كافيين الصبح بس · مفيش نشويات من امبارح", k:0, p:0, fix:true},
+    {t:"بعد القياس · ٦:٣٠ م", d:"موزة + تفاحة — وقود الجولات بعد يوم خفيف", g:"موزة ١٠٠ جم · تفاحة ١٥٠ جم", k:170, p:2},
+    {t:"التمرين · ٧ م", d:"كيك بوكسينج — ٩ جولات. الإزازة جنبك — رشفة كل جولة", g:"٥٠٠ مل بين الجولات", k:-336, p:0},
+    {t:"بعد التمرين · ٧:٥٠ م", d:"ماسل ميلك — وده أول يوم في الأسبوع الجديد", g:"علبة ٣٣٠ مل", k:160, p:40},
+    {t:"العشا · ٩ م", d:"<b>كفتة فرن</b> (وصفة ٣ — النص التاني من المفروم) + <b>بطاطا ويدجز</b> في نفس الطبق + خضار — الطبق كله ≤٤٠٠ جم، النشوية جواه لأنه يوم تمرين بعد الورقة. الكفتة الأول", g:"مفروم ٢٠٠ جم ني ← ١٥٠ كفتة · بطاطا ١٢٠ جم ني · خضار ١٠٠ جم", k:460, p:39, meat:true},
+    {t:"كابتشينو الليل · ١٠:٣٠ م", d:"كابتشينو خالي الدسم — التاني والوحيد المسموح بعد الصبح", g:"١٥٠ مل", k:55, p:5},
+    {t:"قفل الليل · ١١ م", d:"زبادي يوناني + قريش", g:"زبادي ١٧٠ جم · قريش ١٠٠ جم", k:185, p:28}
   ]}
 ];
 
-const KEY = "cut3_w3_v1";
-const START = new Date(2026,8,3); // الخميس ٣ سبتمبر = أول يوم
+const KEY = "cut3_return_v3";
+const START = new Date(2026,9,16);
 let state = load();
 let selected = 0;
 
@@ -715,10 +668,18 @@ function save(){ try{ localStorage.setItem(KEY, JSON.stringify(state)); }catch(e
 function idx(base){ const n=new Date(); n.setHours(0,0,0,0); return Math.round((n-base)/86400000); }
 
 function prog(di){
-  const total = DAYS[di].meals.length;
+  const w = waterOf(DAYS[di]);
+  const total = DAYS[di].meals.length + w.length;
   let d=0;
   DAYS[di].meals.forEach((_,mi)=>{ if(state[`d${di}m${mi}`]) d++; });
+  w.forEach((_,wi)=>{ if(state[`d${di}w${wi}`]) d++; });
   return {d,total};
+}
+function waterProg(di){
+  const w = waterOf(DAYS[di]);
+  let done=0, total=0;
+  w.forEach((s,wi)=>{ total+=s.ml; if(state[`d${di}w${wi}`]) done+=s.ml; });
+  return {done,total};
 }
 
 function buildCal(){
@@ -750,6 +711,8 @@ function buildDay(){
   const net = day.meals.reduce((s,m)=>s+m.k,0);
   const pro = day.meals.reduce((s,m)=>s+(m.p||0),0);
   const isToday = di===ti;
+  const w = waterOf(day);
+  const wp = waterProg(di);
   host.innerHTML = `
     <article class="day ${isToday?'day--today':''}">
       <div class="day__head">
@@ -758,6 +721,20 @@ function buildDay(){
         ${isToday?'<span class="day__today">النهاردة</span>':''}
         <span class="day__tag ${day.train?'tag--train':'tag--rest'}">${day.tag}</span>
         <div class="day__bar"><span class="day__count" data-count></span></div>
+      </div>
+      <div class="water">
+        <div class="water__head">المية · ${day.water==='friday'?'يوم ناقص (بدأ ٤:٣٠)':(day.train?'يوم تمرين':'يوم راحة')} · مفيش شرب من نص ساعة قبل الوجبة لنص ساعة بعدها <b class="${wp.done>=wp.total?'ok':''}">${wp.done} / ${wp.total} مل</b></div>
+        <div class="water__grid">
+          ${w.map((s,wi)=>{
+            const id=`d${di}w${wi}`; const on=!!state[id];
+            return `<label class="water__slot ${on?'done':''}">
+              <input type="checkbox" class="water__box" data-id="${id}" ${on?'checked':''}>
+              <span class="water__txt">${s.t}<small>${s.n}</small></span>
+              <span class="water__ml">${s.ml} مل</span>
+            </label>`;
+          }).join("")}
+        </div>
+        <div class="water__track"><div class="water__fill" style="width:${wp.total?wp.done/wp.total*100:0}%"></div></div>
       </div>
       ${day.meals.map((m,mi)=>{
         const id = `d${di}m${mi}`;
@@ -768,26 +745,33 @@ function buildDay(){
           <span class="meal__body">
             <span class="meal__when">${m.t}</span>
             <span class="meal__what">${m.d}</span>
+            ${m.g?`<span class="meal__w">⚖︎ ${m.g}</span>`:''}
           </span>
           <span class="meal__kcal">${m.k===0?'—':(m.k<0?m.k:'+'+m.k)}${m.p?`<small>${m.p} جم</small>`:''}</span>
         </label>`;
       }).join("")}
-      <div class="day__foot"><span>صافي اليوم بعد التمرين <b>${net} سعر</b></span><span>بروتين اليوم <b class="${pro<150?'lowp':''}">~${pro} جم</b>${pro<150?' — اقفله بزبادي + قريش':''}</span></div>
+      <div class="day__foot"><span>صافي اليوم بعد التمرين <b>${net} سعر</b></span><span>بروتين اليوم <b class="${pro<150?'lowp':''}">~${pro} جم</b>${pro<150?' — اقفله بزبادي + قريش':''}</span><span>مية اليوم <b class="wtr">${wp.done} / ${wp.total} مل</b></span></div>
     </article>`;
-  host.querySelectorAll(".meal__box").forEach(b=>{
+  host.querySelectorAll(".meal__box, .water__box").forEach(b=>{
     b.addEventListener("change", e=>{
       const id = e.target.dataset.id;
       state[id] = e.target.checked;
       if(!e.target.checked) delete state[id];
-      e.target.closest(".meal").classList.toggle("done", e.target.checked);
-      render();
       save();
+      render();
     });
   });
   const {d,total} = prog(di);
   const c = host.querySelector('[data-count]');
   if(c) c.textContent = `${d}/${total}`;
 }
+
+/* الفطار والمكسرات اتاكلوا فعلاً — يتعلّموا تلقائي أول مرة */
+(function seed(){
+  if(state.__seeded) return;
+  state.d0m0 = true; state.d0m1 = true; state.__seeded = true;
+  save();
+})();
 
 const wi = idx(START);
 selected = (wi>=0 && wi<DAYS.length) ? wi : 0;
@@ -814,8 +798,8 @@ function diff(){
   if(isNaN(a)||isNaN(b)){ out.textContent="—"; return; }
   const d=a-b;
   out.textContent=(d>=0?"−":"+")+Math.abs(d).toFixed(1)+" كجم دهون";
-  if(d>=0.4) out.classList.add("win");
-  else if(d<0.2) out.classList.add("miss");
+  if(d>=0) out.classList.add("win");
+  else if(d<=-0.8) out.classList.add("miss");
 }
 document.getElementById("w1").addEventListener("input",diff);
 document.getElementById("w2").addEventListener("input",diff);
@@ -834,7 +818,7 @@ navLinks.querySelectorAll("a").forEach(a=>a.addEventListener("click",()=>{
   navToggle.textContent="☰ الأقسام";
 }));
 
-const RKEY="cut3_w3_recipes_v1";
+const RKEY="cut3_return_recipes_v1";
 let rstate=(function(){try{return JSON.parse(localStorage.getItem(RKEY)||"{}");}catch(e){return {};}})();
 function rsave(){ try{ localStorage.setItem(RKEY, JSON.stringify(rstate)); }catch(e){} }
 const prepEls=document.querySelectorAll(".prep");
@@ -861,7 +845,7 @@ prepEls.forEach((d,i)=>{
 applyRecipeState();
 
 document.getElementById("reset").addEventListener("click",()=>{
-  if(!confirm("هتمسح كل العلامات (الوجبات والوصفات). متأكد؟")) return;
+  if(!confirm("هتمسح كل العلامات (الوجبات والمية والوصفات). متأكد؟")) return;
   state={}; save(); rstate={}; rsave(); render(); applyRecipeState();
 });
 </script>
